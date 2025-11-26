@@ -25,29 +25,38 @@ can_move(ID, T) :-
     start(ID,(_, _), Dep, _),
     #count { T1 : action(train(ID), A1, T1), A1 != wait, T1 >= Dep, T1 < T } >= 1.
 
+%destination: train ID has cell (X,Y) as its destination
+destination(ID, (X, Y)) :- end(ID, (X,Y), _).
+
 % First non-wait after Dep: keep the train in place (no movement yet)
 state(ID, (X,Y), D, Tnext) :-
     state(ID, (X,Y), D, T),
     action(train(ID), A, T),
     A != wait,
-    not can_move(ID, T),   % <-- this means: no earlier non-wait since Dep
+    not can_move(ID, T), 
     Tnext = T + 1,
     time(T),
-    time(Tnext).
+    time(Tnext),
+    not destination(ID, (X,Y)).
 
 % --- rule 1: movement (non-wait actions) ---
 state(ID, (X2,Y2), Out, Tnext) :-
+    % gather state and (non-wait) action at timestep T
     state(ID, (X1,Y1), D, T),
     action(train(ID), A, T),
     A != wait,
+    % infer next direction and cell
     cell_conn((X1,Y1), A, D, Out),
-    move(Out, DX, DY),
-    can_move(ID, T),
     X2 = X1 + DX,
     Y2 = Y1 + DY,
     Tnext = T + 1,
     time(T),
-    time(Tnext).
+    time(Tnext),
+    move(Out, DX, DY),
+    % only propagate states if train has started rolling at some point
+    can_move(ID, T),
+    % only propagate states if train has not arrived yet
+    not destination(ID, (X1,Y1)).
 
 % --- rule 2: waiting (stay in same cell) ---
 state(ID, (X,Y), Out, Tnext) :-
@@ -56,7 +65,8 @@ state(ID, (X,Y), Out, Tnext) :-
     cell_conn((X,Y), wait, D, Out),
     Tnext = T + 1,
     time(T),
-    time(Tnext).
+    time(Tnext),
+    not destination(ID, (X,Y)).
 
 % -------------CONSTRAINTS-------------
 % vertex conflict: no two trains can occupy a cell at the same time
@@ -76,15 +86,49 @@ state(ID, (X,Y), Out, Tnext) :-
 :- state(ID, (X,Y), _, T),
    cell((X,Y), 0).
 
-% enforce that trains end occupies final destination at the arrival time
+
+% enforce that trains end occupies final destination at the arrival time (deprecated constraint)
 :- end(ID, (X,Y), Arr),
    not state(ID, (X,Y), _, Arr).
 
-latest_arrival(T) :- state(ID, (X,Y), _, T), end(ID, (X,Y), T).
 
-left_move(T, (X,Y)) :- action(train(ID), A, T), A = move_left,
-                       state(ID, (X,Y), Out, T).
 
-%#show left_move/2.
+% minimization block
+% arrive(ID,T): Train ID arrived at its destination at timestep T
+arrive(ID,T) :-
+    state(ID, (X,Y), _, T),
+    end(ID, (X,Y), _).
+
+% late(ID, Delta): If train ID is delayed Delta indicates difference between actual arrival and expected arrival
+late(ID, Delta) :-
+    arrive(ID, T),
+    end(ID, (_, _), Arr),
+    T > Arr,
+    Delta = T - Arr.
+
+% early(ID, Delta): If train ID arrives early Delta indicates the difference between expected and actual arrival 
+early(ID, Delta) :-
+    arrive(ID, T),
+    end(ID, (_, _), Arr),
+    T < Arr,
+    Delta = Arr - T.
+
+
+% train never arrives at its destination
+% :- end(ID, (_, _), _), not arrive(ID, _).
+
+
+
+#minimize { 1 : action(train(ID), wait, T) }.
+
+%*
+% minimize arrival times
+%#minimize { T, ID : arrive(ID, T) }.
+
+% minimize early, late and no arrivals
+%#minimize { Delta, ID : late(ID, Delta) }.
+%#minimize { Delta, ID : early(ID, Delta) }.
+*%
+
 %#show state/4.
 #show action/3.
