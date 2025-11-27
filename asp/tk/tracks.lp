@@ -96,7 +96,7 @@ connection(ID, A, In, Out) :-
 %                                 not straight(Track1).
 
 % % you can always wait
-connection(ID, wait, In, Out) :- connection(ID, _, In, Out).
+% connection(ID, wait, In, Out) :- connection(ID, _, In, Out).
 
 
 % introduce new connections referring to alphabetic cardinal directions `n, w, s, e`
@@ -105,5 +105,14 @@ connection(ID, A, InV, OutV) :-
     dirmap(In, InV),
     dirmap(Out, OutV).
 
-% cell_conn((X,Y), A, In, Out): Cell (X,Y) connects directions In and Out via action A
-cell_conn((X,Y), A, In, Out) :- cell((X,Y), Track), connection(Track, A, In, Out), dir(In), dir(Out).
+% cell_conn((Y,X), A, In, Out): Cell (Y,X) connects directions In and Out via action A
+cell_conn((Y,X), A, In, Out) :- cell((Y,X), Track), connection(Track, A, In, Out), dir(In), dir(Out).
+
+% introduce `wait` actions for cells were a non-straight track is in Out direction
+cell_conn((Y,X), wait, In, Out) :-
+    cell((Y,X), Track),
+    connection(Track, move_forward, In, Out),
+    move(Out, DY, DX),
+    Y1 = Y + DY, X1 = X + DX,
+    cell((Y1,X1), Track1),
+    not straight(Track1).
