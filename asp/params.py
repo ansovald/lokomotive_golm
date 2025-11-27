@@ -6,6 +6,6 @@
 
 # tim encoding
 #primary=['asp/']
-primary=['asp/assignment_1_tim/encoding.lp', 'asp/assignment_1_tim/tracks.lp']
+primary=['asp/tk/encoding.lp', 'asp/tk/tracks.lp']
 
 secondary=[]
