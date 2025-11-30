@@ -8,9 +8,9 @@ time(0..MaxT) :- global(MaxT).
 % arrived(ID, T):          train ID has arrived at its destination at timestep T
 
 % train "waits" before its departure time
-action(train(ID), wait, T) :- time(T), start(ID, _, Dep, _), T < Dep.
+internal_action(train(ID), wait, T) :- time(T), start(ID, _, Dep, _), T < Dep.
 % train 'moves forward' onto starting cell at departure time
-action(train(ID), move_forward, T) :-
+internal_action(train(ID), move_forward, T) :-
     start(ID, _, Dep, _),
     time(T),
     T = Dep.
@@ -27,19 +27,24 @@ state(ID, C, Dir, T) :- start(ID, C, Dep, Dir), T = Dep + 1.
         state(ID, C, D, T), time(T), speed(ID, S),
         not end(ID, C, _).
 
-% derive actions from speed_action. First one is always the same as speed_action
-action(train(ID), A, T) :- speed_action(train(ID), A, T, _).
-% derive subsequent actions based on speed
-action(train(ID), wait, T1) :-
-    speed_action(train(ID), A, T, S),
+% A happens last (logical action)
+internal_action(train(ID), A, T_last) :-
+    speed_action(train(ID), A, T0, S),
     A < wait,
-    T1 = (T+1)..(T+S-1).
+    T_last = T0 + S - 1.
+
+% waits happen first (inserted waits)
+internal_action(train(ID), wait, T1) :-
+    speed_action(train(ID), A, T0, S),
+    A < wait,
+    T1 = T0 .. T0 + S - 2.
+
 
 % no train can perform two actions at the same time
-:- action(train(ID), A1, T), action(train(ID), A2, T), A1 < A2.
+:- internal_action(train(ID), A1, T), internal_action(train(ID), A2, T), A1 < A2.
 % a train must perform an action at each timestep until it arrives
 :- train(ID), time(T), arrived(ID, ArrT), T < ArrT,
-   not action(train(ID), _, T).
+   not internal_action(train(ID), _, T).
 
 % move(D, Y, X): moving in direction D changes grid location by Y (row) and X (column)
 move(s,  1,  0).
@@ -52,7 +57,7 @@ move(e,  0,  1).
 state(ID, (Y2,X2), Out, T+1) :-
     % gather state and (non-wait) action at timestep T
     state(ID, (Y1,X1), D, T),
-    action(train(ID), A, T),
+    internal_action(train(ID), A, T),
     % use `<` instead of `!=` for performance reasons
     A < wait,
     % infer next direction and cell
@@ -66,7 +71,7 @@ arrived(ID, T) :- state(ID, C, D, T), end(ID, C, _).
 % --- rule 2: waiting (stay in same cell, direction doesn't change) ---
 state(ID, C, D, T+1) :-
     state(ID, C, D, T),
-    action(train(ID), wait, T).
+    internal_action(train(ID), wait, T).
 
 % -------------CONSTRAINTS-------------
 
@@ -103,10 +108,10 @@ early(ID, Delta) :-
 
 action_count(ID, Count) :-
     train(ID),
-    Count = #count { T : action(train(ID), _, T) }.
+    Count = #count { T : internal_action(train(ID), _, T) }.
 % #show action_count/2.
 
-#minimize { 2,ID,T : action(train(ID), wait, T) }.
+#minimize { 2,ID,T : internal_action(train(ID), wait, T) }.
 % #minimize { 1,ID,T : action(train(ID), _, T)}.
 
 %*
@@ -118,6 +123,23 @@ action_count(ID, Count) :-
 %#minimize { Delta, ID : early(ID, Delta) }.
 *%
 
-#show state/4.
+% copy all speed predicates into action predicates
+action(train(ID), A, T) :-
+    speed_action(train(ID), A, T, _).
+
+% copy all actions up until starting time
+action(train(ID), A, T):- internal_action(train(ID), A, T), start(ID, _, Dep, _), T <= Dep.
+
+% For each waiting internal_action inside a speed block,
+% insert the block’s non-wait action A at that timestep.
+action(train(ID), A, T1) :-
+    speed_action(train(ID), A, T0, S),
+    A < wait,
+    T1 = T0 .. T0 + S - 1.
+
+
+%#show speed_action/4.
+%#show state/4.
 #show action/3.
-#show arrived/2.
+%#show internal_action/3.
+%#show arrived/2.

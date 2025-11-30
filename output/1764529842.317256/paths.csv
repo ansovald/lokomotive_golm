@@ -1,0 +1,35 @@
+agent;timestep;position;direction;status;given_command
+0;0;None;s;waiting;wait
+0;1;None;s;ready to depart;move_forward
+0;2;(7, 25);s;moving;wait
+0;3;(7, 25);s;stopped;move_forward
+0;4;(7, 25);s;moving;wait
+0;5;(7, 25);s;stopped;move_forward
+0;6;(8, 25);s;moving;wait
+0;7;(8, 25);s;stopped;move_forward
+0;8;(8, 25);s;moving;wait
+0;9;(8, 25);s;stopped;move_forward
+0;10;(9, 25);s;moving;wait
+0;11;(9, 25);s;stopped;move_right
+0;12;(9, 25);s;moving;wait
+0;13;(9, 25);s;stopped;move_left
+0;14;(10, 25);s;moving;wait
+0;15;(10, 25);s;stopped;move_forward
+0;16;(10, 25);s;moving;wait
+0;17;(10, 25);s;stopped;move_forward
+0;18;(11, 25);s;moving;wait
+0;19;(11, 25);s;stopped;move_forward
+0;20;(11, 25);s;moving;wait
+0;21;(11, 25);s;stopped;move_forward
+0;22;(12, 25);s;moving;wait
+0;23;(12, 25);s;stopped;move_forward
+0;24;(12, 25);s;moving;wait
+0;25;(12, 25);s;stopped;move_forward
+0;26;(13, 25);s;moving;wait
+0;27;(13, 25);s;stopped;move_forward
+0;28;(13, 25);s;moving;wait
+0;29;(13, 25);s;stopped;move_left
+0;30;(14, 25);s;moving;wait
+0;31;(14, 25);s;stopped;move_forward
+0;32;(14, 25);s;moving;wait
+0;33;(14, 25);s;stopped;move_forward

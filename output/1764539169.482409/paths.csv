@@ -1,0 +1,19 @@
+agent;timestep;position;direction;status;given_command
+0;0;None;s;waiting;wait
+0;1;None;s;ready to depart;move_forward
+0;2;(7, 25);s;moving;move_forward
+0;3;(7, 25);s;moving;move_forward
+0;4;(8, 25);s;moving;move_forward
+0;5;(8, 25);s;moving;move_forward
+0;6;(9, 25);s;moving;move_right
+0;7;(9, 25);s;moving;move_left
+0;8;(10, 25);s;moving;move_forward
+0;9;(10, 25);s;moving;move_forward
+0;10;(11, 25);s;moving;move_forward
+0;11;(11, 25);s;moving;move_forward
+0;12;(12, 25);s;moving;move_forward
+0;13;(12, 25);s;moving;move_forward
+0;14;(13, 25);s;moving;move_forward
+0;15;(13, 25);s;moving;move_left
+0;16;(14, 25);s;moving;move_forward
+0;17;(14, 25);s;moving;move_forward
