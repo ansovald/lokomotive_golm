@@ -86,19 +86,6 @@ connection(ID, A, In, Out) :-
                         rotate(In, In0, Rot),
                         rotate(Out, Out0, Rot).
 
-% action_space(C, A, In) :- cell(C, Track), connection(Track, A, In, _).
-% action_space(C, wait, In) :- cell(C, _), dirmap(_, In).
-% action_space((X,Y), wait, In) :- cell((X,Y), Track),
-%                                 connection(Track, move_forward, In, Out),
-%                                 move(Out, DX, DY),
-%                                 X1 = X + DX, Y1 = Y + DY,
-%                                 cell((X1,Y1), Track1),
-%                                 not straight(Track1).
-
-% % you can always wait
-% connection(ID, wait, In, Out) :- connection(ID, _, In, Out).
-
-
 % introduce new connections referring to alphabetic cardinal directions `n, w, s, e`
 connection(ID, A, InV, OutV) :-
     connection(ID, A, In, Out),

@@ -7,6 +7,8 @@ time(0..MaxT) :- global(MaxT).
 % state(ID, C, D, T):      alternative representation where C is the cell (if we don't need to access X and Y separately)
 % arrived(ID, T):          train ID has arrived at its destination at timestep T
 
+% train "waits" before its departure time
+action(train(ID), wait, T) :- time(T), start(ID, _, Dep, _), T < Dep.
 % train 'moves forward' onto starting cell at departure time
 action(train(ID), move_forward, T) :-
     start(ID, _, Dep, _),
@@ -30,6 +32,7 @@ state(ID, (Y2,X2), Out, T+1) :-
     % gather state and (non-wait) action at timestep T
     state(ID, (Y1,X1), D, T),
     action(train(ID), A, T),
+    % use `<` instead of `!=` for performance reasons
     A < wait,
     % infer next direction and cell
     cell_conn((Y1,X1), A, D, Out),
@@ -77,7 +80,13 @@ early(ID, Delta) :-
     T < Arr,
     Delta = Arr - T.
 
-% #minimize { 1 : action(train(ID), wait, T) }.
+action_count(ID, Count) :-
+    train(ID),
+    Count = #count { T : action(train(ID), _, T) }.
+% #show action_count/2.
+
+#minimize { 2,ID,T : action(train(ID), wait, T) }.
+% #minimize { 1,ID,T : action(train(ID), _, T)}.
 
 %*
 % minimize arrival times
