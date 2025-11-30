@@ -18,7 +18,28 @@ state(ID, C, Dir, T) :- start(ID, C, Dep, Dir), T = Dep + 1.
 
 % -------------STATE PROPAGATION-------------
 % for each time step and a given state choose one out of all available options, if the train has not reached its destination
-1 { action(train(ID), A, T) : cell_conn(C, A, D, _) } 1 :- state(ID, C, D, T), time(T), not end(ID, C, _).
+% 1 { action(train(ID), A, T) : cell_conn(C, A, D, _) } 1 :- 
+%         state(ID, C, D, T), time(T), 
+%         not end(ID, C, _).
+
+% speed_action(train(ID), A, T, S): train ID performs action A at timestep T with speed S
+0 { speed_action(train(ID), A, T, S) : cell_conn(C, A, D, _) } 1 :- 
+        state(ID, C, D, T), time(T), speed(ID, S),
+        not end(ID, C, _).
+
+% derive actions from speed_action. First one is always the same as speed_action
+action(train(ID), A, T) :- speed_action(train(ID), A, T, _).
+% derive subsequent actions based on speed
+action(train(ID), wait, T1) :-
+    speed_action(train(ID), A, T, S),
+    A < wait,
+    T1 = (T+1)..(T+S-1).
+
+% no train can perform two actions at the same time
+:- action(train(ID), A1, T), action(train(ID), A2, T), A1 < A2.
+% a train must perform an action at each timestep until it arrives
+:- train(ID), time(T), arrived(ID, ArrT), T < ArrT,
+   not action(train(ID), _, T).
 
 % move(D, Y, X): moving in direction D changes grid location by Y (row) and X (column)
 move(s,  1,  0).
