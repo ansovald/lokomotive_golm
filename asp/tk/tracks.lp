@@ -22,14 +22,14 @@ straight(ID) :- track(ID, 1, _, _).
 % Type 1 (variant 1): Straight track
 track(32800, 1, 1, 0). connection(32800, move_forward, 0, 0).
                        connection(32800, move_forward, 2, 2).
-track(1025, 1, 1, 1).
+track(1025,  1, 1, 1).
 
 % Type 1 (variant 2): Bend
-track(4608, 1, 2, 0). connection(4608, move_forward, 3, 2).
+track(4608,  1, 2, 0). connection(4608, move_forward, 3, 2).
                       connection(4608, move_forward, 0, 1).
 track(16386, 1, 2, 1).
-track(72, 1, 2, 2).
-track(2064, 1, 2, 3).
+track(72,    1, 2, 2).
+track(2064,  1, 2, 3).
 
 % Type 2 (variant 1): Simple switch 
 track(37408, 2, 1, 0). connection(37408, move_left, 0, 1). connection(37408, move_forward, 2, 2). connection(37408, move_forward, 0, 0).

@@ -39,6 +39,9 @@ internal_action(train(ID), wait, T1) :-
     A < wait,
     T1 = T0 .. T0 + S - 2.
 
+internal_action(train(ID), wait, T) :-
+    speed_action(train(ID), wait, T, _).
+
 
 % no train can perform two actions at the same time
 :- internal_action(train(ID), A1, T), internal_action(train(ID), A2, T), A1 < A2.
@@ -98,6 +101,7 @@ late(ID, Delta) :-
     end(ID, (_, _), Arr),
     T > Arr,
     Delta = T - Arr.
+#show late/2.
 
 % early(ID, Delta): If train ID arrives early Delta indicates the difference between expected and actual arrival 
 early(ID, Delta) :-
@@ -105,23 +109,26 @@ early(ID, Delta) :-
     end(ID, (_, _), Arr),
     T < Arr,
     Delta = Arr - T.
+#show early/2.
 
-action_count(ID, Count) :-
-    train(ID),
-    Count = #count { T : internal_action(train(ID), _, T) }.
+% :- arrived(ID, T), end(ID, (_, _), Arr), T != Arr.
+
+% action_count(ID, Count) :-
+%     train(ID),
+%     Count = #count { T : internal_action(train(ID), _, T) }.
 % #show action_count/2.
 
-#minimize { 2,ID,T : internal_action(train(ID), wait, T) }.
+% minimize wait actions
+% #minimize { 2,ID,T : internal_action(train(ID), wait, T) }.
 % #minimize { 1,ID,T : action(train(ID), _, T)}.
 
-%*
 % minimize arrival times
-%#minimize { T, ID : arrive(ID, T) }.
+
+#minimize { T, ID : arrived(ID, T) }.
 
 % minimize early, late and no arrivals
 %#minimize { Delta, ID : late(ID, Delta) }.
 %#minimize { Delta, ID : early(ID, Delta) }.
-*%
 
 % copy all speed predicates into action predicates
 action(train(ID), A, T) :-
@@ -140,6 +147,6 @@ action(train(ID), A, T1) :-
 
 %#show speed_action/4.
 %#show state/4.
-#show action/3.
-%#show internal_action/3.
-%#show arrived/2.
+% #show action/3.
+% #show internal_action/3.
+#show arrived/2.
