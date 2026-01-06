@@ -11,7 +11,7 @@ class FlatlandPlan(Application):
     program_name = "flatland"
     version = "1.0"
 
-    def __init__(self, env, actions):
+    def __init__(self, env, actions=None):
         self.env = env
         self.actions = actions
         self.action_list = None
