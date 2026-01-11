@@ -1,0 +1,44 @@
+{
+    "0": {
+        "start": {
+            "x": 27,
+            "y": 24,
+            "min_start": 26,
+            "direction": "s"
+        },
+        "end": {
+            "x": 14,
+            "y": 17,
+            "max_end": 140
+        },
+        "speed": 1
+    },
+    "1": {
+        "start": {
+            "x": 14,
+            "y": 16,
+            "min_start": 2,
+            "direction": "e"
+        },
+        "end": {
+            "x": 28,
+            "y": 24,
+            "max_end": 138
+        },
+        "speed": 2
+    },
+    "2": {
+        "start": {
+            "x": 31,
+            "y": 13,
+            "min_start": 22,
+            "direction": "n"
+        },
+        "end": {
+            "x": 14,
+            "y": 17,
+            "max_end": 78
+        },
+        "speed": 1
+    }
+}

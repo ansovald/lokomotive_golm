@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flatland SVG Animation</title>
+
+<style>
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    padding: 24px;
+  }
+
+  svg {
+    border: 1px solid #ddd;
+    display: block;
+    margin-bottom: 12px;
+    margin: auto;
+  }
+
+  h2 {
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h2>{{HEADING}}</h2>
+
+<!-- SVG -->
+{{INLINE_SVG}}
+
+<script>
+/* =======================
+   TRAIN LOCATION DATA
+   ======================= */
+const data = {{TRAIN_DATA}};
+
+/* =======================
+   SETUP
+   ======================= */
+{{TRAIN_DEFS}}
+const stepLabel = document.getElementById("step_label");
+
+const playButton = document.getElementById("play_button");
+const pauseButton = document.getElementById("pause_button");
+const firstButton = document.getElementById("first_button");
+const lastButton = document.getElementById("last_button");
+const backwardButton = document.getElementById("backward_button");
+const forwardButton = document.getElementById("forward_button");
+
+const sliderHandle = document.getElementById("slider_handle");
+const sliderBackground = document.getElementById("slider_background");
+const sliderRect = sliderBackground.getBoundingClientRect();
+const sliderWidth = sliderRect.width;
+const sliderOffset = {{SLIDER_OFFSET}};
+
+// Extract and sort steps
+{{PATH_DEFS}}
+const MAX_STEP = {{MAX_STEP}};
+const steps = Array.from({length: MAX_STEP + 1}, (_, i) => i);
+
+/* =======================
+   RENDERING
+   ======================= */
+let currentStep = 0;
+let playing = false;
+let timer = null;
+
+function renderStep(step) {
+  stepLabel.textContent = `Time Step: ${step}`;
+{{PATH_STEP}}
+  const percent = step / MAX_STEP;
+  const handleX = sliderRect.left + percent * sliderRect.width;
+  console.log(`step: ${step}, max: ${MAX_STEP}, percent: ${percent}, handleX: ${handleX}, slider width: ${sliderRect.width}`);
+  sliderHandle.setAttribute("cx", sliderOffset + handleX - sliderRect.left);
+}
+
+/* =======================
+   PLAY / PAUSE LOGIC
+   ======================= */
+function play() {
+  if (playing) return;
+  playing = true;
+
+  playButton.classList.add("active");
+  pauseButton.classList.remove("active");
+
+  timer = setInterval(() => {
+    renderStep(currentStep);
+    currentStep++;
+
+    if (currentStep > MAX_STEP) {
+      pause();
+    }
+  }, {{MILLISECONDS_PER_STEP}});
+}
+
+function pause() {
+  playing = false;
+  playButton.classList.remove("active");
+  pauseButton.classList.add("active");
+  clearInterval(timer);
+}
+
+function reset() {
+  pause();
+  currentStep = 0;
+  renderStep(0);
+}
+
+function goToLast() {
+  pause();
+  currentStep = MAX_STEP;
+  renderStep(MAX_STEP);
+}
+
+function goBackward() {
+  pause();
+  currentStep = Math.max(0, currentStep - 1);
+  renderStep(currentStep);
+{{STOP_ANIMATION}}
+}
+function goForward() {
+  pause();
+  currentStep = Math.min(MAX_STEP, currentStep + 1);
+  renderStep(currentStep);
+}
+
+/* =======================
+   EVENTS
+   ======================= */
+
+playButton.onclick = () => {
+  play();
+};
+pauseButton.onclick = () => {
+  pause();
+};
+
+firstButton.onclick = reset;
+lastButton.onclick = goToLast;
+backwardButton.onclick = goBackward;
+forwardButton.onclick = goForward;
+
+// if left arrow or right arrow is pressed, move slider
+document.onkeydown = e => {
+  if (e.key === "ArrowLeft") {
+    goBackward();
+  } else if (e.key === "ArrowRight") {
+    goForward();
+  } else if (e.key === " ") {
+    if (playing) {
+      pause();
+    } else {
+      play();
+    }
+    e.preventDefault();
+  }
+};
+
+sliderHandle.onmousedown = e => {
+  pause();
+  e.preventDefault();
+  const onMouseMove = e => {
+    let x = e.clientX;
+    if (x < sliderRect.left) x = sliderRect.left;
+    if (x > sliderRect.right) x = sliderRect.right;
+    const percent = (x - sliderRect.left) / sliderRect.width;
+    const step = Math.round(percent * MAX_STEP);
+    currentStep = step;
+    renderStep(currentStep);
+  };
+  const onMouseUp = e => {
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
+  };
+  document.addEventListener("mousemove", onMouseMove);
+  document.addEventListener("mouseup", onMouseUp);
+};
+
+
+/* =======================
+   INIT
+   ======================= */
+renderStep(0);
+</script>
+
+</body>
+</html>

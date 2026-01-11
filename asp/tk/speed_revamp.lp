@@ -42,7 +42,8 @@ state(ID, C, Dir, Dep+1) :- start(ID, C, Dep, Dir).
 
 % copy speed actions into regular actions (needed by toolkit)
 action(train(ID), wait, T) :-
-    speed_action(train(ID), wait, T, _).
+    speed_action(train(ID), wait, T0, T1),
+    T = T0..T1-1.
 % toolkit needs move_action at each timestep during the action
 action(train(ID), A, T) :-
     speed_action(train(ID), A, T0, T1), move_action(A),

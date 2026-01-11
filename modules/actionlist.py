@@ -43,4 +43,8 @@ def build_action_list(models):
             action_list.append((agent_num,action,timestep.number))
 
     sorted_list = sorted(action_list, key=lambda x: (x[2], x[0]))
+    # dump to temporary file for debugging
+    with open("temp_action_list.txt", "w") as f:
+        for item in sorted_list:
+            f.write(f"{item}\n")
     return(to_dicts(sorted_list))

@@ -7,6 +7,8 @@
 # tim encoding
 #primary=['asp/']
 # primary=['asp/tk/encoding.lp', 'asp/tk/tracks.lp']
-primary=['asp/tk/speed_collision.lp', 'asp/tk/tracks.lp']
+# primary=['asp/tk/speed_revamp.lp', 'asp/tk/tracks.lp']
+# primary=['asp/tk/tracks_trajectories.lp', 'asp/tk/trajectory_encoding.lp']
+primary=['asp/tk/encoding_incremental.lp', 'asp/tk/tracks_incremental.lp']
 
 secondary=[]

@@ -1,0 +1,7 @@
+Files loaded:
+env_002--1_2
+asp/tk/encoding_incremental.lp
+asp/tk/tracks_incremental.lp
+
+Statistics:
+Simulation time: 1.14s

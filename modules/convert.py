@@ -20,7 +20,10 @@ def convert_to_clingo(env) -> str:
         init_y, init_x = agent_info.initial_position
         goal_y, goal_x = agent_info.target
         min_start, max_end = agent_info.earliest_departure, agent_info.latest_arrival
-        speed = int(1/agent_info.speed_counter.speed) # inverse, e.g. 1/2 --> 2, 1/4 --> 4 etc.
+        try:
+            speed = int(1/agent_info.speed_counter.speed) # inverse, e.g. 1/2 --> 2, 1/4 --> 4 etc.
+        except ZeroDivisionError:
+            speed = 0
 
         direction = dir_map[agent_info.initial_direction]
         clingo_str += f"\ntrain({agent_num}). "

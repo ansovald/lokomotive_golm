@@ -97,8 +97,9 @@ cell_conn((Y,X), A, In, Out) :- cell((Y,X), Track), connection(Track, A, In, Out
 
 % introduce `wait` actions for cells were a non-straight track is in Out direction
 cell_conn((Y,X), wait, In, Out) :-
-    cell((Y,X), Track),
-    connection(Track, move_forward, In, Out),
+    cell((Y,X), Track0),
+    connection(Track0, move_forward, In, Out),
+    straight(Track0),
     move(Out, DY, DX),
     Y1 = Y + DY, X1 = X + DX,
     cell((Y1,X1), Track1),

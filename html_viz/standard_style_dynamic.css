@@ -1,0 +1,81 @@
+.background{fill:#e0f7e9;}
+.no-fill{fill:none;}
+.railroad-tie{fill:#978679;}
+.railroad{fill:#3D3D3D;}
+.train-outline{fill:#cdcdcd;}
+.train-window{fill:#444444;}
+.train-roof{fill:#5b5a5a;}
+.train-headlights{fill:#fbfbfb;}
+.train-fill-0{fill:#d50000;}
+.train-fill-1{fill:#2979ff;}
+.train-fill-2{fill:#ff6f00;}
+.train-fill-3{fill:#fdd835;}
+.train-fill-4{fill:#00c853;}
+.train-fill-5{fill:#aa00ff;}
+.train-fill-6{fill:#00bfa5;}
+.tree-1{fill:#8B5420;}
+.tree-2{fill:#A8642A;}
+.tree-3{fill:#80983C;}
+.tree-4{fill:#84A83E;}
+.tree-5{fill:#5DAD61;}
+.tree-6{fill:#418050;}
+.train:hover .train_background {
+  stroke-opacity:1;
+  transition: 0.2s;
+}
+.train:hover rect.train_legend_background {
+  fill-opacity: 0.3;
+  transition: 0.2s;
+}
+/* .train:hover path {
+  stroke-width: {{TRAIN_PATH_WIDTH_HOVER}};
+  transition: 0.2s;
+} */
+.cell:hover text {
+    opacity: 1.0;
+    transition: 0.2s;
+}
+.cell:hover rect, .row_label:hover rect, .col_label:hover rect {
+    fill-opacity: 0.3;
+    transition: 0.2s;
+}
+.train_rotation {
+  transform-box: fill-box;
+}
+.button:hover rect {
+  stroke-opacity: .3;
+  fill-opacity: .15;
+  transition: .2s;
+}
+.button:hover path {
+  fill-opacity: .5;
+  stroke-opacity: .5;
+  transition: .2s;
+}
+.active rect, .button:active rect {
+  stroke-opacity: .5;
+  fill-opacity: 0.1;
+  transition: .2s;
+}
+.active path, .button:active path {
+  fill-opacity: .5;
+  transition: .2s;
+}
+
+.train_signal {
+  opacity: 0;
+}
+.green_light, .red_light {
+  opacity: 0.2;
+}
+.train_signal.red, .train_signal.green {
+  opacity: 1;
+}
+.train_signal.red .red_light {
+  opacity: 1;
+}
+.train_signal.green .green_light {
+  opacity: 1;
+}
+
+{{TRAIN_HOVER_STYLE}}
