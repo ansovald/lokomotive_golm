@@ -5,8 +5,9 @@ import os
 import random
 import json
 from dataclasses import dataclass
-from html_viz.svg_files import build_buttons, clean_svg_group, sample_scenery_file, get_train_svg
-from html_viz.train_paths import TrainPath, get_train_color
+from html_viz.svg_files.control_buttons import build_buttons
+from html_viz.svg_files.get_svg import clean_svg_group, sample_scenery_file, get_train_svg, get_train_color
+from html_viz.train_paths import TrainPath
 
 import logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s -- %(name)s: %(message)s', filename='build_svg.log', filemode='w')
@@ -58,6 +59,15 @@ class LandscapeBuilder:
             style_content = f.read()
         style_content = style_content.replace("{{HOVER_FONT_SIZE}}", f"{self.font_size_hover}")
         style_content = style_content.replace("{{TRAIN_PATH_WIDTH_HOVER}}", f"{self.train_path_width_hover}")
+
+        # generate train fill colors
+        train_fill_colors = ""
+        train_fill_template = ".train-fill-TRAIN_ID{fill: TRAIN_COLOR;}"
+        for train_id in self.trains.keys():
+            train_color = get_train_color(train_id)
+            train_fill_colors += train_fill_template.replace("TRAIN_ID", str(train_id)).replace("TRAIN_COLOR", train_color) + "\n"
+        style_content = style_content.replace("{{TRAIN_FILL_COLORS}}", train_fill_colors)
+
         self.standard_style = style_content
 
 

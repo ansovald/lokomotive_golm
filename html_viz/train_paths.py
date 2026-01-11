@@ -1,16 +1,24 @@
 from __future__ import annotations
 from html_viz.curves import CURVES, Point, CurveSegment, ROTATION_OFFSETS
+from html_viz.svg_files.get_svg import get_train_color
 import logging
 from dataclasses import dataclass
 import json
 
-logging.basicConfig(level=logging.INFO, format='%(levelname)s -- %(name)s: %(message)s', filename='train_paths.log', filemode='w')
 logger = logging.getLogger("TRAIN_PATHS")
+logger.setLevel(logging.INFO)
+
+handler = logging.FileHandler("train_paths.log", mode="w")
+formatter = logging.Formatter("%(levelname)s -- %(name)s: %(message)s")
+handler.setFormatter(formatter)
+
+logger.addHandler(handler)
+logger.propagate = False
 
 
 # .train-fill-0{fill:#d50000;}
 # TODO: build dynamically from .train-fill-* styles in STANDARD_STYLE
-train_colors = ["#d50000", "#2979ff", "#ff6f00", "#fdd835", "#00c853", "#aa00ff", "#00bfa5"]
+# train_colors = ["#d50000", "#2979ff", "#ff6f00", "#fdd835", "#00c853", "#aa00ff", "#00bfa5"]
 
 # rotation in degrees for each direction
 dir_dict = {
@@ -20,9 +28,9 @@ dir_dict = {
     "w": 270
 }
 
-def get_train_color(train_id):
-    train_id = int(train_id)
-    return train_colors[train_id % len(train_colors)]
+# def get_train_color(train_id):
+#     train_id = int(train_id)
+#     return train_colors[train_id % len(train_colors)]
 
 @dataclass
 class TrainState:

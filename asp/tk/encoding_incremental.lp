@@ -5,26 +5,6 @@ move_action(move_left;move_right;move_forward).
 action_duration(wait, S, 1) :- speed(_, S).
 action_duration(A, S, S) :- move_action(A), speed(_, S).
 
-% train "waits" before its departure time
-speed_action(train(ID), wait, 0, Dep) :- start(ID, _, Dep, _), Dep > 0.
-% train "moves forward" onto starting cell at departure time. This takes 1 timestep regardless of speed.
-speed_action(train(ID), move_forward, Dep, Dep+1) :-
-    start(ID, _, Dep, _).
-% state(ID, C, Dir, T): train ID is at cell C facing Dir at timestep T
-state(ID, C, Dir, Dep+1) :- start(ID, C, Dep, Dir).
-occupied(C, ID, Dep) :-
-    start(ID, C, Dep, _).
-
-#program check(t).
-% check if all trains have arrived by time t
-:- train(ID), not arrived(ID, _), query(t).
-% :- train(ID), not arrived(ID).
-% arrived(ID) :- arrived(ID, t), query(t).
-%:- train(ID), not arrived(ID).
-#external query(t).
-
-#program step(t).
-time(t).
 % Basic definitions: action, speed_action, state, and arrived
 % action(train(ID), A, T): 
 %           train ID performs action A at timestep T (needed for toolkit compatibility)
@@ -38,6 +18,34 @@ time(t).
 % arrived(ID, T):          
 %           train ID has arrived at its destination at timestep T
 
+% toolkit ALWAYS requires a `wait` action at timestep 0 for each train, even if the departure time is 0
+action(train(ID), wait, 0) :- train(ID).
+
+% train "waits" before its departure time (even )
+action(train(ID), wait, T) :- start(ID, _, Dep, _), T=0..Dep-1, Dep > 0.
+% train "moves forward" onto starting cell at departure time. This takes 1 timestep regardless of speed.
+% we need a speed_action here to for choosing the following speed_action at Dep+1
+speed_action(train(ID), move_forward, Dep, Dep+1) :-
+    start(ID, _, Dep, _), Dep > 0.
+speed_action(train(ID), move_forward, 1, 2) :-
+    start(ID, _, 0, _).
+% state(ID, C, Dir, T): train ID is at cell C facing Dir at timestep T
+% due to incremental solving, we need to explicitly define the actual action at Dep
+action(train(ID), move_forward, Dep) :- start(ID, _, Dep, _), Dep > 0.
+
+state(ID, C, Dir, T) :- speed_action(train(ID), move_forward, _, T), start(ID, C, _, Dir).
+% occupied(C, ID, T) :-
+%     state(ID, C, _, T).
+
+#program check(t).
+% check if all trains have arrived by time t
+:- train(ID), not arrived(ID, _), query(t).
+% :- train(ID), not arrived(ID).
+% arrived(ID) :- arrived(ID, t), query(t).
+%:- train(ID), not arrived(ID).
+#external query(t).
+
+#program step(t).
 % ---------------ACTION CHOICE---------------
 % after each speed action, choose exactly one valid action to perform next, unless the train has reached its destination
 1 { speed_action(train(ID), A, t, T1) : 
@@ -51,10 +59,8 @@ time(t).
             not end(ID, C, _).
 
 % copy speed actions into regular actions (needed by toolkit)
-action(train(ID), wait, T) :-
-    speed_action(train(ID), wait, T0, T1),
-    T = T0..T1-1,
-    T0 <= t, t <= T1-1.
+action(train(ID), wait, t) :-
+    speed_action(train(ID), wait, t, _).
 % toolkit needs move_action at each timestep during the action
 action(train(ID), A, t) :-
     speed_action(train(ID), A, T0, T1), move_action(A),
@@ -79,8 +85,7 @@ state(ID, C, D, t) :-
     action(train(ID), wait, t-1).
 
 % if the train reaches its destination, mark it as arrived
-arrived(ID, T) :- state(ID, C, D, T), end(ID, C, _), T = t.
-% arrived(ID) :- arrived(ID, _).
+arrived(ID, t) :- state(ID, C, D, t), end(ID, C, _).
 
 % ---------COLLISION AVOIDANCE---------
 % occupied(C, ID, T): cell C is occupied by train ID at timestep T

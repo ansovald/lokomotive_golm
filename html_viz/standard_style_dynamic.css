@@ -6,13 +6,7 @@
 .train-window{fill:#444444;}
 .train-roof{fill:#5b5a5a;}
 .train-headlights{fill:#fbfbfb;}
-.train-fill-0{fill:#d50000;}
-.train-fill-1{fill:#2979ff;}
-.train-fill-2{fill:#ff6f00;}
-.train-fill-3{fill:#fdd835;}
-.train-fill-4{fill:#00c853;}
-.train-fill-5{fill:#aa00ff;}
-.train-fill-6{fill:#00bfa5;}
+{{TRAIN_FILL_COLORS}}
 .tree-1{fill:#8B5420;}
 .tree-2{fill:#A8642A;}
 .tree-3{fill:#80983C;}

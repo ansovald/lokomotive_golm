@@ -1,13 +1,24 @@
 import sys
 import pickle
 import io
+import time
 from clingo.symbol import Number, Function
 from clingo.application import Application, clingo_main
 from modules.convert import convert_to_clingo
 from modules.actionlist import build_action_list
 import logging
+# logger = logging.getLogger(__name__)
+# logging.basicConfig(level=logging.INFO, format='%(levelname)s -- %(name)s: %(message)s', filename='flatland_api.log', filemode='w')
+
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO, format='%(levelname)s -- %(name)s: %(message)s', filename='flatland_api.log', filemode='w')
+logger.setLevel(logging.INFO)
+
+handler = logging.FileHandler("flatland_api.log", mode="w")
+formatter = logging.Formatter("%(levelname)s -- %(name)s: %(message)s")
+handler.setFormatter(formatter)
+
+logger.addHandler(handler)
+logger.propagate = False
 
 class IncrementalFlatlandPlan(Application):
     """ takes an environment and a set of primary encodings """
@@ -22,6 +33,7 @@ class IncrementalFlatlandPlan(Application):
         self.stats = None
 
     def main(self, ctl, files):
+        start_time = time.time()
         # add encodings
         for f in files: 
             print(f"Loading file: {f}")
@@ -55,14 +67,13 @@ class IncrementalFlatlandPlan(Application):
             raise Exception('No max_time defined in the encoding.')
 
         models = []
-        min_time = 0 # int(max_time / 2)
-        step = min_time  # start from half of max_time
+        step = 0
         result = None
         while (result == None or result.unsatisfiable) and step < max_time:
             print(f"Incremental step: {step}")
             parts = []
             parts.append(("check", [Number(step)]))
-            if step > min_time:
+            if step > 0:
                 query = Function("query", [Number(step - 1)])
                 ctl.release_external(query)
                 parts.append(("step", [Number(step)]))
@@ -71,10 +82,16 @@ class IncrementalFlatlandPlan(Application):
             ctl.assign_external(query, True)
             symbolic_atoms = ctl.symbolic_atoms
             print(f"number of symbolic atoms: {symbolic_atoms.__len__()}")
+            # for atom in symbolic_atoms.by_signature("action", 3):
+            #     print(atom.symbol)
             # for atom in symbolic_atoms.by_signature("speed_action", 4):
             #     print(atom.symbol)
-            for atom in symbolic_atoms.by_signature("arrived", 2):
-                print(atom.symbol)
+            # for atom in symbolic_atoms.by_signature("occupied", 3):
+            #     print(atom.symbol)
+            # for atom in symbolic_atoms.by_signature("state", 4):
+            #     print(atom.symbol)
+            # for atom in symbolic_atoms.by_signature("arrived", 2):
+            #     print(atom.symbol)
             for atom in symbolic_atoms:
                 if atom.symbol.name in ["action", "state", "speed_action", "arrived"]:
                     logger.info(f"Time step {step} -- Atom: {atom.literal} Symbol: {atom.symbol}")
@@ -84,6 +101,17 @@ class IncrementalFlatlandPlan(Application):
 
             result = handle.get()
             # model = handle.model()
+            current_running_time = time.time() - start_time
+            hours = int(current_running_time // 3600)
+            minutes = int((current_running_time % 3600) // 60)
+            seconds = current_running_time % 60
+            running_time_str = ""
+            if hours > 0:
+                running_time_str += f"{hours}h "
+            if minutes > 0 or hours > 0:
+                running_time_str += f"{minutes}m "
+            running_time_str += f"{seconds:.2f}s"
+            print(f"Current running time: {running_time_str}")
             print(result)
             # if model:
             #     models.append(model.symbols(atoms=True))

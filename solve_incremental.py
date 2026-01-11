@@ -4,6 +4,7 @@ import os
 import time
 import pickle
 import json
+import logging
 from argparse import ArgumentParser, Namespace
 
 # custom modules
@@ -13,6 +14,16 @@ from modules.convert import convert_malfunctions_to_clingo, convert_formers_to_c
 from html_viz import grid_json, train_info, LandscapeBuilder, generate_html
 
 from flatland.envs.rail_env_action import RailEnvActions
+
+logger = logging.getLogger("TRAIN_PATHS")
+logger.setLevel(logging.INFO)
+
+handler = logging.FileHandler("solve.log", mode="w")
+formatter = logging.Formatter("%(levelname)s -- %(name)s: %(message)s")
+handler.setFormatter(formatter)
+
+logger.addHandler(handler)
+logger.propagate = False
 
 # clingo
 import clingo
@@ -234,6 +245,9 @@ def main():
                 "status": env.agents[a].state.name,
                 "action": action_map[actions[timestep][a]]
             }
+            if env.agents[a].state.name == "STOPPED" and action_map[actions[timestep][a]].startswith("move"):
+                print(f"WARNING: At timestep {timestep}, agent {a} is STOPPED but action is {action_map[actions[timestep][a]]}.")
+                logger.warning(f"At timestep {timestep}, agent {a} is STOPPED but action is {action_map[actions[timestep][a]]}.")
 
         _, _, done, info = env.step(actions[timestep])
 
@@ -290,7 +304,7 @@ def main():
         timestep = timestep + 1
 
     # get time stamp for gif and output log
-    stamp = env_name + str(time.time())
+    stamp = env_name + "_" + str(time.time())
     os.makedirs(f"output/{stamp}", exist_ok=True)
     base_dir = f"output/{stamp}"
 
@@ -315,6 +329,7 @@ def main():
         f.write(f"Simulation time: {sim_time:.2f}s\n")
         f.write(json.dumps(sim.stats, indent=4))
 
+    print("Generating HTML visualization...")
     landscape = LandscapeBuilder(base_dir, timestep)
     html_file = generate_html(env_name, landscape, milliseconds_per_step=500)
     with open(os.path.join(base_dir, "visualization.html"), "w") as f:
@@ -330,3 +345,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # landscape = LandscapeBuilder("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_014--10_51768154308.2458172", 203)
+    # html_file = generate_html("env_014--10", landscape, milliseconds_per_step=500)
+    # with open("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_014--10_51768154308.2458172/visualization_test.html", "w") as f:
+    #     f.write(html_file)
