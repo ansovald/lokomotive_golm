@@ -300,7 +300,6 @@ def main():
 
             images.append(imageio.imread(filename))
         # images.append(imageio.imread(filename))
-
         timestep = timestep + 1
 
     # get time stamp for gif and output log
@@ -331,7 +330,7 @@ def main():
 
     print("Generating HTML visualization...")
     landscape = LandscapeBuilder(base_dir, timestep)
-    html_file = generate_html(env_name, landscape, milliseconds_per_step=500)
+    html_file = generate_html(env_name, landscape, milliseconds_per_step=5000)
     with open(os.path.join(base_dir, "visualization.html"), "w") as f:
         f.write(html_file)
 
@@ -345,7 +344,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # landscape = LandscapeBuilder("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_014--10_51768154308.2458172", 203)
+    # landscape = LandscapeBuilder("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_005--3_3_1768170225.194793", 203, cell_size=10)
     # html_file = generate_html("env_014--10", landscape, milliseconds_per_step=500)
-    # with open("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_014--10_51768154308.2458172/visualization_test.html", "w") as f:
+    # with open("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_005--3_3_1768170225.194793/visualization_test.html", "w") as f:
     #     f.write(html_file)

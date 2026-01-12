@@ -6,19 +6,14 @@ from dataclasses import dataclass
 import json
 
 logger = logging.getLogger("TRAIN_PATHS")
-logger.setLevel(logging.INFO)
+# logger.setLevel(logging.INFO)
 
-handler = logging.FileHandler("train_paths.log", mode="w")
-formatter = logging.Formatter("%(levelname)s -- %(name)s: %(message)s")
-handler.setFormatter(formatter)
+# handler = logging.FileHandler("train_paths.log", mode="w")
+# formatter = logging.Formatter("%(levelname)s -- %(name)s: %(message)s")
+# handler.setFormatter(formatter)
 
-logger.addHandler(handler)
-logger.propagate = False
-
-
-# .train-fill-0{fill:#d50000;}
-# TODO: build dynamically from .train-fill-* styles in STANDARD_STYLE
-# train_colors = ["#d50000", "#2979ff", "#ff6f00", "#fdd835", "#00c853", "#aa00ff", "#00bfa5"]
+# logger.addHandler(handler)
+# logger.propagate = False
 
 # rotation in degrees for each direction
 dir_dict = {
@@ -28,9 +23,185 @@ dir_dict = {
     "w": 270
 }
 
-# def get_train_color(train_id):
-#     train_id = int(train_id)
-#     return train_colors[train_id % len(train_colors)]
+rot_dict = {v: k for k, v in dir_dict.items()}
+
+@dataclass
+class NewTrainState:
+    time_step: int
+    coords: Point = None
+    distance_traveled: int = None
+    signal: str = None
+    # rotation is the incoming rotation
+    rotation: int = None
+    outgoing_rotation: int = None
+    action: str = None
+    status: str = None
+    display: bool = False
+    first_display: bool = False
+    arrival: bool = False
+    # last_display: bool = False
+    incoming_segment: CurveSegment = None
+    outgoing_segment: CurveSegment = None
+    speed: int = None
+    _time_frame: list[int] = None
+    _prior_state: NewTrainState = None
+    _prior_action_state: NewTrainState = None
+    _next_state: NewTrainState = None
+    _next_action_state: NewTrainState = None
+    key_points: list[float] = None
+    relative_key_points: list[float] = None
+
+    def __dict__(self):
+        return {
+            "time_step": self.time_step,
+            "coords": {"x": self.coords.x, "y": self.coords.y},
+            "distance_traveled": self.distance_traveled,
+            "rotation": self.rotation,
+            "action": self.action,
+            "speed": self.speed,
+            "time_frame": self.time_frame,
+            "display": self.display,
+            "first_display": self.first_display,
+            "arrival": self.arrival,
+            "incoming_segment": self.incoming_segment.__str__() if self.incoming_segment else None,
+            "incoming_segment_path": self.incoming_segment.segment_path(cell_size=100) if self.incoming_segment else None,
+            "outgoing_segment": self.outgoing_segment.__str__() if self.outgoing_segment else None,
+            "outgoing_segment_path": self.outgoing_segment.segment_path(cell_size=100) if self.outgoing_segment else None
+        }
+    
+    @property
+    def time_frame(self):
+        return self._time_frame
+    @time_frame.setter
+    def time_frame(self, value):
+        self._time_frame = value
+        if self.action and self.action == 'wait':
+            self.relative_key_points = [0.999, 1.0]
+        self.relative_key_points = [0.0]
+        if self._time_frame and len(self._time_frame) > 1:
+            frame_len = len(self._time_frame)
+            self.relative_key_points.extend([round(i / frame_len, 3) for i in range(1, frame_len)])
+        self.relative_key_points.append(1.0)
+        logger.info(f"Generated relative_key_points for NewTrainState at time step {self.time_step}: {self.relative_key_points}")
+
+    def last_time_step(self):
+        return self.time_frame[-1] if self.time_frame else self.time_step
+
+    @property
+    def x(self):
+        return self.coords.x
+
+    @property
+    def y(self):
+        return self.coords.y
+    
+    @property
+    def prior_state(self):
+        return self._prior_state
+    
+    @prior_state.setter
+    def prior_state(self, value):
+        self._prior_state = value
+        logger.info(f"Setting prior_state at {self.time_step}: {value} for current state: {self}")
+        if value.coords != self.coords:
+            self.distance_traveled = value.distance_traveled + 1
+        else:
+            self.distance_traveled = value.distance_traveled
+        if not value.next_state == self:
+            value.next_state = self
+    
+    @property
+    def next_state(self):
+        return self._next_state
+    
+    @next_state.setter
+    def next_state(self, value):
+        logger.info(f"Setting next_state at {self.time_step}: {value} for current state: {self}")
+        self._next_state = value
+        if not value.prior_state == self:
+            value.prior_state = self
+
+    @property
+    def prior_action_state(self):
+        return self._prior_action_state
+    
+    @prior_action_state.setter
+    def prior_action_state(self, value):
+        logger.info(f"Setting prior_action_state at {self.time_step}: {value} for current state: {self}")
+        self._prior_action_state = value
+        if self.action and self.action != 'wait' and not value.next_action_state == self and not value.time_step == -1:
+            value.outgoing_rotation = self.rotation
+            logger.info(f"\tset outgoing_rotation of action state {value.time_step} to {self.rotation}")
+            value.next_action_state = self
+
+    @property
+    def next_action_state(self):
+        return self._next_action_state
+    
+    @next_action_state.setter
+    def next_action_state(self, value):
+        logger.info(f"Setting next_action_state at {self.time_step}:  {value} for current state: {self}")
+        self._next_action_state = value
+        if self.outgoing_rotation != value.rotation:
+            self.outgoing_rotation = value.rotation
+        logger.info(f"\tset outgoing_rotation of current state {self.time_step} to {value.rotation}")
+
+    
+    def from_step_dict(time_step: int, step_dict: dict, speed: int, time_frame_len=None) -> NewTrainState:
+        logger.info(f"Creating NewTrainState for time step {time_step} from step_dict: {step_dict}")
+        state_dict = step_dict.get("state", step_dict) # in case of initial/end state without 'state' key
+        coords = Point.from_dict(state_dict.get("position", None))
+        action = step_dict.get("action", None)
+        status = step_dict.get("status", None)
+        direction = state_dict.get("direction", None)
+        rotation = dir_dict.get(direction, None)
+        train_state = NewTrainState(time_step=int(time_step), coords=coords, action=action, status=status, rotation=rotation, speed=speed)
+        if action and action != "wait":
+            time_step_int = int(time_step)
+            if not time_frame_len:
+                time_frame_len = speed
+            time_frame = list(range(time_step_int, time_step_int + time_frame_len))
+            logger.info(f"\tAction is '{action}', setting time_frame to {time_frame}")
+        else:
+            time_frame = [int(time_step)]
+        train_state.time_frame = time_frame
+        return train_state
+    
+    def build_segments(self):
+        if self.action is None and not self.arrival:
+            logger.warning(f"self.action: None")
+            logger.info(f"\taction of current state is None, returning without building segments.")
+            return
+        logger.info(f"\n\nBuilding segments for NewTrainState at time {self.time_step}: {self}")
+        current_rotation = self.rotation
+        logger.info(f"Current rotation: {current_rotation}; prior action state: {self.prior_action_state}; next action state: {self.next_action_state}")
+        out_rotation = self.outgoing_rotation if self.outgoing_rotation is not None else current_rotation
+        next_action_state = self.next_action_state
+        logger.info(f"Next action state at time {self.time_step}: {next_action_state}")
+        logger.info(f"time step {self.time_step}, building segments for action: {self.action}, current rotation: {current_rotation}, out rotation: {out_rotation}")
+        curve = CURVES[(current_rotation, out_rotation)]
+        logger.info(f"Display rotation set to: {curve['rotation']}")
+        logger.info(f"self.coords: {self.coords}")
+        self.incoming_segment = curve['incoming'].translate(self.coords)
+        self.outgoing_segment = curve['outgoing'].translate(self.coords)
+        logger.info(f"Built incoming segment: {self.incoming_segment}:\n{self.incoming_segment.segment_path(cell_size=50)}")
+        logger.info(f"Built outgoing segment: {self.outgoing_segment}:\n{self.outgoing_segment.segment_path(cell_size=50)}")
+
+    def calculate_key_points(self, total_distance, time_step=None):
+        if not time_step:
+            time_step = self.time_step
+        # get position in time_frame
+        index = self.time_frame.index(time_step)
+        
+        if total_distance == 0:
+            self.key_point = 0.0
+        else:
+            prior_key = round(self.prior_state.distance_traveled / total_distance, 3) if self.prior_state else 0.0
+            current_key = round(self.distance_traveled / total_distance, 3)
+            if prior_key == current_key:
+                current_key += 0.001
+            self.key_points = [prior_key, current_key]
+        logger.info(f"Calculated key_point for NewTrainState at time {self.time_step}: {self.key_point} (distance_traveled: {self.distance_traveled}, total_distance: {total_distance})")
 
 @dataclass
 class TrainState:
@@ -221,6 +392,25 @@ class TrainState:
 
 @dataclass
 class SpeedState(TrainState):
+    time_step: int
+    coords: Point
+    signal: str = None
+    rotation: int = None
+    outgoing_rotation: int = None
+    action: str = None
+    display: bool = False
+    first_display: bool = False
+    arrival: bool = False
+    # last_display: bool = False
+    _display_rotation: int = None
+    # path segment from last center to edge of cell
+    incoming_segment: CurveSegment = None
+    # path segment from edge of cell to its center
+    outgoing_segment: CurveSegment = None
+    _prior_state: TrainState = None
+    _prior_action_state: TrainState = None
+    _next_state: TrainState = None
+    _next_action_state: TrainState = None
     speed: int = 0
     _time_frame: list[int] = None
     key_points: list[float] = None
@@ -350,6 +540,12 @@ class SpeedState(TrainState):
             "keyTimes": "0;1"
         }
 
+MOVE_OFFSETS = {
+    "n": Point(0, -1),
+    "e": Point(1, 0),
+    "s": Point(0, 1),
+    "w": Point(-1, 0)
+}
 
 class TrainPath:
     def __init__(self, train_id: int, train_info: dict, time_frame: int):
@@ -357,190 +553,160 @@ class TrainPath:
         self.speed = train_info['speed']
         self.train_info = train_info
         self.time_frame = time_frame
-        self.states: dict[int, TrainState] = {}
-        self.covered_time_steps: dict[int, int] = {}
-        self.prior_action_states: dict[int, TrainState] = {}
-        self.next_action_states: dict[int, TrainState] = {}
+        self.coords: list[Point] = []
+        self.segments: list[CurveSegment] = []
+        self.keypoints: dict[int, float] = {}
+        self.total_distance: float = 0.0
+        self.distance_traveled: dict[int, float] = {}
         logger.info(f"Initializing TrainPath for train {train_id} with time frame {time_frame}")
-        self.parse_states()
+        self.build_path()
+        self.build_segments()
+        self.calculate_keypoints()
 
-    def extend_covered_time_steps(self, time_steps: list[int]):
-        t_0 = time_steps[0]
-        for t in time_steps:
-            self.covered_time_steps[t] = t_0
-
-    def add_state(self, state: TrainState):
-        self.states[state.time_step] = state
-        self.extend_covered_time_steps(state.time_frame)
-
-    def get_state(self, time_step: int) -> TrainState:
-        state_n = self.covered_time_steps.get(time_step, None)
-        if state_n in self.states:
-            return self.states[state_n]
-        return None
-
-    def parse_states(self):
+    def get_direction(self, coords: Point, next_coords: Point) -> str:
+        if next_coords.x > coords.x:
+            return "e"
+        elif next_coords.x < coords.x:
+            return "w"
+        elif next_coords.y > coords.y:
+            return "s"
+        elif next_coords.y < coords.y:
+            return "n"
+        else:
+            return None
+        
+    def get_rotation(self, coords: Point, next_coords: Point) -> int:
+        direction = self.get_direction(coords, next_coords)
+        return dir_dict.get(direction, None)
+        
+    def build_path(self):
         logger.info(f"Parsing states for TrainPath {self.train_id}")
-        
-        first_action_state = None
-        prior_state = None
-        last_rotation = None
-        # first pass: ignore 'wait' actions (irrelevant for path building)
+
+        distance_traveled = {}
         time_step = 0
+        speed = int(self.train_info['speed'])
         while time_step <= self.time_frame:
-            current_state = self.train_state_at(time_step)
-            if current_state.action == "wait":
-                time_step += 1
-                continue
-            if current_state.action is None:
-                last_rotation = current_state.rotation
-                break
-            if not prior_state:
-                first_action_state = current_state
-                first_action_state.time_frame = [time_step]
-                prior_state = self.train_state_at(time_step - 1)
-                logger.info(f"Initial prior state at time step {time_step-1}: {prior_state}")
-            current_state.display = True
-            logger.info(f"Time step {time_step}: {current_state}")
-            current_state.prior_action_state = prior_state
-            self.add_state(current_state)
-            prior_state = current_state
-            # skip time_steps already covered by time_frame of current action
-            time_step = max(current_state.last_time_step() + 1, time_step + 1)
-        first_action_state.display = False # "move_forward" onto start position
-        last_action_state = self.train_state_at(self.time_frame)
-        last_action_state.rotation = last_rotation
-        # treat end of line as last action state
-        last_action_state.prior_action_state = prior_state
-        last_action_state.display = False
-        self.add_state(last_action_state)
-        prior_state.next_action_state = last_action_state
-
-
-        # second pass: build segments for action states
-        for time_step, state in self.states.items():
-            state.build_segments()
-        
-        arrived = False
-        initial = True
-        prior_action_state = None
-        # third pass: add 'wait' actions, set display flag
-        for time_step in range(self.time_frame + 1):
-            if time_step in self.states:
-                logger.info(f"Time step {time_step}")
-                prior_action_state = self.states[time_step]
-            if time_step in self.covered_time_steps:
-                logger.info(f"Time step {time_step} already covered by action states, skipping.")
-            else:
-                current_state = self.train_state_at(time_step)
-                logger.info(f"Time step {time_step} is a '{current_state.action}' action, initializing state {current_state}")
-                current_state.prior_action_state = prior_action_state
-                if prior_action_state:
-                    current_state.next_action_state = prior_action_state.next_action_state
+            coords = self.coords_at(time_step)
+            if coords:
+                if not self.coords:
+                    self.coords.append(coords)
+                    distance_traveled[time_step] = 0
+                elif coords != self.coords[-1]:
+                    self.coords.append(coords)
+                    distance_traveled[time_step] = distance_traveled[time_step - 1] + 1 / speed
                 else:
-                    current_state.next_action_state = first_action_state
-                if current_state.action == "wait":
-                    current_state.signal = "red"
-                    if time_step + 1 in self.states and self.states[time_step + 1].action != "wait":
-                        current_state.signal = "green"
-                    # copy curve from next action state
-                    logger.info(f"\tCopying curve from next action state for wait at time step {time_step}:\n{current_state.next_action_state}")
-                    current_state.copy_curve_from(current_state.next_action_state)
-                    current_state.display = True
-                elif current_state.action is None:
-                    if not arrived:
-                        last_action_state.rotation = current_state.rotation
-                        current_state.display = True
-                        arrived = True
-                        current_state.arrival = True
-                        current_state.next_action_state = last_action_state
-                        current_state.build_segments()
-                        # after arrival, we stop displaying the train
+                    action = self.action_at(time_step - 1)
+                    if action == "wait":
+                        # if prior action was 'wait', do not increment distance
+                        distance_traveled[time_step] = distance_traveled[time_step - 1]
                     else:
-                        # TODO: fade-out after arrival
-                        # if self.states[time_step - 1].arrival:
-                        #     current_state.display = True
-                        #     current_state.last_display = True
-                        #     current_state.next_action_state = last_action_state
-                        #     current_state.build_segments()
-                        # else:
-                        current_state.copy_curve_from(prior_action_state)
-                else:
-                    logger.warning(f"Unexpected action '{current_state.action}' at time step {time_step} in third pass.")
-                self.add_state(current_state)
-            if time_step > 0 and time_step in self.states:
-                self.states[time_step].prior_state = self.get_state(time_step - 1)
-        
-        initial = True
-        # find first display time step
-        for time_step in range(self.time_frame + 1):
-            if time_step not in self.states:
-                continue
-            state = self.states[time_step]
-            if initial and state.action and state.action == "wait":
-                state.display = False
-            if state.action and state.action != "wait":
-                initial = False
-            if state.display:
-                state.first_display = True
-                logger.info(f"First display state for train {self.train_id} is at time step {time_step}: {state}")
-                break
+                        # otherwise, we started moving again, but coords change in the next time step
+                        distance_traveled[time_step] = distance_traveled[time_step - 1] + 1 / speed
+            time_step += 1
 
-    def train_state_at(self, time_step: int, time_frame_len=None) -> SpeedState:
+        self.distance_traveled = distance_traveled
+        self.total_distance = max(distance_traveled.values()) if distance_traveled else 0.0
+        print(f"Total distance traveled for train {self.train_id}: {self.total_distance}")
+
+    def build_segments(self):
+        start_rotation = dir_dict.get(self.train_info['start']['direction'])
+        for i in range(len(self.coords)):
+            if i == 0:
+                curve = CURVES[(start_rotation, start_rotation)]
+                self.segments.append(curve['outgoing'].translate(self.coords[i]))
+            elif i == len(self.coords) - 1:
+                in_direction = self.get_rotation(self.coords[i-1], self.coords[i])
+                out_direction = in_direction
+                curve = CURVES[(in_direction, out_direction)]
+                self.segments.append(curve['incoming'].translate(self.coords[i]))
+                self.segments.append(curve['outgoing'].translate(self.coords[i]))
+                # add last coord, which is not calculated by the toolkit
+                last_coord = self.coords[i] + MOVE_OFFSETS[rot_dict[out_direction]]
+                curve = CURVES[(out_direction, out_direction)]
+                self.segments.append(curve['incoming'].translate(last_coord))
+            else:
+                in_direction = self.get_rotation(self.coords[i-1], self.coords[i])
+                out_direction = self.get_rotation(self.coords[i], self.coords[i+1])
+                curve = CURVES[(in_direction, out_direction)]
+                self.segments.append(curve['incoming'].translate(self.coords[i]))
+                self.segments.append(curve['outgoing'].translate(self.coords[i]))
+         
+    def calculate_keypoints(self):
+        logger.info(f"Calculating keypoints for TrainPath {self.train_id}")
+        last_keypoint = 0.0
+        for timestep in range(self.time_frame + 1):
+            if timestep not in self.distance_traveled:
+                self.keypoints[timestep] = last_keypoint
+            else:
+                distance = self.distance_traveled[timestep]
+                keypoint = round(distance / self.total_distance, 10) if self.total_distance > 0 else 0.0
+                self.keypoints[timestep] = keypoint
+                last_keypoint = keypoint
+    
+    def display_info(self, timestep: int) -> float:
+        kp_0 = self.keypoints.get(timestep-1, None)
+        kp_1 = self.keypoints.get(timestep, None)
+        opacity = 1.0
+        if kp_0 == kp_1:
+            if kp_0 == 0.0 or kp_0 == 1.0:
+                opacity = 0.0
+            if kp_1 == 1.0:
+                kp_0 -= 0.000001
+            else:
+                kp_1 += 0.000001
+        action = self.action_at(timestep)
+        status = self.status_at(timestep)
+        position = self.coords_at(timestep)
+        signal = None
+        if action == "wait":
+            signal = "red"
+            if self.action_at(timestep + 1) != "wait":
+                signal = "green" 
+        return {
+            "action": action,
+            "status": status,
+            "position": f"{position.x},{position.y}" if position else None,
+            "signal": signal,
+            # TODO: make opacity fade in/out
+            "opacity": [opacity, opacity],
+            "keyPoints": f"{kp_0};{kp_1}",
+            # "keyPoints": f"0;1",
+            "keyTimes": "0;1"
+        }
+    
+    def get_display_states(self) -> dict[int, dict]:
+        display_states = {}
+        for timestep in range(self.time_frame + 1):
+            display_states[timestep] = self.display_info(timestep)
+        return display_states
+
+    def coords_at(self, time_step: int) -> Point:
         time_step = str(time_step)
         if time_step in self.train_info['path']:
             step_dict = self.train_info['path'][time_step]
+            coords = Point.from_dict(step_dict['position'])
+            return coords
         else:
-            # get start time from self.train_info['start']
-            start_time = int(self.train_info['start']['min_start'])
-            if int(time_step) <= start_time:
-                step_dict = self.train_info['start']
-            else:
-                # get last element from self.train_info['path']
-                last_time_step = max(int(t) for t in self.train_info['path'].keys())
-                step_dict = self.train_info['path'][str(last_time_step)]
-            step_dict['action'] = self.train_info['path'].get(time_step, {}).get('action', None)
-        if step_dict['position'] is None:
-            logger.warning(f"Position is None for train {self.train_id} at time step {time_step}, setting to start position.")
-            step_dict['position'] = self.train_info['start']['position']
-        return SpeedState.from_step_dict(time_step=time_step, step_dict=step_dict, speed=self.speed, time_frame_len=time_frame_len)
-
-    def get_display_states(self, cell_size):
-        display_states = {}
-        train_states = {}
-        for time_step in range(self.time_frame + 1):
-            state = self.get_state(time_step)
-            if not state:
-                logger.warning(f"No state found for time step {time_step} in get_display_states.")
-                continue
-            train_states[time_step] = state.__dict__()
-            opacity = [0.0, 0.0]
-            if state.first_display:
-                opacity = [0.0, 1.0]
-            # elif state.last_display:
-            #     opacity = [1.0, 0.3]
-            elif state.display:
-                opacity = [1.0, 1.0]
-            display_states[time_step] = state.motion_path(cell_size, time_step)
-            display_states[time_step].update({
-                "action": state.action,
-                "position": f"[{state.x}, {state.y}]",
-                "opacity": opacity,
-                "signal": state.signal
-            })
-            # # make dir "train_paths" if it doesn't exist
-            # import os
-            # if not os.path.exists("train_paths"):
-            #     os.makedirs("train_paths")
-            # with open(f"train_paths/train_{self.train_id}_states.json", "w") as f:
-            #     json.dump(train_states, f, indent=4)
-        return display_states
+            return None
+        
+    def action_at(self, time_step: int) -> str:
+        time_step = str(time_step)
+        if time_step in self.train_info['path']:
+            step_dict = self.train_info['path'][time_step]
+            return step_dict.get('action', None)
+        else:
+            return None
+        
+    def status_at(self, time_step: int) -> str:
+        time_step = str(time_step)
+        if time_step in self.train_info['path']:
+            step_dict = self.train_info['path'][time_step]
+            return step_dict.get('status', None)
+        else:
+            return None
 
     def get_path_string(self, cell_size):
-        path_string = ""
-        for _, state in self.states.items():
-            if state.action == "wait": # or state.action is None:
-                continue
-            path_string += state.segment_path(cell_size)
-        path_string = "M" + path_string[1:]  # ensure path starts with 'M'
+        path_string = self.segments[0].standalone_path(cell_size)
+        for segment in self.segments[1:]:
+            path_string += segment.segment_path(cell_size)
         return path_string

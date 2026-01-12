@@ -85,7 +85,7 @@ state(ID, C, D, t) :-
     action(train(ID), wait, t-1).
 
 % if the train reaches its destination, mark it as arrived
-arrived(ID, t) :- state(ID, C, D, t), end(ID, C, _).
+arrived(ID, t) :- state(ID, C, _, t), end(ID, C, _).
 
 % ---------COLLISION AVOIDANCE---------
 % occupied(C, ID, T): cell C is occupied by train ID at timestep T

@@ -41,6 +41,7 @@ def build_action_list(models):
             agent, timestep = func.arguments[0], func.arguments[2]
             agent_num = agent.arguments[0].number
             action_list.append((agent_num,action,timestep.number))
+            print(f"Action found: agent {agent_num}, action {action}, timestep {timestep.number}")
 
     sorted_list = sorted(action_list, key=lambda x: (x[2], x[0]))
     # dump to temporary file for debugging

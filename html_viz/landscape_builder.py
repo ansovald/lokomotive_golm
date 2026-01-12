@@ -267,11 +267,12 @@ class LandscapeBuilder:
             train_group = G(id=f"train_{train_id}_main", class_name="train")
             train_info = self.trains[train_id]
             # build train path
+            print(f"INFO -- TRAIN_PATHS: Initializing TrainPath for train {train_id} with time frame {self.time_frame}")
             train_path_builder = TrainPath(train_id, train_info, self.time_frame)
             path_string = train_path_builder.get_path_string(cell_size=self.cell_size)
-            self.display_states[train_id] = train_path_builder.get_display_states(cell_size=self.cell_size)
-            if path_string:
-                self.train_paths[train_id].d = path_string
+            # self.display_states[train_id] = train_path_builder.get_display_states(cell_size=self.cell_size)
+            self.display_states[train_id] = train_path_builder.get_display_states()
+            self.train_paths[train_id].d = path_string
             
             # Create train legend
             train_group.append(self.create_train_legend(train_id, speed=train_info.get("speed", 0)))
@@ -301,6 +302,7 @@ class LandscapeBuilder:
             train_rotation_group.append(train_render_group)
             train_rotation_group.pos = Vector(-self.cell_size/2, -self.cell_size/2)
             train_rotation_group.__setattr__("transform-origin", "center")
+            # TODO: set initial rotation based on first movement direction?
             train_rotation_group.angle = 90
 
             transformed_train_group = G(id=f"train_{train_id}_transformed_group", class_name="train_transformed")
@@ -311,8 +313,8 @@ class LandscapeBuilder:
             path_animation = ET.Element("animateMotion", {
                 "id": f"train_{train_id}_animate",
                 "dur": "1s",    # to be set in JavaScript
-                "repeatCount": "1",
-                # "repeatCount": "indefinite", # for debugging
+                # "repeatCount": "1",
+                "repeatCount": "indefinite", # for debugging
                 "fill": "freeze",
                 "rotate": "auto",
                 "path": "",
@@ -320,6 +322,7 @@ class LandscapeBuilder:
                 "keyTimes": "0;1",
                 "calcMode": "linear"
             })
+            path_animation.set("path", path_string)
             train_animation_group.append(path_animation)
             train_animation_group.append(transformed_train_group)
 

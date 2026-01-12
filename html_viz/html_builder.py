@@ -49,7 +49,7 @@ def generate_html(env_name, landscape, milliseconds_per_step=500):
         path_step_code += f"  train_{train_id}_opacity_animation.setAttribute('to', state_{train_id}.opacity[1]);\n"
         # TODO: is there a way to turn animation off if 'playing' is false?
         # path_step_code += f"  train_{train_id}_animate.setAttribute('dur', '2000ms');\n"
-        path_step_code += f"  train_{train_id}_animate.setAttribute('path', `${{state_{train_id}.motion_path}}`);\n"
+        # path_step_code += f"  train_{train_id}_animate.setAttribute('path', `${{state_{train_id}.motion_path}}`);\n"
         path_step_code += f"  train_{train_id}_animate.beginElement();\n"
         path_step_code += f"  train_{train_id}_action_label.textContent = `${{state_{train_id}.action}}`;\n"
         path_step_code += f"  train_{train_id}_position_label.textContent = `${{state_{train_id}.position}}`;\n"

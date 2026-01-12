@@ -92,9 +92,9 @@ class IncrementalFlatlandPlan(Application):
             #     print(atom.symbol)
             # for atom in symbolic_atoms.by_signature("arrived", 2):
             #     print(atom.symbol)
-            for atom in symbolic_atoms:
-                if atom.symbol.name in ["action", "state", "speed_action", "arrived"]:
-                    logger.info(f"Time step {step} -- Atom: {atom.literal} Symbol: {atom.symbol}")
+            # for atom in symbolic_atoms:
+            #     if atom.symbol.name in ["action", "state", "speed_action", "arrived"]:
+            #         logger.info(f"Time step {step} -- Atom: {atom.literal} Symbol: {atom.symbol}")
             handle = ctl.solve(yield_=True)
             for model in handle:
                 models.append(model.symbols(atoms=True))

@@ -39,6 +39,11 @@ class Point:
     
     def rel_string(self):
         return f"{round(self.x, 5)} {round(self.y, 5)}"
+    
+    def from_dict(point_dict: dict) -> Point:
+        if point_dict is None:
+            return None
+        return Point(point_dict.get("x", None), point_dict.get("y", None))
 
 ROTATION_OFFSETS = {
     0: Point(0, -1),
