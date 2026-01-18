@@ -1,22 +1,35 @@
+/* define base colors: background, color, background_1, color_1 */
+
+:root {
+  --background: #f0f0f0;
+  --color: #333333;
+  --background_1: #e0f7e9;
+  --color_1: #222222;
+  --light_control_primary: #c7c7c7;
+  --light_control_secondary: #6c6c6c;
+}
+
 body {
   font-family: system-ui, -apple-system, sans-serif;
   margin-block: 60px;
   margin-inline: 0px;
-  background-color: #f0f0f0;
+  background-color: var(--background);
 }
 
 svg {
-  border: 1px solid #ddd;
   display: block;
   margin: auto;
+}
+
+.header, .footer {
+  background: var(--color);
+  color: var(--background);
 }
 
 .header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #555;
-  color: #e0f7e9;
 }
 h2 {
   text-align: center;
@@ -25,13 +38,67 @@ h2 {
 
 .footer {
   position: fixed;
+  padding-block: 5px 5px;
   bottom: 0;
   width: 100%;
-  background: #555;
-  color: #e0f7e9;
 }
 
-.background{fill:#e0f7e9;}
+.footer-svg-foreground {
+  fill: var(--background);
+}
+
+.settings_panel {
+  position: fixed;
+  top: 42px;
+  left: 10px;
+  padding: 10px;
+  font-size: 9px;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings_widget {
+  padding: 6px;
+  margin: 6px;
+  font-family: monospace;
+  border-radius: 6px;
+  background-color: var(--background_1);
+}
+
+.train_info {
+  position: fixed;
+  top: 42px;
+  right: 10px;
+  padding: 10px;
+  font-size: 9px;
+  display: flex;
+  flex-direction: column;
+}
+
+.train_info_entry {
+  color: black;
+  min-width: 170px;
+  padding: 6px;
+  margin: 6px;
+  border-radius: 6px;
+  font-family: monospace;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.train_info_entry:hover {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+.train_info_header {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+{{TRAIN_INFO_STYLE}}
+
+.background{fill:var(--background)}
 .no-fill{fill:none;}
 .railroad-tie{fill:#978679;}
 .railroad{fill:#3D3D3D;}
@@ -65,25 +132,6 @@ h2 {
 .train_rotation {
   transform-box: fill-box;
 }
-.button:hover rect {
-  stroke-opacity: .3;
-  fill-opacity: .15;
-  transition: .2s;
-}
-.button:hover path {
-  fill-opacity: .5;
-  stroke-opacity: .5;
-  transition: .2s;
-}
-.active rect, .button:active rect {
-  stroke-opacity: .5;
-  fill-opacity: 0.1;
-  transition: .2s;
-}
-.active path, .button:active path {
-  fill-opacity: .5;
-  transition: .2s;
-}
 
 .train_signal {
   opacity: 0;
@@ -102,3 +150,63 @@ h2 {
 }
 
 {{TRAIN_HOVER_STYLE}}
+
+
+.slider-path {
+  stroke: var(--light_control_secondary);
+}
+
+.slider-handle {
+  cursor: pointer;
+  fill: var(--background);
+  stroke: var(--light_control_primary);
+}
+
+
+.button rect {
+  fill: var(--light_control_secondary);
+  fill-opacity: 0.9;
+  stroke: var(--light_control_primary);
+  stroke-width: 1;
+  stroke-opacity: 0;
+  cursor: pointer;
+}
+
+.button rect {
+  fill: var(--light_control_secondary);
+  fill-opacity: 0.9;
+  stroke: var(--light_control_primary);
+  stroke-width: 1;
+  stroke-opacity: 0;
+  cursor: pointer;
+}
+
+.fill-button path {
+  fill: var(--background);
+  fill-opacity: 0.8;
+  cursor: pointer;
+}
+
+.stroke-button path {
+  stroke: var(--background);
+  stroke-opacity: 0.8;
+  fill: none;
+  cursor: pointer;
+}
+
+.button:hover rect {
+  stroke-opacity: .3;
+  fill-opacity: .15;
+  transition: .2s;
+}
+
+.active rect, .button:active rect {
+  stroke-opacity: .9;
+  fill-opacity: 0.1;
+  transition: .2s;
+}
+.active path, .button:active path {
+  fill-opacity: .9;
+  stroke-opacity: .9;
+  transition: .2s;
+}

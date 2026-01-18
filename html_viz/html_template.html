@@ -10,11 +10,24 @@
   <h2>{{HEADING}}</h2>
 </div>
 
+<div class="main">
 <!-- SVG -->
 {{INLINE_SVG}}
+</div>
+
+<div class="settings_panel">
+  <div id="ms_per_step_control" class="settings_widget">
+  <div>Milliseconds per Step:</div>
+  <input type="number" id="ms_per_step_input" value="{{MILLISECONDS_PER_STEP}}" min="10" max="10000" step="10">
+  </div>
+</div>
+
+<div class="train_info">
+{{TRAIN_INFOS}}
+</div>
 
 <div class="footer">
-  <h2>Placeholder</h2>
+{{CONTROL_SVG}}
 </div>
 
 <script>
@@ -41,6 +54,18 @@ const sliderBackground = document.getElementById("slider_background");
 const sliderRect = sliderBackground.getBoundingClientRect();
 const sliderWidth = sliderRect.width;
 const sliderOffset = {{SLIDER_OFFSET}};
+let ms_per_step = {{MILLISECONDS_PER_STEP}};
+
+const msPerStepInput = document.getElementById("ms_per_step_input");
+msPerStepInput.onchange = e => {
+  const value = parseInt(msPerStepInput.value);
+  if (!isNaN(value) && value >= 10 && value <= 10000) {
+    ms_per_step = value;
+  }
+  pause();
+  play();
+  console.log(`ms_per_step set to ${ms_per_step}`);
+};
 
 // Extract and sort steps
 {{PATH_DEFS}}
@@ -59,7 +84,7 @@ function renderStep(step) {
 {{PATH_STEP}}
   const percent = step / MAX_STEP;
   const handleX = sliderRect.left + percent * sliderRect.width;
-  console.log(`step: ${step}, max: ${MAX_STEP}, percent: ${percent}, handleX: ${handleX}, slider width: ${sliderRect.width}`);
+  // console.log(`step: ${step}, max: ${MAX_STEP}, percent: ${percent}, handleX: ${handleX}, slider width: ${sliderRect.width}`);
   sliderHandle.setAttribute("cx", sliderOffset + handleX - sliderRect.left);
 }
 
@@ -80,7 +105,7 @@ function play() {
     if (currentStep > MAX_STEP) {
       pause();
     }
-  }, {{MILLISECONDS_PER_STEP}});
+  }, ms_per_step);
 }
 
 function pause() {

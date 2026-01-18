@@ -37,22 +37,22 @@ class LandscapeBuilder:
         self.prepare_dynamic_styles(os.path.join(os.path.dirname(os.path.abspath(__file__)), style_file))
         self.compute_dimensions(self.grid)
         self.canvas = self.build_landscape()
+        self.control_canvas = self.build_controls()
         self.train_path_group = G(id="train_paths", class_name="train_paths")
         self.canvas.append(self.train_path_group)
         self.save_svg()
         self.train_paths = self.prepare_train_paths()
         self.display_states = {}
-        self.legend = []
+        # self.legend = []
         self.place_trains()
-        self.align_legend()
-        self.build_controls()
+        # self.align_legend()
 
     def prepare_dynamic_styles(self, style_path):
         # pre-computes all elements that depend on cell size
         self.font_size = self.cell_size / 2
         self.font_size_hover = f"{1.2 * self.font_size}px"
         self.train_path_width = self.cell_size / 30
-        self.train_path_width_hover = f"{3 * self.train_path_width}px"
+        self.train_path_width_hover = f"{4 * self.train_path_width}px"
 
         # open style_path and replace font-size placeholders
         with open(style_path, "r") as f:
@@ -62,21 +62,39 @@ class LandscapeBuilder:
 
         # generate train fill colors
         train_fill_colors = ""
+        train_info_style = ""
         train_fill_template = ".train-fill-TRAIN_ID{fill: TRAIN_COLOR;}"
+        train_info_template = ".train_TRAIN_ID_background { background-color: TRAIN_COLOR; }"
         for train_id in self.trains.keys():
             train_color = get_train_color(train_id)
             train_fill_colors += train_fill_template.replace("TRAIN_ID", str(train_id)).replace("TRAIN_COLOR", train_color) + "\n"
+            train_info_style += train_info_template.replace("TRAIN_ID", str(train_id)).replace("TRAIN_COLOR", train_color) + "\n"
+        style_content = style_content.replace("{{TRAIN_INFO_STYLE}}", train_info_style)
         style_content = style_content.replace("{{TRAIN_FILL_COLORS}}", train_fill_colors)
 
         self.standard_style = style_content
 
 
         train_hover_style = ""
-        train_hover_template = f"""svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {{
+        train_hover_template = f"""body:has(#train_TRAIN_ID_info:hover) #train_TRAIN_ID_path {{
   stroke-width: {self.train_path_width_hover};
   opacity: 1.0;
   transition: 0.2s;
-}}"""
+}}
+body:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_info {{
+  opacity: 1.0;
+  transition: 0.2s;
+}}
+svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {{
+   stroke-width: {self.train_path_width_hover};
+   opacity: 1.0;
+   transition: 0.2s;
+ }}"""
+#         train_hover_template = f"""svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {{
+#   stroke-width: {self.train_path_width_hover};
+#   opacity: 1.0;
+#   transition: 0.2s;
+# }}"""
         for train_id in self.trains.keys():
             train_hover_style += train_hover_template.replace("TRAIN_ID", str(train_id)) + "\n"
         self.standard_style = self.standard_style.replace("{{TRAIN_HOVER_STYLE}}", train_hover_style)
@@ -89,6 +107,9 @@ class LandscapeBuilder:
     
     def svg_string(self):
         return self.canvas.to_string()
+    
+    def control_svg_string(self):
+        return self.control_canvas.to_string()
 
     def compute_dimensions(self, grid):
         max_x = 0
@@ -102,30 +123,15 @@ class LandscapeBuilder:
         self.grid_width = max_x
         self.grid_height = max_y
         
-        self.legend_base_size = 3
-        # each legend element is 3 cells high
-        self.legend_columns = 1
-        if len(self.trains) * self.legend_base_size > self.grid_height:
-            self.legend_columns = (len(self.trains) * self.legend_base_size) // self.grid_height
-        self.legend_width = self.legend_columns * self.legend_base_size
+        # self.legend_base_size = 3
+        # # each legend element is 3 cells high
+        # self.legend_columns = 1
+        # if len(self.trains) * self.legend_base_size > self.grid_height:
+        #     self.legend_columns = (len(self.trains) * self.legend_base_size) // self.grid_height
+        # self.legend_width = self.legend_columns * self.legend_base_size
 
-        self.buttons_width = 6
-        self.width = self.grid_width + 2 + self.legend_width
-        self.slider_x = 1
-        if self.width < 12:
-            self.control_height = 3
-            self.buttons_x = (self.width - self.buttons_width) / 2
-            self.buttons_y = self.grid_height + 2
-            self.slider_y = self.buttons_y + 1
-            self.slider_width = self.width - 2
-        else:
-            # slider and buttons on one row
-            self.control_height = 2
-            self.buttons_x = self.width - 7
-            self.buttons_y = self.grid_height + 3
-            self.slider_y = self.buttons_y - 1
-            self.slider_width = self.width - 9
-        self.height = self.grid_height + 2 + self.control_height
+        self.height = self.grid_height + 2
+        self.width = self.grid_width + 2 # + self.legend_width
 
     def get_abs_coord(self, coord, grid_offset=True):
         offset = 1 if grid_offset else 0
@@ -274,8 +280,8 @@ class LandscapeBuilder:
             self.display_states[train_id] = train_path_builder.get_display_states()
             self.train_paths[train_id].d = path_string
             
-            # Create train legend
-            train_group.append(self.create_train_legend(train_id, speed=train_info.get("speed", 0)))
+            # # Create train legend
+            # train_group.append(self.create_train_legend(train_id, speed=train_info.get("speed", 0)))
 
             # Prepare train SVG
             train_render_group = get_train_svg(train_id, self.cell_size, scale=240)
@@ -343,111 +349,122 @@ class LandscapeBuilder:
 
             self.canvas.append(train_group)
 
-    def create_train_legend(self, train_id, speed=0):
-        train_legend = G(id=f"train_{train_id}_legend", class_name="train_legend")
-        self.legend.append(train_legend)
-        lines = 4
-        margin = self.cell_size * 0.1
-        width = self.cell_size * 3 - margin * 2
-        text_x = width / 2
-        line_height = self.cell_size * 2.5 / lines
-        # baseline of first text line
-        text_y = margin + line_height * 0.5
-        # add rect behind the label as first child for easier selection
-        background_rect = Rect(
-            pos=Vector(0.5, 0.5),
-            width=width,
-            height=width,
-            rx=self.cell_size/5, ry=self.cell_size/5,
-            fill=get_train_color(train_id),
-            fill_opacity=0.2,
-            id=f"train_{train_id}_legend_background",
-            class_name="train_legend_background"
-        )
-        train_legend.append(background_rect)
-        train_label = Text(
-            initial_text=f"Train {train_id}",
-            pos=Vector(text_x, text_y),
-            font_family="sans-serif",
-            font_size=self.font_size,
-            font_weight=700,
-            fill="#000000",
-            dominant_baseline="central",
-            text_anchor="middle",
-            id=f"train_{train_id}_label"
-            )
-        # second label beneath first to display action state
-        action_label = Text(
-            initial_text="wait",
-            pos=Vector(text_x, text_y + line_height),
-            font_family="sans-serif",
-            font_size=self.font_size * 0.7,
-            font_weight=700,
-            fill="#000000",
-            dominant_baseline="central",
-            text_anchor="middle",
-            id=f"train_{train_id}_action_label"
-            )
-        # third label: position
-        position_label = Text(
-            initial_text="(0,0)",
-            pos=Vector(text_x, text_y + line_height * 2),
-            font_family="monospace",
-            font_size=self.font_size * 0.7,
-            font_weight=700,
-            fill="#000000",
-            dominant_baseline="central",
-            text_anchor="middle",
-            id=f"train_{train_id}_position_label"
-            )
-        # fourth label: speed
-        speed_label = Text(
-            initial_text=f"speed: {speed}",
-            pos=Vector(text_x, text_y + line_height * 3),
-            font_family="monospace",
-            font_size=self.font_size * 0.7,
-            font_weight=700,
-            fill="#000000",
-            dominant_baseline="central",
-            text_anchor="middle",
-            id=f"train_{train_id}_speed_label"
-        )
-        train_legend.append(position_label)
-        train_legend.append(action_label)
-        train_legend.append(train_label)
-        train_legend.append(speed_label)
-        return train_legend
+    # def create_train_legend(self, train_id, speed=0):
+    #     train_legend = G(id=f"train_{train_id}_legend", class_name="train_legend")
+    #     self.legend.append(train_legend)
+    #     lines = 4
+    #     margin = self.cell_size * 0.1
+    #     width = self.cell_size * 3 - margin * 2
+    #     text_x = width / 2
+    #     line_height = self.cell_size * 2.5 / lines
+    #     # baseline of first text line
+    #     text_y = margin + line_height * 0.5
+    #     # add rect behind the label as first child for easier selection
+    #     background_rect = Rect(
+    #         pos=Vector(0.5, 0.5),
+    #         width=width,
+    #         height=width,
+    #         rx=self.cell_size/5, ry=self.cell_size/5,
+    #         fill=get_train_color(train_id),
+    #         fill_opacity=0.2,
+    #         id=f"train_{train_id}_legend_background",
+    #         class_name="train_legend_background"
+    #     )
+    #     train_legend.append(background_rect)
+    #     train_label = Text(
+    #         initial_text=f"Train {train_id}",
+    #         pos=Vector(text_x, text_y),
+    #         font_family="sans-serif",
+    #         font_size=self.font_size,
+    #         font_weight=700,
+    #         fill="#000000",
+    #         dominant_baseline="central",
+    #         text_anchor="middle",
+    #         id=f"train_{train_id}_label"
+    #         )
+    #     # second label beneath first to display action state
+    #     action_label = Text(
+    #         initial_text="wait",
+    #         pos=Vector(text_x, text_y + line_height),
+    #         font_family="sans-serif",
+    #         font_size=self.font_size * 0.7,
+    #         font_weight=700,
+    #         fill="#000000",
+    #         dominant_baseline="central",
+    #         text_anchor="middle",
+    #         id=f"train_{train_id}_action_label"
+    #         )
+    #     # third label: position
+    #     position_label = Text(
+    #         initial_text="(0,0)",
+    #         pos=Vector(text_x, text_y + line_height * 2),
+    #         font_family="monospace",
+    #         font_size=self.font_size * 0.7,
+    #         font_weight=700,
+    #         fill="#000000",
+    #         dominant_baseline="central",
+    #         text_anchor="middle",
+    #         id=f"train_{train_id}_position_label"
+    #         )
+    #     # fourth label: speed
+    #     speed_label = Text(
+    #         initial_text=f"speed: {speed}",
+    #         pos=Vector(text_x, text_y + line_height * 3),
+    #         font_family="monospace",
+    #         font_size=self.font_size * 0.7,
+    #         font_weight=700,
+    #         fill="#000000",
+    #         dominant_baseline="central",
+    #         text_anchor="middle",
+    #         id=f"train_{train_id}_speed_label"
+    #     )
+    #     train_legend.append(position_label)
+    #     train_legend.append(action_label)
+    #     train_legend.append(train_label)
+    #     train_legend.append(speed_label)
+    #     return train_legend
     
-    def align_legend(self):
-        # place legend according to self.legend_columns, centered vertically
-        elements_per_column = (len(self.trains) + self.legend_columns - 1) // self.legend_columns
-        column_height = elements_per_column * self.legend_base_size
+    # def align_legend(self):
+    #     # place legend according to self.legend_columns, centered vertically
+    #     elements_per_column = (len(self.trains) + self.legend_columns - 1) // self.legend_columns
+    #     column_height = elements_per_column * self.legend_base_size
 
-        for i, train_legend in enumerate(self.legend):
-            column = i // elements_per_column
-            row = i % elements_per_column
-            x = self.get_abs_coord(self.grid_width + 2 + column * self.legend_base_size, grid_offset=False)
-            y = ((self.grid_height + 2 - column_height) / 2 + row * self.legend_base_size) * self.cell_size
-            train_legend.pos = Vector(
-                x,
-                y
-            )
+    #     for i, train_legend in enumerate(self.legend):
+    #         column = i // elements_per_column
+    #         row = i % elements_per_column
+    #         x = self.get_abs_coord(self.grid_width + 2 + column * self.legend_base_size, grid_offset=False)
+    #         y = ((self.grid_height + 2 - column_height) / 2 + row * self.legend_base_size) * self.cell_size
+    #         train_legend.pos = Vector(
+    #             x,
+    #             y
+    #         )
     
     def build_controls(self):
-        controls_group = build_buttons(self.cell_size)
+        control_cell_size = 25
+        control_width = 1000
+        control_height = 2 * control_cell_size
+        control_canvas = SVG(control_width, control_height)
+
+        buttons_x = control_width - 7 * control_cell_size
+        buttons_y = control_cell_size
+        controls_group = build_buttons(control_cell_size)
         controls_group.pos = Vector(
-            self.get_abs_coord(self.buttons_x, grid_offset=False),
-            self.get_abs_coord(self.buttons_y, grid_offset=False)
+            buttons_x,
+            buttons_y
         )
-        self.canvas.append(controls_group)
+        control_canvas.append(controls_group)
         
         slider_group = G(id="slider_group", class_name="slider")
-        self.canvas.append(slider_group)
+        control_canvas.append(slider_group)
+
+        slider_x = control_cell_size
+        slider_y = buttons_y
+        slider_width = buttons_x - 2 * control_cell_size
         # make invisible rect behind slider for calculating time steps
         slider_background = Rect(
-            pos=Vector(self.get_abs_coord(self.slider_x + 0.5, grid_offset=False), self.get_abs_coord(self.slider_y + 1, grid_offset=False)),
-            width=(self.slider_width - .5) * self.cell_size,
-            height=self.cell_size,
+            pos=Vector(slider_x, slider_y),
+            width=slider_width,
+            height=control_cell_size,
             fill="#000000",
             fill_opacity=0.0,
             id="slider_background",
@@ -456,50 +473,39 @@ class LandscapeBuilder:
         slider_group.append(slider_background)
         # make a path from .5 to self.buttons_x - 1 on height control_y + .5 for time step slider
         slider_path = Path(
-            d=f"M {self.get_abs_coord(self.slider_x + 0.5, grid_offset=False)},{self.get_abs_coord(self.slider_y + 1.5, grid_offset=False)} L {self.get_abs_coord(self.slider_x + self.slider_width, grid_offset=False)},{self.get_abs_coord(self.slider_y + 1.5, grid_offset=False)}",
-            stroke="#000000",
-            stroke_opacity=0.2,
-            stroke_width=self.cell_size * 0.5,
+            class_name="slider-path",
+            d=f"M {slider_x},{slider_y + .5 * control_cell_size} L {slider_x + slider_width},{slider_y + .5 * control_cell_size}",
+            stroke_width=control_cell_size * 0.5,
             stroke_linecap="round",
             fill="none",
             id="time_step_slider_path"
         )
         slider_group.append(slider_path)
-        # make a circle with diameter cell_size as slider handle
-        slider_handle = Circle(cx=self.get_abs_coord(self.slider_x + 0.5, grid_offset=False), cy=self.get_abs_coord(self.slider_y + 1.5, grid_offset=False), r=self.cell_size*.4, fill="#d8d8d8", stroke="#A4A4A4", stroke_width=self.cell_size * 0.1, id="slider_handle", class_name="slider_handle")
+
+        slider_handle = Circle(
+            cx=slider_x + 0.5 * control_cell_size, 
+            cy=slider_y + .5 * control_cell_size, r=control_cell_size*.4, 
+            stroke_width=control_cell_size * 0.1, 
+            id="slider_handle", 
+            class_name="slider-handle")
         slider_group.append(slider_handle)
 
-        step_group = self.step_label()
-        slider_group.append(step_group)
-    
-    def step_label(self):
         step_group = G(id="step_legend", class_name="step_legend")
         step_group.pos = Vector(
-            self.get_abs_coord(self.slider_x + self.slider_width / 2, grid_offset=False),
-            self.get_abs_coord(self.slider_y + 0.5, grid_offset=False)
+            slider_x + slider_width / 2,
+            slider_y - 0.5 * control_cell_size
         )
-        # # add rect behind the label as first child for easier selection
-        # background_rect = Rect(
-        #     pos=Vector(0, 0),
-        #     width=self.slider_width * self.cell_size,
-        #     height=self.cell_size * 1,
-        #     fill="#000000",
-        #     fill_opacity=0.0,
-        #     id="step_legend_background",
-        #     class_name="step_legend_background"
-        # )
-        # step_group.append(background_rect)
         step_label = Text(
             initial_text="Time Step: 0",
-            # pos=Vector(self.slider_x + (0.5 * self.slider_width), self.slider_y + 0.5),
+            class_name="footer-svg-foreground",
             font_family="monospace",
-            font_size=self.font_size,
+            font_size=control_cell_size * 0.7,
             font_weight=700,
-            fill="#000000",
             dominant_baseline="central",
             text_anchor="middle",
             id="step_label"
             )
         step_group.append(step_label)
-        return step_group
+        slider_group.append(step_group)
+        return control_canvas
     
