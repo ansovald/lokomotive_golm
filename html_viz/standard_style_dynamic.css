@@ -1,5 +1,11 @@
 /* define base colors: background, color, background_1, color_1 */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --background: #f0f0f0;
   --color: #333333;
@@ -9,16 +15,13 @@
   --light_control_secondary: #6c6c6c;
 }
 
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  margin-block: 60px;
-  margin-inline: 0px;
-  background-color: var(--background);
+html, body {
+  height: 100%;
 }
 
-svg {
-  display: block;
-  margin: auto;
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--background);
 }
 
 .header, .footer {
@@ -26,21 +29,43 @@ svg {
   color: var(--background);
 }
 
-.header {
+/* .header {
   position: fixed;
   top: 0;
   width: 100%;
+} */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 46px;
 }
 h2 {
   text-align: center;
   margin-block: 8px 10px;
 }
 
-.footer {
+/* .footer {
   position: fixed;
   padding-block: 5px 5px;
   bottom: 0;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+} */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 
 .footer-svg-foreground {
@@ -62,17 +87,51 @@ h2 {
   margin: 6px;
   font-family: monospace;
   border-radius: 6px;
-  background-color: var(--background_1);
+  background-color: var(--color);
+  color: var(--background);
+}
+
+.content {
+  position: absolute;
+  top: 46px;      /* same as header height */
+  bottom: 60px;   /* same as footer height */
+  left: 0;
+  right: 0;
+
+  display: flex;
+}
+
+
+/* .svg_container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.svg_container {
+  flex: 1;
+  overflow: hidden; /* or auto if needed */
+}
+
+.svg_canvas {
+  width: 100%;
+  height: 100%;
 }
 
 .train_info {
-  position: fixed;
-  top: 42px;
-  right: 10px;
+  /* position: fixed; */
+  /* top: 42px; */
+  /* right: 10px; */
   padding: 10px;
   font-size: 9px;
   display: flex;
   flex-direction: column;
+  gap: 8px;
+
+  overflow-y: auto; /* enables scrolling */
 }
 
 .train_info_entry {

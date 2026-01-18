@@ -8,13 +8,14 @@ html_template_file = os.path.join(RESOURCE_DIR, "html_template.html")
 train_widget_file = os.path.join(RESOURCE_DIR, "train_widget.html")
 
 def generate_html(env_name, landscape, milliseconds_per_step=500):
-    svg_output = landscape.svg_string()
+    svg_output = landscape.canvas_string()
     control_svg_output = landscape.control_svg_string()
 
     with open(html_template_file, "r") as f:
         html_template = f.read()
 
     html_output = html_template.replace("{{HEADING}}", f"Flatland SVG Animation: {env_name}")
+    html_output = html_output.replace("{{STANDARD_CSS}}", landscape.standard_style)
     html_output = html_output.replace("{{INLINE_SVG}}", svg_output)
     html_output = html_output.replace("{{CONTROL_SVG}}", control_svg_output)
 

@@ -103,9 +103,12 @@ svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {{
         if not output_filename:
             output_filename = os.path.join(self.base_dir, "landscape.svg")
         with open(output_filename, "w") as f:
-            f.write(self.canvas.to_string())
+            f.write(self.full_svg.to_string())
     
     def svg_string(self):
+        return self.full_svg.to_string()
+    
+    def canvas_string(self):
         return self.canvas.to_string()
     
     def control_svg_string(self):
@@ -160,10 +163,12 @@ svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {{
         return label
 
     def build_landscape(self):
-        canvas = SVG(self.width * self.cell_size, self.height * self.cell_size)
-        style_element = ET.Element("style")
-        style_element.text = self.standard_style
-        canvas.append(style_element)
+        self.full_svg = SVG(self.width * self.cell_size, self.height * self.cell_size, id="svg_canvas")
+        canvas = G(class_name="svg-pan-zoom-viewport")
+        self.full_svg.append(canvas)
+        # style_element = ET.Element("style")
+        # style_element.text = self.standard_style
+        # canvas.append(style_element)
         # set background color
         canvas.append(Rect(pos=self.get_abs_vector(0,0), width=self.grid_width * self.cell_size, height=self.grid_height * self.cell_size, class_name="background"))
 
