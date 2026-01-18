@@ -345,8 +345,8 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-    landscape = LandscapeBuilder("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_013--5_5_1768696743.470012", 260, cell_size=20)
-    html_file = generate_html("env_013--5_5", landscape, milliseconds_per_step=100)
-    with open("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_013--5_5_1768696743.470012/visualization_test.html", "w") as f:
-        f.write(html_file)
+    main()
+    # landscape = LandscapeBuilder("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_013--5_5_1768696743.470012", 260, cell_size=20)
+    # html_file = generate_html("env_013--5_5", landscape, milliseconds_per_step=100)
+    # with open("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_013--5_5_1768696743.470012/visualization_test.html", "w") as f:
+    #     f.write(html_file)

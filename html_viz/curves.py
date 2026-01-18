@@ -101,12 +101,14 @@ ROTATION_OFFSETS = {
     315: Point(-1, -1)
 }
 
-def get_wait_path(rotation: int):
+def get_wait_path(rotation: int, center_offset: Point=None) -> CurveSegment:
     """
     Looks up the small wait path offset for the given rotation, and returns a CurveSegment representing the wait path.
     """
+    if center_offset is None:
+        center_offset = Point(0,0)
     offset = ROTATION_OFFSETS[rotation] * 0.0001
-    start = Point(0.5, 0.5)
+    start = Point(0.5, 0.5) + center_offset
     end = start + offset
     return CurveSegment(
         start=start,
@@ -214,6 +216,7 @@ def outgoing_curve(mid: Point, end: Point, c_0: Point=None, c_1: Point=None, cen
     return segment
 
 # define curves for all direction changes
+# mid is the offset of the center, where the train would be displayed in this cell
 CURVES = {
      (0, 90): {   # north to east
         "incoming": incoming_curve(
@@ -228,6 +231,7 @@ CURVES = {
             c_0=Point(0.09377, -0.09377),
             c_1=Point(0.22095, -0.14645)
         ),
+        "mid": Point(0.14645, 0.14645),
         "rotation": 45  # rotation of train at mid point
     },
     (0, 270): {  # north to west
@@ -243,6 +247,7 @@ CURVES = {
             c_0=Point(-0.09377, -0.09377),
             c_1=Point(-0.22095, -0.14645)
         ),
+        "mid": Point(-0.14645, 0.14645),
         "rotation": 315
     },
     (180, 90): {  # south to east
@@ -258,6 +263,7 @@ CURVES = {
             c_0=Point(0.09377, 0.09377),
             c_1=Point(0.22095, 0.14645)
         ),
+        "mid": Point(0.14645, -0.14645),
         "rotation": 135
     },
     (180, 270): {  # south to west
@@ -273,6 +279,7 @@ CURVES = {
             c_0=Point(-0.09377, 0.09377),
             c_1=Point(-0.22095, 0.14645)
         ),
+        "mid": Point(-0.14645, -0.14645),
         "rotation": 225
     }
 }
@@ -286,6 +293,7 @@ CURVES[(0, 0)] = {
         start=Point(.5, .5),
         end=Point(.5, 0)
     ),
+    "mid": Point(0, 0),
     "rotation": 0
 }
 CURVES[(90, 90)] = {
@@ -297,24 +305,29 @@ CURVES[(90, 90)] = {
         start=Point(.5, .5),
         end=Point(1, .5)
     ),
+    "mid": Point(0, 0),
     "rotation": 90
 }
 
 # add reverse curves for each entry
 for (start_dir, end_dir), segments in list(CURVES.items()):
     if start_dir == end_dir:
+        # straight path, just add reverse of same direction
         reverse_dir = start_dir + 180 % 360
         CURVES[(reverse_dir, reverse_dir)] = {
             "incoming": segments["outgoing"].reverse_path(),
             "outgoing": segments["incoming"].reverse_path(),
+            "mid": segments["mid"], # mid point is the same, since only the direction is reversed
             "rotation": reverse_dir
         }
     else:
+        # curve path, calculate reverse directions
         rev_start_dir = (start_dir + 180) % 360
         rev_end_dir = (end_dir + 180) % 360
         rev_rotation = (segments["rotation"] + 180) % 360   
         CURVES[(rev_end_dir, rev_start_dir)] = {
             "incoming": segments["outgoing"].reverse_path(),
             "outgoing": segments["incoming"].reverse_path(),
+            "mid": segments["mid"], # mid point is the same, since only the direction is reversed
             "rotation": rev_rotation
         }

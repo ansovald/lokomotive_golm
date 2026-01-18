@@ -27,6 +27,7 @@ class TrainState:
     status: str
     rotation: int
     display_rotation: int = None
+    center_offset: Point = None
     incoming_segment: CurveSegment = None
     outgoing_segment: CurveSegment = None
 
@@ -102,9 +103,9 @@ class TrainPath:
         self.build_states()
         self.build_segments()
         # for debugging: write main states to file
-        with open(f"train_{train_id}_main_states.txt", "w") as f:
-            for i, state in enumerate(self.states):
-                f.write(f"{i}: " + state.__str__() + "\n")
+        # with open(f"train_{train_id}_main_states.txt", "w") as f:
+        #     for i, state in enumerate(self.states):
+        #         f.write(f"{i}: " + state.__str__() + "\n")
         # with open(f"train_{train_id}_movements.txt", "w") as f:
         #     f.write(self.timestep_movement_mapping.__str__() + "\n")
         #     for i, action in enumerate(self.movements):
@@ -207,6 +208,7 @@ class TrainPath:
                 # don't need to build any segments for waiting state, take display rotation from last state (if it exists)
                 if self.states[i-1].display_rotation is not None:
                     self.states[i].display_rotation = self.states[i-1].display_rotation
+                    self.states[i].center_offset = self.states[i-1].center_offset
                 else:
                     self.states[i].display_rotation = rotation
                 logger.info(f"waiting state for train {self.train_id}, skipping segment building")
@@ -216,6 +218,7 @@ class TrainPath:
                 curve = CURVES[(rotation, rotation)]
                 incoming = curve['incoming'].translate(coords)
                 self.states[i].display_rotation = rotation
+                self.states[i].center_offset = curve['mid']
                 self.states[i].incoming_segment = incoming
                 self.path_string += incoming.segment_path(self.cell_size)
                 # we don't need to build any more segments after arrival
@@ -234,6 +237,7 @@ class TrainPath:
                 incoming = curve['incoming'].translate(coords)
                 outgoing = curve['outgoing'].translate(coords)
                 self.states[i].display_rotation = curve['rotation']
+                self.states[i].center_offset = curve['mid']
                 self.states[i].incoming_segment = incoming
                 self.states[i].outgoing_segment = outgoing
                 self.path_string += incoming.segment_path(self.cell_size)
@@ -252,15 +256,15 @@ class TrainPath:
             if state_idx is None:
                 # no entry for this timestep, default to initial wait path
                 state = self.states[1]
-                return get_wait_path(state.display_rotation).translate(state.coords).standalone_path(self.cell_size), [0.0, 1.0]
+                return get_wait_path(state.display_rotation, state.center_offset).translate(state.coords).standalone_path(self.cell_size), [0.0, 1.0]
             else:
                 state = self.states[state_idx]
                 if state.status == "READY_TO_DEPART":
                     state = self.states[state_idx + 1]
-                    return get_wait_path(state.display_rotation).translate(state.coords).standalone_path(self.cell_size), [0.0, 1.0]
+                    return get_wait_path(state.display_rotation, state.center_offset).translate(state.coords).standalone_path(self.cell_size), [0.0, 1.0]
                 logger.info(f"No movement found for train {self.train_id} at timestep {timestep}, defaulting to wait path for state index {state_idx}")
                 state = self.states[state_idx]
-                return get_wait_path(state.display_rotation).translate(state.coords).standalone_path(self.cell_size), [0.0, 1.0]
+                return get_wait_path(state.display_rotation, state.center_offset).translate(state.coords).standalone_path(self.cell_size), [0.0, 1.0]
         movement = self.movements[movement_idx]
         movement.set_states()
         return movement.get_motion_info(self.cell_size, timestep)
