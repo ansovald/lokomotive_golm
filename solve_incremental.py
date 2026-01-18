@@ -329,8 +329,10 @@ def main():
         f.write(json.dumps(sim.stats, indent=4))
 
     print("Generating HTML visualization...")
-    landscape = LandscapeBuilder(base_dir, timestep)
-    html_file = generate_html(env_name, landscape, milliseconds_per_step=5000)
+    # whole animation should last 30s
+    milliseconds_per_step = int(30000 / timestep)
+    landscape = LandscapeBuilder(base_dir, timestep, cell_size=20)
+    html_file = generate_html(env_name, landscape, milliseconds_per_step=milliseconds_per_step)
     with open(os.path.join(base_dir, "visualization.html"), "w") as f:
         f.write(html_file)
 
@@ -344,7 +346,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # landscape = LandscapeBuilder("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_005--3_3_1768170225.194793", 203, cell_size=10)
-    # html_file = generate_html("env_014--10", landscape, milliseconds_per_step=500)
+    # landscape = LandscapeBuilder("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_005--3_3_1768170225.194793", 103, cell_size=20)
+    # html_file = generate_html("env_014--10", landscape, milliseconds_per_step=100)
     # with open("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_005--3_3_1768170225.194793/visualization_test.html", "w") as f:
     #     f.write(html_file)

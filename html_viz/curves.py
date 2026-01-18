@@ -7,6 +7,32 @@ logger = logging.getLogger("CURVES")
 LEFT_MARGIN = 1  # in cells
 TOP_MARGIN = 1   # in cells
 
+DIR_DICT = {
+    "n": 0,
+    "e": 90,
+    "s": 180,
+    "w": 270
+}
+
+ROT_DICT = { v: k for k, v in DIR_DICT.items() }
+
+def get_direction(coords: Point, next_coords: Point) -> str:
+        if next_coords.x > coords.x:
+            return "e"
+        elif next_coords.x < coords.x:
+            return "w"
+        elif next_coords.y > coords.y:
+            return "s"
+        elif next_coords.y < coords.y:
+            return "n"
+        else:
+            return None
+        
+def get_rotation(coords: Point, next_coords: Point) -> int:
+    # print(f"Getting rotation from {coords} to {next_coords}")
+    direction = get_direction(coords, next_coords)
+    return DIR_DICT.get(direction, None)
+
 @dataclass
 class Point:
     x: float
@@ -24,6 +50,12 @@ class Point:
     
     def __mul__(self, scalar: float) -> Point:
         return Point(self.x * scalar, self.y * scalar)
+    
+    def __str__(self):
+        return f"Point(x={self.x}, y={self.y})"
+    
+    def __dict__(self):
+        return {"x": self.x, "y": self.y}
     
     def make_abs(self, cell_size, grid_offset=True) -> Point:
         offset = 1 if grid_offset else 0
@@ -250,3 +282,12 @@ for (start_dir, end_dir), segments in list(CURVES.items()):
             "outgoing": segments["incoming"].reverse_path(),
             "rotation": rev_rotation
         }
+
+def get_wait_path(rotation: int):
+    offset = ROTATION_OFFSETS[rotation] * 0.0001
+    start = Point(0.5, 0.5)
+    end = start + offset
+    return CurveSegment(
+        start=start,
+        end=end
+    )

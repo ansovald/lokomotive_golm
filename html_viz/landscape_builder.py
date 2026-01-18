@@ -268,11 +268,31 @@ class LandscapeBuilder:
             train_info = self.trains[train_id]
             # build train path
             print(f"INFO -- TRAIN_PATHS: Initializing TrainPath for train {train_id} with time frame {self.time_frame}")
-            train_path_builder = TrainPath(train_id, train_info, self.time_frame)
-            path_string = train_path_builder.get_path_string(cell_size=self.cell_size)
+            train_path_builder = TrainPath(train_id, train_info, self.time_frame, self.cell_size)
+            # path_string = "" # DEBUGGING
+            path_string = train_path_builder.path_string
             # self.display_states[train_id] = train_path_builder.get_display_states(cell_size=self.cell_size)
             self.display_states[train_id] = train_path_builder.get_display_states()
             self.train_paths[train_id].d = path_string
+
+            # # for debugging: add all motion paths as individual path elements
+            # motion_path_group = G(id=f"train_{train_id}_motion_paths", class_name="train_motion_paths")
+            # for timestep in range(train_path_builder.total_timesteps):
+            #     display_info = train_path_builder.get_display_info(timestep)
+            #     motion_path_string = train_path_builder.get_motion_path(state_index)
+            #     motion_path_element = Path(
+            #         d=motion_path_string,
+            #         stroke=train_color,
+            #         stroke_width=self.train_path_width * 0.5,
+            #         # stroke_dasharray=f"{self.cell_size * 0.1},{self.cell_size * 0.1}",
+            #         stroke_linecap="round",
+            #         fill="none",
+            #         id=f"train_{train_id}_motion_path_{state_index}",
+            #         class_name=f"train_{train_id}_motion_path",
+            #         opacity=0.3
+            #     )
+            #     motion_path_group.append(motion_path_element)
+            # self.train_path_group.append(motion_path_group)
             
             # Create train legend
             train_group.append(self.create_train_legend(train_id, speed=train_info.get("speed", 0)))
@@ -313,8 +333,9 @@ class LandscapeBuilder:
             path_animation = ET.Element("animateMotion", {
                 "id": f"train_{train_id}_animate",
                 "dur": "1s",    # to be set in JavaScript
-                # "repeatCount": "1",
-                "repeatCount": "indefinite", # for debugging
+                "path": "", # to be set in JavaScript
+                "repeatCount": "1",
+                # "repeatCount": "indefinite", # for debugging
                 "fill": "freeze",
                 "rotate": "auto",
                 "path": "",
@@ -322,7 +343,6 @@ class LandscapeBuilder:
                 "keyTimes": "0;1",
                 "calcMode": "linear"
             })
-            path_animation.set("path", path_string)
             train_animation_group.append(path_animation)
             train_animation_group.append(transformed_train_group)
 
@@ -335,6 +355,7 @@ class LandscapeBuilder:
                 "fill": "freeze",
                 "from": "1",
                 "to": "1",
+                "begin": "0s"
             })
             train_animation_group.append(opacity_animation)
 
@@ -501,25 +522,4 @@ class LandscapeBuilder:
             )
         step_group.append(step_label)
         return step_group
-
-def get_latest_model_dir(env_name, base_dir="env"):
-    dirs = [d for d in os.listdir(base_dir) if d.startswith(env_name)]
-    if not dirs:
-        raise FileNotFoundError(f"No model directories found for environment {env_name} in {base_dir}.")
-    dirs.sort(reverse=True)
-    latest_dir = dirs[0]
-    return os.path.join(base_dir, latest_dir)
-
-if __name__ == "__main__":
-
-    # env_name = "env_001--2_6"
-    env_name = "testenv_2"
-    model_dir = get_latest_model_dir(env_name)
-    # print(f"Using model directory: {model_dir}")
-    cell_size = 25
-
-    landscape_builder = LandscapeBuilder(model_dir, cell_size=cell_size)
-    # landscape_builder = LandscapeBuilder(env_encoding=env_encoding, cell_size=cell_size)
-    landscape_builder.save_svg()
-
     
