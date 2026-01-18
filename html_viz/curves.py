@@ -17,24 +17,35 @@ DIR_DICT = {
 ROT_DICT = { v: k for k, v in DIR_DICT.items() }
 
 def get_direction(coords: Point, next_coords: Point) -> str:
-        if next_coords.x > coords.x:
+        x_offset = next_coords.x - coords.x
+        y_offset = next_coords.y - coords.y
+        if x_offset != 0 and y_offset != 0:
+            raise ValueError(f"Invalid movement from {coords} to {next_coords}: diagonal movement not allowed.")
+        if x_offset > 0:
             return "e"
-        elif next_coords.x < coords.x:
+        elif x_offset < 0:
             return "w"
-        elif next_coords.y > coords.y:
+        elif y_offset > 0:
             return "s"
-        elif next_coords.y < coords.y:
+        elif y_offset < 0:
             return "n"
         else:
             return None
         
 def get_rotation(coords: Point, next_coords: Point) -> int:
-    # print(f"Getting rotation from {coords} to {next_coords}")
+    """
+    Given two Points representing coordinates, returns the rotation in degrees
+    corresponding to the direction from coords to next_coords.
+    """
     direction = get_direction(coords, next_coords)
     return DIR_DICT.get(direction, None)
 
 @dataclass
 class Point:
+    """
+    Base class for points in 2D space.
+    x and y are in grid coordinates (cells).
+    """
     x: float
     y: float
 
@@ -77,6 +88,8 @@ class Point:
             return None
         return Point(point_dict.get("x", None), point_dict.get("y", None))
 
+# ROTATION_OFFSETS are needed to generate wait paths for trains
+# specifically in curves. They define a small offset in the direction of the train's rotation.
 ROTATION_OFFSETS = {
     0: Point(0, -1),
     45: Point(1, -1),
@@ -88,8 +101,31 @@ ROTATION_OFFSETS = {
     315: Point(-1, -1)
 }
 
+def get_wait_path(rotation: int):
+    """
+    Looks up the small wait path offset for the given rotation, and returns a CurveSegment representing the wait path.
+    """
+    offset = ROTATION_OFFSETS[rotation] * 0.0001
+    start = Point(0.5, 0.5)
+    end = start + offset
+    return CurveSegment(
+        start=start,
+        end=end
+    )
+
 @dataclass
 class CurveSegment:
+    """
+    Represents a curve segment for SVG path generation.
+    A curve segment can be a straight line (if c_0 and c_1 are None) or a cubic Bezier curve.
+    center is the center point of the cell the curve is in, used for calculating absolute positions.
+
+    `translate()` is called to move the curve segment by a given offset (for absolute positioning).
+
+    `reverse_path()` is called to get the reverse of the curve segment (for reverse direction curves).
+
+    It can generate SVG path strings for itself, both standalone (with M command) and as part of a larger path.
+    """
     start: Point
     end: Point
     c_0: Point = None
@@ -121,7 +157,6 @@ class CurveSegment:
     
     def reverse_path(self) -> CurveSegment:
         # return a new CurveSegment that is the reverse of this one
-
         return CurveSegment(
             start=self.end,
             end=self.start,
@@ -178,6 +213,7 @@ def outgoing_curve(mid: Point, end: Point, c_0: Point=None, c_1: Point=None, cen
     )
     return segment
 
+# define curves for all direction changes
 CURVES = {
      (0, 90): {   # north to east
         "incoming": incoming_curve(
@@ -282,12 +318,3 @@ for (start_dir, end_dir), segments in list(CURVES.items()):
             "outgoing": segments["incoming"].reverse_path(),
             "rotation": rev_rotation
         }
-
-def get_wait_path(rotation: int):
-    offset = ROTATION_OFFSETS[rotation] * 0.0001
-    start = Point(0.5, 0.5)
-    end = start + offset
-    return CurveSegment(
-        start=start,
-        end=end
-    )

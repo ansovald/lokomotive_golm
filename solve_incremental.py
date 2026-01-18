@@ -345,8 +345,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-    # landscape = LandscapeBuilder("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_005--3_3_1768170225.194793", 103, cell_size=20)
-    # html_file = generate_html("env_014--10", landscape, milliseconds_per_step=100)
-    # with open("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_005--3_3_1768170225.194793/visualization_test.html", "w") as f:
-    #     f.write(html_file)
+    # main()
+    landscape = LandscapeBuilder("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_013--5_5_1768696743.470012", 260, cell_size=20)
+    html_file = generate_html("env_013--5_5", landscape, milliseconds_per_step=100)
+    with open("/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_013--5_5_1768696743.470012/visualization_test.html", "w") as f:
+        f.write(html_file)
+
+    # TODO: for some reason, visualization doesn't work for 13--5_5!
+    # possibly because of speed 3?
+    # Try simpler envs with speed 3, see what happens

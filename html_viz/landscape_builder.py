@@ -51,8 +51,8 @@ class LandscapeBuilder:
         # pre-computes all elements that depend on cell size
         self.font_size = self.cell_size / 2
         self.font_size_hover = f"{1.2 * self.font_size}px"
-        self.train_path_width = self.cell_size / 15
-        self.train_path_width_hover = f"{2 * self.train_path_width}px"
+        self.train_path_width = self.cell_size / 30
+        self.train_path_width_hover = f"{3 * self.train_path_width}px"
 
         # open style_path and replace font-size placeholders
         with open(style_path, "r") as f:
@@ -74,6 +74,7 @@ class LandscapeBuilder:
         train_hover_style = ""
         train_hover_template = f"""svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {{
   stroke-width: {self.train_path_width_hover};
+  opacity: 1.0;
   transition: 0.2s;
 }}"""
         for train_id in self.trains.keys():
@@ -250,7 +251,7 @@ class LandscapeBuilder:
                 fill="none",
                 id=f"train_{train_id}_path",
                 class_name=f"train_{train_id}_path",
-                opacity=0.9
+                opacity=1.0
                 )
             self.train_path_group.append(path_element)
             train_paths[train_id] = path_element
@@ -269,30 +270,9 @@ class LandscapeBuilder:
             # build train path
             print(f"INFO -- TRAIN_PATHS: Initializing TrainPath for train {train_id} with time frame {self.time_frame}")
             train_path_builder = TrainPath(train_id, train_info, self.time_frame, self.cell_size)
-            # path_string = "" # DEBUGGING
             path_string = train_path_builder.path_string
-            # self.display_states[train_id] = train_path_builder.get_display_states(cell_size=self.cell_size)
             self.display_states[train_id] = train_path_builder.get_display_states()
             self.train_paths[train_id].d = path_string
-
-            # # for debugging: add all motion paths as individual path elements
-            # motion_path_group = G(id=f"train_{train_id}_motion_paths", class_name="train_motion_paths")
-            # for timestep in range(train_path_builder.total_timesteps):
-            #     display_info = train_path_builder.get_display_info(timestep)
-            #     motion_path_string = train_path_builder.get_motion_path(state_index)
-            #     motion_path_element = Path(
-            #         d=motion_path_string,
-            #         stroke=train_color,
-            #         stroke_width=self.train_path_width * 0.5,
-            #         # stroke_dasharray=f"{self.cell_size * 0.1},{self.cell_size * 0.1}",
-            #         stroke_linecap="round",
-            #         fill="none",
-            #         id=f"train_{train_id}_motion_path_{state_index}",
-            #         class_name=f"train_{train_id}_motion_path",
-            #         opacity=0.3
-            #     )
-            #     motion_path_group.append(motion_path_element)
-            # self.train_path_group.append(motion_path_group)
             
             # Create train legend
             train_group.append(self.create_train_legend(train_id, speed=train_info.get("speed", 0)))
@@ -301,6 +281,7 @@ class LandscapeBuilder:
             train_render_group = get_train_svg(train_id, self.cell_size, scale=240)
 
             # Train rotation group normalizes position so that mid point is at (0,0) for easier rotation (set in JavaScript)
+            # rotation needs to be set to 90 degrees initially to align with the motion path direction
             train_rotation_group = G(id=f"train_{train_id}_rotation_group", class_name="train_rotation")
 
             # add a rect behind the train as first child for easier selection
@@ -322,7 +303,6 @@ class LandscapeBuilder:
             train_rotation_group.append(train_render_group)
             train_rotation_group.pos = Vector(-self.cell_size/2, -self.cell_size/2)
             train_rotation_group.__setattr__("transform-origin", "center")
-            # TODO: set initial rotation based on first movement direction?
             train_rotation_group.angle = 90
 
             transformed_train_group = G(id=f"train_{train_id}_transformed_group", class_name="train_transformed")

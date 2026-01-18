@@ -21,10 +21,6 @@
   fill-opacity: 0.3;
   transition: 0.2s;
 }
-/* .train:hover path {
-  stroke-width: {{TRAIN_PATH_WIDTH_HOVER}};
-  transition: 0.2s;
-} */
 .cell:hover text {
     opacity: 1.0;
     transition: 0.2s;

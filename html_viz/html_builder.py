@@ -7,10 +7,7 @@ RESOURCE_DIR = os.path.dirname(os.path.abspath(__file__))
 html_template_file = os.path.join(RESOURCE_DIR, "html_template.html")
 
 def generate_html(env_name, landscape, milliseconds_per_step=500):
-    # builder = LandscapeBuilder(base_dir, cell_size=cell_size)
-    # landscape = builder.build_landscape()
     svg_output = landscape.svg_string()
-    cell_size = landscape.cell_size
 
     with open(html_template_file, "r") as f:
         html_template = f.read()
