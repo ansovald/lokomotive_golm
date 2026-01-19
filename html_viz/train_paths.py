@@ -1,5 +1,5 @@
 from __future__ import annotations
-from html_viz.curves import CURVES, Point, CurveSegment, DIR_DICT, get_rotation, get_wait_path
+from html_viz.curves import CURVES, Point, CurveSegment, DIR_DICT, get_rotation, get_wait_path, ROTATION_OFFSETS
 import logging
 from dataclasses import dataclass
 
@@ -103,10 +103,10 @@ class TrainPath:
         self.build_states()
         self.build_segments()
         # for debugging: write main states to file
-        with open(f"train_{train_id}_main_states.txt", "w") as f:
+        with open(f"train_{train_id}_main_states.log", "w") as f:
             for i, state in enumerate(self.states):
                 f.write(f"{i}: " + state.__str__() + "\n")
-        with open(f"train_{train_id}_movements.txt", "w") as f:
+        with open(f"train_{train_id}_movements.log", "w") as f:
             f.write(self.timestep_movement_mapping.__str__() + "\n")
             for i, action in enumerate(self.movements):
                 f.write(f"{i}: " + action.__str__() + "\n")
@@ -137,6 +137,7 @@ class TrainPath:
                     self.states.append(current_state)
                     last_state = current_state
                     last_coords = coords
+                    logger.info(f"Adding initial state for train {self.train_id} at timestep {timestep}:\n{current_state}")
                 elif coords == last_coords and status == last_state.status:
                     # still moving but coordinates haven't changed yet
                     last_state.duration += 1
@@ -144,12 +145,14 @@ class TrainPath:
                     self.states.append(current_state)
                     last_coords = coords
                     last_state = current_state
+                    logger.info(f"Adding new state for train {self.train_id} at timestep {timestep}:\n{current_state}")
                 self.timestep_state_mapping[timestep] = len(self.states) - 1
 
                 if timestep not in self.timestep_movement_mapping:
                     action = self.action_at(timestep)
                     if action != "wait":
                         movement = Movement(self, action, timestep, self.speed)
+                        logger.info(f"Adding movement for train {self.train_id} at timestep {timestep}:\n{movement}")
                         self.movements.append(movement)
                         for i in range(timestep, timestep + self.speed):
                             self.timestep_movement_mapping[i] = len(self.movements) - 1
@@ -157,14 +160,17 @@ class TrainPath:
         
         last_timestep = self.states[-1].timestep + self.states[-1].duration
         dest_coords = Point.from_dict(self.train_info['end']['position'])
+        last_coords = self.states[-1].coords + ROTATION_OFFSETS[self.states[-1].rotation]
+        status = "ARRIVED" if last_coords == dest_coords else "NOT_ARRIVED"
         arrival_state = TrainState(
             timestep = last_timestep,
-            coords = dest_coords,
+            coords = last_coords,
             duration = 1,
             status = "ARRIVED",
-            rotation = get_rotation(self.states[-1].coords, dest_coords)
+            rotation = get_rotation(self.states[-1].coords, last_coords)
         )
         self.states.append(arrival_state)
+        logger.info(f"Adding ARRIVED state for train {self.train_id} at timestep {last_timestep}:\n{arrival_state}")
         self.timestep_state_mapping[last_timestep] = len(self.states) - 1
 
         if last_timestep < self.time_frame:
@@ -173,7 +179,7 @@ class TrainPath:
             duration = self.time_frame - last_timestep + 1
             last_state = TrainState(
                 timestep=last_timestep,
-                coords=dest_coords,
+                coords=last_coords,
                 duration=duration,
                 status="PARKED",
                 rotation=arrival_state.rotation,
@@ -303,12 +309,14 @@ class TrainPath:
         if action == "wait":
             # when waiting, signal is red if the train waits at the next timestep, too
             signal = "red"
-            if self.action_at(timestep + 1) != "wait":
-                # otherwise, signal is green
-                signal = "green"
+            # if self.action_at(timestep + 1) != "wait":
+            #     # otherwise, signal is green
+            #     signal = "green"
         else:
-            if self.action_at(timestep + 1) == "wait":
-                signal = "red"
+            if self.action_at(timestep - 1) == "wait":
+                signal = "green"
+            # if self.action_at(timestep + 1) == "wait":
+            #     signal = "red"
         return {
             "action": action,
             "status": status,

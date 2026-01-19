@@ -5,16 +5,11 @@ move_action(move_left;move_right;move_forward).
 action_duration(wait, S, 1) :- speed(_, S).
 action_duration(A, S, S) :- move_action(A), speed(_, S).
 
-% Basic definitions: action, speed_action, state, and arrived
+% Basic definitions: action, transition, and arrived
 % action(train(ID), A, T): 
 %           train ID performs action A at timestep T (needed for toolkit compatibility)
-% speed_action(train(ID), A, T0, T1): 
-%           train ID performs action A starting at timestep T0 and ending at timestep T1-1
-%           (T1 marks the timestep after the action ends and marks the beginning of the next action)
-% state(ID, (Y,X), D, T):  
-%           train ID is located at cell (Y,X), facing in direction D at timestep T
-% state(ID, C, D, T):      
-%           alternative representation where C is the cell (if we don't need to access X and Y separately)
+% transition(ID, T0, C0, A, T1, C1, OutD):
+%           at timestep T0, train ID at cell C0 performs action A, reaching cell C1 exiting in direction OutD at timestep T1
 % arrived(ID, T):          
 %           train ID has arrived at its destination at timestep T
 
@@ -23,19 +18,12 @@ action(train(ID), wait, 0) :- train(ID).
 
 % train "waits" before its departure time (even )
 action(train(ID), wait, T) :- start(ID, _, Dep, _), T=0..Dep-1, Dep > 0.
-% train "moves forward" onto starting cell at departure time. This takes 1 timestep regardless of speed.
-% we need a speed_action here to for choosing the following speed_action at Dep+1
-speed_action(train(ID), move_forward, Dep, Dep+1) :-
-    start(ID, _, Dep, _), Dep > 0.
-speed_action(train(ID), move_forward, 1, 2) :-
-    start(ID, _, 0, _).
-% state(ID, C, Dir, T): train ID is at cell C facing Dir at timestep T
-% due to incremental solving, we need to explicitly define the actual action at Dep
-action(train(ID), move_forward, Dep) :- start(ID, _, Dep, _), Dep > 0.
 
-state(ID, C, Dir, T) :- speed_action(train(ID), move_forward, _, T), start(ID, C, _, Dir).
-% occupied(C, ID, T) :-
-%     state(ID, C, _, T).
+% train "moves forward" onto starting cell at departure time. This takes 1 timestep regardless of speed.
+transition(ID, Dep, C, move_forward, Dep+1, C, Dir) :-
+    start(ID, C, Dep, Dir), Dep > 0.
+transition(ID, 1, C, move_forward, 2, C, Dir) :-
+    start(ID, C, 0, Dir).
 
 #program check(t).
 % check if all trains have arrived by time t
@@ -48,64 +36,48 @@ state(ID, C, Dir, T) :- speed_action(train(ID), move_forward, _, T), start(ID, C
 #program step(t).
 % ---------------ACTION CHOICE---------------
 % after each speed action, choose exactly one valid action to perform next, unless the train has reached its destination
-1 { speed_action(train(ID), A, t, T1) : 
-        cell_conn(C, A, Dir, _), 
+1 { transition(ID, t, C0, A, T1, C1, OutD) : 
+        cell_conn(A, C0, Dir, C1, OutD), 
         action_duration(A, S, Dur),
         % T1 can exceed MaxT by 1, since it marks the timestep after the action ends
         T1 = t + Dur, global(MaxT), T1 <= MaxT + 1 } 1 :-
-            speed_action(train(ID), _, _, t),
-            state(ID, C, Dir, t),
+            % speed_action(train(ID), _, _, t),
+            % state(ID, C, Dir, t),
+            transition(ID, _, _, _, t, C0, Dir),
             speed(ID, S),
-            not end(ID, C, _).
-
-% TODO: use transition(ID, T0, C0, T1, C1, OutD) instead of state (due to incremental solving)
+            not end(ID, C0, _).
 
 % copy speed actions into regular actions (needed by toolkit)
 action(train(ID), wait, t) :-
-    speed_action(train(ID), wait, t, _).
+    % speed_action(train(ID), wait, t, _).
+    transition(ID, t, _, wait, _, _, _).
 % toolkit needs move_action at each timestep during the action
 action(train(ID), A, t) :-
-    speed_action(train(ID), A, T0, T1), move_action(A),
+    % speed_action(train(ID), A, T0, T1), move_action(A),
+    transition(ID, T0, _, A, T1, _, _), move_action(A),
     T = T0..T1-1,
     T0 <= t, t <= T1-1.
 
-% calculate the next state based on current state and action
-state(ID, (Y1,X1), Out, T1) :-
-    % gather state and (non-wait) action at timestep T0. We reach the next state at T1 (after action ends)
-    state(ID, (Y0,X0), D, T0),
-    speed_action(train(ID), A, T0, T1),
-    T1 = t,
-    A < wait,
-    % infer next direction and cell
-    cell_conn((Y0,X0), A, D, Out),
-    Y1 = Y0 + DY,
-    X1 = X0 + DX,
-    move(Out, DY, DX).
-
-state(ID, C, D, t) :-
-    state(ID, C, D, t-1),
-    action(train(ID), wait, t-1).
-
 % if the train reaches its destination, mark it as arrived
-arrived(ID, t) :- state(ID, C, _, t), end(ID, C, _).
+% arrived(ID, t) :- state(ID, C, _, t), end(ID, C, _).
+arrived(ID, t) :- 
+    transition(ID, _, _, _, t, C, _), end(ID, C, _).
 
 % ---------COLLISION AVOIDANCE---------
-% occupied(C, ID, T): cell C is occupied by train ID at timestep T
+% occupies(ID, T, C): train ID occupies cell C at timestep T
 % during movement, a train occupies both the starting and ending cell for the whole duration of the move
-occupied(C, ID, t) :-
-    state(ID, C, _, T0),
-    speed_action(train(ID), A, T0, T1),
-    T0 <= t, t <= T1.
+occupies(ID, t, C) :-
+    transition(ID, T0, C, _, T1, _, _),
+    T0 < t, t <= T1.
 
-occupied(C, ID, t) :-
-    state(ID, C, _, T1),
-    speed_action(train(ID), A, T0, T1),
-    T0 <= t, t <= T1.
+occupies(ID, t, C) :-
+    transition(ID, T0, _, _, T1, C, _),
+    T0 < t, t <= T1.
 
 % -------------CONSTRAINTS-------------
 % no two trains can occupy the same cell at the same time
-:- occupied(C, ID0, T),
-   occupied(C, ID1, T),
+:- occupies(ID0, T, C),
+   occupies(ID1, T, C),
    ID0 < ID1.
 
 % all trains must arrive at some point

@@ -245,9 +245,9 @@ def main():
                 "status": env.agents[a].state.name,
                 "action": action_map[actions[timestep][a]]
             }
-            if env.agents[a].state.name == "STOPPED" and action_map[actions[timestep][a]].startswith("move"):
-                print(f"WARNING: At timestep {timestep}, agent {a} is STOPPED but action is {action_map[actions[timestep][a]]}.")
-                logger.warning(f"At timestep {timestep}, agent {a} is STOPPED but action is {action_map[actions[timestep][a]]}.")
+            # if env.agents[a].state.name == "STOPPED" and action_map[actions[timestep][a]].startswith("move"):
+            #     print(f"WARNING: At timestep {timestep}, agent {a} is STOPPED but action is {action_map[actions[timestep][a]]}.")
+            #     logger.warning(f"At timestep {timestep}, agent {a} is STOPPED but action is {action_map[actions[timestep][a]]}.")
 
         _, _, done, info = env.step(actions[timestep])
 
@@ -328,6 +328,9 @@ def main():
         f.write(f"Simulation time: {sim_time:.2f}s\n")
         f.write(json.dumps(sim.stats, indent=4))
 
+    # save output log
+    log.save(stamp)
+
     print("Generating HTML visualization...")
     # whole animation should last 30s
     milliseconds_per_step = int(30000 / timestep)
@@ -340,13 +343,10 @@ def main():
     if not no_render:
         imageio.mimsave(f"output/{stamp}/animation.gif", images, format='GIF', loop=0, duration=240)
 
-    # save output log
-    log.save(stamp)
-
 
 if __name__ == "__main__":
     main()
-    # path = "/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_014--10_5_1768817968.769036"
+    # path = "/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_014--10_5_1768832228.2657669"
     # landscape = LandscapeBuilder(path, 204, cell_size=50)
     # html_file = generate_html("env_013--5_5", landscape, milliseconds_per_step=100)
     # with open(f"{path}/visualization_test.html", "w") as f:

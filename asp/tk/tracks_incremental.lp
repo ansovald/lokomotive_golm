@@ -92,11 +92,18 @@ connection(ID, A, InV, OutV) :-
     dirmap(In, InV),
     dirmap(Out, OutV).
 
-% cell_conn((Y,X), A, In, Out): Cell (Y,X) connects directions In and Out via action A
-cell_conn((Y,X), A, In, Out) :- cell((Y,X), Track), connection(Track, A, In, Out), dir(In), dir(Out).
+% cell_conn(A, C0, In, C1, Out): Cell C0 allows action A when entering from direction In to reach cell C1 exiting in direction Out
+cell_conn(A, C0, In, C1, Out) :- 
+    cell(C0, Track), 
+    connection(Track, A, In, Out),
+    C1 = (Y1,X1),
+    C0 = (Y0,X0),
+    move(Out, DY, DX),
+    Y1 = Y0 + DY,
+    X1 = X0 + DX.
 
 % introduce `wait` actions for cells were a non-straight track is in Out direction
-cell_conn((Y,X), wait, In, Out) :-
+cell_conn(wait, (Y,X), In, (Y,X), In) :-
     cell((Y,X), Track0),
     connection(Track0, move_forward, In, Out),
     straight(Track0),
