@@ -49,6 +49,8 @@ const data = {{TRAIN_DATA}};
 var panZoomTiger = svgPanZoom('#svg_canvas', {
   zoomEnabled: true,
   zoomScaleSensitivity: 0.1,
+  minZoom: 0.5,
+  maxZoom: 25,
   controlIconsEnabled: true,
   fit: true,
   center: true,
@@ -80,8 +82,10 @@ msPerStepInput.onchange = e => {
   if (!isNaN(value) && value >= 10 && value <= 10000) {
     ms_per_step = value;
   }
-  pause();
-  play();
+  if (playing) {
+    pause();
+    play();
+  }
   console.log(`ms_per_step set to ${ms_per_step}`);
 };
 

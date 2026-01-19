@@ -58,6 +58,8 @@ state(ID, C, Dir, T) :- speed_action(train(ID), move_forward, _, T), start(ID, C
             speed(ID, S),
             not end(ID, C, _).
 
+% TODO: use transition(ID, T0, C0, T1, C1, OutD) instead of state (due to incremental solving)
+
 % copy speed actions into regular actions (needed by toolkit)
 action(train(ID), wait, t) :-
     speed_action(train(ID), wait, t, _).

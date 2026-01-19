@@ -103,13 +103,13 @@ class TrainPath:
         self.build_states()
         self.build_segments()
         # for debugging: write main states to file
-        # with open(f"train_{train_id}_main_states.txt", "w") as f:
-        #     for i, state in enumerate(self.states):
-        #         f.write(f"{i}: " + state.__str__() + "\n")
-        # with open(f"train_{train_id}_movements.txt", "w") as f:
-        #     f.write(self.timestep_movement_mapping.__str__() + "\n")
-        #     for i, action in enumerate(self.movements):
-        #         f.write(f"{i}: " + action.__str__() + "\n")
+        with open(f"train_{train_id}_main_states.txt", "w") as f:
+            for i, state in enumerate(self.states):
+                f.write(f"{i}: " + state.__str__() + "\n")
+        with open(f"train_{train_id}_movements.txt", "w") as f:
+            f.write(self.timestep_movement_mapping.__str__() + "\n")
+            for i, action in enumerate(self.movements):
+                f.write(f"{i}: " + action.__str__() + "\n")
         
     def build_states(self):
         """
@@ -240,8 +240,9 @@ class TrainPath:
                 self.states[i].center_offset = curve['mid']
                 self.states[i].incoming_segment = incoming
                 self.states[i].outgoing_segment = outgoing
-                self.path_string += incoming.segment_path(self.cell_size)
-                self.path_string += outgoing.standalone_path(self.cell_size)
+                if self.states[i-1].coords != coords:
+                    self.path_string += incoming.segment_path(self.cell_size)
+                    self.path_string += outgoing.segment_path(self.cell_size)
                 logger.info(f"Built segments for train {self.train_id} at state index {i}:\nIncoming: {incoming}\nOutgoing: {outgoing}")
             logger.info(f"i={i}, {self.states[i]}")
 
@@ -249,6 +250,7 @@ class TrainPath:
         """
         Returns the motion path and animation keypoints for the train at the given timestep.
         """
+        timestep = timestep - 1 # motion only starts one timestep after action is initiated
         movement_idx = self.timestep_movement_mapping.get(timestep, None)
         # if there is no movement for this timestep, return wait path for current state
         if movement_idx is None:
@@ -304,6 +306,9 @@ class TrainPath:
             if self.action_at(timestep + 1) != "wait":
                 # otherwise, signal is green
                 signal = "green"
+        else:
+            if self.action_at(timestep + 1) == "wait":
+                signal = "red"
         return {
             "action": action,
             "status": status,
