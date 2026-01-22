@@ -6,7 +6,7 @@
 :- path(Z,C,C',T), path(Z,C,C',T'), T>T'.
 
 :- start(Z,(X,Y),T,D), not path(Z,(X,Y,D),_,T+1).
-%:- end(Z,(X,Y),_),     not path(Z,_,(X,Y,_),h).
+% :- end(Z,(X,Y),_),     not path(Z,_,(X,Y,_),h).
 :- end(Z,(X,Y),_),     not path(Z,_,(X,Y,_),_).
 
 #show.
