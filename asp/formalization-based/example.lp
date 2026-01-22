@@ -1,7 +1,5 @@
-% sub-node example environment #2
-% running exaxmple used in the formalization paper
-start(0,(1,1),0,e).
-end(0,(2,2),12).
+start(0,(0,2),0,w).%%#(\label{lst:network:example:start}#)
+end(0,(2,2),12).   %%#(\label{lst:network:example:end}#)
 speed(0,1).
 
 cell((0,0),    0). cell((0,1),16386). cell((0,2),1025). cell((0,3),4608).

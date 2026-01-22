@@ -1,12 +1,3 @@
-dir(n). dir(s). dir(w). dir(e).
-
-inverse(n,s). inverse(s,n).
-inverse(w,e). inverse(e,w).
-
-offset(n,-1, 0).
-offset(s, 1, 0).
-offset(w, 0,-1).
-offset(e, 0, 1).
 
 % Track Type 1 - Straight
 connection(32800,   (n,s)).
@@ -25,8 +16,8 @@ connection(17411,   (w,e)).
 connection(17411,   (e,s)).
 connection(32872,   (n,s)).
 connection(32872,   (n,e)).
-connection(3089,    (w,e)).
-connection(3089,    (w,n)).
+connection(3089,(w,e)).
+connection(3089,(w,n)).
 
 % Track Type 9 - Simple switch (right)
 connection(49186,   (n,s)).
@@ -76,15 +67,4 @@ connection(2136,    (n,e)).
 connection(6672,    (s,w)).
 connection(6672,    (w,n)).
 
-connection(Type,(D,D')) :- connection(Type,(D',D)).
-
-transition(Type,(D,D')) :- connection(Type,(From,D')),
-    inverse(From,D).
-
-adjacent((X,Y),D,(X',Y')) :- cell((X,Y),_),
-    offset(D,Dx,Dy), X'=X+Dx, Y'=Y+Dy,
-    cell((X',Y'),_).
-
-connected((X,Y),D,(X',Y')) :- cell((X,Y),Type), cell((X',Y'),Type'),
-    adjacent((X,Y),D,(X',Y')),
-    transition(Type,(D',D)), transition(Type',(D,D'')).
+% connection(T,(D,D')) :- connection(T,(D',D)).
