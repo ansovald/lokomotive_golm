@@ -95,6 +95,8 @@ class TrainPath:
         self.time_frame = time_frame
         self.cell_size = cell_size
         self.states: list[dict] = []
+        self.initial_state = None
+        self.arrival_state = None
         self.timestep_state_mapping: dict[int, int] = {}
         self.movements: list[Movement] = []
         self.timestep_movement_mapping: dict[int, int] = {}
@@ -124,6 +126,7 @@ class TrainPath:
         last_state = None
         while timestep <= self.time_frame:
             current_state = self.trainstate_at(timestep)
+            logger.info(f"Processing timestep {timestep} for train {self.train_id}:\n{current_state}")
             coords = current_state.coords
             status = current_state.status
             if status == "READY_TO_DEPART":
@@ -134,6 +137,7 @@ class TrainPath:
                 logger.info(f"Adding READY_TO_DEPART state for train {self.train_id} at timestep {timestep}:\n{current_state}")
             elif coords:
                 if not last_coords:
+                    self.initial_state = current_state
                     self.states.append(current_state)
                     last_state = current_state
                     last_coords = coords
@@ -160,15 +164,23 @@ class TrainPath:
         
         last_timestep = self.states[-1].timestep + self.states[-1].duration
         dest_coords = Point.from_dict(self.train_info['end']['position'])
-        last_coords = self.states[-1].coords + ROTATION_OFFSETS[self.states[-1].rotation]
-        status = "ARRIVED" if last_coords == dest_coords else "NOT_ARRIVED"
+        distance = abs(dest_coords.x - self.states[-1].coords.x) + abs(dest_coords.y - self.states[-1].coords.y)
+        if distance == 1:
+            last_coords = dest_coords
+            status = "ARRIVED"
+            logger.info(f"Adjusting last coordinates for train {self.train_id} to destination coords: {dest_coords}")
+        else:
+            status = "NOT_ARRIVED"
+            last_coords = self.states[-1].coords + ROTATION_OFFSETS[self.states[-1].rotation]
+            logger.warning(f"Train {self.train_id} does not appear to have reached its destination! Last coords: {self.states[-1].coords}, dest coords: {dest_coords}, setting last coords to: {last_coords}")
         arrival_state = TrainState(
             timestep = last_timestep,
             coords = last_coords,
             duration = 1,
-            status = "ARRIVED",
+            status = status,
             rotation = get_rotation(self.states[-1].coords, last_coords)
         )
+        self.arrival_state = arrival_state
         self.states.append(arrival_state)
         logger.info(f"Adding ARRIVED state for train {self.train_id} at timestep {last_timestep}:\n{arrival_state}")
         self.timestep_state_mapping[last_timestep] = len(self.states) - 1
@@ -179,9 +191,9 @@ class TrainPath:
             duration = self.time_frame - last_timestep + 1
             last_state = TrainState(
                 timestep=last_timestep,
-                coords=last_coords,
+                coords=None,
                 duration=duration,
-                status="PARKED",
+                status="ARRIVED",
                 rotation=arrival_state.rotation,
                 display_rotation=arrival_state.rotation
             )
@@ -219,7 +231,7 @@ class TrainPath:
                     self.states[i].display_rotation = rotation
                 logger.info(f"waiting state for train {self.train_id}, skipping segment building")
                 continue
-            elif status == "ARRIVED":
+            elif status in ["ARRIVED", "NOT_ARRIVED"]:
                 logger.info(f"arrival state for train {self.train_id}, building incoming segment only")
                 curve = CURVES[(rotation, rotation)]
                 incoming = curve['incoming'].translate(coords)
@@ -263,12 +275,16 @@ class TrainPath:
             state_idx = self.timestep_state_mapping.get(timestep, None)
             if state_idx is None:
                 # no entry for this timestep, default to initial wait path
-                state = self.states[1]
+                state = self.initial_state
                 return get_wait_path(state.display_rotation, state.center_offset).translate(state.coords).standalone_path(self.cell_size), [0.0, 1.0]
             else:
                 state = self.states[state_idx]
                 if state.status == "READY_TO_DEPART":
-                    state = self.states[state_idx + 1]
+                    # state = self.states[state_idx + 1]
+                    state = self.initial_state
+                    return get_wait_path(state.display_rotation, state.center_offset).translate(state.coords).standalone_path(self.cell_size), [0.0, 1.0]
+                elif state.status in ["ARRIVED", "NOT_ARRIVED"] and state.coords is None:
+                    state = self.arrival_state
                     return get_wait_path(state.display_rotation, state.center_offset).translate(state.coords).standalone_path(self.cell_size), [0.0, 1.0]
                 logger.info(f"No movement found for train {self.train_id} at timestep {timestep}, defaulting to wait path for state index {state_idx}")
                 state = self.states[state_idx]
@@ -285,6 +301,7 @@ class TrainPath:
         """
         state_index = self.timestep_state_mapping.get(timestep, None)
         logger.info(f"\nGetting display info for train {self.train_id} at timestep {timestep}, state_index={state_index}")
+        state = None
         if state_index is not None:
             logger.info(f"state_index found for timestep {timestep}: {state_index}")
             state = self.states[state_index]
@@ -297,8 +314,11 @@ class TrainPath:
         opacity = [1.0, 1.0]
         if status == "PARKED":
             opacity = [0.0, 0.0]
-        elif status == "ARRIVED":
-            opacity = [1.0, 0.0]
+        elif status in ["ARRIVED", "NOT_ARRIVED"]:
+            if state.coords is None:
+                opacity = [0.0, 0.0]
+            else:
+                opacity = [1.0, 0.0]
         elif status == "READY_TO_DEPART":
             opacity = [0.0, 1.0]
         action = self.action_at(timestep)

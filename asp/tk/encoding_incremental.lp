@@ -39,8 +39,7 @@ transition(ID, 1, C, move_forward, 2, C, Dir) :-
 1 { transition(ID, t, C0, A, T1, C1, OutD) : 
         cell_conn(A, C0, Dir, C1, OutD), 
         action_duration(A, S, Dur),
-        % T1 can exceed MaxT by 1, since it marks the timestep after the action ends
-        T1 = t + Dur, global(MaxT), T1 <= MaxT + 1 } 1 :-
+        T1 = t + Dur, global(MaxT), T1 <= MaxT } 1 :-
             % speed_action(train(ID), _, _, t),
             % state(ID, C, Dir, t),
             transition(ID, _, _, _, t, C0, Dir),
@@ -68,11 +67,11 @@ arrived(ID, t) :-
 % during movement, a train occupies both the starting and ending cell for the whole duration of the move
 occupies(ID, t, C) :-
     transition(ID, T0, C, _, T1, _, _),
-    T0 < t, t <= T1.
+    T0 <= t, t <= T1.
 
 occupies(ID, t, C) :-
     transition(ID, T0, _, _, T1, C, _),
-    T0 < t, t <= T1.
+    T0 <= t, t <= T1.
 
 % -------------CONSTRAINTS-------------
 % no two trains can occupy the same cell at the same time
@@ -88,20 +87,20 @@ occupies(ID, t, C) :-
 
 % MINIMIZATION GOALS
 % late(ID, Delta): If train ID is delayed Delta indicates difference between actual arrival and expected arrival
-late(ID, Delta) :-
-    arrived(ID, t),
-    end(ID, (_, _), Arr),
-    t > Arr,
-    Delta = t - Arr.
-#show late/2.
+% late(ID, Delta) :-
+%     arrived(ID, t),
+%     end(ID, (_, _), Arr),
+%     t > Arr,
+%     Delta = t - Arr.
+% #show late/2.
 
 % early(ID, Delta): If train ID arrives early Delta indicates the difference between expected and actual arrival 
-early(ID, Delta) :-
-    arrived(ID, t),
-    end(ID, (_, _), Arr),
-    t < Arr,
-    Delta = Arr - t.
-#show early/2.
+% early(ID, Delta) :-
+%     arrived(ID, t),
+%     end(ID, (_, _), Arr),
+%     t < Arr,
+%     Delta = Arr - t.
+% #show early/2.
 
 % action_count(ID, Count) :-
 %     train(ID),

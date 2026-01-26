@@ -320,6 +320,7 @@ def main():
 
     # dump stats to file
     with open(os.path.join(base_dir, "clingo_stats.txt"), "w") as f:
+        f.write(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n\n")
         f.write("Files loaded:\n")
         f.write(env_name + "\n")
         for file in params.primary + (params.secondary if params.secondary else []):
@@ -327,6 +328,18 @@ def main():
         f.write("\nStatistics:\n")
         f.write(f"Simulation time: {sim_time:.2f}s\n")
         f.write(json.dumps(sim.stats, indent=4))
+
+    # copy params.primary files to output folder
+    os.makedirs(os.path.join(base_dir, "asp_files"), exist_ok=True)
+    for file in params.primary:
+        dest_file = os.path.join(base_dir, "asp_files", os.path.basename(file))
+        with open(file, "r") as src, open(dest_file, "w") as dst:
+            dst.write(src.read())
+    if params.secondary:
+        for file in params.secondary:
+            dest_file = os.path.join(base_dir, "asp_files", os.path.basename(file))
+            with open(file, "r") as src, open(dest_file, "w") as dst:
+                dst.write(src.read())
 
     # save output log
     log.save(stamp)
@@ -346,8 +359,10 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # path = "/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_014--10_5_1768832228.2657669"
-    # landscape = LandscapeBuilder(path, 204, cell_size=50)
-    # html_file = generate_html("env_013--5_5", landscape, milliseconds_per_step=100)
+    # path = "/Users/karlosswald/repositories/flatland/flatland_playground/flatland/output/env_015--14_7_1768843385.2267962"
+    # env_name = path.split("/")[-1]
+    # env_name = "".join(env_name.split("_")[0:2])
+    # landscape = LandscapeBuilder(path, 397, cell_size=50)
+    # html_file = generate_html(env_name, landscape, milliseconds_per_step=100)
     # with open(f"{path}/visualization_test.html", "w") as f:
     #     f.write(html_file)

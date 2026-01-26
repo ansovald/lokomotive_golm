@@ -70,7 +70,7 @@ class IncrementalFlatlandPlan(Application):
         step = 0
         result = None
         while (result == None or result.unsatisfiable) and step < max_time:
-            print(f"Incremental step: {step}")
+            print(f"Incremental step: {step}/{max_time}")
             parts = []
             parts.append(("check", [Number(step)]))
             if step > 0:
