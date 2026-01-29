@@ -1,0 +1,362 @@
+{
+    "0": {
+        "start": {
+            "position": {
+                "x": 27,
+                "y": 24
+            },
+            "min_start": 26,
+            "direction": "s"
+        },
+        "end": {
+            "position": {
+                "x": 14,
+                "y": 17
+            },
+            "max_end": 140
+        },
+        "speed": 1,
+        "path": {
+            "0": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "1": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "2": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "3": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "4": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "5": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "6": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "7": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "8": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "9": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "10": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "11": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "12": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "13": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "14": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "15": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "16": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "17": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "18": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "19": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "20": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "21": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "22": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "23": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "24": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "25": {
+                "position": null,
+                "direction": "s",
+                "status": "WAITING",
+                "action": "wait"
+            }
+        }
+    },
+    "1": {
+        "start": {
+            "position": {
+                "x": 14,
+                "y": 16
+            },
+            "min_start": 2,
+            "direction": "e"
+        },
+        "end": {
+            "position": {
+                "x": 28,
+                "y": 24
+            },
+            "max_end": 138
+        },
+        "speed": 2,
+        "path": {
+            "0": {
+                "position": null,
+                "direction": "e",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "1": {
+                "position": null,
+                "direction": "e",
+                "status": "WAITING",
+                "action": "wait"
+            }
+        }
+    },
+    "2": {
+        "start": {
+            "position": {
+                "x": 31,
+                "y": 13
+            },
+            "min_start": 22,
+            "direction": "n"
+        },
+        "end": {
+            "position": {
+                "x": 14,
+                "y": 17
+            },
+            "max_end": 78
+        },
+        "speed": 1,
+        "path": {
+            "0": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "1": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "2": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "3": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "4": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "5": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "6": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "7": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "8": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "9": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "10": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "11": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "12": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "13": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "14": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "15": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "16": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "17": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "18": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "19": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "20": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "21": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "wait"
+            }
+        }
+    }
+}

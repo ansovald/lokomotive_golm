@@ -25,6 +25,8 @@ transition(ID, Dep, C, move_forward, Dep+1, C, Dir) :-
 transition(ID, 1, C, move_forward, 2, C, Dir) :-
     start(ID, C, 0, Dir).
 
+#show arrived/2.
+
 #program check(t).
 % check if all trains have arrived by time t
 :- train(ID), not arrived(ID, _), query(t).
@@ -37,11 +39,9 @@ transition(ID, 1, C, move_forward, 2, C, Dir) :-
 % ---------------ACTION CHOICE---------------
 % after each speed action, choose exactly one valid action to perform next, unless the train has reached its destination
 1 { transition(ID, t, C0, A, T1, C1, OutD) : 
-        cell_conn(A, C0, Dir, C1, OutD), 
+        cell_conn(A, C0, Dir, C1, OutD),
         action_duration(A, S, Dur),
         T1 = t + Dur, global(MaxT), T1 <= MaxT } 1 :-
-            % speed_action(train(ID), _, _, t),
-            % state(ID, C, Dir, t),
             transition(ID, _, _, _, t, C0, Dir),
             speed(ID, S),
             not end(ID, C0, _).
@@ -111,10 +111,6 @@ occupies(ID, t, C) :-
 % #minimize { 2,ID,T : speed_action(train(ID), wait, T, _) }.
 % #minimize { 1,ID,T : action(train(ID), _, T)}.
 
-% minimize arrival times
-
-%#minimize { T, ID : arrived(ID, T) }.
-
 % minimize early and late arrivals
 %#minimize { Delta, ID : late(ID, Delta) }.
 %#minimize { Delta, ID : early(ID, Delta) }.
@@ -122,4 +118,8 @@ occupies(ID, t, C) :-
 % #show speed_action/4.
 % #show state/4.
 % #show action/3.
-#show arrived/2.
+
+#program optimize.
+% minimize arrival times
+#minimize { T, ID : arrived(ID, T) }.
+:- train(ID), not arrived(ID, _).

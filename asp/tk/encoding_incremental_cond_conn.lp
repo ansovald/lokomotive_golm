@@ -35,31 +35,33 @@ transition(ID, 1, C, move_forward, 2, C, Dir) :-
 
 #program step(t).
 % ---------CONDITIONAL cell_conn GENERATION BASED ON CURRENT TRAIN POSITIONS--------
-% cell_conn(A, C0, In, C1, Out, T): at timestep T, cell C0 allows action A when entering from direction In to reach cell C1 exiting in direction Out
-cell_conn(A, C0, In, C1, Out, t) :-
-    cell_conn(A, C0, In, C1, Out),
-    % at time t, there is a train at C0 that can perform action A
-    transition(ID0, _, _, _, t, C0, _).
-    % train(ID1),
-    % not occupies(ID1, t, C1), % ensure C1 is not occupied by another train at time t
-    % ID0 != ID1.
-cell_conn(wait, C0, In, C0, In, t) :-
-    cell_conn(_, C0, In, C1, Out),
-    transition(ID0, _, _, _, t, C0, _),
+possible_transition(ID, t, C0, A, T1, C1, OutD) :-
+    cell_conn(A, C0, In, C1, OutD),
+    transition(ID, _, _, _, t, C0, In),
+    speed(ID, S),
+    action_duration(A, S, Dur),
+    T1 = t + Dur,
+    not end(ID, C0, _).
+
+possible_transition(ID0, t, C0, wait, t+1, C0, In) :-
+    cell_conn(_, C0, In, C1, _),
+    transition(ID0, _, _, _, t, C0, In),
     occupies(ID1, t, C1), % if C1 is occupied by another train, allow wait action
     train(ID1),
+    not end(ID0, C0, _),
     ID0 != ID1.
 % ---------------ACTION CHOICE---------------
 % after each speed action, choose exactly one valid action to perform next, unless the train has reached its destination
 1 { transition(ID, t, C0, A, T1, C1, OutD) : 
-        cell_conn(A, C0, Dir, C1, OutD, t), 
-        action_duration(A, S, Dur),
-        T1 = t + Dur, global(MaxT), T1 <= MaxT } 1 :-
-            % speed_action(train(ID), _, _, t),
-            % state(ID, C, Dir, t),
-            transition(ID, _, _, _, t, C0, Dir),
-            speed(ID, S),
-            not end(ID, C0, _).
+        possible_transition(ID, t, C0, A, T1, C1, OutD) } 1 :-
+        transition(ID, _, _, _, t, C0, Dir),
+        not end(ID, C0, _).
+        % cell_conn(A, C0, Dir, C1, OutD, t), 
+        % action_duration(A, S, Dur),
+        % T1 = t + Dur, global(MaxT), T1 <= MaxT } 1 :-
+            % transition(ID, _, _, _, t, C0, Dir),
+            % speed(ID, S),
+            % not end(ID, C0, _).
 
 % copy speed actions into regular actions (needed by toolkit)
 action(train(ID), wait, t) :-

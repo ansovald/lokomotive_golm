@@ -70,20 +70,21 @@ class MalfunctionManager():
         return(new)
     
 class IncrementalSimulationManager():
-    def __init__(self,env,primary,secondary=None):
+    def __init__(self, env, primary, secondary=None, optimize=False):
         self.env = env
         self.primary = primary
         if secondary is None:
             self.secondary = primary 
         else:
             self.secondary = secondary
+        self.optimize = optimize
         self.model = None
         self.stats = None
 
     def build_actions(self) -> list:
         """ create initial list of actions """
         # pass env, primary
-        app = IncrementalFlatlandPlan(self.env, None)
+        app = IncrementalFlatlandPlan(self.env, None, optimize=self.optimize)
         clingo_main(app, self.primary)
         self.stats = app.stats
         self.model = app.model
@@ -189,27 +190,45 @@ def check_params(par):
 def get_args():
     """ capture command line inputs """
     parser = ArgumentParser()
-    parser.add_argument('env', type=str, default='', nargs=1, help='the Flatland environment as a .pkl file')
+    parser.add_argument('-e', '--env', type=str, default='', nargs=1, help='the Flatland environment ID')
+    parser.add_argument('-i', '--incremental', action='store_true', default=False, help='if included, use the incremental solving approach')
+    parser.add_argument('-io', '--incremental-optimize', action='store_true', default=False, help='if included, after establishing the minimum time horizon, run the \'optimize\' subprogram')
     parser.add_argument('--no-render', action='store_true', default=True, help='if included, run the Flatland simulation but do not render a GIF')
     return(parser.parse_args())
 
+
+def load_env(env_id: str):
+    # assume env is in envs/pkl/
+    path = f"envs/pkl/{env_id}"
+    if not env_id.endswith(".pkl"):
+        path += ".pkl"
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"Environment file '{path}' not found.")
+    print(f"Loading environment from '{path}'")
+    env = pickle.load(open(path, "rb"))
+    return env
 
 def main():
     # dev test main
     if check_params(params):
         args: Namespace = get_args()
-        env = pickle.load(open(args.env[0], "rb"))
+        env = load_env(args.env[0])
         no_render = args.no_render
         env_name = args.env[0]
         if env_name.startswith("envs/pkl/"):
-            env_name = env_name[len("envs/pkl/"):-4]
-        print(f"Loading environment '{env_name}' from envs/pkl/")
+            env_name = env_name[len("envs/pkl/"):]
+        if env_name.endswith(".pkl"):
+            env_name = env_name[:-4]
+        incremental = args.incremental
+        optimize = args.incremental_optimize
 
     start_time = time.time()
     # create manager objects
     mal = MalfunctionManager(env.get_num_agents())
-    # sim = SimulationManager(env, params.primary, params.secondary)
-    sim = IncrementalSimulationManager(env, params.primary, params.secondary)
+    if not incremental and not optimize:
+        sim = SimulationManager(env, params.primary, params.secondary)
+    else:
+        sim = IncrementalSimulationManager(env, params.primary, params.secondary, optimize=optimize)
     log = OutputLogManager()
 
     # envrionment rendering
@@ -220,7 +239,7 @@ def main():
         images = []
 
     # create directory
-    os.makedirs("tmp/frames", exist_ok=True)
+    # os.makedirs("tmp/frames", exist_ok=True)
     # i needed to change this: from integers to railways Env Actions 
     action_map = {RailEnvActions.MOVE_LEFT:'move_left',RailEnvActions.MOVE_FORWARD:'move_forward',RailEnvActions.MOVE_RIGHT:'move_right',RailEnvActions.STOP_MOVING:'wait'}
     state_map = {0:'waiting', 1:'ready to depart', 2:'malfunction (off map)', 3:'moving', 4:'stopped', 5:'malfunction (on map)', 6:'done'}

@@ -103,14 +103,20 @@ cell_conn(A, C0, In, C1, Out) :-
     X1 = X0 + DX.
 
 % introduce `wait` actions for cells were a non-straight track is in Out direction
+% cell_conn(wait, (Y,X), In, (Y,X), In) :-
+%     cell((Y,X), Track0),
+%     connection(Track0, move_forward, In, Out),
+%     straight(Track0),
+%     move(Out, DY, DX),
+%     Y1 = Y + DY, X1 = X + DX,
+%     cell((Y1,X1), Track1),
+%     not straight(Track1).
+
+% trains can always wait
 cell_conn(wait, (Y,X), In, (Y,X), In) :-
-    cell((Y,X), Track0),
-    connection(Track0, move_forward, In, Out),
-    straight(Track0),
-    move(Out, DY, DX),
-    Y1 = Y + DY, X1 = X + DX,
-    cell((Y1,X1), Track1),
-    not straight(Track1).
+    cell((Y,X), Track),
+    connection(Track, A, In, _),
+    straight(Track).
 
 %wait_cell(C) :- cell_conn(C, wait, In, Out).
 

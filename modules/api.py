@@ -25,12 +25,16 @@ class IncrementalFlatlandPlan(Application):
     program_name = "flatland_incremental"
     version = "1.0"
 
-    def __init__(self, env, actions=None):
+    def __init__(self, env, actions=None, optimize=False):
         self.env = env
         self.actions = actions
         self.action_list = None
         self.model = None
-        self.stats = None
+        self.optimize = optimize
+        self.stats = {
+            "total_running_time": None,
+            "incremental": None
+        }
 
     def main(self, ctl, files):
         start_time = time.time()
@@ -93,7 +97,7 @@ class IncrementalFlatlandPlan(Application):
             # for atom in symbolic_atoms.by_signature("arrived", 2):
             #     print(atom.symbol)
             # for atom in symbolic_atoms:
-            #     if atom.symbol.name in ["transition", "speed_action", "arrived"]:
+            #     if atom.symbol.name in ["transition", "possible_tansition", "arrived"]:
             #         logger.info(f"Time step {step} -- Atom: {atom.literal} Symbol: {atom.symbol}")
             handle = ctl.solve(yield_=True)
             for model in handle:
@@ -113,24 +117,38 @@ class IncrementalFlatlandPlan(Application):
             running_time_str += f"{seconds:.2f}s"
             print(f"Current running time: {running_time_str}")
             print(result)
-            # if model:
-            #     models.append(model.symbols(atoms=True))
-            #     self.action_list = build_action_list(models)
             step += 1
-
-        # # solve and save models
-        # models = []
-        # with ctl.solve(yield_=True) as handle:
-        #     for model in handle:
-        #         models.append(model.symbols(atoms=True))
         
-        self.model = models[-1] if models else None
-        print(f"Final model has {len(self.model)} symbols." if self.model else "No model found.")
-        # capture output actions for renderer
-        #return(build_action_list(models))
-        self.stats = ctl.statistics
-        self.action_list = build_action_list(models)
-        print(f"Action list built with {len(self.action_list)} steps.")
+        incremental_time = time.time() - start_time
+        self.stats["incremental"] = {"running_time": f"{incremental_time:.2f}", "stats": ctl.statistics}
+        if result.satisfiable and self.optimize:
+            print(f"Solution found in {step} steps.")
+            ctl.release_external(Function("query", [Number(step-1)]))
+            ctl.configuration.solve.models="-1"
+            parts = [("optimize", [])]
+            ctl.ground(parts, context=self)
+            with ctl.solve(yield_=True) as handle:
+                for model in handle:
+                    models.append(model.symbols(atoms=True))
+            optimization_time = time.time() - incremental_time - start_time
+            print(f"Optimization running time: {optimization_time:.2f} seconds.")
+            self.stats["optimization"] = {"optimization_time": f"{optimization_time:.2f}", "stats": ctl.statistics}
+        
+        if models:
+            self.model = models[-1]
+            print(f"Final model has {len(self.model)} symbols.")
+            self.action_list = build_action_list(models)
+            print(f"Action list built with {len(self.action_list)} steps.")
+            # capture output actions for renderer
+            #return(build_action_list(models))
+        else:
+            print("No models were found.")
+            self.model = None
+            self.action_list = None
+        current_time = time.time()
+        total_running_time = current_time - start_time
+        print(f"Total running time: {total_running_time:.2f} seconds.")
+        self.stats["total_running_time"] = f"{total_running_time:.2f}"
 
 class FlatlandPlan(Application):
     """ takes an environment and a set of primary encodings """
