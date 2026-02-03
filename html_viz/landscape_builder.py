@@ -14,6 +14,7 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s -- %(name)s: %(mes
 logger = logging.getLogger(__name__)
 
 STANDARD_STYLE = "standard_style_dynamic.css"
+TRAIN_HOVER_TEMPLATE = "train_hover_template.css"
 
 def load_grid(grid_file):
     with open(grid_file, "r") as f:
@@ -34,7 +35,10 @@ class LandscapeBuilder:
         self.trains = load_trains(os.path.join(base_dir, "train_info.json"))
         self.time_frame = time_frame
         self.cell_size = cell_size        
-        self.prepare_dynamic_styles(os.path.join(os.path.dirname(os.path.abspath(__file__)), style_file))
+        self.prepare_dynamic_styles(
+            style_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), style_file),
+            train_hover_style_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), TRAIN_HOVER_TEMPLATE)
+            )
         self.compute_dimensions(self.grid)
         self.canvas = self.build_landscape()
         self.control_canvas = self.build_controls()
@@ -47,7 +51,7 @@ class LandscapeBuilder:
         self.place_trains()
         # self.align_legend()
 
-    def prepare_dynamic_styles(self, style_path):
+    def prepare_dynamic_styles(self, style_path, train_hover_style_path):
         # pre-computes all elements that depend on cell size
         self.font_size = self.cell_size / 2
         self.font_size_hover = f"{1.2 * self.font_size}px"
@@ -58,7 +62,6 @@ class LandscapeBuilder:
         with open(style_path, "r") as f:
             style_content = f.read()
         style_content = style_content.replace("{{HOVER_FONT_SIZE}}", f"{self.font_size_hover}")
-        style_content = style_content.replace("{{TRAIN_PATH_WIDTH_HOVER}}", f"{self.train_path_width_hover}")
 
         # generate train fill colors
         train_fill_colors = ""
@@ -74,27 +77,10 @@ class LandscapeBuilder:
 
         self.standard_style = style_content
 
-
-        train_hover_style = ""
-        train_hover_template = f"""body:has(#train_TRAIN_ID_info:hover) #train_TRAIN_ID_path {{
-  stroke-width: {self.train_path_width_hover};
-  opacity: 1.0;
-  transition: 0.2s;
-}}
-body:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_info {{
-  opacity: 1.0;
-  transition: 0.2s;
-}}
-svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {{
-   stroke-width: {self.train_path_width_hover};
-   opacity: 1.0;
-   transition: 0.2s;
- }}"""
-#         train_hover_template = f"""svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {{
-#   stroke-width: {self.train_path_width_hover};
-#   opacity: 1.0;
-#   transition: 0.2s;
-# }}"""
+        # prepare train hover styles
+        with open(train_hover_style_path, "r") as f:
+            train_hover_template = f.read()
+        train_hover_style = train_hover_template.replace("{{HOVER_WIDTH}}", f"{self.train_path_width_hover}")
         for train_id in self.trains.keys():
             train_hover_style += train_hover_template.replace("TRAIN_ID", str(train_id)) + "\n"
         self.standard_style = self.standard_style.replace("{{TRAIN_HOVER_STYLE}}", train_hover_style)
@@ -102,8 +88,14 @@ svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {{
     def save_svg(self, output_filename=None):
         if not output_filename:
             output_filename = os.path.join(self.base_dir, "landscape.svg")
+        static_svg = self.full_svg.to_string()
+        static_svg = ET.ElementTree(ET.fromstring(static_svg))
+        # add style element
+        style_element = ET.Element("style")
+        style_element.text = self.standard_style
+        static_svg.getroot().insert(0, style_element)
         with open(output_filename, "w") as f:
-            f.write(self.full_svg.to_string())
+            f.write(ET.tostring(static_svg.getroot(), encoding='unicode'))
     
     def svg_string(self):
         return self.full_svg.to_string()

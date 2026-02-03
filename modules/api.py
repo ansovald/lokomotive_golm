@@ -35,6 +35,8 @@ class IncrementalFlatlandPlan(Application):
             "total_running_time": None,
             "incremental": None
         }
+        self.incremental_stats = []
+        self.optimization_stats = []
 
     def main(self, ctl, files):
         start_time = time.time()
@@ -117,22 +119,23 @@ class IncrementalFlatlandPlan(Application):
             running_time_str += f"{seconds:.2f}s"
             print(f"Current running time: {running_time_str}")
             print(result)
+            self.incremental_stats.append(ctl.statistics)
             step += 1
-        
+
         incremental_time = time.time() - start_time
         self.stats["incremental"] = {"running_time": f"{incremental_time:.2f}", "stats": ctl.statistics}
         if result.satisfiable and self.optimize:
             print(f"Solution found in {step} steps.")
             ctl.release_external(Function("query", [Number(step-1)]))
             ctl.configuration.solve.models="-1"
+
             parts = [("optimize", [])]
             ctl.ground(parts, context=self)
-            with ctl.solve(yield_=True) as handle:
-                for model in handle:
-                    models.append(model.symbols(atoms=True))
+            handle = ctl.solve(yield_=True, on_model=self.log_optimization_model)
+            for model in handle:
+                models.append(model.symbols(atoms=True))
             optimization_time = time.time() - incremental_time - start_time
             print(f"Optimization running time: {optimization_time:.2f} seconds.")
-            self.stats["optimization"] = {"optimization_time": f"{optimization_time:.2f}", "stats": ctl.statistics}
         
         if models:
             self.model = models[-1]
@@ -149,6 +152,13 @@ class IncrementalFlatlandPlan(Application):
         total_running_time = current_time - start_time
         print(f"Total running time: {total_running_time:.2f} seconds.")
         self.stats["total_running_time"] = f"{total_running_time:.2f}"
+
+    def log_optimization_model(self, model):
+        print(f"Model {model.number} with cost {model.cost} found during optimization.")
+        print(f"\tPriority: {model.priority}")
+        print(f"\tType: {model.type}")
+        print(f"\toptimality proven: {model.optimality_proven}")
+        print(f"\tSymbols in model: {len(model.symbols(atoms=True))}")
 
 class FlatlandPlan(Application):
     """ takes an environment and a set of primary encodings """
