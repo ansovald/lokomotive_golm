@@ -54,7 +54,7 @@ arrived(ID, T) :-
 % ---------COLLISION AVOIDANCE---------
 % occupies(ID, T, C): train ID occupies cell C at timestep T
 % during movement, a train occupies both the starting and ending cell for the whole duration of the move
-occupies(ID, T,A C) :-
+occupies(ID, T, C) :-
     transition(ID, T0, C, _, T1, _, _),
     T = T0..T1.
 
