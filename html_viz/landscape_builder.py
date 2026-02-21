@@ -1,12 +1,13 @@
 from __future__ import annotations
 import xml.etree.ElementTree as ET
-from pydreamplet import SVG, G, Vector, Rect, Text, Path, Circle
+from pydreamplet import SVG, G, Vector, Rect, Text, Path, Circle, SvgElement
+from pydreamplet.markers import Marker, ARROW_SIMPLE
 import os
 import random
 import json
 from dataclasses import dataclass
 from html_viz.svg_files.control_buttons import build_buttons
-from html_viz.svg_files.get_svg import clean_svg_group, sample_scenery_file, get_train_svg, get_train_color
+from html_viz.svg_files.get_svg import clean_svg_group, sample_scenery_id, get_train_svg, get_train_color, scenery_files, track_files
 from html_viz.train_paths import TrainPath
 
 import logging
@@ -44,12 +45,10 @@ class LandscapeBuilder:
         self.control_canvas = self.build_controls()
         self.train_path_group = G(id="train_paths", class_name="train_paths")
         self.canvas.append(self.train_path_group)
-        self.save_svg()
         self.train_paths = self.prepare_train_paths()
         self.display_states = {}
-        # self.legend = []
         self.place_trains()
-        # self.align_legend()
+        self.save_svg()
 
     def prepare_dynamic_styles(self, style_path, train_hover_style_path):
         # pre-computes all elements that depend on cell size
@@ -80,9 +79,9 @@ class LandscapeBuilder:
         # prepare train hover styles
         with open(train_hover_style_path, "r") as f:
             train_hover_template = f.read()
-        train_hover_style = train_hover_template.replace("{{HOVER_WIDTH}}", f"{self.train_path_width_hover}")
+        train_hover_style = ""
         for train_id in self.trains.keys():
-            train_hover_style += train_hover_template.replace("TRAIN_ID", str(train_id)) + "\n"
+            train_hover_style += train_hover_template.replace("TRAIN_ID", str(train_id)).replace("HOVER_WIDTH", f"{self.train_path_width_hover}") + "\n"
         self.standard_style = self.standard_style.replace("{{TRAIN_HOVER_STYLE}}", train_hover_style)
 
     def save_svg(self, output_filename=None):
@@ -117,16 +116,9 @@ class LandscapeBuilder:
                     max_x = x + 1
         self.grid_width = max_x
         self.grid_height = max_y
-        
-        # self.legend_base_size = 3
-        # # each legend element is 3 cells high
-        # self.legend_columns = 1
-        # if len(self.trains) * self.legend_base_size > self.grid_height:
-        #     self.legend_columns = (len(self.trains) * self.legend_base_size) // self.grid_height
-        # self.legend_width = self.legend_columns * self.legend_base_size
 
         self.height = self.grid_height + 2
-        self.width = self.grid_width + 2 # + self.legend_width
+        self.width = self.grid_width + 2
 
     def get_abs_coord(self, coord, grid_offset=True):
         offset = 1 if grid_offset else 0
@@ -146,26 +138,38 @@ class LandscapeBuilder:
         label.font_family = "monospace"
         label.font_size = self.font_size * 0.8
         label.fill = "#000000"
-        # label.stroke = "#ffffff"
         label.font_weight = 700
         label.stroke_width = self.cell_size * .02
         label.pos = self.get_abs_vector(x + .5, y +.5)
         label.text_anchor = "middle"
         label.dominant_baseline = "central"
         return label
+    
+    def prepare_use_groups(self):
+        # prepare use groups to be cloned when building the landscape for better performance
+        # to be called from within build_landscape before building the landscape
+        for scenery_file in scenery_files:
+            group_id = os.path.basename(scenery_file).replace("_restyled.svg", "")
+            cell_group = clean_svg_group(scenery_file, group_id, self.cell_size, scale=240)
+            cell_group.pos = Vector(0,0)
+            self.defs.append(cell_group)
+        for track_file in track_files:
+            group_id = os.path.basename(track_file).replace("_restyled.svg", "")
+            group = clean_svg_group(track_file, group_id, self.cell_size, scale=240)
+            self.defs.append(group)
 
     def build_landscape(self):
         self.full_svg = SVG(self.width * self.cell_size, self.height * self.cell_size, id="svg_canvas")
-        canvas = G(class_name="svg-pan-zoom-viewport")
-        self.full_svg.append(canvas)
-        # style_element = ET.Element("style")
-        # style_element.text = self.standard_style
-        # canvas.append(style_element)
+        self.canvas = G(class_name="svg-pan-zoom-viewport")
+        self.defs = SvgElement("defs")
+        self.full_svg.append(self.canvas)
+        self.prepare_use_groups()
+        self.canvas.append(self.defs)
         # set background color
-        canvas.append(Rect(pos=self.get_abs_vector(0,0), width=self.grid_width * self.cell_size, height=self.grid_height * self.cell_size, class_name="background"))
+        self.canvas.append(Rect(pos=self.get_abs_vector(0,0), width=self.grid_width * self.cell_size, height=self.grid_height * self.cell_size, class_name="background"))
 
         landscape = G(id="landscape", class_name="landscape")
-        canvas.append(landscape)
+        self.canvas.append(landscape)
 
         # label rows and columns
         for y in range(self.grid_height):
@@ -209,14 +213,15 @@ class LandscapeBuilder:
                 if track_id is None:
                     continue
                 elif track_id == "0":
-                    svg_path = sample_scenery_file()
+                    svg_id = sample_scenery_id()
                 else:
-                    svg_path = f"{track_id}_restyled.svg"
+                    svg_id = track_id #f"{track_id}_restyled.svg"
                 group_id = f"cell_{x}_{y}_t{track_id}"
                 cell_group = G(id=group_id, class_name="cell")
-                cell_image = clean_svg_group(svg_path, group_id, self.cell_size, scale=240)
+                cell_image = SvgElement("use")
+                cell_image.href = f"#{svg_id}"
                 cell_pos = self.get_abs_vector(x, y, grid_offset=True)
-                cell_image.pos = cell_pos
+                cell_image.transform = f"translate({cell_pos.x}, {cell_pos.y})"
                 cell_group.append(cell_image)
                 # add invisible rect to capture hover events with stroke to show grid
                 hover_rect = Rect(
@@ -236,7 +241,7 @@ class LandscapeBuilder:
                 coord_label.opacity = 0.0
                 cell_group.append(coord_label)
                 landscape.append(cell_group)
-        return canvas
+        return self.canvas
     
     def prepare_train_paths(self):
         """
@@ -276,9 +281,6 @@ class LandscapeBuilder:
             path_string = train_path_builder.path_string
             self.display_states[train_id] = train_path_builder.get_display_states()
             self.train_paths[train_id].d = path_string
-            
-            # # Create train legend
-            # train_group.append(self.create_train_legend(train_id, speed=train_info.get("speed", 0)))
 
             # Prepare train SVG
             train_render_group = get_train_svg(train_id, self.cell_size, scale=240)
@@ -345,96 +347,6 @@ class LandscapeBuilder:
             train_group.append(train_animation_group)
 
             self.canvas.append(train_group)
-
-    # def create_train_legend(self, train_id, speed=0):
-    #     train_legend = G(id=f"train_{train_id}_legend", class_name="train_legend")
-    #     self.legend.append(train_legend)
-    #     lines = 4
-    #     margin = self.cell_size * 0.1
-    #     width = self.cell_size * 3 - margin * 2
-    #     text_x = width / 2
-    #     line_height = self.cell_size * 2.5 / lines
-    #     # baseline of first text line
-    #     text_y = margin + line_height * 0.5
-    #     # add rect behind the label as first child for easier selection
-    #     background_rect = Rect(
-    #         pos=Vector(0.5, 0.5),
-    #         width=width,
-    #         height=width,
-    #         rx=self.cell_size/5, ry=self.cell_size/5,
-    #         fill=get_train_color(train_id),
-    #         fill_opacity=0.2,
-    #         id=f"train_{train_id}_legend_background",
-    #         class_name="train_legend_background"
-    #     )
-    #     train_legend.append(background_rect)
-    #     train_label = Text(
-    #         initial_text=f"Train {train_id}",
-    #         pos=Vector(text_x, text_y),
-    #         font_family="sans-serif",
-    #         font_size=self.font_size,
-    #         font_weight=700,
-    #         fill="#000000",
-    #         dominant_baseline="central",
-    #         text_anchor="middle",
-    #         id=f"train_{train_id}_label"
-    #         )
-    #     # second label beneath first to display action state
-    #     action_label = Text(
-    #         initial_text="wait",
-    #         pos=Vector(text_x, text_y + line_height),
-    #         font_family="sans-serif",
-    #         font_size=self.font_size * 0.7,
-    #         font_weight=700,
-    #         fill="#000000",
-    #         dominant_baseline="central",
-    #         text_anchor="middle",
-    #         id=f"train_{train_id}_action_label"
-    #         )
-    #     # third label: position
-    #     position_label = Text(
-    #         initial_text="(0,0)",
-    #         pos=Vector(text_x, text_y + line_height * 2),
-    #         font_family="monospace",
-    #         font_size=self.font_size * 0.7,
-    #         font_weight=700,
-    #         fill="#000000",
-    #         dominant_baseline="central",
-    #         text_anchor="middle",
-    #         id=f"train_{train_id}_position_label"
-    #         )
-    #     # fourth label: speed
-    #     speed_label = Text(
-    #         initial_text=f"speed: {speed}",
-    #         pos=Vector(text_x, text_y + line_height * 3),
-    #         font_family="monospace",
-    #         font_size=self.font_size * 0.7,
-    #         font_weight=700,
-    #         fill="#000000",
-    #         dominant_baseline="central",
-    #         text_anchor="middle",
-    #         id=f"train_{train_id}_speed_label"
-    #     )
-    #     train_legend.append(position_label)
-    #     train_legend.append(action_label)
-    #     train_legend.append(train_label)
-    #     train_legend.append(speed_label)
-    #     return train_legend
-    
-    # def align_legend(self):
-    #     # place legend according to self.legend_columns, centered vertically
-    #     elements_per_column = (len(self.trains) + self.legend_columns - 1) // self.legend_columns
-    #     column_height = elements_per_column * self.legend_base_size
-
-    #     for i, train_legend in enumerate(self.legend):
-    #         column = i // elements_per_column
-    #         row = i % elements_per_column
-    #         x = self.get_abs_coord(self.grid_width + 2 + column * self.legend_base_size, grid_offset=False)
-    #         y = ((self.grid_height + 2 - column_height) / 2 + row * self.legend_base_size) * self.cell_size
-    #         train_legend.pos = Vector(
-    #             x,
-    #             y
-    #         )
     
     def build_controls(self):
         control_cell_size = 25

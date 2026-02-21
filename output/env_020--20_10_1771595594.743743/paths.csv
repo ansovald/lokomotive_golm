@@ -1,0 +1,4057 @@
+agent;timestep;position;direction;status;given_command
+0;0;None;w;waiting;wait
+1;0;None;e;waiting;wait
+2;0;None;w;waiting;wait
+3;0;None;n;waiting;wait
+4;0;None;n;waiting;wait
+5;0;None;e;waiting;wait
+6;0;None;w;waiting;wait
+7;0;None;n;waiting;wait
+8;0;None;e;waiting;wait
+9;0;None;n;waiting;wait
+10;0;None;s;waiting;wait
+11;0;None;n;waiting;wait
+12;0;None;w;waiting;wait
+13;0;None;e;waiting;wait
+14;0;None;e;waiting;wait
+15;0;None;s;waiting;wait
+16;0;None;w;waiting;wait
+17;0;None;e;waiting;wait
+18;0;None;e;waiting;wait
+19;0;None;e;waiting;wait
+0;1;None;w;waiting;wait
+1;1;None;e;waiting;wait
+2;1;None;w;waiting;wait
+3;1;None;n;waiting;wait
+4;1;None;n;waiting;wait
+5;1;None;e;waiting;wait
+6;1;None;w;waiting;wait
+7;1;None;n;waiting;wait
+8;1;None;e;waiting;wait
+9;1;None;n;waiting;wait
+10;1;None;s;waiting;wait
+11;1;None;n;waiting;wait
+12;1;None;w;waiting;wait
+13;1;None;e;waiting;wait
+14;1;None;e;waiting;wait
+15;1;None;s;waiting;wait
+16;1;None;w;waiting;wait
+17;1;None;e;waiting;wait
+18;1;None;e;waiting;wait
+19;1;None;e;waiting;wait
+0;2;None;w;waiting;wait
+1;2;None;e;waiting;wait
+2;2;None;w;waiting;wait
+3;2;None;n;waiting;wait
+4;2;None;n;waiting;wait
+5;2;None;e;ready to depart;move_forward
+6;2;None;w;waiting;wait
+7;2;None;n;waiting;wait
+8;2;None;e;waiting;wait
+9;2;None;n;waiting;wait
+10;2;None;s;waiting;wait
+11;2;None;n;waiting;wait
+12;2;None;w;waiting;wait
+13;2;None;e;waiting;wait
+14;2;None;e;waiting;wait
+15;2;None;s;waiting;wait
+16;2;None;w;waiting;wait
+17;2;None;e;waiting;wait
+18;2;None;e;waiting;wait
+19;2;None;e;waiting;wait
+0;3;None;w;waiting;wait
+1;3;None;e;waiting;wait
+2;3;None;w;waiting;wait
+3;3;None;n;ready to depart;move_forward
+4;3;None;n;waiting;wait
+5;3;(68, 63);e;moving;move_forward
+6;3;None;w;waiting;wait
+7;3;None;n;waiting;wait
+8;3;None;e;waiting;wait
+9;3;None;n;waiting;wait
+10;3;None;s;waiting;wait
+11;3;None;n;waiting;wait
+12;3;None;w;waiting;wait
+13;3;None;e;waiting;wait
+14;3;None;e;waiting;wait
+15;3;None;s;waiting;wait
+16;3;None;w;waiting;wait
+17;3;None;e;waiting;wait
+18;3;None;e;waiting;wait
+19;3;None;e;waiting;wait
+0;4;None;w;waiting;wait
+1;4;None;e;waiting;wait
+2;4;None;w;waiting;wait
+3;4;(58, 17);n;moving;move_forward
+4;4;None;n;waiting;wait
+5;4;(68, 64);e;moving;move_forward
+6;4;None;w;waiting;wait
+7;4;None;n;waiting;wait
+8;4;None;e;waiting;wait
+9;4;None;n;waiting;wait
+10;4;None;s;waiting;wait
+11;4;None;n;waiting;wait
+12;4;None;w;waiting;wait
+13;4;None;e;waiting;wait
+14;4;None;e;waiting;wait
+15;4;None;s;waiting;wait
+16;4;None;w;waiting;wait
+17;4;None;e;waiting;wait
+18;4;None;e;waiting;wait
+19;4;None;e;waiting;wait
+0;5;None;w;waiting;wait
+1;5;None;e;waiting;wait
+2;5;None;w;waiting;wait
+3;5;(57, 17);n;moving;move_forward
+4;5;None;n;waiting;wait
+5;5;(69, 64);s;moving;move_forward
+6;5;None;w;waiting;wait
+7;5;None;n;waiting;wait
+8;5;None;e;waiting;wait
+9;5;None;n;waiting;wait
+10;5;None;s;waiting;wait
+11;5;None;n;waiting;wait
+12;5;None;w;waiting;wait
+13;5;None;e;waiting;wait
+14;5;None;e;waiting;wait
+15;5;None;s;waiting;wait
+16;5;None;w;waiting;wait
+17;5;None;e;waiting;wait
+18;5;None;e;waiting;wait
+19;5;None;e;waiting;wait
+0;6;None;w;waiting;wait
+1;6;None;e;waiting;wait
+2;6;None;w;waiting;wait
+3;6;(57, 18);e;moving;move_forward
+4;6;None;n;waiting;wait
+5;6;(69, 65);e;moving;move_forward
+6;6;None;w;waiting;wait
+7;6;None;n;waiting;wait
+8;6;None;e;waiting;wait
+9;6;None;n;waiting;wait
+10;6;None;s;waiting;wait
+11;6;None;n;waiting;wait
+12;6;None;w;waiting;wait
+13;6;None;e;waiting;wait
+14;6;None;e;waiting;wait
+15;6;None;s;waiting;wait
+16;6;None;w;waiting;wait
+17;6;None;e;waiting;wait
+18;6;None;e;waiting;wait
+19;6;None;e;waiting;wait
+0;7;None;w;waiting;wait
+1;7;None;e;waiting;wait
+2;7;None;w;waiting;wait
+3;7;(56, 18);n;moving;move_right
+4;7;None;n;waiting;wait
+5;7;(69, 66);e;moving;move_forward
+6;7;None;w;waiting;wait
+7;7;None;n;waiting;wait
+8;7;None;e;waiting;wait
+9;7;None;n;waiting;wait
+10;7;None;s;waiting;wait
+11;7;None;n;waiting;wait
+12;7;None;w;waiting;wait
+13;7;None;e;waiting;wait
+14;7;None;e;waiting;wait
+15;7;None;s;waiting;wait
+16;7;None;w;waiting;wait
+17;7;None;e;waiting;wait
+18;7;None;e;waiting;wait
+19;7;None;e;waiting;wait
+0;8;None;w;waiting;wait
+1;8;None;e;waiting;wait
+2;8;None;w;waiting;wait
+3;8;(56, 19);e;moving;move_forward
+4;8;None;n;waiting;wait
+5;8;(69, 67);e;moving;move_forward
+6;8;None;w;waiting;wait
+7;8;None;n;waiting;wait
+8;8;None;e;waiting;wait
+9;8;None;n;waiting;wait
+10;8;None;s;waiting;wait
+11;8;None;n;waiting;wait
+12;8;None;w;waiting;wait
+13;8;None;e;waiting;wait
+14;8;None;e;waiting;wait
+15;8;None;s;waiting;wait
+16;8;None;w;waiting;wait
+17;8;None;e;waiting;wait
+18;8;None;e;waiting;wait
+19;8;None;e;waiting;wait
+0;9;None;w;waiting;wait
+1;9;None;e;waiting;wait
+2;9;None;w;waiting;wait
+3;9;(55, 19);n;moving;wait
+4;9;None;n;waiting;wait
+5;9;(69, 68);e;moving;move_forward
+6;9;None;w;waiting;wait
+7;9;None;n;waiting;wait
+8;9;None;e;waiting;wait
+9;9;None;n;waiting;wait
+10;9;None;s;waiting;wait
+11;9;None;n;waiting;wait
+12;9;None;w;waiting;wait
+13;9;None;e;waiting;wait
+14;9;None;e;waiting;wait
+15;9;None;s;waiting;wait
+16;9;None;w;waiting;wait
+17;9;None;e;waiting;wait
+18;9;None;e;waiting;wait
+19;9;None;e;waiting;wait
+0;10;None;w;waiting;wait
+1;10;None;e;waiting;wait
+2;10;None;w;waiting;wait
+3;10;(55, 19);n;stopped;wait
+4;10;None;n;waiting;wait
+5;10;(68, 68);n;moving;move_forward
+6;10;None;w;waiting;wait
+7;10;None;n;waiting;wait
+8;10;None;e;waiting;wait
+9;10;None;n;waiting;wait
+10;10;None;s;waiting;wait
+11;10;None;n;waiting;wait
+12;10;None;w;waiting;wait
+13;10;None;e;waiting;wait
+14;10;None;e;waiting;wait
+15;10;None;s;waiting;wait
+16;10;None;w;waiting;wait
+17;10;None;e;waiting;wait
+18;10;None;e;waiting;wait
+19;10;None;e;waiting;wait
+0;11;None;w;waiting;wait
+1;11;None;e;waiting;wait
+2;11;None;w;waiting;wait
+3;11;(55, 19);n;stopped;wait
+4;11;None;n;waiting;wait
+5;11;(67, 68);n;moving;move_forward
+6;11;None;w;waiting;wait
+7;11;None;n;waiting;wait
+8;11;None;e;waiting;wait
+9;11;None;n;waiting;wait
+10;11;None;s;waiting;wait
+11;11;None;n;waiting;wait
+12;11;None;w;waiting;wait
+13;11;None;e;waiting;wait
+14;11;None;e;waiting;wait
+15;11;None;s;waiting;wait
+16;11;None;w;waiting;wait
+17;11;None;e;waiting;wait
+18;11;None;e;waiting;wait
+19;11;None;e;waiting;wait
+0;12;None;w;waiting;wait
+1;12;None;e;ready to depart;move_forward
+2;12;None;w;waiting;wait
+3;12;(55, 19);n;stopped;move_forward
+4;12;None;n;waiting;wait
+5;12;(66, 68);n;moving;move_forward
+6;12;None;w;waiting;wait
+7;12;None;n;waiting;wait
+8;12;None;e;waiting;wait
+9;12;None;n;waiting;wait
+10;12;None;s;waiting;wait
+11;12;None;n;waiting;wait
+12;12;None;w;waiting;wait
+13;12;None;e;waiting;wait
+14;12;None;e;waiting;wait
+15;12;None;s;waiting;wait
+16;12;None;w;waiting;wait
+17;12;None;e;waiting;wait
+18;12;None;e;waiting;wait
+19;12;None;e;waiting;wait
+0;13;None;w;waiting;wait
+1;13;(67, 49);e;moving;move_forward
+2;13;None;w;waiting;wait
+3;13;(55, 18);w;moving;move_forward
+4;13;None;n;ready to depart;move_forward
+5;13;(65, 68);n;moving;move_forward
+6;13;None;w;waiting;wait
+7;13;None;n;waiting;wait
+8;13;None;e;waiting;wait
+9;13;None;n;waiting;wait
+10;13;None;s;waiting;wait
+11;13;None;n;waiting;wait
+12;13;None;w;waiting;wait
+13;13;None;e;waiting;wait
+14;13;None;e;waiting;wait
+15;13;None;s;waiting;wait
+16;13;None;w;waiting;wait
+17;13;None;e;waiting;wait
+18;13;None;e;waiting;wait
+19;13;None;e;waiting;wait
+0;14;None;w;waiting;wait
+1;14;(67, 50);e;moving;move_forward
+2;14;None;w;waiting;wait
+3;14;(54, 18);n;moving;move_forward
+4;14;(58, 17);n;moving;move_forward
+5;14;(64, 68);n;moving;move_forward
+6;14;None;w;ready to depart;move_forward
+7;14;None;n;waiting;wait
+8;14;None;e;waiting;wait
+9;14;None;n;ready to depart;move_forward
+10;14;None;s;waiting;wait
+11;14;None;n;waiting;wait
+12;14;None;w;waiting;wait
+13;14;None;e;waiting;wait
+14;14;None;e;waiting;wait
+15;14;None;s;waiting;wait
+16;14;None;w;waiting;wait
+17;14;None;e;waiting;wait
+18;14;None;e;waiting;wait
+19;14;None;e;waiting;wait
+0;15;None;w;waiting;wait
+1;15;(67, 51);e;moving;move_forward
+2;15;None;w;waiting;wait
+3;15;(53, 18);n;moving;move_forward
+4;15;(57, 17);n;moving;move_forward
+5;15;(63, 68);n;moving;move_forward
+6;15;(68, 63);w;moving;move_forward
+7;15;None;n;waiting;wait
+8;15;None;e;waiting;wait
+9;15;(35, 45);n;moving;move_forward
+10;15;None;s;waiting;wait
+11;15;None;n;waiting;wait
+12;15;None;w;waiting;wait
+13;15;None;e;waiting;wait
+14;15;None;e;waiting;wait
+15;15;None;s;waiting;wait
+16;15;None;w;waiting;wait
+17;15;None;e;waiting;wait
+18;15;None;e;waiting;wait
+19;15;None;e;waiting;wait
+0;16;None;w;waiting;wait
+1;16;(67, 52);e;moving;move_forward
+2;16;None;w;waiting;wait
+3;16;(52, 18);n;moving;move_forward
+4;16;(57, 18);e;moving;move_forward
+5;16;(62, 68);n;moving;move_forward
+6;16;(68, 62);w;moving;move_forward
+7;16;None;n;waiting;wait
+8;16;None;e;waiting;wait
+9;16;(34, 45);n;moving;move_forward
+10;16;None;s;waiting;wait
+11;16;None;n;waiting;wait
+12;16;None;w;waiting;wait
+13;16;None;e;waiting;wait
+14;16;None;e;waiting;wait
+15;16;None;s;waiting;wait
+16;16;None;w;waiting;wait
+17;16;None;e;waiting;wait
+18;16;None;e;waiting;wait
+19;16;None;e;waiting;wait
+0;17;None;w;waiting;wait
+1;17;(66, 52);n;moving;move_forward
+2;17;None;w;waiting;wait
+3;17;(51, 18);n;moving;move_forward
+4;17;(56, 18);n;moving;move_forward
+5;17;(61, 68);n;moving;move_forward
+6;17;(69, 62);s;moving;move_forward
+7;17;None;n;waiting;wait
+8;17;None;e;waiting;wait
+9;17;(33, 45);n;moving;move_forward
+10;17;None;s;waiting;wait
+11;17;None;n;waiting;wait
+12;17;None;w;waiting;wait
+13;17;None;e;waiting;wait
+14;17;None;e;waiting;wait
+15;17;None;s;waiting;wait
+16;17;None;w;waiting;wait
+17;17;None;e;waiting;wait
+18;17;None;e;waiting;wait
+19;17;None;e;waiting;wait
+0;18;None;w;waiting;wait
+1;18;(66, 53);e;moving;move_forward
+2;18;None;w;waiting;wait
+3;18;(50, 18);n;moving;move_forward
+4;18;(55, 18);n;moving;move_forward
+5;18;(60, 68);n;moving;move_forward
+6;18;(69, 61);w;moving;move_forward
+7;18;None;n;waiting;wait
+8;18;None;e;waiting;wait
+9;18;(32, 45);n;moving;move_forward
+10;18;None;s;waiting;wait
+11;18;None;n;waiting;wait
+12;18;None;w;waiting;wait
+13;18;None;e;waiting;wait
+14;18;None;e;waiting;wait
+15;18;None;s;waiting;wait
+16;18;None;w;waiting;wait
+17;18;None;e;waiting;wait
+18;18;None;e;waiting;wait
+19;18;None;e;waiting;wait
+0;19;None;w;waiting;wait
+1;19;(66, 54);e;moving;move_forward
+2;19;None;w;waiting;wait
+3;19;(49, 18);n;moving;move_forward
+4;19;(54, 18);n;moving;move_forward
+5;19;(59, 68);n;moving;move_forward
+6;19;(69, 60);w;moving;move_forward
+7;19;None;n;waiting;wait
+8;19;None;e;waiting;wait
+9;19;(31, 45);n;moving;move_forward
+10;19;None;s;waiting;wait
+11;19;None;n;waiting;wait
+12;19;None;w;waiting;wait
+13;19;None;e;waiting;wait
+14;19;None;e;waiting;wait
+15;19;None;s;waiting;wait
+16;19;None;w;waiting;wait
+17;19;None;e;waiting;wait
+18;19;None;e;waiting;wait
+19;19;None;e;waiting;wait
+0;20;None;w;waiting;wait
+1;20;(66, 55);e;moving;move_right
+2;20;None;w;waiting;wait
+3;20;(48, 18);n;moving;move_forward
+4;20;(53, 18);n;moving;move_forward
+5;20;(58, 68);n;moving;move_forward
+6;20;(69, 59);w;moving;move_forward
+7;20;None;n;waiting;wait
+8;20;None;e;waiting;wait
+9;20;(30, 45);n;moving;move_left
+10;20;None;s;waiting;wait
+11;20;None;n;waiting;wait
+12;20;None;w;waiting;wait
+13;20;None;e;waiting;wait
+14;20;None;e;waiting;wait
+15;20;None;s;waiting;wait
+16;20;None;w;waiting;wait
+17;20;None;e;waiting;wait
+18;20;None;e;waiting;wait
+19;20;None;e;waiting;wait
+0;21;None;w;waiting;wait
+1;21;(67, 55);s;moving;move_forward
+2;21;None;w;waiting;wait
+3;21;(48, 19);e;moving;move_forward
+4;21;(52, 18);n;moving;move_forward
+5;21;(57, 68);n;moving;move_forward
+6;21;(69, 58);w;moving;move_right
+7;21;None;n;waiting;wait
+8;21;None;e;waiting;wait
+9;21;(30, 44);w;moving;move_forward
+10;21;None;s;waiting;wait
+11;21;None;n;waiting;wait
+12;21;None;w;waiting;wait
+13;21;None;e;waiting;wait
+14;21;None;e;waiting;wait
+15;21;None;s;waiting;wait
+16;21;None;w;waiting;wait
+17;21;None;e;waiting;wait
+18;21;None;e;waiting;wait
+19;21;None;e;waiting;wait
+0;22;None;w;waiting;wait
+1;22;(68, 55);s;moving;move_forward
+2;22;None;w;waiting;wait
+3;22;(47, 19);n;moving;move_forward
+4;22;(51, 18);n;moving;move_forward
+5;22;(56, 68);n;moving;move_forward
+6;22;(68, 58);n;moving;move_forward
+7;22;None;n;waiting;wait
+8;22;None;e;waiting;wait
+9;22;(30, 43);w;moving;move_forward
+10;22;None;s;waiting;wait
+11;22;None;n;waiting;wait
+12;22;None;w;waiting;wait
+13;22;None;e;waiting;wait
+14;22;None;e;waiting;wait
+15;22;None;s;waiting;wait
+16;22;None;w;waiting;wait
+17;22;None;e;waiting;wait
+18;22;None;e;waiting;wait
+19;22;None;e;waiting;wait
+0;23;None;w;waiting;wait
+1;23;(69, 55);s;moving;move_forward
+2;23;None;w;waiting;wait
+3;23;(46, 19);n;moving;move_right
+4;23;(50, 18);n;moving;move_forward
+5;23;(55, 68);n;moving;move_forward
+6;23;(68, 57);w;moving;move_forward
+7;23;None;n;waiting;wait
+8;23;None;e;waiting;wait
+9;23;(29, 43);n;moving;move_forward
+10;23;None;s;waiting;wait
+11;23;None;n;waiting;wait
+12;23;None;w;waiting;wait
+13;23;None;e;waiting;wait
+14;23;None;e;waiting;wait
+15;23;None;s;waiting;wait
+16;23;None;w;waiting;wait
+17;23;None;e;waiting;wait
+18;23;None;e;waiting;wait
+19;23;None;e;waiting;wait
+0;24;None;w;waiting;wait
+1;24;(70, 55);s;moving;move_forward
+2;24;None;w;waiting;wait
+3;24;(46, 20);e;moving;move_forward
+4;24;(49, 18);n;moving;move_forward
+5;24;(54, 68);n;moving;move_forward
+6;24;(68, 56);w;moving;move_forward
+7;24;None;n;waiting;wait
+8;24;None;e;waiting;wait
+9;24;(28, 43);n;moving;move_forward
+10;24;None;s;waiting;wait
+11;24;None;n;waiting;wait
+12;24;None;w;waiting;wait
+13;24;None;e;waiting;wait
+14;24;None;e;waiting;wait
+15;24;None;s;waiting;wait
+16;24;None;w;waiting;wait
+17;24;None;e;waiting;wait
+18;24;None;e;waiting;wait
+19;24;None;e;waiting;wait
+0;25;None;w;waiting;wait
+1;25;(70, 56);e;moving;move_forward
+2;25;None;w;waiting;wait
+3;25;(45, 20);n;moving;move_forward
+4;25;(48, 18);n;moving;move_forward
+5;25;(53, 68);n;moving;move_forward
+6;25;(68, 55);w;moving;move_forward
+7;25;None;n;waiting;wait
+8;25;None;e;waiting;wait
+9;25;(27, 43);n;moving;move_forward
+10;25;None;s;waiting;wait
+11;25;None;n;waiting;wait
+12;25;None;w;waiting;wait
+13;25;None;e;waiting;wait
+14;25;None;e;waiting;wait
+15;25;None;s;waiting;wait
+16;25;None;w;waiting;wait
+17;25;None;e;waiting;wait
+18;25;None;e;waiting;wait
+19;25;None;e;waiting;wait
+0;26;None;w;waiting;wait
+1;26;(70, 57);e;moving;move_forward
+2;26;None;w;waiting;wait
+3;26;(44, 20);n;moving;move_forward
+4;26;(48, 19);e;moving;move_forward
+5;26;(52, 68);n;moving;move_forward
+6;26;(68, 54);w;moving;move_forward
+7;26;None;n;waiting;wait
+8;26;None;e;waiting;wait
+9;26;(26, 43);n;moving;move_forward
+10;26;None;s;waiting;wait
+11;26;None;n;waiting;wait
+12;26;None;w;waiting;wait
+13;26;None;e;waiting;wait
+14;26;None;e;waiting;wait
+15;26;None;s;waiting;wait
+16;26;None;w;waiting;wait
+17;26;None;e;waiting;wait
+18;26;None;e;waiting;wait
+19;26;None;e;waiting;wait
+0;27;None;w;waiting;wait
+1;27;(70, 58);e;moving;move_forward
+2;27;None;w;waiting;wait
+3;27;(43, 20);n;moving;move_forward
+4;27;(47, 19);n;moving;move_forward
+5;27;(51, 68);n;moving;move_forward
+6;27;(67, 54);n;moving;move_forward
+7;27;None;n;waiting;wait
+8;27;None;e;waiting;wait
+9;27;(25, 43);n;moving;move_forward
+10;27;None;s;waiting;wait
+11;27;None;n;waiting;wait
+12;27;None;w;waiting;wait
+13;27;None;e;waiting;wait
+14;27;None;e;waiting;wait
+15;27;None;s;waiting;wait
+16;27;None;w;waiting;wait
+17;27;None;e;waiting;wait
+18;27;None;e;waiting;wait
+19;27;None;e;waiting;wait
+0;28;None;w;waiting;wait
+1;28;(70, 59);e;moving;move_forward
+2;28;None;w;waiting;wait
+3;28;(42, 20);n;moving;move_forward
+4;28;(46, 19);n;moving;move_forward
+5;28;(50, 68);n;moving;move_forward
+6;28;(66, 54);n;moving;move_forward
+7;28;None;n;waiting;wait
+8;28;None;e;waiting;wait
+9;28;(24, 43);n;moving;move_forward
+10;28;None;s;waiting;wait
+11;28;None;n;waiting;wait
+12;28;None;w;waiting;wait
+13;28;None;e;waiting;wait
+14;28;None;e;waiting;wait
+15;28;None;s;waiting;wait
+16;28;None;w;waiting;wait
+17;28;None;e;waiting;wait
+18;28;None;e;waiting;wait
+19;28;None;e;waiting;wait
+0;29;None;w;waiting;wait
+1;29;(70, 60);e;moving;move_forward
+2;29;None;w;waiting;wait
+3;29;(41, 20);n;moving;move_forward
+4;29;(45, 19);n;moving;move_forward
+5;29;(49, 68);n;moving;move_forward
+6;29;(66, 53);w;moving;move_forward
+7;29;None;n;waiting;wait
+8;29;None;e;waiting;wait
+9;29;(23, 43);n;moving;move_forward
+10;29;None;s;waiting;wait
+11;29;None;n;waiting;wait
+12;29;None;w;waiting;wait
+13;29;None;e;waiting;wait
+14;29;None;e;waiting;wait
+15;29;None;s;waiting;wait
+16;29;None;w;waiting;wait
+17;29;None;e;waiting;wait
+18;29;None;e;waiting;wait
+19;29;None;e;waiting;wait
+0;30;None;w;waiting;wait
+1;30;(70, 61);e;moving;move_forward
+2;30;None;w;waiting;wait
+3;30;(40, 20);n;moving;move_forward
+4;30;(44, 19);n;moving;move_forward
+5;30;(48, 68);n;moving;move_forward
+6;30;(66, 52);w;moving;move_left
+7;30;None;n;waiting;wait
+8;30;None;e;waiting;wait
+9;30;(22, 43);n;moving;move_forward
+10;30;None;s;waiting;wait
+11;30;None;n;waiting;wait
+12;30;None;w;waiting;wait
+13;30;None;e;waiting;wait
+14;30;None;e;ready to depart;move_forward
+15;30;None;s;waiting;wait
+16;30;None;w;waiting;wait
+17;30;None;e;waiting;wait
+18;30;None;e;waiting;wait
+19;30;None;e;waiting;wait
+0;31;None;w;waiting;wait
+1;31;(70, 62);e;moving;move_right
+2;31;None;w;waiting;wait
+3;31;(39, 20);n;moving;move_forward
+4;31;(43, 19);n;moving;move_forward
+5;31;(47, 68);n;moving;move_forward
+6;31;(67, 52);s;moving;move_forward
+7;31;None;n;waiting;wait
+8;31;None;e;waiting;wait
+9;31;(21, 43);n;moving;move_forward
+10;31;None;s;waiting;wait
+11;31;None;n;waiting;wait
+12;31;None;w;waiting;wait
+13;31;None;e;waiting;wait
+14;31;(70, 63);e;moving;wait
+15;31;None;s;waiting;wait
+16;31;None;w;waiting;wait
+17;31;None;e;waiting;wait
+18;31;None;e;waiting;wait
+19;31;None;e;waiting;wait
+0;32;None;w;waiting;wait
+1;32;(71, 62);s;moving;move_forward
+2;32;None;w;waiting;wait
+3;32;(38, 20);n;moving;move_forward
+4;32;(42, 19);n;moving;move_forward
+5;32;(46, 68);n;moving;move_forward
+6;32;(67, 51);w;moving;move_forward
+7;32;None;n;waiting;wait
+8;32;None;e;waiting;wait
+9;32;(20, 43);n;moving;move_forward
+10;32;None;s;waiting;wait
+11;32;None;n;waiting;wait
+12;32;None;w;waiting;wait
+13;32;None;e;waiting;wait
+14;32;(70, 63);e;stopped;wait
+15;32;None;s;waiting;wait
+16;32;None;w;waiting;wait
+17;32;None;e;waiting;wait
+18;32;None;e;waiting;wait
+19;32;None;e;waiting;wait
+0;33;None;w;waiting;wait
+1;33;(71, 63);e;moving;move_forward
+2;33;None;w;waiting;wait
+3;33;(37, 20);n;moving;move_forward
+4;33;(41, 19);n;moving;move_right
+5;33;(45, 68);n;moving;move_forward
+6;33;(67, 50);w;moving;move_forward
+7;33;None;n;waiting;wait
+8;33;None;e;waiting;wait
+9;33;(19, 43);n;moving;move_forward
+10;33;None;s;waiting;wait
+11;33;None;n;waiting;wait
+12;33;None;w;waiting;wait
+13;33;None;e;waiting;wait
+14;33;(70, 63);e;stopped;wait
+15;33;None;s;waiting;wait
+16;33;None;w;waiting;wait
+17;33;None;e;waiting;wait
+18;33;None;e;waiting;wait
+19;33;None;e;waiting;wait
+0;34;None;w;waiting;wait
+1;34;(71, 64);e;moving;wait
+2;34;None;w;waiting;wait
+3;34;(36, 20);n;moving;move_forward
+4;34;(41, 20);e;moving;move_forward
+5;34;(44, 68);n;moving;move_forward
+6;34;(67, 49);w;moving;move_forward
+7;34;None;n;waiting;wait
+8;34;None;e;waiting;wait
+9;34;(18, 43);n;moving;move_forward
+10;34;None;s;waiting;wait
+11;34;None;n;waiting;wait
+12;34;None;w;waiting;wait
+13;34;None;e;waiting;wait
+14;34;(70, 63);e;stopped;wait
+15;34;None;s;waiting;wait
+16;34;None;w;waiting;wait
+17;34;None;e;waiting;wait
+18;34;None;e;waiting;wait
+19;34;None;e;waiting;wait
+0;35;None;w;waiting;wait
+1;35;(71, 64);e;stopped;wait
+2;35;None;w;waiting;wait
+3;35;(35, 20);n;moving;move_forward
+4;35;(40, 20);n;moving;move_forward
+5;35;(43, 68);n;moving;move_forward
+6;35;(67, 48);w;moving;move_forward
+7;35;None;n;waiting;wait
+8;35;None;e;waiting;wait
+9;35;(17, 43);n;moving;move_forward
+10;35;None;s;waiting;wait
+11;35;None;n;waiting;wait
+12;35;None;w;waiting;wait
+13;35;None;e;waiting;wait
+14;35;(70, 63);e;stopped;wait
+15;35;None;s;waiting;wait
+16;35;None;w;waiting;wait
+17;35;None;e;waiting;wait
+18;35;None;e;waiting;wait
+19;35;None;e;waiting;wait
+0;36;None;w;waiting;wait
+1;36;(71, 64);e;stopped;wait
+2;36;None;w;waiting;wait
+3;36;(34, 20);n;moving;move_forward
+4;36;(39, 20);n;moving;wait
+5;36;(42, 68);n;moving;move_forward
+6;36;(67, 47);w;moving;move_forward
+7;36;None;n;waiting;wait
+8;36;None;e;waiting;wait
+9;36;(16, 43);n;moving;move_forward
+10;36;None;s;waiting;wait
+11;36;None;n;waiting;wait
+12;36;None;w;waiting;wait
+13;36;None;e;waiting;wait
+14;36;(70, 63);e;stopped;wait
+15;36;None;s;waiting;wait
+16;36;None;w;waiting;wait
+17;36;None;e;waiting;wait
+18;36;None;e;waiting;wait
+19;36;None;e;waiting;wait
+0;37;None;w;waiting;wait
+1;37;(71, 64);e;stopped;wait
+2;37;None;w;waiting;wait
+3;37;(33, 20);n;moving;move_forward
+4;37;(39, 20);n;stopped;wait
+5;37;(41, 68);n;moving;move_forward
+6;37;(67, 46);w;moving;wait
+7;37;None;n;waiting;wait
+8;37;None;e;ready to depart;move_forward
+9;37;(15, 43);n;moving;move_forward
+10;37;None;s;waiting;wait
+11;37;None;n;waiting;wait
+12;37;None;w;waiting;wait
+13;37;None;e;waiting;wait
+14;37;(70, 63);e;stopped;wait
+15;37;None;s;waiting;wait
+16;37;None;w;waiting;wait
+17;37;None;e;waiting;wait
+18;37;None;e;waiting;wait
+19;37;None;e;waiting;wait
+0;38;None;w;waiting;wait
+1;38;(71, 64);e;stopped;wait
+2;38;None;w;waiting;wait
+3;38;(33, 21);e;moving;move_forward
+4;38;(39, 20);n;stopped;wait
+5;38;(40, 68);n;moving;move_forward
+6;38;(67, 46);w;stopped;move_forward
+7;38;None;n;waiting;wait
+8;38;(67, 49);e;moving;move_forward
+9;38;(14, 43);n;moving;move_forward
+10;38;None;s;waiting;wait
+11;38;None;n;waiting;wait
+12;38;None;w;waiting;wait
+13;38;None;e;waiting;wait
+14;38;(70, 63);e;stopped;wait
+15;38;None;s;waiting;wait
+16;38;None;w;waiting;wait
+17;38;None;e;waiting;wait
+18;38;None;e;waiting;wait
+19;38;None;e;waiting;wait
+0;39;None;w;waiting;wait
+1;39;(71, 64);e;stopped;wait
+2;39;None;w;waiting;wait
+3;39;(33, 22);e;moving;move_forward
+4;39;(39, 20);n;stopped;wait
+5;39;(40, 67);w;moving;move_forward
+6;39;(66, 46);n;moving;move_forward
+7;39;None;n;waiting;wait
+8;39;(67, 50);e;moving;move_forward
+9;39;(13, 43);n;moving;move_forward
+10;39;None;s;waiting;wait
+11;39;None;n;waiting;wait
+12;39;None;w;waiting;wait
+13;39;None;e;waiting;wait
+14;39;(70, 63);e;stopped;wait
+15;39;None;s;waiting;wait
+16;39;None;w;waiting;wait
+17;39;None;e;waiting;wait
+18;39;None;e;waiting;wait
+19;39;None;e;waiting;wait
+0;40;None;w;waiting;wait
+1;40;(71, 64);e;stopped;wait
+2;40;None;w;waiting;wait
+3;40;(33, 23);e;moving;move_forward
+4;40;(39, 20);n;stopped;wait
+5;40;(39, 67);n;moving;move_forward
+6;40;(66, 45);w;moving;wait
+7;40;None;n;waiting;wait
+8;40;(67, 51);e;moving;move_forward
+9;40;(13, 42);w;moving;move_forward
+10;40;None;s;waiting;wait
+11;40;None;n;waiting;wait
+12;40;None;w;waiting;wait
+13;40;None;e;waiting;wait
+14;40;(70, 63);e;stopped;wait
+15;40;None;s;waiting;wait
+16;40;None;w;waiting;wait
+17;40;None;e;waiting;wait
+18;40;None;e;waiting;wait
+19;40;None;e;waiting;wait
+0;41;None;w;waiting;wait
+1;41;(71, 64);e;stopped;wait
+2;41;None;w;waiting;wait
+3;41;(33, 24);e;moving;move_forward
+4;41;(39, 20);n;stopped;wait
+5;41;(39, 66);w;moving;move_forward
+6;41;(66, 45);w;stopped;wait
+7;41;None;n;waiting;wait
+8;41;(67, 52);e;moving;move_forward
+9;41;(13, 41);w;moving;move_forward
+10;41;None;s;waiting;wait
+11;41;None;n;waiting;wait
+12;41;None;w;waiting;wait
+13;41;None;e;waiting;wait
+14;41;(70, 63);e;stopped;wait
+15;41;None;s;waiting;wait
+16;41;None;w;waiting;wait
+17;41;None;e;waiting;wait
+18;41;None;e;waiting;wait
+19;41;None;e;waiting;wait
+0;42;None;w;waiting;wait
+1;42;(71, 64);e;stopped;wait
+2;42;None;w;waiting;wait
+3;42;(33, 25);e;moving;move_forward
+4;42;(39, 20);n;stopped;wait
+5;42;(38, 66);n;moving;move_forward
+6;42;(66, 45);w;stopped;wait
+7;42;None;n;waiting;wait
+8;42;(66, 52);n;moving;move_forward
+9;42;(13, 40);w;moving;move_forward
+10;42;None;s;waiting;wait
+11;42;None;n;waiting;wait
+12;42;None;w;waiting;wait
+13;42;None;e;waiting;wait
+14;42;(70, 63);e;stopped;wait
+15;42;None;s;waiting;wait
+16;42;None;w;waiting;wait
+17;42;None;e;waiting;wait
+18;42;None;e;waiting;wait
+19;42;None;e;waiting;wait
+0;43;None;w;waiting;wait
+1;43;(71, 64);e;stopped;wait
+2;43;None;w;waiting;wait
+3;43;(33, 26);e;moving;move_forward
+4;43;(39, 20);n;stopped;wait
+5;43;(37, 66);n;moving;move_forward
+6;43;(66, 45);w;stopped;wait
+7;43;None;n;waiting;wait
+8;43;(66, 53);e;moving;move_forward
+9;43;(13, 39);w;moving;move_forward
+10;43;None;s;waiting;wait
+11;43;None;n;waiting;wait
+12;43;None;w;waiting;wait
+13;43;None;e;waiting;wait
+14;43;(70, 63);e;stopped;move_forward
+15;43;None;s;waiting;wait
+16;43;None;w;waiting;wait
+17;43;None;e;waiting;wait
+18;43;None;e;waiting;wait
+19;43;None;e;waiting;wait
+0;44;None;w;waiting;wait
+1;44;(71, 64);e;stopped;wait
+2;44;None;w;waiting;wait
+3;44;(33, 27);e;moving;move_forward
+4;44;(39, 20);n;stopped;wait
+5;44;(36, 66);n;moving;move_forward
+6;44;(66, 45);w;stopped;wait
+7;44;None;n;waiting;wait
+8;44;(66, 54);e;moving;move_right
+9;44;(13, 38);w;moving;move_forward
+10;44;None;s;waiting;wait
+11;44;None;n;waiting;wait
+12;44;None;w;waiting;wait
+13;44;None;e;waiting;wait
+14;44;(70, 64);e;moving;move_forward
+15;44;None;s;waiting;wait
+16;44;None;w;waiting;wait
+17;44;None;e;waiting;wait
+18;44;None;e;waiting;wait
+19;44;None;e;waiting;wait
+0;45;None;w;waiting;wait
+1;45;(71, 64);e;stopped;wait
+2;45;None;w;waiting;wait
+3;45;(33, 28);e;moving;move_forward
+4;45;(39, 20);n;stopped;wait
+5;45;(35, 66);n;moving;move_forward
+6;45;(66, 45);w;stopped;move_forward
+7;45;None;n;waiting;wait
+8;45;(67, 54);s;moving;move_forward
+9;45;(13, 37);w;moving;move_forward
+10;45;None;s;waiting;wait
+11;45;None;n;waiting;wait
+12;45;None;w;waiting;wait
+13;45;None;e;waiting;wait
+14;45;(70, 65);e;moving;move_forward
+15;45;None;s;waiting;wait
+16;45;None;w;waiting;wait
+17;45;None;e;waiting;wait
+18;45;None;e;waiting;wait
+19;45;None;e;waiting;wait
+0;46;None;w;waiting;wait
+1;46;(71, 64);e;stopped;wait
+2;46;None;w;waiting;wait
+3;46;(32, 28);n;moving;move_forward
+4;46;(39, 20);n;stopped;move_forward
+5;46;(34, 66);n;moving;move_forward
+6;46;(66, 44);w;moving;move_forward
+7;46;None;n;waiting;wait
+8;46;(68, 54);s;moving;move_forward
+9;46;(13, 36);w;moving;move_forward
+10;46;None;s;waiting;wait
+11;46;None;n;waiting;wait
+12;46;None;w;waiting;wait
+13;46;None;e;waiting;wait
+14;46;(70, 66);e;moving;move_forward
+15;46;None;s;waiting;wait
+16;46;None;w;waiting;wait
+17;46;None;e;waiting;wait
+18;46;None;e;waiting;wait
+19;46;None;e;waiting;wait
+0;47;None;w;waiting;wait
+1;47;(71, 64);e;stopped;wait
+2;47;None;w;waiting;wait
+3;47;(31, 28);n;moving;move_forward
+4;47;(38, 20);n;moving;move_forward
+5;47;(33, 66);n;moving;move_forward
+6;47;(66, 43);w;moving;move_forward
+7;47;None;n;waiting;wait
+8;47;(68, 55);e;moving;move_forward
+9;47;(13, 35);w;moving;move_forward
+10;47;None;s;waiting;wait
+11;47;None;n;waiting;wait
+12;47;None;w;waiting;wait
+13;47;None;e;waiting;wait
+14;47;(70, 67);e;moving;wait
+15;47;None;s;waiting;wait
+16;47;None;w;waiting;wait
+17;47;None;e;waiting;wait
+18;47;None;e;waiting;wait
+19;47;None;e;waiting;wait
+0;48;None;w;waiting;wait
+1;48;(71, 64);e;stopped;wait
+2;48;None;w;waiting;wait
+3;48;(30, 28);n;moving;move_forward
+4;48;(37, 20);n;moving;wait
+5;48;(32, 66);n;moving;move_forward
+6;48;(67, 43);s;moving;move_forward
+7;48;None;n;waiting;wait
+8;48;(68, 56);e;moving;move_forward
+9;48;(13, 34);w;moving;move_forward
+10;48;None;s;waiting;wait
+11;48;None;n;waiting;wait
+12;48;None;w;waiting;wait
+13;48;None;e;waiting;wait
+14;48;(70, 67);e;stopped;move_forward
+15;48;None;s;waiting;wait
+16;48;None;w;waiting;wait
+17;48;None;e;waiting;wait
+18;48;None;e;waiting;wait
+19;48;None;e;waiting;wait
+0;49;None;w;waiting;wait
+1;49;(71, 64);e;stopped;wait
+2;49;None;w;waiting;wait
+3;49;(29, 28);n;moving;move_forward
+4;49;(37, 20);n;stopped;wait
+5;49;(31, 66);n;moving;move_forward
+6;49;(68, 43);s;moving;move_forward
+7;49;None;n;waiting;wait
+8;49;(68, 57);e;moving;move_forward
+9;49;(13, 33);w;moving;move_forward
+10;49;None;s;waiting;wait
+11;49;None;n;waiting;wait
+12;49;None;w;waiting;wait
+13;49;None;e;waiting;wait
+14;49;(70, 68);e;moving;move_forward
+15;49;None;s;waiting;wait
+16;49;None;w;waiting;wait
+17;49;None;e;waiting;wait
+18;49;None;e;waiting;wait
+19;49;None;e;waiting;wait
+0;50;None;w;waiting;wait
+1;50;(71, 64);e;stopped;wait
+2;50;None;w;waiting;wait
+3;50;(28, 28);n;moving;move_forward
+4;50;(37, 20);n;stopped;wait
+5;50;(30, 66);n;moving;move_forward
+6;50;(69, 43);s;moving;move_forward
+7;50;None;n;waiting;wait
+8;50;(68, 58);e;moving;move_forward
+9;50;(13, 32);w;moving;move_forward
+10;50;None;s;waiting;wait
+11;50;None;n;ready to depart;move_forward
+12;50;None;w;waiting;wait
+13;50;None;e;waiting;wait
+14;50;(69, 68);n;moving;move_forward
+15;50;None;s;waiting;wait
+16;50;None;w;waiting;wait
+17;50;None;e;waiting;wait
+18;50;None;e;waiting;wait
+19;50;None;e;waiting;wait
+0;51;None;w;ready to depart;move_forward
+1;51;(71, 64);e;stopped;wait
+2;51;None;w;waiting;wait
+3;51;(27, 28);n;moving;move_forward
+4;51;(37, 20);n;stopped;move_forward
+5;51;(29, 66);n;moving;move_forward
+6;51;(69, 42);w;moving;move_forward
+7;51;None;n;waiting;wait
+8;51;(69, 58);s;moving;move_forward
+9;51;(13, 31);w;moving;move_forward
+10;51;None;s;waiting;wait
+11;51;(58, 19);n;moving;wait
+12;51;None;w;waiting;wait
+13;51;None;e;waiting;wait
+14;51;(68, 68);n;moving;move_forward
+15;51;None;s;waiting;wait
+16;51;None;w;waiting;wait
+17;51;None;e;waiting;wait
+18;51;None;e;waiting;wait
+19;51;None;e;waiting;wait
+0;52;(13, 36);w;moving;wait
+1;52;(71, 64);e;stopped;wait
+2;52;None;w;waiting;wait
+3;52;(26, 28);n;moving;move_forward
+4;52;(36, 20);n;moving;move_forward
+5;52;(28, 66);n;moving;move_forward
+6;52;(70, 42);s;moving;move_forward
+7;52;None;n;waiting;wait
+8;52;(69, 59);e;moving;move_forward
+9;52;(13, 30);w;moving;move_forward
+10;52;None;s;waiting;wait
+11;52;(58, 19);n;stopped;wait
+12;52;None;w;waiting;wait
+13;52;None;e;waiting;wait
+14;52;(67, 68);n;moving;move_forward
+15;52;None;s;waiting;wait
+16;52;None;w;waiting;wait
+17;52;None;e;waiting;wait
+18;52;None;e;waiting;wait
+19;52;None;e;waiting;wait
+0;53;(13, 36);w;stopped;wait
+1;53;(71, 64);e;stopped;wait
+2;53;None;w;waiting;wait
+3;53;(25, 28);n;moving;move_forward
+4;53;(35, 20);n;moving;move_forward
+5;53;(27, 66);n;moving;move_forward
+6;53;(71, 42);s;moving;move_forward
+7;53;None;n;waiting;wait
+8;53;(69, 60);e;moving;move_forward
+9;53;(14, 30);s;moving;move_right
+10;53;None;s;waiting;wait
+11;53;(58, 19);n;stopped;wait
+12;53;None;w;waiting;wait
+13;53;None;e;waiting;wait
+14;53;(66, 68);n;moving;wait
+15;53;None;s;waiting;wait
+16;53;None;w;waiting;wait
+17;53;None;e;waiting;wait
+18;53;None;e;waiting;wait
+19;53;None;e;waiting;wait
+0;54;(13, 36);w;stopped;wait
+1;54;(71, 64);e;stopped;wait
+2;54;None;w;waiting;wait
+3;54;(24, 28);n;moving;wait
+4;54;(34, 20);n;moving;move_forward
+5;54;(26, 66);n;moving;move_forward
+6;54;(72, 42);s;moving;move_forward
+7;54;None;n;waiting;wait
+8;54;(69, 61);e;moving;move_forward
+9;54;(14, 29);w;moving;move_forward
+10;54;None;s;waiting;wait
+11;54;(58, 19);n;stopped;wait
+12;54;None;w;waiting;wait
+13;54;None;e;waiting;wait
+14;54;(66, 68);n;stopped;move_forward
+15;54;None;s;waiting;wait
+16;54;None;w;waiting;wait
+17;54;None;e;waiting;wait
+18;54;None;e;waiting;wait
+19;54;None;e;waiting;wait
+0;55;(13, 36);w;stopped;move_forward
+1;55;(71, 64);e;stopped;wait
+2;55;None;w;waiting;wait
+3;55;(24, 28);n;stopped;wait
+4;55;(33, 20);n;moving;move_forward
+5;55;(25, 66);n;moving;move_forward
+6;55;(73, 42);s;moving;move_forward
+7;55;None;n;waiting;wait
+8;55;(69, 62);e;moving;move_forward
+9;55;(14, 28);w;moving;move_forward
+10;55;None;s;waiting;wait
+11;55;(58, 19);n;stopped;wait
+12;55;None;w;waiting;wait
+13;55;None;e;waiting;wait
+14;55;(65, 68);n;moving;wait
+15;55;None;s;waiting;wait
+16;55;None;w;waiting;wait
+17;55;None;e;waiting;wait
+18;55;None;e;waiting;wait
+19;55;None;e;waiting;wait
+0;56;(13, 35);w;moving;move_forward
+1;56;(71, 64);e;stopped;wait
+2;56;None;w;waiting;wait
+3;56;(24, 28);n;stopped;wait
+4;56;(33, 21);e;moving;move_forward
+5;56;(24, 66);n;moving;move_forward
+6;56;(74, 42);s;moving;move_forward
+7;56;None;n;waiting;wait
+8;56;(69, 63);e;moving;move_forward
+9;56;(14, 27);w;moving;move_forward
+10;56;None;s;waiting;wait
+11;56;(58, 19);n;stopped;wait
+12;56;None;w;waiting;wait
+13;56;None;e;waiting;wait
+14;56;(65, 68);n;stopped;move_forward
+15;56;None;s;waiting;wait
+16;56;None;w;waiting;wait
+17;56;None;e;waiting;wait
+18;56;None;e;waiting;wait
+19;56;None;e;waiting;wait
+0;57;(13, 34);w;moving;move_forward
+1;57;(71, 64);e;stopped;wait
+2;57;None;w;waiting;wait
+3;57;(24, 28);n;stopped;wait
+4;57;(33, 22);e;moving;move_forward
+5;57;(23, 66);n;moving;move_forward
+6;57;(74, 41);w;moving;move_forward
+7;57;None;n;waiting;wait
+8;57;(69, 64);e;moving;move_forward
+9;57;(14, 26);w;moving;move_forward
+10;57;None;s;waiting;wait
+11;57;(58, 19);n;stopped;wait
+12;57;None;w;waiting;wait
+13;57;None;e;waiting;wait
+14;57;(64, 68);n;moving;move_left
+15;57;None;s;waiting;wait
+16;57;None;w;waiting;wait
+17;57;None;e;waiting;wait
+18;57;None;e;waiting;wait
+19;57;None;e;waiting;wait
+0;58;(13, 33);w;moving;move_forward
+1;58;(71, 64);e;stopped;wait
+2;58;None;w;waiting;wait
+3;58;(24, 28);n;stopped;wait
+4;58;(33, 23);e;moving;move_forward
+5;58;(22, 66);n;moving;move_forward
+6;58;(74, 40);w;moving;move_forward
+7;58;None;n;waiting;wait
+8;58;(69, 65);e;moving;move_forward
+9;58;(15, 26);s;moving;move_forward
+10;58;None;s;waiting;wait
+11;58;(58, 19);n;stopped;wait
+12;58;None;w;waiting;wait
+13;58;None;e;ready to depart;move_forward
+14;58;(64, 67);w;moving;move_forward
+15;58;None;s;waiting;wait
+16;58;None;w;waiting;wait
+17;58;None;e;waiting;wait
+18;58;None;e;waiting;wait
+19;58;None;e;waiting;wait
+0;59;(13, 32);w;moving;move_forward
+1;59;(71, 64);e;stopped;wait
+2;59;None;w;waiting;wait
+3;59;(24, 28);n;stopped;wait
+4;59;(33, 24);e;moving;move_forward
+5;59;(21, 66);n;moving;move_forward
+6;59;(74, 39);w;moving;move_forward
+7;59;None;n;ready to depart;move_forward
+8;59;(69, 66);e;moving;move_forward
+9;59;(16, 26);s;moving;move_forward
+10;59;None;s;waiting;wait
+11;59;(58, 19);n;stopped;wait
+12;59;None;w;waiting;wait
+13;59;(73, 36);e;moving;move_forward
+14;59;(63, 67);n;moving;move_forward
+15;59;None;s;waiting;wait
+16;59;None;w;waiting;wait
+17;59;None;e;waiting;wait
+18;59;None;e;waiting;wait
+19;59;None;e;waiting;wait
+0;60;(13, 31);w;moving;move_forward
+1;60;(71, 64);e;stopped;wait
+2;60;None;w;waiting;wait
+3;60;(24, 28);n;stopped;move_forward
+4;60;(33, 25);e;moving;move_forward
+5;60;(20, 66);n;moving;move_forward
+6;60;(74, 38);w;moving;move_forward
+7;60;(35, 45);n;moving;move_forward
+8;60;(69, 67);e;moving;move_forward
+9;60;(17, 26);s;moving;move_forward
+10;60;None;s;waiting;wait
+11;60;(58, 19);n;stopped;wait
+12;60;None;w;waiting;wait
+13;60;(73, 37);e;moving;wait
+14;60;(62, 67);n;moving;move_forward
+15;60;None;s;waiting;wait
+16;60;None;w;waiting;wait
+17;60;None;e;waiting;wait
+18;60;None;e;waiting;wait
+19;60;None;e;waiting;wait
+0;61;(13, 30);w;moving;wait
+1;61;(71, 64);e;stopped;wait
+2;61;None;w;waiting;wait
+3;61;(23, 28);n;moving;move_forward
+4;61;(33, 26);e;moving;move_forward
+5;61;(19, 66);n;moving;move_forward
+6;61;(74, 37);w;moving;move_forward
+7;61;(34, 45);n;moving;move_forward
+8;61;(69, 68);e;moving;move_forward
+9;61;(17, 25);w;moving;move_forward
+10;61;None;s;waiting;wait
+11;61;(58, 19);n;stopped;wait
+12;61;None;w;waiting;wait
+13;61;(73, 37);e;stopped;wait
+14;61;(61, 67);n;moving;move_forward
+15;61;None;s;waiting;wait
+16;61;None;w;waiting;wait
+17;61;None;e;waiting;wait
+18;61;None;e;waiting;wait
+19;61;None;e;waiting;wait
+0;62;(13, 30);w;stopped;move_forward
+1;62;(71, 64);e;stopped;wait
+2;62;None;w;waiting;wait
+3;62;(22, 28);n;moving;move_forward
+4;62;(33, 27);e;moving;move_forward
+5;62;(18, 66);n;moving;move_forward
+6;62;(74, 36);w;moving;move_forward
+7;62;(33, 45);n;moving;move_forward
+8;62;(68, 68);n;moving;move_forward
+9;62;(18, 25);s;moving;move_forward
+10;62;None;s;waiting;wait
+11;62;(58, 19);n;stopped;wait
+12;62;None;w;waiting;wait
+13;62;(73, 37);e;stopped;wait
+14;62;(60, 67);n;moving;move_forward
+15;62;None;s;waiting;wait
+16;62;None;w;waiting;wait
+17;62;None;e;waiting;wait
+18;62;None;e;waiting;wait
+19;62;None;e;waiting;wait
+0;63;(14, 30);s;moving;move_right
+1;63;(71, 64);e;stopped;wait
+2;63;None;w;waiting;wait
+3;63;(21, 28);n;moving;wait
+4;63;(33, 28);e;moving;move_forward
+5;63;(17, 66);n;moving;move_forward
+6;63;(74, 35);w;moving;move_forward
+7;63;(32, 45);n;moving;move_forward
+8;63;(67, 68);n;moving;move_forward
+9;63;(19, 25);s;moving;move_forward
+10;63;None;s;waiting;wait
+11;63;(58, 19);n;stopped;wait
+12;63;None;w;waiting;wait
+13;63;(73, 37);e;stopped;move_forward
+14;63;(59, 67);n;moving;move_forward
+15;63;None;s;waiting;wait
+16;63;None;w;waiting;wait
+17;63;None;e;waiting;wait
+18;63;None;e;waiting;wait
+19;63;None;e;waiting;wait
+0;64;(14, 29);w;moving;wait
+1;64;(71, 64);e;stopped;wait
+2;64;None;w;waiting;wait
+3;64;(21, 28);n;stopped;wait
+4;64;(32, 28);n;moving;wait
+5;64;(16, 66);n;moving;move_forward
+6;64;(74, 34);w;moving;move_forward
+7;64;(31, 45);n;moving;move_forward
+8;64;(66, 68);n;moving;move_forward
+9;64;(20, 25);s;moving;move_forward
+10;64;None;s;waiting;wait
+11;64;(58, 19);n;stopped;wait
+12;64;None;w;waiting;wait
+13;64;(74, 37);s;moving;move_forward
+14;64;(58, 67);n;moving;move_forward
+15;64;None;s;waiting;wait
+16;64;None;w;waiting;wait
+17;64;None;e;waiting;wait
+18;64;None;e;waiting;wait
+19;64;None;e;waiting;wait
+0;65;(14, 29);w;stopped;wait
+1;65;(71, 64);e;stopped;wait
+2;65;None;w;waiting;wait
+3;65;(21, 28);n;stopped;wait
+4;65;(32, 28);n;stopped;wait
+5;65;(16, 65);w;moving;move_forward
+6;65;(74, 33);w;moving;move_forward
+7;65;(30, 45);n;moving;move_forward
+8;65;(65, 68);n;moving;move_forward
+9;65;(21, 25);s;moving;move_forward
+10;65;None;s;waiting;wait
+11;65;(58, 19);n;stopped;wait
+12;65;None;w;waiting;wait
+13;65;(74, 38);e;moving;move_right
+14;65;(57, 67);n;moving;move_forward
+15;65;None;s;waiting;wait
+16;65;None;w;waiting;wait
+17;65;None;e;waiting;wait
+18;65;None;e;waiting;wait
+19;65;None;e;waiting;wait
+0;66;(14, 29);w;stopped;move_forward
+1;66;(71, 64);e;stopped;wait
+2;66;None;w;waiting;wait
+3;66;(21, 28);n;stopped;wait
+4;66;(32, 28);n;stopped;wait
+5;66;(16, 64);w;moving;move_forward
+6;66;(74, 32);w;moving;move_forward
+7;66;(29, 45);n;moving;move_forward
+8;66;(64, 68);n;moving;move_forward
+9;66;(22, 25);s;moving;move_forward
+10;66;None;s;waiting;wait
+11;66;(58, 19);n;stopped;wait
+12;66;None;w;waiting;wait
+13;66;(75, 38);s;moving;move_forward
+14;66;(56, 67);n;moving;move_forward
+15;66;None;s;waiting;wait
+16;66;None;w;waiting;wait
+17;66;None;e;waiting;wait
+18;66;None;e;waiting;wait
+19;66;None;e;waiting;wait
+0;67;(14, 28);w;moving;wait
+1;67;(71, 64);e;stopped;wait
+2;67;None;w;ready to depart;move_forward
+3;67;(21, 28);n;stopped;wait
+4;67;(32, 28);n;stopped;move_forward
+5;67;(16, 63);w;moving;move_forward
+6;67;(74, 31);w;moving;move_forward
+7;67;(28, 45);n;moving;move_forward
+8;67;(63, 68);n;moving;move_forward
+9;67;(22, 24);w;moving;move_forward
+10;67;None;s;waiting;wait
+11;67;(58, 19);n;stopped;wait
+12;67;None;w;waiting;wait
+13;67;(75, 39);e;moving;move_left
+14;67;(55, 67);n;moving;move_forward
+15;67;None;s;waiting;wait
+16;67;None;w;waiting;wait
+17;67;None;e;waiting;wait
+18;67;None;e;waiting;wait
+19;67;None;e;waiting;wait
+0;68;(14, 28);w;stopped;wait
+1;68;(71, 64);e;stopped;wait
+2;68;(73, 36);w;moving;move_forward
+3;68;(21, 28);n;stopped;wait
+4;68;(31, 28);n;moving;move_forward
+5;68;(16, 62);w;moving;move_forward
+6;68;(74, 30);w;moving;move_forward
+7;68;(27, 45);n;moving;move_forward
+8;68;(62, 68);n;moving;move_forward
+9;68;(23, 24);s;moving;move_forward
+10;68;None;s;waiting;wait
+11;68;(58, 19);n;stopped;wait
+12;68;None;w;waiting;wait
+13;68;(74, 39);n;moving;move_forward
+14;68;(54, 67);n;moving;move_forward
+15;68;None;s;waiting;wait
+16;68;None;w;waiting;wait
+17;68;None;e;waiting;wait
+18;68;None;e;waiting;wait
+19;68;None;e;waiting;wait
+0;69;(14, 28);w;stopped;wait
+1;69;(71, 64);e;stopped;wait
+2;69;(73, 35);w;moving;move_forward
+3;69;(21, 28);n;stopped;wait
+4;69;(30, 28);n;moving;move_forward
+5;69;(16, 61);w;moving;move_forward
+6;69;(74, 29);w;moving;move_forward
+7;69;(26, 45);n;moving;move_forward
+8;69;(61, 68);n;moving;move_forward
+9;69;(24, 24);s;moving;move_forward
+10;69;None;s;waiting;wait
+11;69;(58, 19);n;stopped;wait
+12;69;None;w;waiting;wait
+13;69;(74, 40);e;moving;wait
+14;69;(53, 67);n;moving;move_forward
+15;69;None;s;waiting;wait
+16;69;None;w;waiting;wait
+17;69;None;e;waiting;wait
+18;69;None;e;waiting;wait
+19;69;None;e;waiting;wait
+0;70;(14, 28);w;stopped;wait
+1;70;(71, 64);e;stopped;wait
+2;70;(74, 35);s;moving;move_forward
+3;70;(21, 28);n;stopped;wait
+4;70;(29, 28);n;moving;move_forward
+5;70;(16, 60);w;moving;move_forward
+6;70;(73, 29);n;moving;move_forward
+7;70;(26, 44);w;moving;move_forward
+8;70;(60, 68);n;moving;move_forward
+9;70;(25, 24);s;moving;move_forward
+10;70;None;s;waiting;wait
+11;70;(58, 19);n;stopped;wait
+12;70;None;w;waiting;wait
+13;70;(74, 40);e;stopped;move_forward
+14;70;(52, 67);n;moving;move_forward
+15;70;None;s;waiting;wait
+16;70;None;w;waiting;wait
+17;70;None;e;waiting;wait
+18;70;None;e;waiting;wait
+19;70;None;e;waiting;wait
+0;71;(14, 28);w;stopped;wait
+1;71;(71, 64);e;stopped;wait
+2;71;(74, 34);w;moving;move_left
+3;71;(21, 28);n;stopped;wait
+4;71;(28, 28);n;moving;move_forward
+5;71;(16, 59);w;moving;move_forward
+6;71;(73, 28);w;moving;move_forward
+7;71;(26, 43);w;moving;move_forward
+8;71;(59, 68);n;moving;move_forward
+9;71;(26, 24);s;moving;move_forward
+10;71;None;s;waiting;wait
+11;71;(58, 19);n;stopped;wait
+12;71;None;w;waiting;wait
+13;71;(74, 41);e;moving;move_left
+14;71;(51, 67);n;moving;move_forward
+15;71;None;s;waiting;wait
+16;71;None;w;waiting;wait
+17;71;None;e;waiting;wait
+18;71;None;e;waiting;wait
+19;71;None;e;waiting;wait
+0;72;(14, 28);w;stopped;move_forward
+1;72;(71, 64);e;stopped;wait
+2;72;(75, 34);s;moving;move_forward
+3;72;(21, 28);n;stopped;wait
+4;72;(27, 28);n;moving;move_forward
+5;72;(16, 58);w;moving;move_forward
+6;72;(72, 28);n;moving;move_forward
+7;72;(26, 42);w;moving;move_forward
+8;72;(58, 68);n;moving;move_forward
+9;72;(27, 24);s;moving;move_forward
+10;72;None;s;waiting;wait
+11;72;(58, 19);n;stopped;wait
+12;72;None;w;waiting;wait
+13;72;(73, 41);n;moving;move_forward
+14;72;(50, 67);n;moving;move_forward
+15;72;None;s;waiting;wait
+16;72;None;w;waiting;wait
+17;72;None;e;waiting;wait
+18;72;None;e;waiting;wait
+19;72;None;e;waiting;wait
+0;73;(14, 27);w;moving;move_forward
+1;73;(71, 64);e;stopped;wait
+2;73;(75, 33);w;moving;move_forward
+3;73;(21, 28);n;stopped;wait
+4;73;(26, 28);n;moving;move_forward
+5;73;(16, 57);w;moving;move_forward
+6;73;(71, 28);n;moving;move_forward
+7;73;(26, 41);w;moving;move_forward
+8;73;(57, 68);n;moving;move_forward
+9;73;(28, 24);s;moving;move_forward
+10;73;None;s;waiting;wait
+11;73;(58, 19);n;stopped;wait
+12;73;None;w;waiting;wait
+13;73;(72, 41);n;moving;move_forward
+14;73;(49, 67);n;moving;move_forward
+15;73;None;s;waiting;wait
+16;73;None;w;waiting;wait
+17;73;None;e;waiting;wait
+18;73;None;e;waiting;wait
+19;73;None;e;waiting;wait
+0;74;(14, 26);w;moving;move_forward
+1;74;(71, 64);e;stopped;wait
+2;74;(75, 32);w;moving;move_forward
+3;74;(21, 28);n;stopped;wait
+4;74;(25, 28);n;moving;move_forward
+5;74;(16, 56);w;moving;wait
+6;74;(71, 27);w;moving;move_forward
+7;74;(26, 40);w;moving;move_forward
+8;74;(56, 68);n;moving;move_forward
+9;74;(29, 24);s;moving;move_forward
+10;74;None;s;waiting;wait
+11;74;(58, 19);n;stopped;wait
+12;74;None;w;waiting;wait
+13;74;(71, 41);n;moving;move_forward
+14;74;(48, 67);n;moving;move_forward
+15;74;None;s;waiting;wait
+16;74;None;w;waiting;wait
+17;74;None;e;waiting;wait
+18;74;None;e;waiting;wait
+19;74;None;e;waiting;wait
+0;75;(15, 26);s;moving;move_forward
+1;75;(71, 64);e;stopped;wait
+2;75;(75, 31);w;moving;move_forward
+3;75;(21, 28);n;stopped;move_forward
+4;75;(24, 28);n;moving;move_forward
+5;75;(16, 56);w;stopped;wait
+6;75;(70, 27);n;moving;move_forward
+7;75;(26, 39);w;moving;move_forward
+8;75;(55, 68);n;moving;move_forward
+9;75;(30, 24);s;moving;move_forward
+10;75;None;s;waiting;wait
+11;75;(58, 19);n;stopped;wait
+12;75;None;w;waiting;wait
+13;75;(70, 41);n;moving;move_forward
+14;75;(47, 67);n;moving;move_forward
+15;75;None;s;waiting;wait
+16;75;None;w;waiting;wait
+17;75;None;e;waiting;wait
+18;75;None;e;waiting;wait
+19;75;None;e;waiting;wait
+0;76;(16, 26);s;moving;move_forward
+1;76;(71, 64);e;stopped;wait
+2;76;(75, 30);w;moving;move_forward
+3;76;(20, 28);n;moving;move_forward
+4;76;(23, 28);n;moving;move_forward
+5;76;(16, 56);w;stopped;wait
+6;76;(69, 27);n;moving;move_forward
+7;76;(26, 38);w;moving;move_forward
+8;76;(54, 68);n;moving;move_forward
+9;76;(31, 24);s;moving;move_forward
+10;76;None;s;waiting;wait
+11;76;(58, 19);n;stopped;wait
+12;76;None;w;waiting;wait
+13;76;(69, 41);n;moving;move_forward
+14;76;(46, 67);n;moving;move_forward
+15;76;None;s;waiting;wait
+16;76;None;w;waiting;wait
+17;76;None;e;waiting;wait
+18;76;None;e;waiting;wait
+19;76;None;e;waiting;wait
+0;77;(17, 26);s;moving;move_forward
+1;77;(71, 64);e;stopped;wait
+2;77;(75, 29);w;moving;move_forward
+3;77;(19, 28);n;moving;move_forward
+4;77;(22, 28);n;moving;move_forward
+5;77;(16, 56);w;stopped;wait
+6;77;(69, 26);w;moving;move_forward
+7;77;(26, 37);w;moving;move_forward
+8;77;(53, 68);n;moving;move_forward
+9;77;(32, 24);s;moving;move_forward
+10;77;None;s;waiting;wait
+11;77;(58, 19);n;stopped;wait
+12;77;None;w;waiting;wait
+13;77;(69, 40);w;moving;move_right
+14;77;(45, 67);n;moving;move_forward
+15;77;None;s;waiting;wait
+16;77;None;w;waiting;wait
+17;77;None;e;waiting;wait
+18;77;None;e;waiting;wait
+19;77;None;e;waiting;wait
+0;78;(17, 25);w;moving;move_forward
+1;78;(71, 64);e;stopped;wait
+2;78;(75, 28);w;moving;move_forward
+3;78;(19, 29);e;moving;move_forward
+4;78;(21, 28);n;moving;move_forward
+5;78;(16, 56);w;stopped;wait
+6;78;(69, 25);w;moving;move_forward
+7;78;(25, 37);n;moving;move_forward
+8;78;(52, 68);n;moving;move_forward
+9;78;(32, 23);w;moving;move_forward
+10;78;None;s;waiting;wait
+11;78;(58, 19);n;stopped;wait
+12;78;None;w;waiting;wait
+13;78;(68, 40);n;moving;move_forward
+14;78;(44, 67);n;moving;move_forward
+15;78;None;s;ready to depart;move_forward
+16;78;None;w;waiting;wait
+17;78;None;e;waiting;wait
+18;78;None;e;waiting;wait
+19;78;None;e;waiting;wait
+0;79;(18, 25);s;moving;move_forward
+1;79;(71, 64);e;stopped;wait
+2;79;(75, 27);w;moving;move_forward
+3;79;(19, 30);e;moving;move_forward
+4;79;(20, 28);n;moving;move_forward
+5;79;(16, 56);w;stopped;wait
+6;79;(69, 24);w;moving;move_forward
+7;79;(24, 37);n;moving;move_forward
+8;79;(51, 68);n;moving;move_forward
+9;79;(32, 22);w;moving;move_forward
+10;79;None;s;waiting;wait
+11;79;(58, 19);n;stopped;wait
+12;79;None;w;waiting;wait
+13;79;(67, 40);n;moving;move_forward
+14;79;(43, 67);n;moving;move_forward
+15;79;(58, 17);s;moving;wait
+16;79;None;w;waiting;wait
+17;79;None;e;waiting;wait
+18;79;None;e;waiting;wait
+19;79;None;e;waiting;wait
+0;80;(19, 25);s;moving;move_forward
+1;80;(71, 64);e;stopped;wait
+2;80;(75, 26);w;moving;move_forward
+3;80;(18, 30);n;moving;move_forward
+4;80;(19, 28);n;moving;wait
+5;80;(16, 56);w;stopped;move_forward
+6;80;(69, 23);w;moving;move_forward
+7;80;(24, 36);w;moving;move_forward
+8;80;(50, 68);n;moving;move_forward
+9;80;(32, 21);w;moving;move_forward
+10;80;None;s;waiting;wait
+11;80;(58, 19);n;stopped;wait
+12;80;None;w;waiting;wait
+13;80;(66, 40);n;moving;wait
+14;80;(42, 67);n;moving;move_forward
+15;80;(58, 17);s;stopped;wait
+16;80;None;w;waiting;wait
+17;80;None;e;waiting;wait
+18;80;None;e;waiting;wait
+19;80;None;e;waiting;wait
+0;81;(20, 25);s;moving;move_forward
+1;81;(71, 64);e;stopped;wait
+2;81;(74, 26);n;moving;move_forward
+3;81;(17, 30);n;moving;move_forward
+4;81;(19, 28);n;stopped;wait
+5;81;(16, 55);w;moving;move_right
+6;81;(69, 22);w;moving;move_forward
+7;81;(23, 36);n;moving;move_forward
+8;81;(49, 68);n;moving;move_forward
+9;81;(33, 21);s;moving;move_forward
+10;81;None;s;waiting;wait
+11;81;(58, 19);n;stopped;wait
+12;81;None;w;waiting;wait
+13;81;(66, 40);n;stopped;wait
+14;81;(41, 67);n;moving;move_forward
+15;81;(58, 17);s;stopped;wait
+16;81;None;w;waiting;wait
+17;81;None;e;waiting;wait
+18;81;None;e;waiting;wait
+19;81;None;e;waiting;wait
+0;82;(21, 25);s;moving;wait
+1;82;(71, 64);e;stopped;wait
+2;82;(74, 25);w;moving;move_forward
+3;82;(16, 30);n;moving;move_forward
+4;82;(19, 28);n;stopped;wait
+5;82;(15, 55);n;moving;wait
+6;82;(69, 21);w;moving;move_forward
+7;82;(22, 36);n;moving;move_forward
+8;82;(48, 68);n;moving;move_forward
+9;82;(34, 21);s;moving;move_forward
+10;82;None;s;waiting;wait
+11;82;(58, 19);n;stopped;wait
+12;82;None;w;ready to depart;move_forward
+13;82;(66, 40);n;stopped;wait
+14;82;(41, 66);w;moving;move_forward
+15;82;(58, 17);s;stopped;wait
+16;82;None;w;waiting;wait
+17;82;None;e;waiting;wait
+18;82;None;e;waiting;wait
+19;82;None;e;waiting;wait
+0;83;(21, 25);s;stopped;move_forward
+1;83;(71, 64);e;stopped;wait
+2;83;(73, 25);n;moving;move_forward
+3;83;(15, 30);n;moving;move_forward
+4;83;(19, 28);n;stopped;wait
+5;83;(15, 55);n;stopped;wait
+6;83;(69, 20);w;moving;move_forward
+7;83;(21, 36);n;moving;move_forward
+8;83;(47, 68);n;moving;move_forward
+9;83;(35, 21);s;moving;wait
+10;83;None;s;waiting;wait
+11;83;(58, 19);n;stopped;wait
+12;83;(13, 36);w;moving;wait
+13;83;(66, 40);n;stopped;wait
+14;83;(41, 65);w;moving;move_forward
+15;83;(58, 17);s;stopped;wait
+16;83;None;w;waiting;wait
+17;83;None;e;waiting;wait
+18;83;None;e;waiting;wait
+19;83;None;e;waiting;wait
+0;84;(22, 25);s;moving;move_forward
+1;84;(71, 64);e;stopped;wait
+2;84;(72, 25);n;moving;wait
+3;84;(14, 30);n;moving;move_right
+4;84;(19, 28);n;stopped;wait
+5;84;(15, 55);n;stopped;wait
+6;84;(69, 19);w;moving;move_forward
+7;84;(21, 35);w;moving;move_forward
+8;84;(46, 68);n;moving;move_forward
+9;84;(35, 21);s;stopped;move_forward
+10;84;None;s;waiting;wait
+11;84;(58, 19);n;stopped;wait
+12;84;(13, 36);w;stopped;wait
+13;84;(66, 40);n;stopped;wait
+14;84;(40, 65);n;moving;move_forward
+15;84;(58, 17);s;stopped;wait
+16;84;None;w;waiting;wait
+17;84;None;e;waiting;wait
+18;84;None;e;waiting;wait
+19;84;None;e;waiting;wait
+0;85;(22, 24);w;moving;move_forward
+1;85;(71, 64);e;stopped;wait
+2;85;(72, 25);n;stopped;wait
+3;85;(14, 31);e;moving;move_forward
+4;85;(19, 28);n;stopped;wait
+5;85;(15, 55);n;stopped;wait
+6;85;(69, 18);w;moving;move_forward
+7;85;(21, 34);w;moving;move_forward
+8;85;(45, 68);n;moving;move_forward
+9;85;(36, 21);s;moving;wait
+10;85;None;s;waiting;wait
+11;85;(58, 19);n;stopped;wait
+12;85;(13, 36);w;stopped;wait
+13;85;(66, 40);n;stopped;wait
+14;85;(39, 65);n;moving;move_forward
+15;85;(58, 17);s;stopped;wait
+16;85;None;w;waiting;wait
+17;85;None;e;waiting;wait
+18;85;None;e;waiting;wait
+19;85;None;e;waiting;wait
+0;86;(23, 24);s;moving;move_forward
+1;86;(71, 64);e;stopped;wait
+2;86;(72, 25);n;stopped;wait
+3;86;(13, 31);n;moving;move_right
+4;86;(19, 28);n;stopped;move_forward
+5;86;(15, 55);n;stopped;wait
+6;86;(68, 18);n;moving;move_forward
+7;86;(20, 34);n;moving;move_forward
+8;86;(44, 68);n;moving;move_forward
+9;86;(36, 21);s;stopped;wait
+10;86;None;s;waiting;wait
+11;86;(58, 19);n;stopped;wait
+12;86;(13, 36);w;stopped;wait
+13;86;(66, 40);n;stopped;wait
+14;86;(38, 65);n;moving;move_forward
+15;86;(58, 17);s;stopped;wait
+16;86;None;w;waiting;wait
+17;86;None;e;waiting;wait
+18;86;None;e;waiting;wait
+19;86;None;e;waiting;wait
+0;87;(24, 24);s;moving;wait
+1;87;(71, 64);e;stopped;wait
+2;87;(72, 25);n;stopped;wait
+3;87;(13, 32);e;moving;move_forward
+4;87;(19, 29);e;moving;wait
+5;87;(15, 55);n;stopped;wait
+6;87;(67, 18);n;moving;move_forward
+7;87;(19, 34);n;moving;move_forward
+8;87;(43, 68);n;moving;move_forward
+9;87;(36, 21);s;stopped;wait
+10;87;None;s;waiting;wait
+11;87;(58, 19);n;stopped;wait
+12;87;(13, 36);w;stopped;wait
+13;87;(66, 40);n;stopped;wait
+14;87;(37, 65);n;moving;move_forward
+15;87;(58, 17);s;stopped;wait
+16;87;None;w;waiting;wait
+17;87;None;e;waiting;wait
+18;87;None;e;waiting;wait
+19;87;None;e;waiting;wait
+0;88;(24, 24);s;stopped;move_forward
+1;88;(71, 64);e;stopped;wait
+2;88;(72, 25);n;stopped;wait
+3;88;(13, 33);e;moving;move_forward
+4;88;(19, 29);e;stopped;move_forward
+5;88;(15, 55);n;stopped;wait
+6;88;(66, 18);n;moving;move_forward
+7;88;(18, 34);n;moving;move_forward
+8;88;(42, 68);n;moving;move_forward
+9;88;(36, 21);s;stopped;move_forward
+10;88;None;s;waiting;wait
+11;88;(58, 19);n;stopped;wait
+12;88;(13, 36);w;stopped;wait
+13;88;(66, 40);n;stopped;move_forward
+14;88;(36, 65);n;moving;move_forward
+15;88;(58, 17);s;stopped;wait
+16;88;None;w;waiting;wait
+17;88;None;e;waiting;wait
+18;88;None;e;waiting;wait
+19;88;None;e;waiting;wait
+0;89;(25, 24);s;moving;move_forward
+1;89;(71, 64);e;stopped;wait
+2;89;(72, 25);n;stopped;wait
+3;89;(13, 34);e;moving;move_left
+4;89;(19, 30);e;moving;move_forward
+5;89;(15, 55);n;stopped;wait
+6;89;(65, 18);n;moving;move_forward
+7;89;(18, 33);w;moving;move_forward
+8;89;(41, 68);n;moving;move_forward
+9;89;(37, 21);s;moving;move_forward
+10;89;None;s;waiting;wait
+11;89;(58, 19);n;stopped;wait
+12;89;(13, 36);w;stopped;wait
+13;89;(65, 40);n;moving;wait
+14;89;(35, 65);n;moving;move_forward
+15;89;(58, 17);s;stopped;wait
+16;89;None;w;waiting;wait
+17;89;None;e;waiting;wait
+18;89;None;e;waiting;wait
+19;89;None;e;waiting;wait
+0;90;(26, 24);s;moving;move_forward
+1;90;(71, 64);e;stopped;wait
+2;90;(72, 25);n;stopped;wait
+3;90;(12, 34);n;moving;move_forward
+4;90;(18, 30);n;moving;move_forward
+5;90;(15, 55);n;stopped;move_forward
+6;90;(64, 18);n;moving;move_forward
+7;90;(17, 33);n;moving;move_forward
+8;90;(40, 68);n;moving;move_forward
+9;90;(38, 21);s;moving;wait
+10;90;None;s;waiting;wait
+11;90;(58, 19);n;stopped;wait
+12;90;(13, 36);w;stopped;wait
+13;90;(65, 40);n;stopped;wait
+14;90;(34, 65);n;moving;move_forward
+15;90;(58, 17);s;stopped;wait
+16;90;None;w;waiting;wait
+17;90;None;e;waiting;wait
+18;90;None;e;waiting;wait
+19;90;None;e;waiting;wait
+0;91;(27, 24);s;moving;move_forward
+1;91;(71, 64);e;stopped;wait
+2;91;(72, 25);n;stopped;wait
+3;91;(12, 35);e;moving;move_forward
+4;91;(17, 30);n;moving;wait
+5;91;(14, 55);n;moving;move_forward
+6;91;(63, 18);n;moving;move_forward
+7;91;(17, 32);w;moving;move_forward
+8;91;(40, 67);w;moving;move_forward
+9;91;(38, 21);s;stopped;wait
+10;91;None;s;waiting;wait
+11;91;(58, 19);n;stopped;wait
+12;91;(13, 36);w;stopped;wait
+13;91;(65, 40);n;stopped;wait
+14;91;(33, 65);n;moving;move_forward
+15;91;(58, 17);s;stopped;wait
+16;91;None;w;waiting;wait
+17;91;None;e;waiting;wait
+18;91;None;e;waiting;wait
+19;91;None;e;waiting;wait
+0;92;(28, 24);s;moving;move_forward
+1;92;(71, 64);e;stopped;wait
+2;92;(72, 25);n;stopped;wait
+3;92;(12, 36);e;moving;move_forward
+4;92;(17, 30);n;stopped;move_forward
+5;92;(13, 55);n;moving;move_forward
+6;92;(62, 18);n;moving;wait
+7;92;(17, 31);w;moving;move_forward
+8;92;(39, 67);n;moving;move_forward
+9;92;(38, 21);s;stopped;wait
+10;92;None;s;waiting;wait
+11;92;(58, 19);n;stopped;wait
+12;92;(13, 36);w;stopped;wait
+13;92;(65, 40);n;stopped;wait
+14;92;(32, 65);n;moving;move_forward
+15;92;(58, 17);s;stopped;wait
+16;92;None;w;waiting;wait
+17;92;None;e;waiting;wait
+18;92;None;e;waiting;wait
+19;92;None;e;waiting;wait
+0;93;(29, 24);s;moving;move_forward
+1;93;(71, 64);e;stopped;wait
+2;93;(72, 25);n;stopped;wait
+3;93;(12, 37);e;moving;move_forward
+4;93;(16, 30);n;moving;move_forward
+5;93;(13, 54);w;moving;move_forward
+6;93;(62, 18);n;stopped;move_forward
+7;93;(16, 31);n;moving;move_forward
+8;93;(39, 66);w;moving;move_forward
+9;93;(38, 21);s;stopped;move_forward
+10;93;None;s;waiting;wait
+11;93;(58, 19);n;stopped;wait
+12;93;(13, 36);w;stopped;wait
+13;93;(65, 40);n;stopped;wait
+14;93;(31, 65);n;moving;move_forward
+15;93;(58, 17);s;stopped;wait
+16;93;None;w;waiting;wait
+17;93;None;e;waiting;wait
+18;93;None;e;waiting;wait
+19;93;None;e;waiting;wait
+0;94;(30, 24);s;moving;wait
+1;94;(71, 64);e;stopped;wait
+2;94;(72, 25);n;stopped;wait
+3;94;(12, 38);e;moving;move_right
+4;94;(15, 30);n;moving;move_forward
+5;94;(13, 53);w;moving;move_forward
+6;94;(61, 18);n;moving;move_forward
+7;94;(15, 31);n;moving;move_forward
+8;94;(38, 66);n;moving;move_forward
+9;94;(38, 20);w;moving;move_forward
+10;94;None;s;waiting;wait
+11;94;(58, 19);n;stopped;wait
+12;94;(13, 36);w;stopped;wait
+13;94;(65, 40);n;stopped;move_forward
+14;94;(30, 65);n;moving;move_forward
+15;94;(58, 17);s;stopped;wait
+16;94;None;w;waiting;wait
+17;94;None;e;waiting;wait
+18;94;None;e;waiting;wait
+19;94;None;e;waiting;wait
+0;95;(30, 24);s;stopped;wait
+1;95;(71, 64);e;stopped;wait
+2;95;(72, 25);n;stopped;wait
+3;95;(13, 38);s;moving;move_forward
+4;95;(14, 30);n;moving;move_forward
+5;95;(13, 52);w;moving;move_forward
+6;95;(60, 18);n;moving;move_forward
+7;95;(14, 31);n;moving;move_forward
+8;95;(37, 66);n;moving;move_forward
+9;95;(38, 19);w;moving;move_forward
+10;95;None;s;waiting;wait
+11;95;(58, 19);n;stopped;wait
+12;95;(13, 36);w;stopped;wait
+13;95;(64, 40);n;moving;move_forward
+14;95;(29, 65);n;moving;move_forward
+15;95;(58, 17);s;stopped;wait
+16;95;None;w;waiting;wait
+17;95;None;e;waiting;wait
+18;95;None;e;waiting;wait
+19;95;None;e;waiting;wait
+0;96;(30, 24);s;stopped;wait
+1;96;(71, 64);e;stopped;wait
+2;96;(72, 25);n;stopped;wait
+3;96;(13, 39);e;moving;move_forward
+4;96;(13, 30);n;moving;wait
+5;96;(13, 51);w;moving;move_forward
+6;96;(59, 18);n;moving;move_forward
+7;96;(13, 31);n;moving;move_right
+8;96;(36, 66);n;moving;move_forward
+9;96;(39, 19);s;moving;move_forward
+10;96;None;s;waiting;wait
+11;96;(58, 19);n;stopped;wait
+12;96;(13, 36);w;stopped;wait
+13;96;(63, 40);n;moving;move_forward
+14;96;(28, 65);n;moving;move_forward
+15;96;(58, 17);s;stopped;wait
+16;96;None;w;waiting;wait
+17;96;None;e;waiting;wait
+18;96;None;e;waiting;wait
+19;96;None;e;waiting;wait
+0;97;(30, 24);s;stopped;wait
+1;97;(71, 64);e;stopped;wait
+2;97;(72, 25);n;stopped;wait
+3;97;(13, 40);e;moving;wait
+4;97;(13, 30);n;stopped;wait
+5;97;(13, 50);w;moving;move_forward
+6;97;(58, 18);n;moving;move_forward
+7;97;(13, 32);e;moving;move_forward
+8;97;(35, 66);n;moving;move_forward
+9;97;(40, 19);s;moving;move_left
+10;97;None;s;waiting;wait
+11;97;(58, 19);n;stopped;wait
+12;97;(13, 36);w;stopped;wait
+13;97;(62, 40);n;moving;move_forward
+14;97;(27, 65);n;moving;move_forward
+15;97;(58, 17);s;stopped;wait
+16;97;None;w;waiting;wait
+17;97;None;e;waiting;wait
+18;97;None;e;waiting;wait
+19;97;None;e;waiting;wait
+0;98;(30, 24);s;stopped;move_forward
+1;98;(71, 64);e;stopped;wait
+2;98;(72, 25);n;stopped;wait
+3;98;(13, 40);e;stopped;move_forward
+4;98;(13, 30);n;stopped;wait
+5;98;(13, 49);w;moving;move_forward
+6;98;(57, 18);n;moving;move_forward
+7;98;(13, 33);e;moving;move_forward
+8;98;(34, 66);n;moving;move_forward
+9;98;(40, 20);e;moving;move_forward
+10;98;None;s;waiting;wait
+11;98;(58, 19);n;stopped;wait
+12;98;(13, 36);w;stopped;wait
+13;98;(61, 40);n;moving;move_forward
+14;98;(26, 65);n;moving;move_forward
+15;98;(58, 17);s;stopped;wait
+16;98;None;w;waiting;wait
+17;98;None;e;waiting;wait
+18;98;None;e;waiting;wait
+19;98;None;e;waiting;wait
+0;99;(31, 24);s;moving;move_forward
+1;99;(71, 64);e;stopped;wait
+2;99;(72, 25);n;stopped;wait
+3;99;(13, 41);e;moving;move_forward
+4;99;(13, 30);n;stopped;move_forward
+5;99;(13, 48);w;moving;move_forward
+6;99;(56, 18);n;moving;move_forward
+7;99;(13, 34);e;moving;move_left
+8;99;(33, 66);n;moving;move_forward
+9;99;(41, 20);s;moving;move_forward
+10;99;None;s;waiting;wait
+11;99;(58, 19);n;stopped;wait
+12;99;(13, 36);w;stopped;wait
+13;99;(60, 40);n;moving;wait
+14;99;(25, 65);n;moving;move_forward
+15;99;(58, 17);s;stopped;wait
+16;99;None;w;waiting;wait
+17;99;None;e;waiting;wait
+18;99;None;e;waiting;wait
+19;99;None;e;waiting;wait
+0;100;(32, 24);s;moving;move_forward
+1;100;(71, 64);e;stopped;wait
+2;100;(72, 25);n;stopped;wait
+3;100;(13, 42);e;moving;wait
+4;100;(13, 31);e;moving;move_forward
+5;100;(13, 47);w;moving;move_forward
+6;100;(55, 18);n;moving;move_forward
+7;100;(12, 34);n;moving;move_forward
+8;100;(32, 66);n;moving;move_forward
+9;100;(42, 20);s;moving;move_forward
+10;100;None;s;waiting;wait
+11;100;(58, 19);n;stopped;wait
+12;100;(13, 36);w;stopped;move_forward
+13;100;(60, 40);n;stopped;wait
+14;100;(24, 65);n;moving;move_forward
+15;100;(58, 17);s;stopped;move_forward
+16;100;None;w;waiting;wait
+17;100;None;e;waiting;wait
+18;100;None;e;waiting;wait
+19;100;None;e;waiting;wait
+0;101;(32, 23);w;moving;wait
+1;101;(71, 64);e;stopped;wait
+2;101;(72, 25);n;stopped;move_forward
+3;101;(13, 42);e;stopped;move_forward
+4;101;(13, 32);e;moving;wait
+5;101;(13, 46);w;moving;move_forward
+6;101;(54, 18);n;moving;move_forward
+7;101;(12, 35);e;moving;move_forward
+8;101;(31, 66);n;moving;move_forward
+9;101;(43, 20);s;moving;move_forward
+10;101;None;s;waiting;wait
+11;101;(58, 19);n;stopped;wait
+12;101;(13, 35);w;moving;move_forward
+13;101;(60, 40);n;stopped;wait
+14;101;(23, 65);n;moving;move_forward
+15;101;(59, 17);s;moving;move_forward
+16;101;None;w;waiting;wait
+17;101;None;e;waiting;wait
+18;101;None;e;waiting;wait
+19;101;None;e;waiting;wait
+0;102;(32, 23);w;stopped;move_forward
+1;102;(71, 64);e;stopped;wait
+2;102;(72, 24);w;moving;wait
+3;102;(13, 43);e;moving;move_forward
+4;102;(13, 32);e;stopped;wait
+5;102;(12, 46);n;moving;move_forward
+6;102;(53, 18);n;moving;move_forward
+7;102;(12, 36);e;moving;wait
+8;102;(30, 66);n;moving;move_forward
+9;102;(44, 20);s;moving;move_forward
+10;102;None;s;waiting;wait
+11;102;(58, 19);n;stopped;wait
+12;102;(13, 34);w;moving;move_forward
+13;102;(60, 40);n;stopped;wait
+14;102;(22, 65);n;moving;move_forward
+15;102;(59, 18);e;moving;move_forward
+16;102;None;w;waiting;wait
+17;102;None;e;waiting;wait
+18;102;None;e;waiting;wait
+19;102;None;e;waiting;wait
+0;103;(32, 22);w;moving;move_forward
+1;103;(71, 64);e;stopped;wait
+2;103;(72, 24);w;stopped;wait
+3;103;(14, 43);s;moving;move_forward
+4;103;(13, 32);e;stopped;wait
+5;103;(12, 45);w;moving;move_forward
+6;103;(52, 18);n;moving;move_forward
+7;103;(12, 36);e;stopped;move_forward
+8;103;(29, 66);n;moving;move_forward
+9;103;(45, 20);s;moving;move_forward
+10;103;None;s;waiting;wait
+11;103;(58, 19);n;stopped;wait
+12;103;(13, 33);w;moving;move_right
+13;103;(60, 40);n;stopped;wait
+14;103;(21, 65);n;moving;move_forward
+15;103;(60, 18);s;moving;move_forward
+16;103;None;w;waiting;wait
+17;103;None;e;waiting;wait
+18;103;None;e;waiting;wait
+19;103;None;e;waiting;wait
+0;104;(32, 21);w;moving;wait
+1;104;(71, 64);e;stopped;wait
+2;104;(72, 24);w;stopped;wait
+3;104;(15, 43);s;moving;move_forward
+4;104;(13, 32);e;stopped;wait
+5;104;(12, 44);w;moving;move_forward
+6;104;(51, 18);n;moving;move_forward
+7;104;(12, 37);e;moving;move_forward
+8;104;(28, 66);n;moving;move_forward
+9;104;(46, 20);s;moving;move_forward
+10;104;None;s;waiting;wait
+11;104;(58, 19);n;stopped;wait
+12;104;(12, 33);n;moving;move_forward
+13;104;(60, 40);n;stopped;wait
+14;104;(20, 65);n;moving;move_forward
+15;104;(61, 18);s;moving;move_forward
+16;104;None;w;waiting;wait
+17;104;None;e;waiting;wait
+18;104;None;e;waiting;wait
+19;104;None;e;waiting;wait
+0;105;(32, 21);w;stopped;wait
+1;105;(71, 64);e;stopped;wait
+2;105;(72, 24);w;stopped;wait
+3;105;(16, 43);s;moving;move_forward
+4;105;(13, 32);e;stopped;move_forward
+5;105;(12, 43);w;moving;move_forward
+6;105;(50, 18);n;moving;move_forward
+7;105;(12, 38);e;moving;move_right
+8;105;(27, 66);n;moving;move_forward
+9;105;(47, 20);s;moving;move_forward
+10;105;None;s;waiting;wait
+11;105;(58, 19);n;stopped;wait
+12;105;(12, 32);w;moving;move_forward
+13;105;(60, 40);n;stopped;wait
+14;105;(19, 65);n;moving;move_forward
+15;105;(62, 18);s;moving;move_forward
+16;105;None;w;waiting;wait
+17;105;None;e;waiting;wait
+18;105;None;e;waiting;wait
+19;105;None;e;waiting;wait
+0;106;(32, 21);w;stopped;move_forward
+1;106;(71, 64);e;stopped;wait
+2;106;(72, 24);w;stopped;wait
+3;106;(17, 43);s;moving;move_forward
+4;106;(13, 33);e;moving;move_forward
+5;106;(12, 42);w;moving;move_forward
+6;106;(49, 18);n;moving;move_forward
+7;106;(13, 38);s;moving;move_forward
+8;106;(26, 66);n;moving;move_forward
+9;106;(48, 20);s;moving;move_forward
+10;106;None;s;waiting;wait
+11;106;(58, 19);n;stopped;wait
+12;106;(12, 31);w;moving;wait
+13;106;(60, 40);n;stopped;wait
+14;106;(18, 65);n;moving;move_forward
+15;106;(63, 18);s;moving;move_forward
+16;106;None;w;waiting;wait
+17;106;None;e;waiting;wait
+18;106;None;e;waiting;wait
+19;106;None;e;waiting;wait
+0;107;(33, 21);s;moving;move_forward
+1;107;(71, 64);e;stopped;wait
+2;107;(72, 24);w;stopped;wait
+3;107;(18, 43);s;moving;move_forward
+4;107;(13, 34);e;moving;move_forward
+5;107;(12, 41);w;moving;move_forward
+6;107;(48, 18);n;moving;move_forward
+7;107;(13, 39);e;moving;move_forward
+8;107;(25, 66);n;moving;move_forward
+9;107;(49, 20);s;moving;move_forward
+10;107;None;s;waiting;wait
+11;107;(58, 19);n;stopped;wait
+12;107;(12, 31);w;stopped;wait
+13;107;(60, 40);n;stopped;wait
+14;107;(17, 65);n;moving;move_forward
+15;107;(64, 18);s;moving;wait
+16;107;None;w;waiting;wait
+17;107;None;e;waiting;wait
+18;107;None;e;waiting;wait
+19;107;None;e;waiting;wait
+0;108;(34, 21);s;moving;move_forward
+1;108;(71, 64);e;stopped;wait
+2;108;(72, 24);w;stopped;wait
+3;108;(19, 43);s;moving;move_forward
+4;108;(13, 35);e;moving;move_right
+5;108;(12, 40);w;moving;move_forward
+6;108;(48, 19);e;moving;move_forward
+7;108;(13, 40);e;moving;move_forward
+8;108;(24, 66);n;moving;move_forward
+9;108;(50, 20);s;moving;move_forward
+10;108;None;s;waiting;wait
+11;108;(58, 19);n;stopped;wait
+12;108;(12, 31);w;stopped;wait
+13;108;(60, 40);n;stopped;wait
+14;108;(16, 65);n;moving;move_forward
+15;108;(64, 18);s;stopped;wait
+16;108;None;w;waiting;wait
+17;108;None;e;waiting;wait
+18;108;None;e;waiting;wait
+19;108;None;e;waiting;wait
+0;109;(35, 21);s;moving;move_forward
+1;109;(71, 64);e;stopped;wait
+2;109;(72, 24);w;stopped;wait
+3;109;(20, 43);s;moving;move_forward
+4;109;(14, 35);s;moving;move_forward
+5;109;(12, 39);w;moving;move_forward
+6;109;(47, 19);n;moving;move_forward
+7;109;(13, 41);e;moving;move_right
+8;109;(23, 66);n;moving;move_forward
+9;109;(51, 20);s;moving;move_forward
+10;109;None;s;waiting;wait
+11;109;(58, 19);n;stopped;wait
+12;109;(12, 31);w;stopped;wait
+13;109;(60, 40);n;stopped;wait
+14;109;(16, 64);w;moving;move_forward
+15;109;(64, 18);s;stopped;move_forward
+16;109;None;w;waiting;wait
+17;109;None;e;waiting;wait
+18;109;None;e;waiting;wait
+19;109;None;e;waiting;wait
+0;110;(36, 21);s;moving;move_forward
+1;110;(71, 64);e;stopped;wait
+2;110;(72, 24);w;stopped;wait
+3;110;(21, 43);s;moving;move_forward
+4;110;(14, 36);e;moving;move_forward
+5;110;(12, 38);w;moving;move_forward
+6;110;(46, 19);n;moving;move_right
+7;110;(14, 41);s;moving;move_forward
+8;110;(22, 66);n;moving;move_forward
+9;110;(51, 19);w;moving;move_forward
+10;110;None;s;waiting;wait
+11;110;(58, 19);n;stopped;wait
+12;110;(12, 31);w;stopped;wait
+13;110;(60, 40);n;stopped;wait
+14;110;(16, 63);w;moving;move_forward
+15;110;(65, 18);s;moving;move_forward
+16;110;None;w;waiting;wait
+17;110;None;e;waiting;wait
+18;110;None;e;waiting;wait
+19;110;None;e;waiting;wait
+0;111;(37, 21);s;moving;move_forward
+1;111;(71, 64);e;stopped;wait
+2;111;(72, 24);w;stopped;wait
+3;111;(22, 43);s;moving;move_forward
+4;111;(14, 37);e;moving;wait
+5;111;(12, 37);w;moving;move_right
+6;111;(46, 20);e;moving;move_forward
+7;111;(15, 41);s;moving;move_forward
+8;111;(21, 66);n;moving;move_forward
+9;111;(51, 18);w;moving;move_forward
+10;111;None;s;waiting;wait
+11;111;(58, 19);n;stopped;wait
+12;111;(12, 31);w;stopped;wait
+13;111;(60, 40);n;stopped;wait
+14;111;(16, 62);w;moving;move_forward
+15;111;(66, 18);s;moving;move_forward
+16;111;None;w;waiting;wait
+17;111;None;e;waiting;wait
+18;111;None;e;waiting;wait
+19;111;None;e;waiting;wait
+0;112;(38, 21);s;moving;wait
+1;112;(71, 64);e;stopped;wait
+2;112;(72, 24);w;stopped;wait
+3;112;(23, 43);s;moving;move_forward
+4;112;(14, 37);e;stopped;wait
+5;112;(11, 37);n;moving;move_forward
+6;112;(45, 20);n;moving;move_forward
+7;112;(15, 42);e;moving;move_forward
+8;112;(20, 66);n;moving;move_forward
+9;112;(52, 18);s;moving;move_forward
+10;112;None;s;waiting;wait
+11;112;(58, 19);n;stopped;wait
+12;112;(12, 31);w;stopped;wait
+13;112;(60, 40);n;stopped;wait
+14;112;(16, 61);w;moving;move_forward
+15;112;(67, 18);s;moving;move_forward
+16;112;None;w;waiting;wait
+17;112;None;e;waiting;wait
+18;112;None;e;waiting;wait
+19;112;None;e;waiting;wait
+0;113;(38, 21);s;stopped;move_forward
+1;113;(71, 64);e;stopped;move_forward
+2;113;(72, 24);w;stopped;wait
+3;113;(24, 43);s;moving;move_forward
+4;113;(14, 37);e;stopped;wait
+5;113;(11, 36);w;moving;move_forward
+6;113;(44, 20);n;moving;wait
+7;113;(15, 43);e;moving;move_forward
+8;113;(19, 66);n;moving;move_forward
+9;113;(53, 18);s;moving;move_forward
+10;113;None;s;waiting;wait
+11;113;(58, 19);n;stopped;wait
+12;113;(12, 31);w;stopped;wait
+13;113;(60, 40);n;stopped;wait
+14;113;(16, 60);w;moving;move_forward
+15;113;(68, 18);s;moving;move_forward
+16;113;None;w;waiting;wait
+17;113;None;e;waiting;wait
+18;113;None;e;waiting;wait
+19;113;None;e;waiting;wait
+0;114;(38, 20);w;moving;move_forward
+1;114;(70, 64);n;moving;move_forward
+2;114;(72, 24);w;stopped;wait
+3;114;(25, 43);s;moving;move_forward
+4;114;(14, 37);e;stopped;move_forward
+5;114;(11, 35);w;moving;wait
+6;114;(44, 20);n;stopped;move_forward
+7;114;(15, 44);e;moving;wait
+8;114;(18, 66);n;moving;move_forward
+9;114;(54, 18);s;moving;move_forward
+10;114;None;s;waiting;wait
+11;114;(58, 19);n;stopped;wait
+12;114;(12, 31);w;stopped;wait
+13;114;(60, 40);n;stopped;wait
+14;114;(16, 59);w;moving;move_forward
+15;114;(69, 18);s;moving;move_forward
+16;114;None;w;waiting;wait
+17;114;None;e;waiting;wait
+18;114;None;e;waiting;wait
+19;114;None;e;waiting;wait
+0;115;(38, 19);w;moving;wait
+1;115;(70, 65);e;moving;move_forward
+2;115;(72, 24);w;stopped;wait
+3;115;(26, 43);s;moving;move_forward
+4;115;(13, 37);n;moving;move_forward
+5;115;(11, 35);w;stopped;wait
+6;115;(43, 20);n;moving;move_forward
+7;115;(15, 44);e;stopped;wait
+8;115;(17, 66);n;moving;wait
+9;115;(55, 18);s;moving;move_forward
+10;115;None;s;waiting;wait
+11;115;(58, 19);n;stopped;wait
+12;115;(12, 31);w;stopped;wait
+13;115;(60, 40);n;stopped;wait
+14;115;(16, 58);w;moving;move_forward
+15;115;(69, 19);e;moving;move_forward
+16;115;None;w;waiting;wait
+17;115;None;e;waiting;wait
+18;115;None;e;ready to depart;move_forward
+19;115;None;e;ready to depart;move_forward
+0;116;(38, 19);w;stopped;wait
+1;116;(70, 66);e;moving;move_forward
+2;116;(72, 24);w;stopped;wait
+3;116;(27, 43);s;moving;move_forward
+4;116;(13, 38);e;moving;move_forward
+5;116;(11, 35);w;stopped;wait
+6;116;(42, 20);n;moving;move_forward
+7;116;(15, 44);e;stopped;wait
+8;116;(17, 66);n;stopped;move_forward
+9;116;(56, 18);s;moving;move_forward
+10;116;None;s;waiting;wait
+11;116;(58, 19);n;stopped;wait
+12;116;(12, 31);w;stopped;wait
+13;116;(60, 40);n;stopped;wait
+14;116;(16, 57);w;moving;move_forward
+15;116;(69, 20);e;moving;move_forward
+16;116;None;w;waiting;wait
+17;116;None;e;waiting;wait
+18;116;(73, 36);e;moving;move_forward
+19;116;(11, 36);e;moving;wait
+0;117;(38, 19);w;stopped;wait
+1;117;(70, 67);e;moving;wait
+2;117;(72, 24);w;stopped;wait
+3;117;(28, 43);s;moving;move_forward
+4;117;(13, 39);e;moving;move_forward
+5;117;(11, 35);w;stopped;wait
+6;117;(41, 20);n;moving;move_forward
+7;117;(15, 44);e;stopped;wait
+8;117;(16, 66);n;moving;move_forward
+9;117;(57, 18);s;moving;move_forward
+10;117;None;s;waiting;wait
+11;117;(58, 19);n;stopped;wait
+12;117;(12, 31);w;stopped;wait
+13;117;(60, 40);n;stopped;wait
+14;117;(16, 56);w;moving;move_forward
+15;117;(69, 21);e;moving;move_forward
+16;117;None;w;waiting;wait
+17;117;None;e;waiting;wait
+18;117;(73, 37);e;moving;move_forward
+19;117;(11, 36);e;stopped;wait
+0;118;(38, 19);w;stopped;wait
+1;118;(70, 67);e;stopped;move_forward
+2;118;(72, 24);w;stopped;move_forward
+3;118;(29, 43);s;moving;move_forward
+4;118;(13, 40);e;moving;move_forward
+5;118;(11, 35);w;stopped;wait
+6;118;(40, 20);n;moving;move_forward
+7;118;(15, 44);e;stopped;move_forward
+8;118;(16, 65);w;moving;move_forward
+9;118;(58, 18);s;moving;move_forward
+10;118;None;s;waiting;wait
+11;118;(58, 19);n;stopped;wait
+12;118;(12, 31);w;stopped;move_forward
+13;118;(60, 40);n;stopped;wait
+14;118;(16, 55);w;moving;move_forward
+15;118;(69, 22);e;moving;move_forward
+16;118;None;w;waiting;wait
+17;118;None;e;waiting;wait
+18;118;(74, 37);s;moving;move_forward
+19;118;(11, 36);e;stopped;wait
+0;119;(38, 19);w;stopped;wait
+1;119;(70, 68);e;moving;move_forward
+2;119;(72, 23);w;moving;move_forward
+3;119;(30, 43);s;moving;move_forward
+4;119;(13, 41);e;moving;move_right
+5;119;(11, 35);w;stopped;wait
+6;119;(39, 20);n;moving;wait
+7;119;(15, 45);e;moving;move_forward
+8;119;(16, 64);w;moving;move_forward
+9;119;(59, 18);s;moving;move_forward
+10;119;None;s;waiting;wait
+11;119;(58, 19);n;stopped;wait
+12;119;(13, 31);s;moving;move_forward
+13;119;(60, 40);n;stopped;move_forward
+14;119;(16, 54);w;moving;move_forward
+15;119;(69, 23);e;moving;move_forward
+16;119;None;w;waiting;wait
+17;119;None;e;waiting;wait
+18;119;(74, 38);e;moving;move_forward
+19;119;(11, 36);e;stopped;move_forward
+0;120;(38, 19);w;stopped;move_forward
+1;120;(69, 68);n;moving;move_forward
+2;120;(71, 23);n;moving;move_forward
+3;120;(30, 44);e;moving;move_forward
+4;120;(14, 41);s;moving;move_forward
+5;120;(11, 35);w;stopped;wait
+6;120;(39, 20);n;stopped;wait
+7;120;(16, 45);s;moving;move_forward
+8;120;(16, 63);w;moving;move_forward
+9;120;(60, 18);s;moving;move_forward
+10;120;None;s;waiting;wait
+11;120;(58, 19);n;stopped;wait
+12;120;(14, 31);s;moving;move_right
+13;120;(59, 40);n;moving;move_forward
+14;120;(16, 53);w;moving;move_right
+15;120;(69, 24);e;moving;move_forward
+16;120;None;w;waiting;wait
+17;120;None;e;waiting;wait
+18;120;(74, 39);e;moving;move_forward
+19;120;(11, 37);e;moving;move_forward
+0;121;(39, 19);s;moving;wait
+1;121;(68, 68);n;moving;move_forward
+2;121;(70, 23);n;moving;move_forward
+3;121;(30, 45);e;moving;move_right
+4;121;(15, 41);s;moving;move_forward
+5;121;(11, 35);w;stopped;wait
+6;121;(39, 20);n;stopped;wait
+7;121;(16, 46);e;moving;move_forward
+8;121;(16, 62);w;moving;move_forward
+9;121;(61, 18);s;moving;move_forward
+10;121;None;s;waiting;wait
+11;121;(58, 19);n;stopped;wait
+12;121;(14, 30);w;moving;move_forward
+13;121;(58, 40);n;moving;move_forward
+14;121;(15, 53);n;moving;move_forward
+15;121;(69, 25);e;moving;move_forward
+16;121;None;w;waiting;wait
+17;121;None;e;waiting;wait
+18;121;(74, 40);e;moving;move_forward
+19;121;(12, 37);s;moving;move_forward
+0;122;(39, 19);s;stopped;wait
+1;122;(67, 68);n;moving;move_forward
+2;122;(69, 23);n;moving;move_forward
+3;122;(31, 45);s;moving;move_forward
+4;122;(15, 42);e;moving;move_forward
+5;122;(11, 35);w;stopped;wait
+6;122;(39, 20);n;stopped;wait
+7;122;(16, 47);e;moving;move_forward
+8;122;(16, 61);w;moving;move_forward
+9;122;(62, 18);s;moving;move_forward
+10;122;None;s;waiting;wait
+11;122;(58, 19);n;stopped;wait
+12;122;(14, 29);w;moving;move_forward
+13;122;(58, 39);w;moving;move_forward
+14;122;(15, 52);w;moving;move_forward
+15;122;(69, 26);e;moving;move_forward
+16;122;None;w;waiting;wait
+17;122;None;e;waiting;wait
+18;122;(74, 41);e;moving;move_left
+19;122;(12, 38);e;moving;move_right
+0;123;(39, 19);s;stopped;wait
+1;123;(66, 68);n;moving;move_forward
+2;123;(68, 23);n;moving;wait
+3;123;(32, 45);s;moving;move_forward
+4;123;(15, 43);e;moving;move_forward
+5;123;(11, 35);w;stopped;wait
+6;123;(39, 20);n;stopped;move_forward
+7;123;(16, 48);e;moving;move_forward
+8;123;(16, 60);w;moving;move_forward
+9;123;(63, 18);s;moving;move_forward
+10;123;None;s;waiting;wait
+11;123;(58, 19);n;stopped;wait
+12;123;(14, 28);w;moving;move_forward
+13;123;(58, 38);w;moving;move_forward
+14;123;(14, 52);n;moving;move_forward
+15;123;(69, 27);e;moving;move_forward
+16;123;None;w;waiting;wait
+17;123;None;e;waiting;wait
+18;123;(73, 41);n;moving;move_forward
+19;123;(13, 38);s;moving;move_forward
+0;124;(39, 19);s;stopped;wait
+1;124;(65, 68);n;moving;move_forward
+2;124;(68, 23);n;stopped;wait
+3;124;(33, 45);s;moving;move_forward
+4;124;(15, 44);e;moving;wait
+5;124;(11, 35);w;stopped;wait
+6;124;(38, 20);n;moving;move_forward
+7;124;(16, 49);e;moving;move_forward
+8;124;(16, 59);w;moving;move_forward
+9;124;(64, 18);s;moving;wait
+10;124;None;s;waiting;wait
+11;124;(58, 19);n;stopped;wait
+12;124;(14, 27);w;moving;move_forward
+13;124;(57, 38);n;moving;move_forward
+14;124;(14, 51);w;moving;move_forward
+15;124;(70, 27);s;moving;move_forward
+16;124;None;w;waiting;wait
+17;124;None;e;waiting;wait
+18;124;(72, 41);n;moving;move_forward
+19;124;(13, 39);e;moving;move_forward
+0;125;(39, 19);s;stopped;move_forward
+1;125;(64, 68);n;moving;move_forward
+2;125;(68, 23);n;stopped;wait
+3;125;(34, 45);s;moving;move_forward
+4;125;(15, 44);e;stopped;move_forward
+5;125;(11, 35);w;stopped;wait
+6;125;(37, 20);n;moving;move_forward
+7;125;(16, 50);e;moving;move_forward
+8;125;(16, 58);w;moving;move_forward
+9;125;(64, 18);s;stopped;move_forward
+10;125;None;s;waiting;wait
+11;125;(58, 19);n;stopped;wait
+12;125;(14, 26);w;moving;move_forward
+13;125;(56, 38);n;moving;move_right
+14;125;(14, 50);w;moving;move_forward
+15;125;(71, 27);s;moving;move_forward
+16;125;None;w;waiting;wait
+17;125;None;e;waiting;wait
+18;125;(71, 41);n;moving;move_forward
+19;125;(13, 40);e;moving;move_forward
+0;126;(40, 19);s;moving;move_left
+1;126;(63, 68);n;moving;move_forward
+2;126;(68, 23);n;stopped;wait
+3;126;(35, 45);s;moving;move_forward
+4;126;(15, 45);e;moving;move_forward
+5;126;(11, 35);w;stopped;wait
+6;126;(36, 20);n;moving;move_forward
+7;126;(16, 51);e;moving;move_forward
+8;126;(16, 57);w;moving;move_forward
+9;126;(65, 18);s;moving;move_forward
+10;126;None;s;waiting;wait
+11;126;(58, 19);n;stopped;wait
+12;126;(15, 26);s;moving;move_forward
+13;126;(56, 39);e;moving;move_forward
+14;126;(14, 49);w;moving;move_forward
+15;126;(71, 28);e;moving;move_forward
+16;126;None;w;waiting;wait
+17;126;None;e;waiting;wait
+18;126;(70, 41);n;moving;move_forward
+19;126;(13, 41);e;moving;move_forward
+0;127;(40, 20);e;moving;move_forward
+1;127;(62, 68);n;moving;move_forward
+2;127;(68, 23);n;stopped;wait
+3;127;(36, 45);s;moving;move_forward
+4;127;(16, 45);s;moving;move_forward
+5;127;(11, 35);w;stopped;wait
+6;127;(35, 20);n;moving;move_forward
+7;127;(16, 52);e;moving;move_forward
+8;127;(16, 56);w;moving;move_forward
+9;127;(66, 18);s;moving;move_forward
+10;127;None;s;ready to depart;move_forward
+11;127;(58, 19);n;stopped;wait
+12;127;(16, 26);s;moving;move_forward
+13;127;(55, 39);n;moving;move_forward
+14;127;(14, 48);w;moving;move_forward
+15;127;(72, 28);s;moving;move_forward
+16;127;None;w;waiting;wait
+17;127;None;e;waiting;wait
+18;127;(69, 41);n;moving;move_forward
+19;127;(13, 42);e;moving;move_forward
+0;128;(41, 20);s;moving;move_forward
+1;128;(61, 68);n;moving;move_forward
+2;128;(68, 23);n;stopped;wait
+3;128;(37, 45);s;moving;move_forward
+4;128;(16, 46);e;moving;move_forward
+5;128;(11, 35);w;stopped;wait
+6;128;(34, 20);n;moving;move_forward
+7;128;(16, 53);e;moving;move_forward
+8;128;(16, 55);w;moving;move_right
+9;128;(67, 18);s;moving;move_forward
+10;128;(43, 19);s;moving;wait
+11;128;(58, 19);n;stopped;wait
+12;128;(17, 26);s;moving;move_forward
+13;128;(54, 39);n;moving;move_forward
+14;128;(14, 47);w;moving;move_forward
+15;128;(73, 28);s;moving;wait
+16;128;None;w;waiting;wait
+17;128;None;e;waiting;wait
+18;128;(69, 40);w;moving;move_forward
+19;128;(13, 43);e;moving;move_forward
+0;129;(42, 20);s;moving;move_forward
+1;129;(60, 68);n;moving;move_forward
+2;129;(68, 23);n;stopped;wait
+3;129;(38, 45);s;moving;move_forward
+4;129;(16, 47);e;moving;move_forward
+5;129;(11, 35);w;stopped;wait
+6;129;(33, 20);n;moving;move_forward
+7;129;(16, 54);e;moving;wait
+8;129;(15, 55);n;moving;move_forward
+9;129;(68, 18);s;moving;move_forward
+10;129;(43, 19);s;stopped;wait
+11;129;(58, 19);n;stopped;wait
+12;129;(17, 25);w;moving;move_forward
+13;129;(53, 39);n;moving;move_forward
+14;129;(14, 46);w;moving;move_forward
+15;129;(73, 28);s;stopped;wait
+16;129;None;w;waiting;wait
+17;129;None;e;waiting;wait
+18;129;(69, 39);w;moving;move_forward
+19;129;(14, 43);s;moving;move_forward
+0;130;(43, 20);s;moving;move_forward
+1;130;(59, 68);n;moving;move_forward
+2;130;(68, 23);n;stopped;move_forward
+3;130;(39, 45);s;moving;move_forward
+4;130;(16, 48);e;moving;move_forward
+5;130;(11, 35);w;stopped;wait
+6;130;(33, 21);e;moving;move_forward
+7;130;(16, 54);e;stopped;move_forward
+8;130;(14, 55);n;moving;move_forward
+9;130;(69, 18);s;moving;move_forward
+10;130;(43, 19);s;stopped;wait
+11;130;(58, 19);n;stopped;wait
+12;130;(18, 25);s;moving;move_forward
+13;130;(52, 39);n;moving;move_forward
+14;130;(14, 45);w;moving;move_forward
+15;130;(73, 28);s;stopped;move_forward
+16;130;None;w;waiting;wait
+17;130;None;e;waiting;wait
+18;130;(68, 39);n;moving;move_forward
+19;130;(15, 43);s;moving;move_forward
+0;131;(44, 20);s;moving;move_forward
+1;131;(58, 68);n;moving;move_forward
+2;131;(68, 22);w;moving;move_forward
+3;131;(40, 45);s;moving;move_forward
+4;131;(16, 49);e;moving;move_forward
+5;131;(11, 35);w;stopped;wait
+6;131;(33, 22);e;moving;move_forward
+7;131;(16, 55);e;moving;move_forward
+8;131;(13, 55);n;moving;move_forward
+9;131;(69, 19);e;moving;move_forward
+10;131;(43, 19);s;stopped;wait
+11;131;(58, 19);n;stopped;wait
+12;131;(19, 25);s;moving;move_forward
+13;131;(51, 39);n;moving;move_forward
+14;131;(14, 44);w;moving;move_forward
+15;131;(73, 29);e;moving;move_forward
+16;131;None;w;waiting;wait
+17;131;None;e;waiting;wait
+18;131;(67, 39);n;moving;move_forward
+19;131;(16, 43);s;moving;wait
+0;132;(45, 20);s;moving;move_forward
+1;132;(57, 68);n;moving;move_forward
+2;132;(68, 21);w;moving;move_forward
+3;132;(41, 45);s;moving;move_forward
+4;132;(16, 50);e;moving;move_forward
+5;132;(11, 35);w;stopped;wait
+6;132;(33, 23);e;moving;move_forward
+7;132;(16, 56);e;moving;move_forward
+8;132;(13, 54);w;moving;move_forward
+9;132;(69, 20);e;moving;move_forward
+10;132;(43, 19);s;stopped;wait
+11;132;(58, 19);n;stopped;wait
+12;132;(20, 25);s;moving;move_forward
+13;132;(50, 39);n;moving;move_forward
+14;132;(14, 43);w;moving;move_forward
+15;132;(74, 29);s;moving;move_forward
+16;132;None;w;waiting;wait
+17;132;None;e;waiting;wait
+18;132;(66, 39);n;moving;move_forward
+19;132;(16, 43);s;stopped;wait
+0;133;(46, 20);s;moving;move_forward
+1;133;(56, 68);n;moving;move_forward
+2;133;(68, 20);w;moving;move_forward
+3;133;(42, 45);s;moving;move_forward
+4;133;(16, 51);e;moving;move_forward
+5;133;(11, 35);w;stopped;wait
+6;133;(33, 24);e;moving;move_forward
+7;133;(16, 57);e;moving;move_forward
+8;133;(13, 53);w;moving;move_forward
+9;133;(69, 21);e;moving;move_forward
+10;133;(43, 19);s;stopped;wait
+11;133;(58, 19);n;stopped;wait
+12;133;(21, 25);s;moving;move_forward
+13;133;(49, 39);n;moving;move_forward
+14;133;(14, 42);w;moving;move_forward
+15;133;(74, 30);e;moving;move_forward
+16;133;None;w;waiting;wait
+17;133;None;e;waiting;wait
+18;133;(65, 39);n;moving;move_forward
+19;133;(16, 43);s;stopped;move_forward
+0;134;(47, 20);s;moving;move_forward
+1;134;(55, 68);n;moving;move_forward
+2;134;(68, 19);w;moving;move_forward
+3;134;(42, 44);w;moving;move_forward
+4;134;(16, 52);e;moving;move_forward
+5;134;(11, 35);w;stopped;wait
+6;134;(33, 25);e;moving;move_forward
+7;134;(16, 58);e;moving;move_forward
+8;134;(13, 52);w;moving;move_forward
+9;134;(69, 22);e;moving;move_forward
+10;134;(43, 19);s;stopped;wait
+11;134;(58, 19);n;stopped;wait
+12;134;(22, 25);s;moving;move_forward
+13;134;(48, 39);n;moving;move_right
+14;134;(14, 41);w;moving;move_forward
+15;134;(74, 31);e;moving;wait
+16;134;None;w;waiting;wait
+17;134;None;e;waiting;wait
+18;134;(64, 39);n;moving;move_forward
+19;134;(17, 43);s;moving;move_forward
+0;135;(48, 20);s;moving;wait
+1;135;(54, 68);n;moving;move_forward
+2;135;(67, 19);n;moving;move_forward
+3;135;(42, 43);w;moving;move_forward
+4;135;(16, 53);e;moving;move_forward
+5;135;(11, 35);w;stopped;wait
+6;135;(33, 26);e;moving;move_forward
+7;135;(16, 59);e;moving;move_forward
+8;135;(13, 51);w;moving;move_forward
+9;135;(69, 23);e;moving;move_forward
+10;135;(43, 19);s;stopped;wait
+11;135;(58, 19);n;stopped;wait
+12;135;(22, 24);w;moving;move_forward
+13;135;(48, 40);e;moving;move_forward
+14;135;(13, 41);n;moving;move_forward
+15;135;(74, 31);e;stopped;wait
+16;135;None;w;waiting;wait
+17;135;None;e;waiting;wait
+18;135;(63, 39);n;moving;move_forward
+19;135;(18, 43);s;moving;move_forward
+0;136;(48, 20);s;stopped;wait
+1;136;(53, 68);n;moving;move_forward
+2;136;(66, 19);n;moving;move_forward
+3;136;(42, 42);w;moving;move_forward
+4;136;(16, 54);e;moving;wait
+5;136;(11, 35);w;stopped;move_forward
+6;136;(33, 27);e;moving;move_forward
+7;136;(16, 60);e;moving;move_forward
+8;136;(13, 50);w;moving;move_forward
+9;136;(69, 24);e;moving;move_forward
+10;136;(43, 19);s;stopped;wait
+11;136;(58, 19);n;stopped;wait
+12;136;(23, 24);s;moving;move_forward
+13;136;(48, 41);e;moving;move_forward
+14;136;(13, 40);w;moving;move_forward
+15;136;(74, 31);e;stopped;move_forward
+16;136;None;w;waiting;wait
+17;136;None;e;waiting;wait
+18;136;(62, 39);n;moving;move_forward
+19;136;(19, 43);s;moving;move_forward
+0;137;(48, 20);s;stopped;wait
+1;137;(52, 68);n;moving;move_forward
+2;137;(65, 19);n;moving;wait
+3;137;(42, 41);w;moving;move_forward
+4;137;(16, 54);e;stopped;wait
+5;137;(12, 35);s;moving;move_forward
+6;137;(33, 28);e;moving;move_forward
+7;137;(16, 61);e;moving;wait
+8;137;(13, 49);w;moving;move_forward
+9;137;(69, 25);e;moving;move_forward
+10;137;(43, 19);s;stopped;wait
+11;137;(58, 19);n;stopped;wait
+12;137;(24, 24);s;moving;move_forward
+13;137;(47, 41);n;moving;move_forward
+14;137;(13, 39);w;moving;move_forward
+15;137;(74, 32);e;moving;move_forward
+16;137;None;w;waiting;wait
+17;137;None;e;waiting;wait
+18;137;(61, 39);n;moving;move_forward
+19;137;(20, 43);s;moving;move_forward
+0;138;(48, 20);s;stopped;wait
+1;138;(51, 68);n;moving;move_forward
+2;138;(65, 19);n;stopped;wait
+3;138;(42, 40);w;moving;move_forward
+4;138;(16, 54);e;stopped;move_forward
+5;138;(12, 34);w;moving;move_left
+6;138;(32, 28);n;moving;move_forward
+7;138;(16, 61);e;stopped;move_forward
+8;138;(13, 48);w;moving;wait
+9;138;(69, 26);e;moving;move_forward
+10;138;(43, 19);s;stopped;wait
+11;138;(58, 19);n;stopped;wait
+12;138;(25, 24);s;moving;move_forward
+13;138;(46, 41);n;moving;move_forward
+14;138;(13, 38);w;moving;move_forward
+15;138;(74, 33);e;moving;move_right
+16;138;None;w;waiting;wait
+17;138;None;e;waiting;wait
+18;138;(60, 39);n;moving;move_forward
+19;138;(21, 43);s;moving;move_forward
+0;139;(48, 20);s;stopped;move_forward
+1;139;(50, 68);n;moving;move_forward
+2;139;(65, 19);n;stopped;wait
+3;139;(43, 40);s;moving;move_forward
+4;139;(16, 55);e;moving;move_forward
+5;139;(13, 34);s;moving;move_forward
+6;139;(31, 28);n;moving;wait
+7;139;(16, 62);e;moving;move_forward
+8;139;(13, 48);w;stopped;move_forward
+9;139;(69, 27);e;moving;move_forward
+10;139;(43, 19);s;stopped;wait
+11;139;(58, 19);n;stopped;wait
+12;139;(26, 24);s;moving;move_forward
+13;139;(45, 41);n;moving;move_forward
+14;139;(13, 37);w;moving;move_forward
+15;139;(75, 33);s;moving;move_forward
+16;139;None;w;waiting;wait
+17;139;None;e;waiting;wait
+18;139;(59, 39);n;moving;move_forward
+19;139;(22, 43);s;moving;move_forward
+0;140;(49, 20);s;moving;move_forward
+1;140;(49, 68);n;moving;move_forward
+2;140;(65, 19);n;stopped;wait
+3;140;(44, 40);s;moving;move_forward
+4;140;(16, 56);e;moving;move_forward
+5;140;(13, 33);w;moving;move_forward
+6;140;(31, 28);n;stopped;move_forward
+7;140;(16, 63);e;moving;move_forward
+8;140;(13, 47);w;moving;move_forward
+9;140;(70, 27);s;moving;move_forward
+10;140;(43, 19);s;stopped;wait
+11;140;(58, 19);n;stopped;wait
+12;140;(27, 24);s;moving;move_forward
+13;140;(44, 41);n;moving;move_forward
+14;140;(13, 36);w;moving;move_forward
+15;140;(75, 34);e;moving;move_forward
+16;140;None;w;waiting;wait
+17;140;None;e;waiting;wait
+18;140;(58, 39);n;moving;move_forward
+19;140;(23, 43);s;moving;move_forward
+0;141;(50, 20);s;moving;move_forward
+1;141;(48, 68);n;moving;move_forward
+2;141;(65, 19);n;stopped;move_forward
+3;141;(45, 40);s;moving;move_forward
+4;141;(16, 57);e;moving;move_forward
+5;141;(13, 32);w;moving;wait
+6;141;(30, 28);n;moving;move_forward
+7;141;(16, 64);e;moving;move_forward
+8;141;(13, 46);w;moving;move_forward
+9;141;(71, 27);s;moving;move_forward
+10;141;(43, 19);s;stopped;wait
+11;141;(58, 19);n;stopped;wait
+12;141;(28, 24);s;moving;move_forward
+13;141;(43, 41);n;moving;move_forward
+14;141;(13, 35);w;moving;move_forward
+15;141;(75, 35);e;moving;move_right
+16;141;None;w;waiting;wait
+17;141;None;e;waiting;wait
+18;141;(57, 39);n;moving;move_forward
+19;141;(24, 43);s;moving;move_forward
+0;142;(51, 20);s;moving;move_forward
+1;142;(47, 68);n;moving;move_forward
+2;142;(64, 19);n;moving;move_forward
+3;142;(46, 40);s;moving;move_forward
+4;142;(16, 58);e;moving;move_forward
+5;142;(13, 32);w;stopped;wait
+6;142;(29, 28);n;moving;move_forward
+7;142;(16, 65);e;moving;move_forward
+8;142;(12, 46);n;moving;move_forward
+9;142;(71, 28);e;moving;move_forward
+10;142;(43, 19);s;stopped;wait
+11;142;(58, 19);n;stopped;wait
+12;142;(29, 24);s;moving;move_forward
+13;142;(43, 42);e;moving;move_forward
+14;142;(13, 34);w;moving;move_forward
+15;142;(76, 35);s;moving;wait
+16;142;None;w;waiting;wait
+17;142;None;e;waiting;wait
+18;142;(56, 39);n;moving;move_forward
+19;142;(25, 43);s;moving;move_forward
+0;143;(51, 19);w;moving;move_forward
+1;143;(46, 68);n;moving;move_forward
+2;143;(63, 19);n;moving;move_forward
+3;143;(47, 40);s;moving;move_forward
+4;143;(16, 59);e;moving;move_forward
+5;143;(13, 32);w;stopped;move_forward
+6;143;(28, 28);n;moving;move_forward
+7;143;(16, 66);e;moving;move_forward
+8;143;(12, 45);w;moving;move_forward
+9;143;(72, 28);s;moving;move_forward
+10;143;(43, 19);s;stopped;wait
+11;143;(58, 19);n;stopped;wait
+12;143;(30, 24);s;moving;move_forward
+13;143;(43, 43);e;moving;move_forward
+14;143;(13, 33);w;moving;move_right
+15;143;(76, 35);s;stopped;move_forward
+16;143;None;w;waiting;wait
+17;143;None;e;waiting;wait
+18;143;(55, 39);n;moving;move_forward
+19;143;(26, 43);s;moving;move_forward
+0;144;(51, 18);w;moving;move_forward
+1;144;(45, 68);n;moving;move_forward
+2;144;(63, 18);w;moving;move_forward
+3;144;(48, 40);s;moving;move_forward
+4;144;(16, 60);e;moving;move_forward
+5;144;(13, 31);w;moving;move_forward
+6;144;(27, 28);n;moving;move_forward
+7;144;(17, 66);s;moving;move_forward
+8;144;(12, 44);w;moving;move_forward
+9;144;(73, 28);s;moving;move_forward
+10;144;(43, 19);s;stopped;wait
+11;144;(58, 19);n;stopped;wait
+12;144;(31, 24);s;moving;move_forward
+13;144;(42, 43);n;moving;move_forward
+14;144;(12, 33);n;moving;move_forward
+15;144;(76, 36);e;moving;move_forward
+16;144;None;w;waiting;wait
+17;144;None;e;waiting;wait
+18;144;(54, 39);n;moving;move_forward
+19;144;(27, 43);s;moving;move_forward
+0;145;(52, 18);s;moving;move_forward
+1;145;(44, 68);n;moving;move_forward
+2;145;(62, 18);n;moving;wait
+3;145;(48, 39);w;moving;move_forward
+4;145;(16, 61);e;moving;move_forward
+5;145;(13, 30);w;moving;move_forward
+6;145;(26, 28);n;moving;move_forward
+7;145;(18, 66);s;moving;move_forward
+8;145;(12, 43);w;moving;move_forward
+9;145;(73, 29);e;moving;move_forward
+10;145;(43, 19);s;stopped;wait
+11;145;(58, 19);n;stopped;wait
+12;145;(32, 24);s;moving;move_forward
+13;145;(41, 43);n;moving;move_forward
+14;145;(12, 32);w;moving;move_forward
+15;145;(76, 37);e;moving;move_forward
+16;145;None;w;waiting;wait
+17;145;None;e;waiting;wait
+18;145;(53, 39);n;moving;move_forward
+19;145;(28, 43);s;moving;move_forward
+0;146;(53, 18);s;moving;move_forward
+1;146;(43, 68);n;moving;move_left
+2;146;(62, 18);n;stopped;wait
+3;146;(48, 38);w;moving;move_forward
+4;146;(16, 62);e;moving;move_forward
+5;146;(14, 30);s;moving;move_right
+6;146;(25, 28);n;moving;move_forward
+7;146;(19, 66);s;moving;move_forward
+8;146;(12, 42);w;moving;wait
+9;146;(74, 29);s;moving;move_forward
+10;146;(43, 19);s;stopped;wait
+11;146;(58, 19);n;stopped;wait
+12;146;(32, 23);w;moving;move_forward
+13;146;(41, 44);e;moving;move_forward
+14;146;(12, 31);w;moving;move_forward
+15;146;(75, 37);n;moving;move_forward
+16;146;None;w;waiting;wait
+17;146;None;e;waiting;wait
+18;146;(52, 39);n;moving;move_forward
+19;146;(29, 43);s;moving;move_forward
+0;147;(54, 18);s;moving;wait
+1;147;(43, 67);w;moving;move_forward
+2;147;(62, 18);n;stopped;wait
+3;147;(49, 38);s;moving;move_forward
+4;147;(16, 63);e;moving;move_forward
+5;147;(14, 29);w;moving;move_forward
+6;147;(24, 28);n;moving;move_forward
+7;147;(20, 66);s;moving;move_forward
+8;147;(12, 42);w;stopped;wait
+9;147;(74, 30);e;moving;move_forward
+10;147;(43, 19);s;stopped;wait
+11;147;(58, 19);n;stopped;wait
+12;147;(32, 22);w;moving;move_forward
+13;147;(40, 44);n;moving;move_forward
+14;147;(13, 31);s;moving;move_forward
+15;147;(75, 38);e;moving;move_forward
+16;147;None;w;waiting;wait
+17;147;None;e;waiting;wait
+18;147;(51, 39);n;moving;move_forward
+19;147;(30, 43);s;moving;move_forward
+0;148;(54, 18);s;stopped;move_forward
+1;148;(42, 67);n;moving;move_forward
+2;148;(62, 18);n;stopped;move_forward
+3;148;(50, 38);s;moving;move_forward
+4;148;(16, 64);e;moving;wait
+5;148;(14, 28);w;moving;move_forward
+6;148;(23, 28);n;moving;move_forward
+7;148;(21, 66);s;moving;move_forward
+8;148;(12, 42);w;stopped;wait
+9;148;(74, 31);e;moving;move_forward
+10;148;(43, 19);s;stopped;wait
+11;148;(58, 19);n;stopped;wait
+12;148;(32, 21);w;moving;move_forward
+13;148;(40, 45);e;moving;move_forward
+14;148;(14, 31);s;moving;move_right
+15;148;(75, 39);e;moving;move_left
+16;148;None;w;waiting;wait
+17;148;None;e;waiting;wait
+18;148;(50, 39);n;moving;move_forward
+19;148;(30, 44);e;moving;move_forward
+0;149;(55, 18);s;moving;move_left
+1;149;(41, 67);n;moving;move_forward
+2;149;(61, 18);n;moving;move_right
+3;149;(51, 38);s;moving;move_forward
+4;149;(16, 64);e;stopped;move_forward
+5;149;(14, 27);w;moving;wait
+6;149;(22, 28);n;moving;move_forward
+7;149;(22, 66);s;moving;move_forward
+8;149;(12, 42);w;stopped;move_forward
+9;149;(74, 32);e;moving;move_forward
+10;149;(43, 19);s;stopped;wait
+11;149;(58, 19);n;stopped;wait
+12;149;(33, 21);s;moving;move_forward
+13;149;(39, 45);n;moving;move_forward
+14;149;(14, 30);w;moving;move_forward
+15;149;(74, 39);n;moving;move_forward
+16;149;None;w;waiting;wait
+17;149;None;e;waiting;wait
+18;149;(49, 39);n;moving;move_forward
+19;149;(30, 45);e;moving;move_right
+0;150;(55, 19);e;moving;move_forward
+1;150;(41, 66);w;moving;move_forward
+2;150;(61, 19);e;moving;move_forward
+3;150;(52, 38);s;moving;move_right
+4;150;(16, 65);e;moving;move_forward
+5;150;(14, 27);w;stopped;move_forward
+6;150;(21, 28);n;moving;move_forward
+7;150;(23, 66);s;moving;move_forward
+8;150;(12, 41);w;moving;move_forward
+9;150;(74, 33);e;moving;move_forward
+10;150;(43, 19);s;stopped;wait
+11;150;(58, 19);n;stopped;wait
+12;150;(34, 21);s;moving;move_forward
+13;150;(38, 45);n;moving;move_right
+14;150;(14, 29);w;moving;wait
+15;150;(74, 40);e;moving;move_forward
+16;150;None;w;waiting;wait
+17;150;None;e;waiting;wait
+18;150;(48, 39);n;moving;move_right
+19;150;(31, 45);s;moving;move_forward
+0;151;(56, 19);s;moving;move_right
+1;151;(41, 65);w;moving;move_forward
+2;151;(60, 19);n;moving;move_forward
+3;151;(52, 37);w;moving;wait
+4;151;(16, 66);e;moving;move_forward
+5;151;(14, 26);w;moving;move_forward
+6;151;(20, 28);n;moving;move_forward
+7;151;(24, 66);s;moving;move_forward
+8;151;(12, 40);w;moving;wait
+9;151;(74, 34);e;moving;move_forward
+10;151;(43, 19);s;stopped;wait
+11;151;(58, 19);n;stopped;wait
+12;151;(35, 21);s;moving;move_forward
+13;151;(38, 46);e;moving;move_forward
+14;151;(14, 29);w;stopped;wait
+15;151;(74, 41);e;moving;move_forward
+16;151;None;w;waiting;wait
+17;151;None;e;waiting;wait
+18;151;(48, 40);e;moving;move_forward
+19;151;(32, 45);s;moving;move_forward
+0;152;(56, 18);w;moving;move_forward
+1;152;(40, 65);n;moving;move_forward
+2;152;(59, 19);n;moving;move_right
+3;152;(52, 37);w;stopped;wait
+4;152;(17, 66);s;moving;move_forward
+5;152;(15, 26);s;moving;move_forward
+6;152;(19, 28);n;moving;move_forward
+7;152;(25, 66);s;moving;move_forward
+8;152;(12, 40);w;stopped;wait
+9;152;(74, 35);e;moving;move_left
+10;152;(43, 19);s;stopped;wait
+11;152;(58, 19);n;stopped;wait
+12;152;(36, 21);s;moving;move_forward
+13;152;(37, 46);n;moving;move_forward
+14;152;(14, 29);w;stopped;wait
+15;152;(74, 42);e;moving;move_forward
+16;152;None;w;waiting;wait
+17;152;None;e;waiting;wait
+18;152;(48, 41);e;moving;move_forward
+19;152;(33, 45);s;moving;move_forward
+0;153;(57, 18);s;moving;move_forward
+1;153;(39, 65);n;moving;move_forward
+2;153;(59, 20);e;moving;move_forward
+3;153;(52, 37);w;stopped;wait
+4;153;(18, 66);s;moving;move_forward
+5;153;(16, 26);s;moving;move_forward
+6;153;(19, 29);e;moving;move_forward
+7;153;(26, 66);s;moving;move_forward
+8;153;(12, 40);w;stopped;wait
+9;153;(73, 35);n;moving;wait
+10;153;(43, 19);s;stopped;wait
+11;153;(58, 19);n;stopped;wait
+12;153;(37, 21);s;moving;move_forward
+13;153;(36, 46);n;moving;move_forward
+14;153;(14, 29);w;stopped;wait
+15;153;(74, 43);e;moving;move_forward
+16;153;None;w;waiting;wait
+17;153;None;e;waiting;wait
+18;153;(47, 41);n;moving;move_forward
+19;153;(34, 45);s;moving;move_forward
+0;154;(58, 18);s;moving;move_forward
+1;154;(38, 65);n;moving;move_forward
+3;154;(52, 37);w;stopped;wait
+4;154;(19, 66);s;moving;move_forward
+5;154;(17, 26);s;moving;move_forward
+6;154;(19, 30);e;moving;move_forward
+7;154;(27, 66);s;moving;move_forward
+8;154;(12, 40);w;stopped;wait
+9;154;(73, 35);n;stopped;wait
+10;154;(43, 19);s;stopped;wait
+11;154;(58, 19);n;stopped;wait
+12;154;(38, 21);s;moving;move_forward
+13;154;(35, 46);n;moving;move_forward
+14;154;(14, 29);w;stopped;wait
+15;154;(73, 43);n;moving;move_forward
+16;154;None;w;waiting;wait
+17;154;None;e;waiting;wait
+18;154;(46, 41);n;moving;move_forward
+19;154;(35, 45);s;moving;move_forward
+0;155;(59, 18);s;moving;move_forward
+1;155;(37, 65);n;moving;move_forward
+3;155;(52, 37);w;stopped;wait
+4;155;(20, 66);s;moving;move_forward
+5;155;(17, 25);w;moving;move_forward
+6;155;(18, 30);n;moving;move_forward
+7;155;(28, 66);s;moving;move_forward
+8;155;(12, 40);w;stopped;wait
+9;155;(73, 35);n;stopped;wait
+10;155;(43, 19);s;stopped;wait
+11;155;(58, 19);n;stopped;wait
+12;155;(38, 20);w;moving;move_forward
+13;155;(34, 46);n;moving;move_forward
+14;155;(14, 29);w;stopped;wait
+15;155;(72, 43);n;moving;move_forward
+16;155;None;w;waiting;wait
+17;155;None;e;waiting;wait
+18;155;(45, 41);n;moving;move_forward
+19;155;(36, 45);s;moving;move_forward
+0;156;(60, 18);s;moving;move_forward
+1;156;(36, 65);n;moving;move_forward
+3;156;(52, 37);w;stopped;wait
+4;156;(21, 66);s;moving;move_forward
+5;156;(18, 25);s;moving;move_forward
+6;156;(17, 30);n;moving;move_forward
+7;156;(29, 66);s;moving;move_forward
+8;156;(12, 40);w;stopped;move_forward
+9;156;(73, 35);n;stopped;wait
+10;156;(43, 19);s;stopped;wait
+11;156;(58, 19);n;stopped;wait
+12;156;(38, 19);w;moving;move_forward
+13;156;(33, 46);n;moving;move_forward
+14;156;(14, 29);w;stopped;move_forward
+15;156;(71, 43);n;moving;move_forward
+16;156;None;w;waiting;wait
+17;156;None;e;waiting;wait
+18;156;(44, 41);n;moving;move_forward
+19;156;(37, 45);s;moving;move_forward
+0;157;(61, 18);s;moving;move_forward
+1;157;(35, 65);n;moving;move_forward
+3;157;(52, 37);w;stopped;wait
+4;157;(22, 66);s;moving;move_forward
+5;157;(19, 25);s;moving;move_forward
+6;157;(16, 30);n;moving;move_forward
+7;157;(30, 66);s;moving;move_forward
+8;157;(12, 39);w;moving;move_forward
+9;157;(73, 35);n;stopped;wait
+10;157;(43, 19);s;stopped;wait
+11;157;(58, 19);n;stopped;wait
+12;157;(39, 19);s;moving;move_forward
+13;157;(32, 46);n;moving;move_forward
+14;157;(14, 28);w;moving;move_forward
+15;157;(71, 44);e;moving;move_forward
+16;157;None;w;waiting;wait
+17;157;None;e;waiting;wait
+18;157;(43, 41);n;moving;move_forward
+19;157;(38, 45);s;moving;move_forward
+0;158;(62, 18);s;moving;move_forward
+1;158;(34, 65);n;moving;move_forward
+3;158;(52, 37);w;stopped;wait
+4;158;(23, 66);s;moving;move_forward
+5;158;(20, 25);s;moving;move_forward
+6;158;(15, 30);n;moving;move_forward
+7;158;(31, 66);s;moving;move_forward
+8;158;(12, 38);w;moving;move_forward
+9;158;(73, 35);n;stopped;wait
+10;158;(43, 19);s;stopped;move_forward
+11;158;(58, 19);n;stopped;wait
+12;158;(40, 19);s;moving;move_forward
+13;158;(32, 45);w;moving;move_forward
+14;158;(14, 27);w;moving;move_forward
+15;158;(70, 44);n;moving;move_forward
+16;158;None;w;waiting;wait
+17;158;None;e;waiting;wait
+18;158;(43, 42);e;moving;move_forward
+19;158;(39, 45);s;moving;move_forward
+0;159;(63, 18);s;moving;move_forward
+1;159;(33, 65);n;moving;move_forward
+3;159;(52, 37);w;stopped;wait
+4;159;(24, 66);s;moving;move_forward
+5;159;(21, 25);s;moving;wait
+6;159;(14, 30);n;moving;move_forward
+7;159;(32, 66);s;moving;move_forward
+8;159;(12, 37);w;moving;move_forward
+9;159;(73, 35);n;stopped;wait
+10;159;(44, 19);s;moving;move_forward
+11;159;(58, 19);n;stopped;wait
+12;159;(41, 19);s;moving;move_forward
+13;159;(31, 45);n;moving;move_forward
+14;159;(14, 26);w;moving;move_forward
+15;159;(69, 44);n;moving;move_forward
+16;159;None;w;waiting;wait
+17;159;None;e;waiting;wait
+18;159;(43, 43);e;moving;move_forward
+19;159;(40, 45);s;moving;move_forward
+0;160;(64, 18);s;moving;move_forward
+1;160;(32, 65);n;moving;move_forward
+3;160;(52, 37);w;stopped;wait
+4;160;(25, 66);s;moving;move_forward
+5;160;(21, 25);s;stopped;move_forward
+6;160;(13, 30);n;moving;move_forward
+7;160;(33, 66);s;moving;move_forward
+8;160;(12, 36);w;moving;move_forward
+9;160;(73, 35);n;stopped;move_forward
+10;160;(45, 19);s;moving;move_left
+11;160;(58, 19);n;stopped;wait
+12;160;(42, 19);s;moving;move_forward
+13;160;(30, 45);n;moving;move_forward
+14;160;(15, 26);s;moving;move_forward
+15;160;(68, 44);n;moving;move_forward
+16;160;None;w;waiting;wait
+17;160;None;e;waiting;wait
+18;160;(42, 43);n;moving;move_forward
+19;160;(41, 45);s;moving;move_forward
+0;161;(65, 18);s;moving;move_forward
+1;161;(31, 65);n;moving;move_forward
+3;161;(52, 37);w;stopped;wait
+4;161;(26, 66);s;moving;move_forward
+5;161;(22, 25);s;moving;move_forward
+6;161;(13, 31);e;moving;move_forward
+7;161;(34, 66);s;moving;move_forward
+8;161;(12, 35);w;moving;move_forward
+9;161;(73, 36);e;moving;move_forward
+10;161;(45, 20);e;moving;move_forward
+11;161;(58, 19);n;stopped;wait
+12;161;(43, 19);s;moving;move_forward
+13;161;(29, 45);n;moving;move_forward
+14;161;(16, 26);s;moving;move_forward
+15;161;(67, 44);n;moving;move_forward
+16;161;None;w;waiting;wait
+17;161;None;e;waiting;wait
+18;161;(41, 43);n;moving;move_forward
+19;161;(42, 45);s;moving;move_forward
+0;162;(66, 18);s;moving;move_forward
+1;162;(30, 65);n;moving;move_forward
+3;162;(52, 37);w;stopped;wait
+4;162;(27, 66);s;moving;move_forward
+5;162;(22, 24);w;moving;move_forward
+6;162;(13, 32);e;moving;move_forward
+7;162;(35, 66);s;moving;move_forward
+8;162;(12, 34);w;moving;move_forward
+9;162;(73, 37);e;moving;move_forward
+10;162;(46, 20);s;moving;move_forward
+11;162;(58, 19);n;stopped;wait
+12;162;(44, 19);s;moving;move_forward
+13;162;(28, 45);n;moving;move_forward
+14;162;(17, 26);s;moving;move_forward
+15;162;(66, 44);n;moving;move_forward
+16;162;None;w;ready to depart;move_forward
+17;162;None;e;waiting;wait
+18;162;(41, 44);e;moving;move_forward
+19;162;(42, 44);w;moving;move_forward
+0;163;(67, 18);s;moving;move_forward
+1;163;(29, 65);n;moving;move_forward
+3;163;(52, 37);w;stopped;wait
+4;163;(28, 66);s;moving;move_forward
+5;163;(23, 24);s;moving;move_forward
+6;163;(13, 33);e;moving;move_forward
+7;163;(36, 66);s;moving;move_forward
+8;163;(12, 33);w;moving;move_forward
+9;163;(74, 37);s;moving;move_forward
+10;163;(47, 20);s;moving;wait
+11;163;(58, 19);n;stopped;move_forward
+12;163;(45, 19);s;moving;move_forward
+13;163;(27, 45);n;moving;move_forward
+14;163;(17, 25);w;moving;move_forward
+15;163;(66, 45);e;moving;move_forward
+16;163;(16, 60);w;moving;wait
+17;163;None;e;waiting;wait
+18;163;(40, 44);n;moving;move_forward
+19;163;(42, 43);w;moving;move_forward
+0;164;(68, 18);s;moving;move_forward
+1;164;(28, 65);n;moving;move_forward
+3;164;(52, 37);w;stopped;move_forward
+4;164;(29, 66);s;moving;move_forward
+5;164;(24, 24);s;moving;move_forward
+6;164;(13, 34);e;moving;move_forward
+7;164;(37, 66);s;moving;move_forward
+8;164;(12, 32);w;moving;move_forward
+9;164;(74, 38);e;moving;move_forward
+10;164;(47, 20);s;stopped;wait
+11;164;(57, 19);n;moving;move_forward
+12;164;(46, 19);s;moving;move_forward
+13;164;(26, 45);n;moving;move_forward
+14;164;(18, 25);s;moving;move_forward
+15;164;(66, 46);e;moving;move_forward
+16;164;(16, 60);w;stopped;wait
+17;164;None;e;waiting;wait
+18;164;(40, 45);e;moving;move_forward
+19;164;(42, 42);w;moving;move_forward
+0;165;(69, 18);s;moving;move_forward
+1;165;(27, 65);n;moving;move_forward
+3;165;(53, 37);s;moving;wait
+4;165;(30, 66);s;moving;move_forward
+5;165;(25, 24);s;moving;move_forward
+6;165;(13, 35);e;moving;move_right
+7;165;(38, 66);s;moving;move_forward
+8;165;(12, 31);w;moving;wait
+9;165;(74, 39);e;moving;move_forward
+10;165;(47, 20);s;stopped;wait
+11;165;(56, 19);n;moving;move_forward
+12;165;(47, 19);s;moving;move_forward
+13;165;(26, 44);w;moving;wait
+14;165;(19, 25);s;moving;move_forward
+15;165;(66, 47);e;moving;move_forward
+16;165;(16, 60);w;stopped;wait
+17;165;None;e;waiting;wait
+18;165;(39, 45);n;moving;move_forward
+19;165;(42, 41);w;moving;move_forward
+0;166;(69, 19);e;moving;move_forward
+1;166;(26, 65);n;moving;move_forward
+3;166;(53, 37);s;stopped;wait
+4;166;(31, 66);s;moving;move_forward
+5;166;(26, 24);s;moving;move_forward
+6;166;(14, 35);s;moving;move_forward
+7;166;(39, 66);s;moving;move_forward
+8;166;(12, 31);w;stopped;move_forward
+9;166;(74, 40);e;moving;move_forward
+10;166;(47, 20);s;stopped;wait
+11;166;(55, 19);n;moving;move_forward
+12;166;(48, 19);s;moving;move_forward
+13;166;(26, 44);w;stopped;move_forward
+14;166;(20, 25);s;moving;move_forward
+15;166;(66, 48);e;moving;move_forward
+16;166;(16, 60);w;stopped;wait
+17;166;None;e;waiting;wait
+18;166;(38, 45);n;moving;move_forward
+19;166;(42, 40);w;moving;move_forward
+0;167;(69, 20);e;moving;move_forward
+1;167;(25, 65);n;moving;move_forward
+3;167;(53, 37);s;stopped;move_forward
+4;167;(32, 66);s;moving;move_forward
+5;167;(27, 24);s;moving;move_forward
+6;167;(14, 36);e;moving;move_forward
+7;167;(39, 67);e;moving;move_forward
+8;167;(13, 31);s;moving;move_forward
+9;167;(74, 41);e;moving;move_forward
+10;167;(47, 20);s;stopped;wait
+11;167;(55, 18);w;moving;move_forward
+12;167;(49, 19);s;moving;move_forward
+13;167;(26, 43);w;moving;move_forward
+14;167;(21, 25);s;moving;move_forward
+15;167;(66, 49);e;moving;move_forward
+16;167;(16, 60);w;stopped;wait
+17;167;None;e;waiting;wait
+18;167;(37, 45);n;moving;move_forward
+19;167;(43, 40);s;moving;move_forward
+0;168;(69, 21);e;moving;move_forward
+1;168;(24, 65);n;moving;move_forward
+3;168;(54, 37);s;moving;wait
+4;168;(33, 66);s;moving;move_forward
+5;168;(28, 24);s;moving;move_forward
+6;168;(14, 37);e;moving;move_forward
+7;168;(40, 67);s;moving;move_forward
+8;168;(14, 31);s;moving;move_forward
+9;168;(74, 42);e;moving;move_forward
+10;168;(47, 20);s;stopped;wait
+11;168;(54, 18);n;moving;move_forward
+12;168;(50, 19);s;moving;move_forward
+13;168;(26, 42);w;moving;move_forward
+14;168;(22, 25);s;moving;move_forward
+15;168;(66, 50);e;moving;move_forward
+16;168;(16, 60);w;stopped;wait
+17;168;None;e;ready to depart;move_forward
+18;168;(36, 45);n;moving;move_forward
+19;168;(44, 40);s;moving;move_forward
+0;169;(69, 22);e;moving;move_forward
+1;169;(23, 65);n;moving;move_forward
+3;169;(54, 37);s;stopped;wait
+4;169;(34, 66);s;moving;move_forward
+5;169;(29, 24);s;moving;move_forward
+6;169;(13, 37);n;moving;move_forward
+7;169;(40, 68);e;moving;move_forward
+8;169;(15, 31);s;moving;move_forward
+9;169;(74, 43);e;moving;move_forward
+10;169;(47, 20);s;stopped;wait
+11;169;(53, 18);n;moving;move_forward
+12;169;(51, 19);s;moving;move_forward
+13;169;(26, 41);w;moving;move_forward
+14;169;(22, 24);w;moving;move_forward
+15;169;(66, 51);e;moving;move_forward
+16;169;(16, 60);w;stopped;wait
+17;169;(13, 36);e;moving;wait
+18;169;(35, 45);n;moving;move_forward
+19;169;(45, 40);s;moving;move_forward
+0;170;(69, 23);e;moving;move_forward
+1;170;(22, 65);n;moving;move_forward
+3;170;(54, 37);s;stopped;move_forward
+4;170;(35, 66);s;moving;move_forward
+5;170;(30, 24);s;moving;move_forward
+6;170;(13, 38);e;moving;move_forward
+7;170;(41, 68);s;moving;move_forward
+8;170;(16, 31);s;moving;move_forward
+9;170;(73, 43);n;moving;move_forward
+10;170;(47, 20);s;stopped;wait
+11;170;(52, 18);n;moving;wait
+12;170;(52, 19);s;moving;move_forward
+13;170;(26, 40);w;moving;move_forward
+14;170;(23, 24);s;moving;move_forward
+15;170;(66, 52);e;moving;move_forward
+16;170;(16, 60);w;stopped;wait
+17;170;(13, 36);e;stopped;wait
+18;170;(34, 45);n;moving;move_forward
+19;170;(46, 40);s;moving;move_forward
+0;171;(69, 24);e;moving;move_forward
+1;171;(21, 65);n;moving;move_forward
+3;171;(54, 38);e;moving;move_forward
+4;171;(36, 66);s;moving;move_forward
+5;171;(31, 24);s;moving;move_forward
+6;171;(13, 39);e;moving;move_forward
+7;171;(42, 68);s;moving;move_forward
+8;171;(17, 31);s;moving;move_forward
+9;171;(72, 43);n;moving;move_forward
+10;171;(47, 20);s;stopped;move_forward
+11;171;(52, 18);n;stopped;wait
+12;171;(53, 19);s;moving;move_forward
+13;171;(26, 39);w;moving;move_forward
+14;171;(24, 24);s;moving;move_forward
+15;171;(66, 53);e;moving;move_forward
+16;171;(16, 60);w;stopped;wait
+17;171;(13, 36);e;stopped;wait
+18;171;(33, 45);n;moving;move_forward
+19;171;(47, 40);s;moving;move_forward
+0;172;(69, 25);e;moving;move_forward
+1;172;(20, 65);n;moving;move_forward
+3;172;(55, 38);s;moving;move_forward
+4;172;(37, 66);s;moving;move_forward
+5;172;(32, 24);s;moving;move_forward
+6;172;(13, 40);e;moving;move_forward
+7;172;(43, 68);s;moving;move_forward
+8;172;(18, 31);s;moving;move_forward
+9;172;(71, 43);n;moving;move_forward
+10;172;(48, 20);s;moving;move_forward
+11;172;(52, 18);n;stopped;wait
+12;172;(53, 18);w;moving;move_forward
+13;172;(26, 38);w;moving;move_forward
+14;172;(25, 24);s;moving;move_forward
+15;172;(66, 54);e;moving;move_forward
+16;172;(16, 60);w;stopped;wait
+17;172;(13, 36);e;stopped;wait
+18;172;(32, 45);n;moving;move_forward
+19;172;(48, 40);s;moving;move_forward
+0;173;(69, 26);e;moving;move_forward
+1;173;(19, 65);n;moving;move_forward
+3;173;(56, 38);s;moving;move_forward
+4;173;(38, 66);s;moving;move_forward
+5;173;(32, 23);w;moving;move_forward
+6;173;(13, 41);e;moving;move_forward
+7;173;(44, 68);s;moving;move_forward
+8;173;(18, 32);e;moving;move_forward
+9;173;(71, 44);e;moving;move_forward
+10;173;(49, 20);s;moving;move_forward
+11;173;(52, 18);n;stopped;wait
+12;173;(54, 18);s;moving;move_forward
+13;173;(26, 37);w;moving;move_forward
+14;173;(26, 24);s;moving;move_forward
+15;173;(66, 55);e;moving;move_forward
+16;173;(16, 60);w;stopped;wait
+17;173;(13, 36);e;stopped;wait
+18;173;(31, 45);n;moving;move_forward
+19;173;(48, 39);w;moving;move_forward
+0;174;(69, 27);e;moving;move_forward
+1;174;(18, 65);n;moving;move_forward
+3;174;(57, 38);s;moving;move_forward
+4;174;(39, 66);s;moving;move_forward
+5;174;(32, 22);w;moving;move_forward
+6;174;(13, 42);e;moving;wait
+7;174;(45, 68);s;moving;move_forward
+8;174;(19, 32);s;moving;move_forward
+9;174;(70, 44);n;moving;move_forward
+10;174;(50, 20);s;moving;move_forward
+11;174;(52, 18);n;stopped;wait
+12;174;(55, 18);s;moving;move_forward
+13;174;(25, 37);n;moving;move_forward
+14;174;(27, 24);s;moving;move_forward
+15;174;(66, 56);e;moving;move_forward
+16;174;(16, 60);w;stopped;wait
+17;174;(13, 36);e;stopped;wait
+18;174;(30, 45);n;moving;move_forward
+19;174;(48, 38);w;moving;move_forward
+0;175;(70, 27);s;moving;move_forward
+1;175;(17, 65);n;moving;move_forward
+3;175;(58, 38);s;moving;move_left
+4;175;(39, 67);e;moving;move_forward
+5;175;(32, 21);w;moving;move_forward
+6;175;(13, 42);e;stopped;move_forward
+7;175;(46, 68);s;moving;move_forward
+8;175;(19, 33);e;moving;move_forward
+9;175;(69, 44);n;moving;move_forward
+10;175;(51, 20);s;moving;wait
+11;175;(52, 18);n;stopped;wait
+12;175;(56, 18);s;moving;move_forward
+13;175;(24, 37);n;moving;move_forward
+14;175;(28, 24);s;moving;move_forward
+15;175;(67, 56);s;moving;move_forward
+16;175;(16, 60);w;stopped;wait
+17;175;(13, 36);e;stopped;wait
+18;175;(29, 45);n;moving;move_forward
+19;175;(49, 38);s;moving;move_forward
+0;176;(71, 27);s;moving;move_forward
+1;176;(16, 65);n;moving;move_forward
+3;176;(58, 39);e;moving;move_forward
+4;176;(40, 67);s;moving;move_forward
+5;176;(33, 21);s;moving;move_forward
+6;176;(13, 43);e;moving;move_forward
+7;176;(47, 68);s;moving;move_forward
+8;176;(20, 33);s;moving;move_forward
+9;176;(68, 44);n;moving;move_forward
+10;176;(51, 20);s;stopped;wait
+11;176;(52, 18);n;stopped;wait
+12;176;(57, 18);s;moving;move_forward
+13;176;(24, 36);w;moving;move_forward
+14;176;(29, 24);s;moving;move_forward
+15;176;(67, 57);e;moving;move_forward
+16;176;(16, 60);w;stopped;wait
+17;176;(13, 36);e;stopped;wait
+18;176;(28, 45);n;moving;move_forward
+19;176;(50, 38);s;moving;move_forward
+0;177;(71, 28);e;moving;move_forward
+1;177;(16, 64);w;moving;move_forward
+3;177;(58, 40);e;moving;move_forward
+4;177;(40, 68);e;moving;move_forward
+5;177;(34, 21);s;moving;move_forward
+6;177;(14, 43);s;moving;move_forward
+7;177;(48, 68);s;moving;move_forward
+8;177;(21, 33);s;moving;move_forward
+9;177;(67, 44);n;moving;move_forward
+10;177;(51, 20);s;stopped;wait
+11;177;(52, 18);n;stopped;wait
+12;177;(58, 18);s;moving;move_forward
+13;177;(23, 36);n;moving;move_forward
+14;177;(30, 24);s;moving;move_forward
+15;177;(68, 57);s;moving;move_forward
+16;177;(16, 60);w;stopped;wait
+17;177;(13, 36);e;stopped;wait
+18;177;(27, 45);n;moving;move_forward
+19;177;(51, 38);s;moving;move_forward
+0;178;(72, 28);s;moving;move_forward
+1;178;(16, 63);w;moving;move_left
+3;178;(59, 40);s;moving;move_forward
+4;178;(41, 68);s;moving;move_forward
+5;178;(35, 21);s;moving;move_forward
+6;178;(15, 43);s;moving;move_forward
+7;178;(49, 68);s;moving;move_forward
+8;178;(22, 33);s;moving;move_forward
+9;178;(66, 44);n;moving;move_forward
+10;178;(51, 20);s;stopped;wait
+11;178;(52, 18);n;stopped;wait
+12;178;(59, 18);s;moving;move_forward
+13;178;(22, 36);n;moving;move_forward
+14;178;(31, 24);s;moving;move_forward
+15;178;(69, 57);s;moving;move_forward
+16;178;(16, 60);w;stopped;wait
+17;178;(13, 36);e;stopped;move_forward
+18;178;(26, 45);n;moving;move_forward
+19;178;(52, 38);s;moving;move_forward
+0;179;(73, 28);s;moving;move_forward
+1;179;(17, 63);s;moving;move_forward
+3;179;(60, 40);s;moving;move_forward
+4;179;(42, 68);s;moving;move_forward
+5;179;(36, 21);s;moving;move_forward
+6;179;(16, 43);s;moving;move_forward
+7;179;(50, 68);s;moving;move_forward
+8;179;(22, 34);e;moving;move_forward
+9;179;(66, 45);e;moving;move_forward
+10;179;(51, 20);s;stopped;wait
+11;179;(52, 18);n;stopped;move_forward
+12;179;(60, 18);s;moving;move_forward
+13;179;(21, 36);n;moving;move_forward
+14;179;(32, 24);s;moving;move_forward
+15;179;(69, 58);e;moving;move_forward
+16;179;(16, 60);w;stopped;wait
+17;179;(13, 37);e;moving;move_forward
+18;179;(26, 44);w;moving;move_forward
+19;179;(53, 38);s;moving;move_forward
+0;180;(73, 29);e;moving;move_forward
+1;180;(17, 62);w;moving;move_forward
+3;180;(61, 40);s;moving;move_forward
+4;180;(43, 68);s;moving;move_forward
+5;180;(37, 21);s;moving;move_forward
+6;180;(17, 43);s;moving;wait
+7;180;(51, 68);s;moving;move_forward
+8;180;(22, 35);e;moving;move_forward
+9;180;(66, 46);e;moving;move_right
+10;180;(51, 20);s;stopped;wait
+11;180;(51, 18);n;moving;move_forward
+12;180;(61, 18);s;moving;move_forward
+13;180;(21, 35);w;moving;move_forward
+14;180;(32, 23);w;moving;move_forward
+15;180;(69, 59);e;moving;wait
+16;180;(16, 60);w;stopped;move_forward
+17;180;(13, 38);e;moving;move_forward
+18;180;(26, 43);w;moving;move_forward
+19;180;(54, 38);s;moving;move_forward
+0;181;(74, 29);s;moving;move_forward
+1;181;(17, 61);w;moving;move_forward
+3;181;(62, 40);s;moving;move_forward
+4;181;(44, 68);s;moving;move_forward
+5;181;(38, 21);s;moving;move_forward
+6;181;(17, 43);s;stopped;move_forward
+7;181;(52, 68);s;moving;move_forward
+8;181;(23, 35);s;moving;move_forward
+9;181;(67, 46);s;moving;move_forward
+10;181;(51, 20);s;stopped;wait
+11;181;(50, 18);n;moving;move_forward
+12;181;(62, 18);s;moving;move_forward
+13;181;(21, 34);w;moving;move_forward
+14;181;(32, 22);w;moving;move_forward
+15;181;(69, 59);e;stopped;wait
+16;181;(16, 59);w;moving;move_forward
+17;181;(13, 39);e;moving;move_left
+18;181;(26, 42);w;moving;move_forward
+19;181;(55, 38);s;moving;move_forward
+0;182;(74, 30);e;moving;move_forward
+1;182;(17, 60);w;moving;move_forward
+3;182;(63, 40);s;moving;move_forward
+4;182;(45, 68);s;moving;move_forward
+5;182;(38, 20);w;moving;move_forward
+6;182;(18, 43);s;moving;wait
+7;182;(53, 68);s;moving;move_forward
+8;182;(24, 35);s;moving;move_forward
+9;182;(67, 47);e;moving;move_forward
+10;182;(51, 20);s;stopped;wait
+11;182;(49, 18);n;moving;move_forward
+12;182;(63, 18);s;moving;move_forward
+13;182;(20, 34);n;moving;move_forward
+14;182;(32, 21);w;moving;move_forward
+15;182;(69, 59);e;stopped;wait
+16;182;(16, 58);w;moving;move_forward
+17;182;(12, 39);n;moving;move_forward
+18;182;(26, 41);w;moving;move_forward
+19;182;(56, 38);s;moving;move_forward
+0;183;(74, 31);e;moving;move_forward
+1;183;(17, 59);w;moving;move_forward
+3;183;(64, 40);s;moving;move_forward
+4;183;(46, 68);s;moving;move_forward
+5;183;(38, 19);w;moving;move_forward
+6;183;(18, 43);s;stopped;move_forward
+7;183;(54, 68);s;moving;move_forward
+8;183;(25, 35);s;moving;move_forward
+9;183;(67, 48);e;moving;move_right
+10;183;(51, 20);s;stopped;wait
+11;183;(48, 18);n;moving;move_forward
+12;183;(64, 18);s;moving;move_forward
+13;183;(19, 34);n;moving;move_forward
+14;183;(33, 21);s;moving;move_forward
+15;183;(69, 59);e;stopped;move_forward
+16;183;(16, 57);w;moving;move_forward
+17;183;(12, 40);e;moving;wait
+18;183;(26, 40);w;moving;move_forward
+19;183;(57, 38);s;moving;move_forward
+0;184;(74, 32);e;moving;move_forward
+1;184;(17, 58);w;moving;move_forward
+3;184;(65, 40);s;moving;move_forward
+4;184;(47, 68);s;moving;move_forward
+5;184;(39, 19);s;moving;move_forward
+6;184;(19, 43);s;moving;move_forward
+7;184;(55, 68);s;moving;move_forward
+8;184;(26, 35);s;moving;move_forward
+9;184;(68, 48);s;moving;move_forward
+10;184;(51, 20);s;stopped;wait
+11;184;(48, 19);e;moving;move_forward
+12;184;(65, 18);s;moving;move_forward
+13;184;(18, 34);n;moving;move_forward
+14;184;(34, 21);s;moving;move_forward
+15;184;(69, 60);e;moving;move_right
+16;184;(16, 56);w;moving;move_forward
+17;184;(12, 40);e;stopped;wait
+18;184;(26, 39);w;moving;move_forward
+19;184;(58, 38);s;moving;move_left
+0;185;(74, 33);e;moving;move_forward
+1;185;(17, 57);w;moving;move_forward
+3;185;(66, 40);s;moving;move_forward
+4;185;(48, 68);s;moving;move_forward
+5;185;(40, 19);s;moving;move_forward
+6;185;(20, 43);s;moving;move_forward
+7;185;(56, 68);s;moving;move_forward
+8;185;(26, 36);e;moving;move_forward
+10;185;(51, 20);s;stopped;wait
+11;185;(47, 19);n;moving;move_forward
+12;185;(66, 18);s;moving;move_forward
+13;185;(18, 33);w;moving;move_forward
+14;185;(35, 21);s;moving;move_forward
+15;185;(70, 60);s;moving;move_forward
+16;185;(16, 55);w;moving;move_forward
+17;185;(12, 40);e;stopped;wait
+18;185;(26, 38);w;moving;move_forward
+19;185;(58, 39);e;moving;move_forward
+0;186;(74, 34);e;moving;move_forward
+1;186;(16, 57);n;moving;move_forward
+3;186;(67, 40);s;moving;move_forward
+4;186;(49, 68);s;moving;move_forward
+5;186;(41, 19);s;moving;move_forward
+6;186;(21, 43);s;moving;move_forward
+7;186;(57, 68);s;moving;move_forward
+8;186;(27, 36);s;moving;move_forward
+10;186;(51, 20);s;stopped;wait
+11;186;(46, 19);n;moving;move_right
+12;186;(67, 18);s;moving;move_forward
+13;186;(17, 33);n;moving;move_forward
+14;186;(36, 21);s;moving;move_forward
+15;186;(70, 61);e;moving;move_forward
+16;186;(16, 54);w;moving;move_forward
+17;186;(12, 40);e;stopped;move_forward
+18;186;(26, 37);w;moving;move_forward
+19;186;(58, 40);e;moving;move_forward
+0;187;(74, 35);e;moving;move_forward
+1;187;(16, 56);w;moving;move_forward
+3;187;(68, 40);s;moving;move_forward
+4;187;(50, 68);s;moving;move_forward
+5;187;(42, 19);s;moving;move_forward
+6;187;(22, 43);s;moving;move_forward
+7;187;(58, 68);s;moving;move_forward
+8;187;(27, 37);e;moving;move_forward
+10;187;(51, 20);s;stopped;wait
+11;187;(46, 20);e;moving;move_forward
+12;187;(68, 18);s;moving;move_forward
+13;187;(17, 32);w;moving;move_forward
+14;187;(37, 21);s;moving;move_forward
+15;187;(70, 62);e;moving;move_right
+16;187;(16, 53);w;moving;move_forward
+17;187;(12, 41);e;moving;move_forward
+18;187;(25, 37);n;moving;move_forward
+19;187;(59, 40);s;moving;move_forward
+0;188;(74, 36);e;moving;move_forward
+1;188;(16, 55);w;moving;move_forward
+3;188;(69, 40);s;moving;move_forward
+4;188;(51, 68);s;moving;move_forward
+5;188;(43, 19);s;moving;move_forward
+6;188;(23, 43);s;moving;move_forward
+7;188;(59, 68);s;moving;move_forward
+8;188;(28, 37);s;moving;move_forward
+10;188;(51, 20);s;stopped;wait
+11;188;(45, 20);n;moving;move_forward
+12;188;(69, 18);s;moving;move_forward
+13;188;(17, 31);w;moving;move_forward
+14;188;(38, 21);s;moving;move_forward
+15;188;(71, 62);s;moving;wait
+16;188;(16, 52);w;moving;move_forward
+17;188;(12, 42);e;moving;move_forward
+18;188;(24, 37);n;moving;move_forward
+19;188;(60, 40);s;moving;move_forward
+0;189;(74, 37);e;moving;move_forward
+1;189;(16, 54);w;moving;move_forward
+3;189;(69, 41);e;moving;wait
+4;189;(52, 68);s;moving;move_forward
+5;189;(44, 19);s;moving;move_forward
+6;189;(24, 43);s;moving;move_forward
+7;189;(60, 68);s;moving;move_forward
+8;189;(28, 38);e;moving;move_forward
+10;189;(51, 20);s;stopped;wait
+11;189;(44, 20);n;moving;wait
+12;189;(69, 19);e;moving;move_forward
+13;189;(16, 31);n;moving;move_forward
+14;189;(38, 20);w;moving;move_forward
+15;189;(71, 62);s;stopped;move_forward
+16;189;(16, 51);w;moving;move_forward
+17;189;(12, 43);e;moving;move_forward
+18;189;(24, 36);w;moving;move_forward
+19;189;(61, 40);s;moving;move_forward
+0;190;(74, 38);e;moving;move_forward
+1;190;(16, 53);w;moving;move_forward
+3;190;(69, 41);e;stopped;wait
+4;190;(53, 68);s;moving;move_forward
+5;190;(45, 19);s;moving;move_forward
+6;190;(25, 43);s;moving;move_forward
+7;190;(61, 68);s;moving;move_forward
+8;190;(28, 39);e;moving;move_forward
+10;190;(51, 20);s;stopped;wait
+11;190;(44, 20);n;stopped;move_forward
+12;190;(69, 20);e;moving;move_forward
+13;190;(15, 31);n;moving;move_forward
+14;190;(38, 19);w;moving;move_forward
+16;190;(16, 50);w;moving;move_forward
+17;190;(12, 44);e;moving;move_forward
+18;190;(23, 36);n;moving;move_forward
+19;190;(62, 40);s;moving;move_forward
+0;191;(74, 39);e;moving;move_forward
+1;191;(16, 52);w;moving;move_forward
+3;191;(69, 41);e;stopped;wait
+4;191;(54, 68);s;moving;move_forward
+5;191;(46, 19);s;moving;move_forward
+6;191;(26, 43);s;moving;move_forward
+7;191;(62, 68);s;moving;move_forward
+8;191;(29, 39);s;moving;move_forward
+10;191;(51, 20);s;stopped;wait
+12;191;(69, 21);e;moving;move_forward
+13;191;(14, 31);n;moving;move_forward
+14;191;(39, 19);s;moving;move_forward
+16;191;(16, 49);w;moving;move_forward
+17;191;(12, 45);e;moving;move_forward
+18;191;(22, 36);n;moving;move_forward
+19;191;(63, 40);s;moving;move_forward
+0;192;(74, 40);e;moving;move_forward
+1;192;(16, 51);w;moving;move_forward
+3;192;(69, 41);e;stopped;wait
+4;192;(55, 68);s;moving;move_forward
+5;192;(47, 19);s;moving;wait
+6;192;(27, 43);s;moving;move_forward
+7;192;(63, 68);s;moving;move_forward
+8;192;(29, 40);e;moving;move_forward
+10;192;(51, 20);s;stopped;wait
+12;192;(69, 22);e;moving;move_forward
+13;192;(13, 31);n;moving;move_forward
+14;192;(40, 19);s;moving;move_forward
+16;192;(16, 48);w;moving;move_forward
+17;192;(12, 46);e;moving;move_forward
+18;192;(21, 36);n;moving;move_forward
+19;192;(64, 40);s;moving;move_forward
+0;193;(74, 41);e;moving;move_forward
+1;193;(16, 50);w;moving;move_forward
+3;193;(69, 41);e;stopped;move_forward
+4;193;(56, 68);s;moving;move_forward
+5;193;(47, 19);s;stopped;move_forward
+6;193;(28, 43);s;moving;wait
+7;193;(64, 68);s;moving;move_forward
+8;193;(29, 41);e;moving;move_forward
+10;193;(51, 20);s;stopped;wait
+12;193;(69, 23);e;moving;move_forward
+13;193;(12, 31);n;moving;wait
+14;193;(41, 19);s;moving;move_forward
+16;193;(16, 47);w;moving;move_forward
+17;193;(13, 46);s;moving;move_forward
+18;193;(21, 35);w;moving;move_forward
+19;193;(65, 40);s;moving;move_forward
+0;194;(74, 42);e;moving;move_forward
+1;194;(16, 49);w;moving;move_forward
+3;194;(70, 41);s;moving;move_forward
+4;194;(57, 68);s;moving;move_forward
+5;194;(48, 19);s;moving;move_right
+6;194;(28, 43);s;stopped;move_forward
+7;194;(65, 68);s;moving;move_forward
+8;194;(29, 42);e;moving;wait
+10;194;(51, 20);s;stopped;move_forward
+12;194;(69, 24);e;moving;move_forward
+13;194;(12, 31);n;stopped;wait
+14;194;(42, 19);s;moving;move_forward
+16;194;(16, 46);w;moving;move_forward
+17;194;(13, 47);e;moving;move_forward
+18;194;(21, 34);w;moving;move_forward
+19;194;(66, 40);s;moving;move_forward
+0;195;(74, 43);e;moving;move_forward
+1;195;(16, 48);w;moving;move_forward
+3;195;(71, 41);s;moving;move_forward
+4;195;(58, 68);s;moving;move_forward
+5;195;(48, 18);w;moving;move_forward
+6;195;(29, 43);s;moving;move_forward
+7;195;(66, 68);s;moving;move_forward
+8;195;(29, 42);e;stopped;wait
+10;195;(51, 19);w;moving;move_forward
+12;195;(69, 25);e;moving;move_forward
+13;195;(12, 31);n;stopped;wait
+14;195;(43, 19);s;moving;move_forward
+16;195;(16, 45);w;moving;move_forward
+17;195;(13, 48);e;moving;move_forward
+18;195;(20, 34);n;moving;move_forward
+19;195;(67, 40);s;moving;move_forward
+0;196;(73, 43);n;moving;move_forward
+1;196;(16, 47);w;moving;move_forward
+3;196;(72, 41);s;moving;move_forward
+4;196;(59, 68);s;moving;move_forward
+5;196;(49, 18);s;moving;wait
+6;196;(30, 43);s;moving;move_forward
+7;196;(67, 68);s;moving;move_forward
+8;196;(29, 42);e;stopped;wait
+10;196;(51, 18);w;moving;move_forward
+12;196;(69, 26);e;moving;move_forward
+13;196;(12, 31);n;stopped;wait
+14;196;(44, 19);s;moving;move_forward
+16;196;(15, 45);n;moving;move_forward
+17;196;(13, 49);e;moving;move_forward
+18;196;(19, 34);n;moving;move_forward
+19;196;(68, 40);s;moving;move_forward
+0;197;(72, 43);n;moving;move_forward
+1;197;(16, 46);w;moving;move_forward
+3;197;(73, 41);s;moving;move_forward
+4;197;(60, 68);s;moving;move_forward
+5;197;(49, 18);s;stopped;move_forward
+6;197;(30, 44);e;moving;move_forward
+7;197;(68, 68);s;moving;move_forward
+8;197;(29, 42);e;stopped;move_forward
+10;197;(52, 18);s;moving;move_forward
+12;197;(69, 27);e;moving;move_forward
+13;197;(12, 31);n;stopped;wait
+14;197;(45, 19);s;moving;move_forward
+16;197;(15, 44);w;moving;move_forward
+17;197;(13, 50);e;moving;move_forward
+18;197;(18, 34);n;moving;move_forward
+19;197;(69, 40);s;moving;move_forward
+0;198;(71, 43);n;moving;move_forward
+1;198;(16, 45);w;moving;move_forward
+3;198;(74, 41);s;moving;move_forward
+4;198;(61, 68);s;moving;move_forward
+5;198;(50, 18);s;moving;move_forward
+6;198;(30, 45);e;moving;move_right
+7;198;(69, 68);s;moving;move_right
+8;198;(29, 43);e;moving;move_forward
+10;198;(53, 18);s;moving;move_forward
+12;198;(70, 27);s;moving;move_forward
+13;198;(12, 31);n;stopped;move_forward
+14;198;(46, 19);s;moving;move_forward
+16;198;(15, 43);w;moving;move_forward
+17;198;(13, 51);e;moving;move_forward
+18;198;(18, 33);w;moving;move_forward
+19;198;(69, 41);e;moving;move_forward
+0;199;(71, 44);e;moving;move_forward
+1;199;(15, 45);n;moving;move_forward
+3;199;(74, 40);w;moving;move_forward
+4;199;(62, 68);s;moving;move_forward
+5;199;(51, 18);s;moving;move_forward
+6;199;(31, 45);s;moving;move_forward
+7;199;(69, 67);w;moving;move_forward
+8;199;(29, 44);e;moving;move_forward
+10;199;(54, 18);s;moving;move_forward
+12;199;(71, 27);s;moving;move_forward
+13;199;(12, 32);e;moving;move_forward
+14;199;(47, 19);s;moving;move_forward
+16;199;(15, 42);w;moving;move_forward
+17;199;(13, 52);e;moving;move_forward
+18;199;(17, 33);n;moving;move_forward
+19;199;(70, 41);s;moving;move_forward
+0;200;(70, 44);n;moving;move_forward
+1;200;(15, 44);w;moving;move_forward
+3;200;(74, 39);w;moving;move_forward
+4;200;(63, 68);s;moving;move_forward
+5;200;(52, 18);s;moving;move_forward
+6;200;(32, 45);s;moving;move_left
+7;200;(69, 66);w;moving;move_forward
+8;200;(30, 44);s;moving;move_forward
+10;200;(55, 18);s;moving;move_forward
+12;200;(71, 28);e;moving;move_forward
+13;200;(12, 33);e;moving;move_right
+14;200;(48, 19);s;moving;move_forward
+16;200;(15, 41);w;moving;move_forward
+17;200;(13, 53);e;moving;move_forward
+18;200;(17, 32);w;moving;move_forward
+19;200;(71, 41);s;moving;move_forward
+0;201;(69, 44);n;moving;move_forward
+1;201;(15, 43);w;moving;move_forward
+3;201;(74, 38);w;moving;move_forward
+4;201;(64, 68);s;moving;move_forward
+5;201;(53, 18);s;moving;move_forward
+6;201;(32, 46);e;moving;move_forward
+7;201;(69, 65);w;moving;move_forward
+8;201;(30, 45);e;moving;move_right
+10;201;(56, 18);s;moving;move_forward
+12;201;(72, 28);s;moving;move_forward
+13;201;(13, 33);s;moving;move_forward
+14;201;(49, 19);s;moving;move_forward
+16;201;(14, 41);n;moving;move_forward
+17;201;(13, 54);e;moving;move_forward
+18;201;(17, 31);w;moving;move_forward
+19;201;(72, 41);s;moving;move_forward
+0;202;(68, 44);n;moving;move_forward
+1;202;(15, 42);w;moving;move_forward
+3;202;(74, 37);w;moving;move_forward
+4;202;(65, 68);s;moving;move_forward
+5;202;(54, 18);s;moving;move_forward
+6;202;(33, 46);s;moving;move_forward
+7;202;(69, 64);w;moving;move_forward
+8;202;(31, 45);s;moving;move_forward
+10;202;(57, 18);s;moving;move_forward
+12;202;(73, 28);s;moving;move_forward
+13;202;(13, 34);e;moving;move_forward
+14;202;(50, 19);s;moving;move_forward
+16;202;(13, 41);n;moving;move_forward
+17;202;(13, 55);e;moving;move_forward
+18;202;(16, 31);n;moving;move_forward
+19;202;(73, 41);s;moving;move_forward
+0;203;(67, 44);n;moving;move_forward
+1;203;(15, 41);w;moving;move_forward
+4;203;(66, 68);s;moving;move_forward
+5;203;(55, 18);s;moving;move_left
+6;203;(34, 46);s;moving;wait
+8;203;(32, 45);s;moving;move_left
+12;203;(73, 29);e;moving;move_forward
+13;203;(13, 35);e;moving;move_right
+14;203;(51, 19);s;moving;move_forward
+16;203;(13, 40);w;moving;move_forward
+17;203;(14, 55);s;moving;move_forward
+18;203;(15, 31);n;moving;move_forward
+19;203;(74, 41);s;moving;move_forward
+0;204;(66, 44);n;moving;move_forward
+1;204;(14, 41);n;moving;move_forward
+4;204;(67, 68);s;moving;move_forward
+5;204;(55, 19);e;moving;wait
+6;204;(34, 46);s;stopped;wait
+8;204;(32, 46);e;moving;wait
+12;204;(74, 29);s;moving;move_forward
+13;204;(14, 35);s;moving;move_forward
+14;204;(52, 19);s;moving;move_forward
+16;204;(13, 39);w;moving;move_forward
+17;204;(15, 55);s;moving;move_forward
+18;204;(14, 31);n;moving;move_forward
+19;204;(74, 40);w;moving;move_forward
+0;205;(66, 45);e;moving;move_forward
+1;205;(13, 41);n;moving;move_forward
+4;205;(68, 68);s;moving;move_forward
+5;205;(55, 19);e;stopped;wait
+6;205;(34, 46);s;stopped;move_forward
+8;205;(32, 46);e;stopped;wait
+12;205;(74, 30);e;moving;move_forward
+14;205;(53, 19);s;moving;move_forward
+16;205;(13, 38);w;moving;move_right
+17;205;(16, 55);s;moving;move_forward
+18;205;(13, 31);n;moving;move_right
+19;205;(74, 39);w;moving;move_left
+0;206;(66, 46);e;moving;move_right
+1;206;(13, 40);w;moving;move_forward
+4;206;(69, 68);s;moving;move_right
+5;206;(55, 19);e;stopped;move_forward
+8;206;(32, 46);e;stopped;wait
+12;206;(74, 31);e;moving;move_forward
+14;206;(53, 18);w;moving;move_forward
+16;206;(12, 38);n;moving;move_forward
+17;206;(16, 56);e;moving;move_forward
+18;206;(13, 32);e;moving;move_forward
+19;206;(75, 39);s;moving;move_forward
+0;207;(67, 46);s;moving;move_forward
+1;207;(13, 39);w;moving;move_forward
+4;207;(69, 67);w;moving;move_forward
+5;207;(56, 19);s;moving;move_forward
+8;207;(32, 46);e;stopped;wait
+12;207;(74, 32);e;moving;move_forward
+14;207;(54, 18);s;moving;move_forward
+16;207;(12, 37);w;moving;move_forward
+17;207;(16, 57);e;moving;move_right
+18;207;(13, 33);e;moving;move_forward
+19;207;(75, 38);w;moving;move_forward
+0;208;(67, 47);e;moving;move_forward
+1;208;(13, 38);w;moving;move_forward
+4;208;(69, 66);w;moving;move_forward
+5;208;(57, 19);s;moving;move_left
+8;208;(32, 46);e;stopped;move_forward
+12;208;(74, 33);e;moving;move_forward
+14;208;(55, 18);s;moving;move_forward
+17;208;(17, 57);s;moving;move_forward
+18;208;(13, 34);e;moving;move_left
+19;208;(75, 37);w;moving;move_left
+0;209;(67, 48);e;moving;move_right
+1;209;(13, 37);w;moving;move_left
+4;209;(69, 65);w;moving;move_forward
+5;209;(57, 20);e;moving;move_forward
+8;209;(33, 46);s;moving;move_forward
+12;209;(74, 34);e;moving;move_forward
+14;209;(56, 18);s;moving;move_forward
+17;209;(17, 58);e;moving;move_forward
+18;209;(12, 34);n;moving;move_forward
+19;209;(76, 37);s;moving;move_forward
+0;210;(68, 48);s;moving;move_forward
+1;210;(14, 37);s;moving;move_forward
+4;210;(69, 64);w;moving;move_forward
+8;210;(34, 46);s;moving;move_forward
+12;210;(74, 35);e;moving;move_forward
+14;210;(57, 18);s;moving;move_forward
+17;210;(17, 59);e;moving;move_forward
+18;210;(12, 35);e;moving;move_forward

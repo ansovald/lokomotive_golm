@@ -16,6 +16,14 @@ for file in os.listdir(scenery_path):
     if file.endswith("restyled.svg"):
         scenery_files.append(os.path.join(scenery_path, file))
 
+scenery_ids = [file.split("/")[-1].replace("_restyled.svg", "") for file in scenery_files]
+
+track_files = []
+# track files consist only of numbers, followed by "_restyled.svg"
+for file in os.listdir(SVG_DIR):
+    if file.endswith("restyled.svg") and file.split("_")[0].isdigit():
+        track_files.append(os.path.join(SVG_DIR, file))
+
 def make_signal_group(train_id):
     signal_group = G(id=f"train_{train_id}_signal_group", class_name="train_signal")
     background = Path(d="m 228,76.8 c 0,9.941 -8.059,18 -18,18 -9.941,-0 -18,-8.059 -18,-18 V 30 c 0,-9.941 8.059,-18 18,-18 9.941,0 18,8.059 18,18z", style="stroke: #000000; stroke-width: 14.4;")
@@ -64,5 +72,7 @@ def clean_svg_group(svg_file, group_id, cell_size=25, scale=240, class_name=None
         group.class_name = class_name
     return group
 
-def sample_scenery_file():
-    return random.choice(scenery_files)
+def sample_scenery_id():
+    # scenery_file = random.choice(scenery_files)
+    # return scenery_file.split("/")[-1].replace("_restyled.svg", "")
+    return random.choice(scenery_ids)

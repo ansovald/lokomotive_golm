@@ -136,6 +136,7 @@ class IncrementalFlatlandPlan(Application):
                 models.append(model.symbols(atoms=True))
             optimization_time = time.time() - incremental_time - start_time
             print(f"Optimization running time: {optimization_time:.2f} seconds.")
+            self.stats["optimization"] = {"running_time": f"{optimization_time:.2f}", "stats": ctl.statistics}
         
         if models:
             self.model = models[-1]
@@ -154,7 +155,9 @@ class IncrementalFlatlandPlan(Application):
         self.stats["total_running_time"] = f"{total_running_time:.2f}"
 
     def log_optimization_model(self, model):
-        print(f"Model {model.number} with cost {model.cost} found during optimization.")
+        # print human-readable timestamp
+        print(f"Optimization model found at {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}")
+        print(f"\tModel #{model.number}, cost {model.cost}")
         print(f"\tPriority: {model.priority}")
         print(f"\tType: {model.type}")
         print(f"\toptimality proven: {model.optimality_proven}")
@@ -171,6 +174,7 @@ class FlatlandPlan(Application):
         self.action_list = None
         self.model = None
         self.stats = None
+        print(f"Initialized FlatlandPlan with env: {env} and actions: {actions}")
 
     def main(self, ctl, files):
         # add encodings
@@ -178,7 +182,7 @@ class FlatlandPlan(Application):
             ctl.load(f)
         if not files:
             raise Exception('No file loaded into clingo.')
-        
+        print(f"Loaded files: {files}")
         # add env
         ctl.add(convert_to_clingo(self.env))
         

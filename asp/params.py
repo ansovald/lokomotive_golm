@@ -11,5 +11,8 @@
 # primary=['asp/tk/tracks_trajectories.lp', 'asp/tk/trajectory_encoding.lp']
 primary=['asp/tk/encoding_incremental.lp', 'asp/tk/tracks_incremental.lp']
 # primary=['asp/tk/encoding_incremental_cond_conn.lp', 'asp/tk/tracks_incremental_cond_conn.lp']
+# primary=['asp/tk/encoding.lp', 'asp/tk/tracks.lp']
+primary=['asp/tk/speed_revamp.lp', 'asp/tk/tracks.lp']
+# primary=['asp/tk/encoding_transition.lp', 'asp/tk/tracks_transition.lp']
 
 secondary=[]

@@ -1,0 +1,120 @@
+2026-02-20 20:24:22
+
+Files loaded:
+env_005--3_3
+asp/tk/speed_revamp.lp
+asp/tk/tracks_unrestricted_wait.lp
+
+Statistics:
+Simulation time: 1.72s
+{
+    "problem": {
+        "lp": {
+            "atoms": 319251.0,
+            "atoms_aux": 0.0,
+            "disjunctions": 0.0,
+            "disjunctions_non_hcf": 0.0,
+            "bodies": 692397.0,
+            "bodies_tr": 641723.0,
+            "sum_bodies": 0.0,
+            "sum_bodies_tr": 0.0,
+            "count_bodies": 52250.0,
+            "count_bodies_tr": 0.0,
+            "sccs": 0.0,
+            "sccs_non_hcf": 0.0,
+            "gammas": 0.0,
+            "ufs_nodes": 0.0,
+            "rules": 1073879.0,
+            "rules_normal": 1025400.0,
+            "rules_choice": 48479.0,
+            "rules_minimize": 0.0,
+            "rules_acyc": 0.0,
+            "rules_heuristic": 0.0,
+            "rules_tr": 1134201.0,
+            "rules_tr_normal": 1085722.0,
+            "rules_tr_choice": 48479.0,
+            "rules_tr_minimize": 0.0,
+            "rules_tr_acyc": 0.0,
+            "rules_tr_heuristic": 0.0,
+            "eqs": 547348.0,
+            "eqs_atom": 65272.0,
+            "eqs_body": 41498.0,
+            "eqs_other": 440578.0
+        },
+        "lpStep": {
+            "atoms": 319251.0,
+            "atoms_aux": 0.0,
+            "disjunctions": 0.0,
+            "disjunctions_non_hcf": 0.0,
+            "bodies": 692397.0,
+            "bodies_tr": 641723.0,
+            "sum_bodies": 0.0,
+            "sum_bodies_tr": 0.0,
+            "count_bodies": 52250.0,
+            "count_bodies_tr": 0.0,
+            "sccs": 0.0,
+            "sccs_non_hcf": 0.0,
+            "gammas": 0.0,
+            "ufs_nodes": 0.0,
+            "rules": 1073879.0,
+            "rules_normal": 1025400.0,
+            "rules_choice": 48479.0,
+            "rules_minimize": 0.0,
+            "rules_acyc": 0.0,
+            "rules_heuristic": 0.0,
+            "rules_tr": 1134201.0,
+            "rules_tr_normal": 1085722.0,
+            "rules_tr_choice": 48479.0,
+            "rules_tr_minimize": 0.0,
+            "rules_tr_acyc": 0.0,
+            "rules_tr_heuristic": 0.0,
+            "eqs": 547348.0,
+            "eqs_atom": 65272.0,
+            "eqs_body": 41498.0,
+            "eqs_other": 440578.0
+        },
+        "generator": {
+            "vars": 575593.0,
+            "vars_eliminated": 0.0,
+            "vars_frozen": 249203.0,
+            "constraints": 49226.0,
+            "constraints_binary": 1766415.0,
+            "constraints_ternary": 526196.0,
+            "acyc_edges": 0.0,
+            "complexity": 2341837.0
+        }
+    },
+    "solving": {
+        "solvers": {
+            "choices": 5455.0,
+            "conflicts": 888.0,
+            "conflicts_analyzed": 888.0,
+            "restarts": 6.0,
+            "restarts_last": 23.0,
+            "restarts_blocked": 0.0
+        }
+    },
+    "summary": {
+        "call": 0.0,
+        "result": 1.0,
+        "signal": 0.0,
+        "exhausted": 0.0,
+        "costs": [],
+        "lower": [],
+        "concurrency": 1.0,
+        "winner": 0.0,
+        "times": {
+            "total": 1.6417560577392578,
+            "cpu": 1.6332890000000004,
+            "solve": 0.3346991539001465,
+            "unsat": 0.0,
+            "sat": 0.32997608184814453
+        },
+        "models": {
+            "enumerated": 1.0,
+            "optimal": 0.0
+        }
+    },
+    "user_step": {},
+    "user_accu": {}
+}

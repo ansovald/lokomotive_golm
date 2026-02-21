@@ -239,7 +239,7 @@ def main():
         images = []
 
     # create directory
-    # os.makedirs("tmp/frames", exist_ok=True)
+    os.makedirs("tmp/frames", exist_ok=True)
     # i needed to change this: from integers to railways Env Actions 
     action_map = {RailEnvActions.MOVE_LEFT:'move_left',RailEnvActions.MOVE_FORWARD:'move_forward',RailEnvActions.MOVE_RIGHT:'move_right',RailEnvActions.STOP_MOVING:'wait'}
     state_map = {0:'waiting', 1:'ready to depart', 2:'malfunction (off map)', 3:'moving', 4:'stopped', 5:'malfunction (on map)', 6:'done'}
@@ -253,6 +253,7 @@ def main():
     print(f"Initial plan computed in {sim_time:.2f} seconds.")
 
     timestep = 0
+    gif_time = time.time()
 
     while len(actions) > timestep:
         # add to the log
@@ -325,6 +326,11 @@ def main():
     stamp = env_name + "_" + str(time.time())
     os.makedirs(f"output/{stamp}", exist_ok=True)
     base_dir = f"output/{stamp}"
+    # combine images into gif
+    if not no_render:
+        imageio.mimsave(f"output/{stamp}/animation.gif", images, format='GIF', loop=0, duration=240)
+        gif_time = time.time() - gif_time
+        print(f"GIF generated in {gif_time:.2f} seconds.")
 
     with open(os.path.join(base_dir, "train_info.json"), "w") as f:
         json.dump(train_dict, f, indent=4)
@@ -364,17 +370,15 @@ def main():
     log.save(stamp)
 
     print("Generating HTML visualization...")
+    html_time = time.time()
     # whole animation should last 30s
     milliseconds_per_step = int(30000 / timestep)
     landscape = LandscapeBuilder(base_dir, timestep, cell_size=20)
     html_file = generate_html(env_name, landscape, milliseconds_per_step=milliseconds_per_step)
     with open(os.path.join(base_dir, "visualization.html"), "w") as f:
         f.write(html_file)
-
-    # combine images into gif
-    if not no_render:
-        imageio.mimsave(f"output/{stamp}/animation.gif", images, format='GIF', loop=0, duration=240)
-
+    html_time = time.time() - html_time
+    print(f"HTML visualization generated in {html_time:.2f} seconds.")
 
 if __name__ == "__main__":
     main()

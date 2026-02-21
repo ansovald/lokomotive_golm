@@ -54,7 +54,6 @@ action(train(ID), wait, t) :-
 action(train(ID), A, t) :-
     % speed_action(train(ID), A, T0, T1), move_action(A),
     transition(ID, T0, _, A, T1, _, _), move_action(A),
-    T = T0..T1-1,
     T0 <= t, t <= T1-1.
 
 % if the train reaches its destination, mark it as arrived

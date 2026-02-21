@@ -1,0 +1,117 @@
+agent;timestep;position;direction;status;given_command
+0;0;None;w;waiting;wait
+1;0;None;e;waiting;wait
+0;1;None;w;waiting;wait
+1;1;None;e;ready to depart;move_forward
+0;2;None;w;waiting;wait
+1;2;(14, 24);e;moving;move_forward
+0;3;None;w;waiting;wait
+1;3;(14, 25);e;moving;move_forward
+0;4;None;w;waiting;wait
+1;4;(14, 26);e;moving;move_forward
+0;5;None;w;waiting;wait
+1;5;(14, 27);e;moving;move_forward
+0;6;None;w;waiting;wait
+1;6;(14, 28);e;moving;move_forward
+0;7;None;w;waiting;wait
+1;7;(14, 29);e;moving;move_forward
+0;8;None;w;waiting;wait
+1;8;(13, 29);n;moving;move_forward
+0;9;None;w;waiting;wait
+1;9;(12, 29);n;moving;move_forward
+0;10;None;w;waiting;wait
+1;10;(11, 29);n;moving;move_forward
+0;11;None;w;waiting;wait
+1;11;(10, 29);n;moving;move_forward
+0;12;None;w;waiting;wait
+1;12;(9, 29);n;moving;move_forward
+0;13;None;w;waiting;wait
+1;13;(9, 28);w;moving;move_forward
+0;14;None;w;waiting;wait
+1;14;(9, 27);w;moving;move_forward
+0;15;None;w;waiting;wait
+1;15;(9, 26);w;moving;move_forward
+0;16;None;w;waiting;wait
+1;16;(9, 25);w;moving;move_forward
+0;17;None;w;ready to depart;move_forward
+1;17;(9, 24);w;moving;move_forward
+0;18;(11, 6);w;moving;move_forward
+1;18;(9, 23);w;moving;move_forward
+0;19;(11, 5);w;moving;move_forward
+1;19;(9, 22);w;moving;move_forward
+0;20;(12, 5);s;moving;move_forward
+1;20;(9, 21);w;moving;move_forward
+0;21;(12, 4);w;moving;move_forward
+1;21;(9, 20);w;moving;move_forward
+0;22;(12, 3);w;moving;move_forward
+1;22;(9, 19);w;moving;move_forward
+0;23;(12, 2);w;moving;move_forward
+1;23;(9, 18);w;moving;move_forward
+0;24;(12, 1);w;moving;move_forward
+1;24;(9, 17);w;moving;move_forward
+0;25;(13, 1);s;moving;move_forward
+1;25;(9, 16);w;moving;move_forward
+0;26;(14, 1);s;moving;move_forward
+1;26;(10, 16);s;moving;move_forward
+0;27;(15, 1);s;moving;move_forward
+1;27;(10, 15);w;moving;move_forward
+0;28;(16, 1);s;moving;move_forward
+1;28;(10, 14);w;moving;move_forward
+0;29;(17, 1);s;moving;move_forward
+1;29;(11, 14);s;moving;move_forward
+0;30;(17, 2);e;moving;move_forward
+1;30;(11, 13);w;moving;move_forward
+0;31;(17, 3);e;moving;move_forward
+1;31;(11, 12);w;moving;move_forward
+0;32;(17, 4);e;moving;move_forward
+1;32;(11, 11);w;moving;move_forward
+0;33;(17, 5);e;moving;move_forward
+1;33;(12, 11);s;moving;move_left
+0;34;(17, 6);e;moving;move_forward
+1;34;(12, 12);e;moving;move_forward
+0;35;(17, 7);e;moving;move_forward
+1;35;(12, 13);e;moving;move_forward
+0;36;(17, 8);e;moving;move_forward
+1;36;(12, 14);e;moving;move_forward
+0;37;(17, 9);e;moving;move_forward
+1;37;(12, 15);e;moving;move_forward
+0;38;(17, 10);e;moving;move_forward
+1;38;(12, 16);e;moving;move_forward
+0;39;(17, 11);e;moving;move_forward
+1;39;(12, 17);e;moving;move_forward
+0;40;(17, 12);e;moving;move_forward
+1;40;(12, 18);e;moving;move_forward
+0;41;(17, 13);e;moving;move_forward
+1;41;(12, 19);e;moving;move_forward
+0;42;(17, 14);e;moving;move_forward
+1;42;(13, 19);s;moving;move_forward
+0;43;(17, 15);e;moving;move_forward
+1;43;(14, 19);s;moving;move_right
+0;44;(16, 15);n;moving;move_forward
+1;44;(14, 18);w;moving;move_forward
+0;45;(16, 16);e;moving;move_forward
+1;45;(14, 17);w;moving;move_forward
+0;46;(16, 17);e;moving;move_forward
+1;46;(13, 17);n;moving;move_forward
+0;47;(16, 18);e;moving;move_forward
+1;47;(13, 16);w;moving;move_forward
+0;48;(16, 19);e;moving;move_forward
+1;48;(13, 15);w;moving;move_forward
+0;49;(15, 19);n;moving;move_forward
+1;49;(13, 14);w;moving;move_forward
+0;50;(14, 19);n;moving;move_right
+1;50;(13, 13);w;moving;move_forward
+0;51;(14, 20);e;moving;move_forward
+1;51;(13, 12);w;moving;move_forward
+0;52;(14, 21);e;moving;move_right
+1;52;(13, 11);w;moving;move_forward
+0;53;(15, 21);s;moving;move_forward
+1;53;(12, 11);n;moving;move_left
+0;54;(15, 22);e;moving;move_forward
+1;54;(12, 10);w;moving;move_forward
+0;55;(15, 23);e;moving;move_forward
+1;55;(12, 9);w;moving;move_left
+1;56;(13, 9);s;moving;move_forward
+1;57;(13, 8);w;moving;move_forward
+1;58;(13, 7);w;moving;move_left
+1;59;(14, 7);s;moving;move_forward

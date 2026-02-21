@@ -1,0 +1,126 @@
+2026-02-20 14:53:16
+
+Files loaded:
+env_020--20_10
+asp/tk/encoding_incremental.lp
+asp/tk/tracks_incremental.lp
+
+Statistics:
+Simulation time: 1482.07s
+{
+    "total_running_time": "1418.55",
+    "incremental": {
+        "running_time": "1418.28",
+        "stats": {
+            "problem": {
+                "lp": {
+                    "atoms": 97839053.0,
+                    "atoms_aux": 0.0,
+                    "disjunctions": 0.0,
+                    "disjunctions_non_hcf": 0.0,
+                    "bodies": 220108342.0,
+                    "bodies_tr": 219300846.0,
+                    "sum_bodies": 0.0,
+                    "sum_bodies_tr": 0.0,
+                    "count_bodies": 807497.0,
+                    "count_bodies_tr": 0.0,
+                    "sccs": 0.0,
+                    "sccs_non_hcf": 0.0,
+                    "gammas": 0.0,
+                    "ufs_nodes": 0.0,
+                    "rules": 234659874.0,
+                    "rules_normal": 233672396.0,
+                    "rules_choice": 987478.0,
+                    "rules_minimize": 0.0,
+                    "rules_acyc": 0.0,
+                    "rules_heuristic": 0.0,
+                    "rules_tr": 235467371.0,
+                    "rules_tr_normal": 234479893.0,
+                    "rules_tr_choice": 987478.0,
+                    "rules_tr_minimize": 0.0,
+                    "rules_tr_acyc": 0.0,
+                    "rules_tr_heuristic": 0.0,
+                    "eqs": 275191289.0,
+                    "eqs_atom": 91455031.0,
+                    "eqs_body": 1977146.0,
+                    "eqs_other": 181759112.0
+                },
+                "lpStep": {
+                    "atoms": 1893256.0,
+                    "atoms_aux": 0.0,
+                    "disjunctions": 0.0,
+                    "disjunctions_non_hcf": 0.0,
+                    "bodies": 5390980.0,
+                    "bodies_tr": 5378416.0,
+                    "sum_bodies": 0.0,
+                    "sum_bodies_tr": 0.0,
+                    "count_bodies": 12564.0,
+                    "count_bodies_tr": 0.0,
+                    "sccs": 0.0,
+                    "sccs_non_hcf": 0.0,
+                    "gammas": 0.0,
+                    "ufs_nodes": 0.0,
+                    "rules": 5621014.0,
+                    "rules_normal": 5605634.0,
+                    "rules_choice": 15380.0,
+                    "rules_minimize": 0.0,
+                    "rules_acyc": 0.0,
+                    "rules_heuristic": 0.0,
+                    "rules_tr": 5633578.0,
+                    "rules_tr_normal": 5618198.0,
+                    "rules_tr_choice": 15380.0,
+                    "rules_tr_minimize": 0.0,
+                    "rules_tr_acyc": 0.0,
+                    "rules_tr_heuristic": 0.0,
+                    "eqs": 5393682.0,
+                    "eqs_atom": 1796469.0,
+                    "eqs_body": 30800.0,
+                    "eqs_other": 3566413.0
+                },
+                "generator": {
+                    "vars": 6370294.0,
+                    "vars_eliminated": 0.0,
+                    "vars_frozen": 6370294.0,
+                    "constraints": 924590.0,
+                    "constraints_binary": 144851607.0,
+                    "constraints_ternary": 3779820.0,
+                    "acyc_edges": 0.0,
+                    "complexity": 149556017.0
+                }
+            },
+            "solving": {
+                "solvers": {
+                    "choices": 129060.0,
+                    "conflicts": 5064.0,
+                    "conflicts_analyzed": 5064.0,
+                    "restarts": 26.0,
+                    "restarts_last": 127.0,
+                    "restarts_blocked": 0.0
+                }
+            },
+            "summary": {
+                "call": 211.0,
+                "result": 1.0,
+                "signal": 0.0,
+                "exhausted": 0.0,
+                "costs": [],
+                "lower": [],
+                "concurrency": 1.0,
+                "winner": 0.0,
+                "times": {
+                    "total": 158.7738208770752,
+                    "cpu": 137.991665,
+                    "solve": 89.23698592185974,
+                    "unsat": 0.0,
+                    "sat": 88.14223289489746
+                },
+                "models": {
+                    "enumerated": 1.0,
+                    "optimal": 0.0
+                }
+            },
+            "user_step": {},
+            "user_accu": {}
+        }
+    }
+}

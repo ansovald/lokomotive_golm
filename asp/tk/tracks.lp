@@ -105,6 +105,6 @@ cell_conn((Y,X), wait, In, In) :-
     cell((Y1,X1), Track1),
     not straight(Track1).
 
-%wait_cell(C) :- cell_conn(C, wait, In, Out).
+wait_cell(C) :- cell_conn(C, wait, In, Out).
 
 %#show wait_cell/1.

@@ -1,9 +1,9 @@
 # basic parameters
-width=50
-height=50
-number_of_agents=26
-max_num_cities=13
-seed=43
+width=80
+height=80
+number_of_agents=20
+max_num_cities=10
+seed=42
 grid_mode=False
 max_rails_between_cities=2
 max_rail_pairs_in_city=2
