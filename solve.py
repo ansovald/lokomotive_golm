@@ -10,6 +10,9 @@ from argparse import ArgumentParser, Namespace
 from asp import params
 from modules.api import FlatlandPlan, FlatlandReplan
 from modules.convert import convert_malfunctions_to_clingo, convert_formers_to_clingo, convert_futures_to_clingo
+from html_viz import grid_json, train_info, LandscapeBuilder, generate_html
+
+from flatland.envs.rail_env_action import RailEnvActions
 
 # clingo
 import clingo
@@ -64,12 +67,16 @@ class SimulationManager():
             self.secondary = primary 
         else:
             self.secondary = secondary
+        self.model = None
+        self.stats = None
 
     def build_actions(self) -> list:
         """ create initial list of actions """
         # pass env, primary
         app = FlatlandPlan(self.env, None)
         clingo_main(app, self.primary)
+        self.stats = app.stats
+        self.model = app.model
         return(app.action_list)
 
     def provide_context(self, actions, timestep, malfunctions) -> str:
@@ -135,7 +142,7 @@ def get_args():
     """ capture command line inputs """
     parser = ArgumentParser()
     parser.add_argument('env', type=str, default='', nargs=1, help='the Flatland environment as a .pkl file')
-    parser.add_argument('--no-render', action='store_true', help='if included, run the Flatland simulation but do not render a GIF')
+    parser.add_argument('--no-render', action='store_true', default=True, help='if included, run the Flatland simulation but do not render a GIF')
     return(parser.parse_args())
 
 
@@ -145,6 +152,10 @@ def main():
         args: Namespace = get_args()
         env = pickle.load(open(args.env[0], "rb"))
         no_render = args.no_render
+        env_name = args.env[0]
+        if env_name.startswith("envs/pkl/"):
+            env_name = env_name[len("envs/pkl/"):-4]
+        print(f"Loading environment '{env_name}' from envs/pkl/")
 
     # create manager objects
     mal = MalfunctionManager(env.get_num_agents())
@@ -160,17 +171,27 @@ def main():
 
     # create directory
     os.makedirs("tmp/frames", exist_ok=True)
-    action_map = {1:'move_left',2:'move_forward',3:'move_right',4:'wait'}
+    # i needed to change this: from integers to railways Env Actions 
+    action_map = {RailEnvActions.MOVE_LEFT:'move_left',RailEnvActions.MOVE_FORWARD:'move_forward',RailEnvActions.MOVE_RIGHT:'move_right',RailEnvActions.STOP_MOVING:'wait'}
     state_map = {0:'waiting', 1:'ready to depart', 2:'malfunction (off map)', 3:'moving', 4:'stopped', 5:'malfunction (on map)', 6:'done'}
     dir_map = {0:'n', 1:'e', 2:'s', 3:'w'}
 
     actions = sim.build_actions()
 
+    train_dict = train_info(env)
+
     timestep = 0
+
     while len(actions) > timestep:
         # add to the log
         for a in actions[timestep]:
             log.add(f'{a};{timestep};{env.agents[a].position};{dir_map[env.agents[a].direction]};{state_map[env.agents[a].state]};{action_map[actions[timestep][a]]}\n')
+            train_dict[a]["path"][timestep] = {
+                "position": {"x": int(env.agents[a].position[1]), "y": int(env.agents[a].position[0])} if env.agents[a].position is not None else None,
+                "direction": dir_map[env.agents[a].direction],
+                "status": env.agents[a].state.name,
+                "action": action_map[actions[timestep][a]]
+            }
 
         _, _, done, info = env.step(actions[timestep])
 
@@ -227,9 +248,35 @@ def main():
         timestep = timestep + 1
 
     # get time stamp for gif and output log
-    stamp = time.time()
+    stamp = env_name + str(time.time())
     os.makedirs(f"output/{stamp}", exist_ok=True)
-    
+    base_dir = f"output/{stamp}"
+
+    with open(os.path.join(base_dir, "train_info.json"), "w") as f:
+        json.dump(train_dict, f, indent=4)
+
+    with open(os.path.join(base_dir, "grid.json"), "w") as f:
+        json.dump(grid_json(env), f, indent=4)
+
+    # dump model to file
+    with open(os.path.join(base_dir, "model.lp"), "w") as f:
+        for symbol in sim.model:
+            f.write(f"{symbol}.\n")
+
+    # dump stats to file
+    with open(os.path.join(base_dir, "clingo_stats.txt"), "w") as f:
+        f.write("Files loaded:\n")
+        f.write(env_name + "\n")
+        for file in params.primary + (params.secondary if params.secondary else []):
+            f.write(f"{file}\n")
+        f.write("\nStatistics:\n")
+        f.write(json.dumps(sim.stats, indent=4))
+
+    landscape = LandscapeBuilder(base_dir, timestep)
+    html_file = generate_html(env_name, landscape, milliseconds_per_step=500)
+    with open(os.path.join(base_dir, "visualization.html"), "w") as f:
+        f.write(html_file)
+
     # combine images into gif
     if not no_render:
         imageio.mimsave(f"output/{stamp}/animation.gif", images, format='GIF', loop=0, duration=240)

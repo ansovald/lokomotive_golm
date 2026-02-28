@@ -34,13 +34,18 @@ def build_action_list(models):
     given a model from clingo, build an python action list
     """
     action_list = []
-    for func in models[0]: # only the first model
+    for func in models[-1]: # only the last model
         func_name = func.name
         if func_name == "action":
             action = func.arguments[1].name
             agent, timestep = func.arguments[0], func.arguments[2]
             agent_num = agent.arguments[0].number
             action_list.append((agent_num,action,timestep.number))
+            # print(f"Action found: agent {agent_num}, action {action}, timestep {timestep.number}")
 
     sorted_list = sorted(action_list, key=lambda x: (x[2], x[0]))
+    # dump to temporary file for debugging
+    with open("temp_action_list.txt", "w") as f:
+        for item in sorted_list:
+            f.write(f"{item}\n")
     return(to_dicts(sorted_list))

@@ -1,0 +1,379 @@
+{
+    "0": {
+        "start": {
+            "position": {
+                "x": 6,
+                "y": 14
+            },
+            "min_start": 3,
+            "direction": "w"
+        },
+        "end": {
+            "position": {
+                "x": 21,
+                "y": 26
+            },
+            "max_end": 60
+        },
+        "speed": 1,
+        "path": {
+            "0": {
+                "position": null,
+                "direction": "w",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "1": {
+                "position": null,
+                "direction": "w",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "2": {
+                "position": null,
+                "direction": "w",
+                "status": "WAITING",
+                "action": "wait"
+            },
+            "3": {
+                "position": null,
+                "direction": "w",
+                "status": "READY_TO_DEPART",
+                "action": "move_forward"
+            },
+            "4": {
+                "position": {
+                    "x": 6,
+                    "y": 14
+                },
+                "direction": "w",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "5": {
+                "position": {
+                    "x": 5,
+                    "y": 14
+                },
+                "direction": "w",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "6": {
+                "position": {
+                    "x": 5,
+                    "y": 15
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "7": {
+                "position": {
+                    "x": 4,
+                    "y": 15
+                },
+                "direction": "w",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "8": {
+                "position": {
+                    "x": 3,
+                    "y": 15
+                },
+                "direction": "w",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "9": {
+                "position": {
+                    "x": 2,
+                    "y": 15
+                },
+                "direction": "w",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "10": {
+                "position": {
+                    "x": 1,
+                    "y": 15
+                },
+                "direction": "w",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "11": {
+                "position": {
+                    "x": 1,
+                    "y": 16
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "12": {
+                "position": {
+                    "x": 1,
+                    "y": 17
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "13": {
+                "position": {
+                    "x": 1,
+                    "y": 18
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "14": {
+                "position": {
+                    "x": 1,
+                    "y": 19
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "15": {
+                "position": {
+                    "x": 1,
+                    "y": 20
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "16": {
+                "position": {
+                    "x": 2,
+                    "y": 20
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "17": {
+                "position": {
+                    "x": 3,
+                    "y": 20
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "18": {
+                "position": {
+                    "x": 3,
+                    "y": 21
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "19": {
+                "position": {
+                    "x": 4,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "20": {
+                "position": {
+                    "x": 5,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "21": {
+                "position": {
+                    "x": 6,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "22": {
+                "position": {
+                    "x": 7,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "23": {
+                "position": {
+                    "x": 8,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "24": {
+                "position": {
+                    "x": 9,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "25": {
+                "position": {
+                    "x": 10,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "26": {
+                "position": {
+                    "x": 11,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "27": {
+                "position": {
+                    "x": 12,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "28": {
+                "position": {
+                    "x": 13,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "29": {
+                "position": {
+                    "x": 14,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "30": {
+                "position": {
+                    "x": 15,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "31": {
+                "position": {
+                    "x": 16,
+                    "y": 21
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "32": {
+                "position": {
+                    "x": 16,
+                    "y": 22
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "33": {
+                "position": {
+                    "x": 16,
+                    "y": 23
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "34": {
+                "position": {
+                    "x": 16,
+                    "y": 24
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "35": {
+                "position": {
+                    "x": 17,
+                    "y": 24
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "36": {
+                "position": {
+                    "x": 18,
+                    "y": 24
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_right"
+            },
+            "37": {
+                "position": {
+                    "x": 18,
+                    "y": 25
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "38": {
+                "position": {
+                    "x": 19,
+                    "y": 25
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "39": {
+                "position": {
+                    "x": 20,
+                    "y": 25
+                },
+                "direction": "e",
+                "status": "MOVING",
+                "action": "move_right"
+            },
+            "40": {
+                "position": {
+                    "x": 20,
+                    "y": 26
+                },
+                "direction": "s",
+                "status": "MOVING",
+                "action": "move_forward"
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+agent;timestep;position;direction;status;given_command
+0;0;None;n;waiting;move_forward
+0;1;None;n;ready to depart;move_forward
+0;2;(15, 5);n;moving;move_forward
+0;3;(14, 5);n;moving;move_forward
+0;4;(13, 5);n;moving;move_forward
+0;5;(12, 5);n;moving;move_forward
+0;6;(11, 5);n;moving;move_forward
+0;7;(10, 5);n;moving;move_forward
+0;8;(9, 5);n;moving;move_forward
+0;9;(8, 5);n;moving;move_right
+0;10;(7, 5);n;moving;move_forward
+0;11;(6, 5);n;moving;move_forward

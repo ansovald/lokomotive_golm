@@ -1,0 +1,124 @@
+{
+    "0": {
+        "start": {
+            "position": {
+                "x": 5,
+                "y": 15
+            },
+            "min_start": 0,
+            "direction": "n"
+        },
+        "end": {
+            "position": {
+                "x": 6,
+                "y": 5
+            },
+            "max_end": 18
+        },
+        "speed": 1,
+        "path": {
+            "0": {
+                "position": null,
+                "direction": "n",
+                "status": "WAITING",
+                "action": "move_forward"
+            },
+            "1": {
+                "position": null,
+                "direction": "n",
+                "status": "READY_TO_DEPART",
+                "action": "move_forward"
+            },
+            "2": {
+                "position": {
+                    "x": 5,
+                    "y": 15
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "3": {
+                "position": {
+                    "x": 5,
+                    "y": 14
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "4": {
+                "position": {
+                    "x": 5,
+                    "y": 13
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "5": {
+                "position": {
+                    "x": 5,
+                    "y": 12
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "6": {
+                "position": {
+                    "x": 5,
+                    "y": 11
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "7": {
+                "position": {
+                    "x": 5,
+                    "y": 10
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "8": {
+                "position": {
+                    "x": 5,
+                    "y": 9
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "9": {
+                "position": {
+                    "x": 5,
+                    "y": 8
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_right"
+            },
+            "10": {
+                "position": {
+                    "x": 5,
+                    "y": 7
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_forward"
+            },
+            "11": {
+                "position": {
+                    "x": 5,
+                    "y": 6
+                },
+                "direction": "n",
+                "status": "MOVING",
+                "action": "move_forward"
+            }
+        }
+    }
+}
