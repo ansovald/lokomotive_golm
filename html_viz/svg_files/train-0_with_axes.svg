@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Ebene_1"
+   data-name="Ebene 1"
+   viewBox="0 0 240 240"
+   version="1.1"
+   sodipodi:docname="train-0_restyled.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.98333333"
+     inkscape:cx="120.50847"
+     inkscape:cy="119.49153"
+     inkscape:window-width="1440"
+     inkscape:window-height="900"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Ebene_1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path9" />
+    </marker>
+    <style
+       id="style1">.no-fill{fill:none;}.train-outline{fill:#cdcdcd;}.train-fill-0{fill:#d50000;}.train-window{fill:#444;}.train-roof{fill:#5b5a5a;}.train-headlights{fill:#fbfbfb;}</style>
+  </defs>
+  <title
+     id="title1">N_Zug_Gleis_#d50000</title>
+  <rect
+     class="no-fill"
+     width="240"
+     height="240"
+     id="rect1" />
+  <path
+     class="train-outline"
+     d="M151.23,204c4.66,0,8.73-1.27,11-3.12a4.33,4.33,0,0,0,1.85-3.3V74.18c0-11.22-10.53-37.84-43.81-37.83s-43.82,26-43.82,37.83v123.4a3.84,3.84,0,0,0,1.09,2.58c2,2.24,6.49,3.82,11.74,3.84ZM147.55,45.55c.64-.64,6.15,5,6.67,5.7s-.9,2.5-2.44,2.18S146.91,46.19,147.55,45.55Zm-61.28,5.7c.52-.7,6-6.34,6.67-5.7s-2.69,7.56-4.23,7.88S85.66,52.1,86.27,51.25Zm34-9.76c21,0,37.71,11.92,37.71,36.45,0-7.65-14.41-23.16-37.71-23.16S82.53,70.29,82.53,77.94C82.53,53.41,99.28,41.49,120.25,41.49ZM82.58,194.55V92.19c-.86-9.8,9.06-32.53,37.67-32.52s38.52,22.72,37.66,32.52V194.55c0,3-4.92,5.49-11,5.52H93.61C87.5,200,82.56,197.57,82.58,194.55Z"
+     id="path1" />
+  <path
+     class="train-fill-0"
+     d="M102.32,122.24v77.83h35.36V122.24Z"
+     id="path2" />
+  <path
+     class="train-fill-0"
+     d="M101.17,200.07V122.24H95.83c-3.55,0-6.42-1.44-6.42-3.21v-2.25c0-1.77,2.87-3.21,6.42-3.21H143.9c3.55,0,6.42,1.44,6.42,3.21V119c0,1.77-2.87,3.21-6.42,3.21h-5.07v77.83h8c6.11,0,11.05-2.5,11-5.52V92.19c.86-9.8-9.06-32.53-37.66-32.52S81.72,82.39,82.58,92.19V194.55c0,3,4.92,5.49,11,5.52Z"
+     id="path3" />
+  <path
+     class="train-window"
+     d="M120.25,54.78c23.3,0,37.71,15.51,37.71,23.16,0-24.53-16.74-36.45-37.71-36.45S82.53,53.41,82.53,77.94C82.53,70.29,96.94,54.78,120.25,54.78Z"
+     id="path4" />
+  <path
+     class="train-roof"
+     d="M143.9,113.57H95.83c-3.55,0-6.42,1.44-6.42,3.21V119c0,1.77,2.87,3.21,6.42,3.21h5.34v77.83h1.15V122.24h35.36v77.83h1.15V122.24h5.07c3.55,0,6.42-1.44,6.42-3.21v-2.25C150.32,115,147.45,113.57,143.9,113.57Z"
+     id="path5" />
+  <path
+     class="train-headlights"
+     d="M151.78,53.43c1.54.32,3.05-1.33,2.44-2.18s-6-6.34-6.67-5.7S150.24,53.11,151.78,53.43Z"
+     id="path6" />
+  <path
+     class="train-headlights"
+     d="M88.71,53.43c1.54-.32,4.87-7.24,4.23-7.88s-6.15,5-6.67,5.7S87.17,53.75,88.71,53.43Z"
+     id="path7" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-dasharray:1.5, 1.5;-inkscape-stroke:none;marker-start:url(#ArrowWide);marker-end:url(#ArrowWide)"
+     d="M 240,240 H 0 V 0"
+     id="path8" />
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:24px;line-height:1.2;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';text-align:center;text-decoration-color:#000000;direction:rtl;text-anchor:middle;fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:1.5;stroke-dasharray:1.5, 1.5;-inkscape-stroke:none"
+     x="222.20338"
+     y="230.40678"
+     id="text9"><tspan
+       sodipodi:role="line"
+       id="tspan9"
+       x="222.20338"
+       y="230.40678">x</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:24px;line-height:1.2;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';text-align:center;text-decoration-color:#000000;direction:rtl;text-anchor:middle;fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:1.5;stroke-dasharray:1.5, 1.5;-inkscape-stroke:none"
+     x="20"
+     y="20"
+     id="text10"><tspan
+       sodipodi:role="line"
+       id="tspan10"
+       x="20"
+       y="20">y</tspan></text>
+</svg>

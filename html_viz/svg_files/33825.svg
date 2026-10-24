@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Ebene_1" x="0px" y="0px" viewBox="0 0 240 240" style="enable-background:new 0 0 240 240;" xml:space="preserve">
+<style type="text/css">.no-fill{fill:none;}.railroad-tie{fill:#978679;}.railroad{fill:#3D3D3D;}</style>
+<g>
+	<rect class="no-fill" width="240" height="240" />
+</g>
+<g>
+	<rect x="10" y="69.5" class="railroad-tie" width="20" height="100" />
+	<rect x="210" y="69.5" class="railroad-tie" width="20" height="100" />
+	<rect x="170" y="69.5" class="railroad-tie" width="20" height="100" />
+	<rect x="130" y="69.5" class="railroad-tie" width="20" height="100" />
+	<rect x="90" y="69.5" class="railroad-tie" width="20" height="100" />
+	<rect x="50" y="69.5" class="railroad-tie" width="20" height="100" />
+</g>
+<g>
+	<rect x="70" y="9.5" class="railroad-tie" width="100" height="20" />
+	<rect x="70" y="209.5" class="railroad-tie" width="100" height="20" />
+	<rect x="70" y="169.5" class="railroad-tie" width="100" height="20" />
+	<rect x="70" y="129.5" class="railroad-tie" width="100" height="20" />
+	<rect x="70" y="89.5" class="railroad-tie" width="100" height="20" />
+	<rect x="70" y="49.5" class="railroad-tie" width="100" height="20" />
+</g>
+<g>
+	<rect x="0" y="150.51" class="railroad" width="240" height="9.98" />
+	<rect x="0" y="78.51" class="railroad" width="240" height="9.98" />
+</g>
+<g>
+	<rect x="79.01" y="-0.5" class="railroad" width="9.98" height="240" />
+	<rect x="151.01" y="-0.5" class="railroad" width="9.98" height="240" />
+</g>
+</svg>

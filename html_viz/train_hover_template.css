@@ -1,0 +1,22 @@
+
+body:has(#train_TRAIN_ID_info:hover) #train_TRAIN_ID_path {
+  stroke-width: HOVER_WIDTH;
+  opacity: 1.0;
+  transition: 0.2s;
+}
+
+body:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_info {
+  opacity: 1.0;
+  transition: 0.2s;
+}
+
+svg:has(#train_TRAIN_ID_main:hover) #train_TRAIN_ID_path {
+   stroke-width: HOVER_WIDTH;
+   opacity: 1.0;
+   transition: 0.2s;
+ }
+
+ body:has(#train_TRAIN_ID_info:hover) #train_TRAIN_ID_background {
+  stroke-opacity: 1.0;
+  transition: 0.2s;
+}
